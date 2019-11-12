@@ -31,13 +31,7 @@ components:
         dateOfAcceptance:
           description: missing description
           type: string
-        dateOfIssuance:
-          description: missing description
-          type: string
         freightedAtAd:
-          description: missing description
-          type: string
-        billOfLadingNumber:
           description: missing description
           type: string
         certifiedMember:
@@ -45,6 +39,9 @@ components:
           type: string
         declarationOfInterest:
           description: Consignor''s declaration of interest in timely delivery of goods.
+          type: string
+        shippedOnBoardDate:
+          description: missing description
           type: string
         consignee:
           $ref: '#/components/schemas/Consignee'
@@ -58,11 +55,11 @@ components:
           items:
             $ref: '#/components/schemas/NotifyParty'
           type: array
-        billOfLadingReferences:
+        references:
           items:
             $ref: '#/components/schemas/Reference'
           type: array
-        placeOfAcceptance:
+        placeOfReceipt:
           $ref: '#/components/schemas/Location'
         placeOfDelivery:
           $ref: '#/components/schemas/Location'
@@ -82,6 +79,10 @@ components:
           $ref: '#/components/schemas/Carrier'
         document:
           $ref: '#/components/schemas/Document'
+        portOfLoading:
+          $ref: '#/components/schemas/Location'
+        portOfDischarge:
+          $ref: '#/components/schemas/Location'
     Carrier:
       type: object
       properties:
@@ -98,6 +99,36 @@ components:
           type: array
       required:
         - name
+    Charges:
+      type: object
+      properties:
+        chargeType:
+          description: missing description
+          type: string
+        rate:
+          description: missing description
+          type: string
+        per:
+          description: missing description
+          type: string
+        currency:
+          description: missing description
+          type: string
+        paymentTerm:
+          description: missing description
+          type: string
+          enum:
+            - prepaid
+            - collect
+        amount:
+          description: missing description
+          type: string
+        freightPayableAt:
+          description: missing description
+          type: string
+        invoiceParty:
+          description: missing description
+          type: string
     CommunicationDetails:
       type: object
       properties:
@@ -127,22 +158,30 @@ components:
           type: string
         transportMeans:
           items:
-            $ref: '#/components/schemas/transportMeans'
+            $ref: '#/components/schemas/TransportMeans'
           type: array
+        charges:
+          items:
+            $ref: '#/components/schemas/Charges'
+          type: array
+        tes:
+          $ref: '#/components/schemas/TransportEquipment'
     ConsignmentItem:
       type: object
       properties:
         sequenceId:
           description: missing description
           type: string
-        marksAndNumbers:
-          $ref: '#/components/schemas/MarksAndNumbers'
         numberAndKindOfPackages:
           $ref: '#/components/schemas/NumberAndKindOfPackages'
         weight:
           $ref: '#/components/schemas/Weight'
         measurements:
           $ref: '#/components/schemas/Meassurement'
+        transportEquipment:
+          items:
+            $ref: '#/components/schemas/TransportEquipment'
+          type: array
     Consignor:
       type: object
       properties: {}
@@ -158,6 +197,9 @@ components:
         originatorId:
           description: missing description
           type: string
+        dateOfIssuance:
+          description: missing description
+          type: string
     Location:
       type: object
       properties:
@@ -170,21 +212,12 @@ components:
         printedLocation:
           description: missing description
           type: string
-        country:
-          description: missing description
-          type: string
-          enum:
-            - DK
-            - SE
-            - 'NO'
     MarksAndNumbers:
       type: object
       properties:
         shippingMarks:
           description: missing description
           type: string
-        transportEquipment:
-          $ref: '#/components/schemas/TransportEquipment'
     Meassurement:
       type: object
       properties:
@@ -215,6 +248,10 @@ components:
         goodsItemDescription:
           description: missing description
           type: string
+        marksAndNumbers:
+          items:
+            $ref: '#/components/schemas/MarksAndNumbers'
+          type: array
     OtherParty:
       type: object
       properties:
@@ -244,11 +281,26 @@ components:
         taxReference:
           description: missing description
           type: string
+        partyRef:
+          description: missing description
+          type: string
+        organizationId:
+          description: missing description
+          type: string
         address:
           $ref: '#/components/schemas/Address'
         communicationDetails:
           $ref: '#/components/schemas/CommunicationDetails'
     Reference:
+      type: object
+      properties:
+        type:
+          description: missing description
+          type: string
+        value:
+          description: missing description
+          type: string
+    Seal:
       type: object
       properties:
         type:
@@ -263,15 +315,30 @@ components:
         equipmentNumber:
           description: missing description
           type: string
-    transportMeans:
+        equipmentType:
+          description: ISO 6346 size and type code (for example "45G1")
+          type: string
+        printedEquipmentType:
+          description: >-
+            The container size and type, as printed on the transport document
+            (for example "40 DRY 9''6").
+          type: string
+        seals:
+          items:
+            $ref: '#/components/schemas/Seal'
+          type: array
+    TransportMeans:
       type: object
       properties:
         IMOCode:
           description: missing description
           type: string
-        voyage:
-          $ref: '#/components/schemas/transportMovement'
-    transportMovement:
+        name:
+          description: missing description
+          type: string
+        transportMovement:
+          $ref: '#/components/schemas/TransportMovement'
+    TransportMovement:
       type: object
       properties:
         voyageId:

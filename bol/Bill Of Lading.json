@@ -41,15 +41,7 @@
                         "description": "missing description",
                         "type": "string"
                     },
-                    "dateOfIssuance": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
                     "freightedAtAd": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
-                    "billOfLadingNumber": {
                         "description": "missing description",
                         "type": "string"
                     },
@@ -59,6 +51,10 @@
                     },
                     "declarationOfInterest": {
                         "description": "Consignor''s declaration of interest in timely delivery of goods.",
+                        "type": "string"
+                    },
+                    "shippedOnBoardDate": {
+                        "description": "missing description",
                         "type": "string"
                     },
                     "consignee": {
@@ -79,13 +75,13 @@
                         },
                         "type": "array"
                     },
-                    "billOfLadingReferences": {
+                    "references": {
                         "items": {
                             "$ref": "#/components/schemas/Reference"
                         },
                         "type": "array"
                     },
-                    "placeOfAcceptance": {
+                    "placeOfReceipt": {
                         "$ref": "#/components/schemas/Location"
                     },
                     "placeOfDelivery": {
@@ -113,6 +109,12 @@
                     },
                     "document": {
                         "$ref": "#/components/schemas/Document"
+                    },
+                    "portOfLoading": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "portOfDischarge": {
+                        "$ref": "#/components/schemas/Location"
                     }
                 }
             },
@@ -138,6 +140,47 @@
                 "required": [
                     "name"
                 ]
+            },
+            "Charges": {
+                "type": "object",
+                "properties": {
+                    "chargeType": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "rate": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "per": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "currency": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "paymentTerm": {
+                        "description": "missing description",
+                        "type": "string",
+                        "enum": [
+                            "prepaid",
+                            "collect"
+                        ]
+                    },
+                    "amount": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "freightPayableAt": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "invoiceParty": {
+                        "description": "missing description",
+                        "type": "string"
+                    }
+                }
             },
             "CommunicationDetails": {
                 "type": "object",
@@ -181,9 +224,18 @@
                     },
                     "transportMeans": {
                         "items": {
-                            "$ref": "#/components/schemas/transportMeans"
+                            "$ref": "#/components/schemas/TransportMeans"
                         },
                         "type": "array"
+                    },
+                    "charges": {
+                        "items": {
+                            "$ref": "#/components/schemas/Charges"
+                        },
+                        "type": "array"
+                    },
+                    "tes": {
+                        "$ref": "#/components/schemas/TransportEquipment"
                     }
                 }
             },
@@ -194,9 +246,6 @@
                         "description": "missing description",
                         "type": "string"
                     },
-                    "marksAndNumbers": {
-                        "$ref": "#/components/schemas/MarksAndNumbers"
-                    },
                     "numberAndKindOfPackages": {
                         "$ref": "#/components/schemas/NumberAndKindOfPackages"
                     },
@@ -205,6 +254,12 @@
                     },
                     "measurements": {
                         "$ref": "#/components/schemas/Meassurement"
+                    },
+                    "transportEquipment": {
+                        "items": {
+                            "$ref": "#/components/schemas/TransportEquipment"
+                        },
+                        "type": "array"
                     }
                 }
             },
@@ -230,6 +285,10 @@
                     "originatorId": {
                         "description": "missing description",
                         "type": "string"
+                    },
+                    "dateOfIssuance": {
+                        "description": "missing description",
+                        "type": "string"
                     }
                 }
             },
@@ -247,15 +306,6 @@
                     "printedLocation": {
                         "description": "missing description",
                         "type": "string"
-                    },
-                    "country": {
-                        "description": "missing description",
-                        "type": "string",
-                        "enum": [
-                            "DK",
-                            "SE",
-                            "NO"
-                        ]
                     }
                 }
             },
@@ -265,9 +315,6 @@
                     "shippingMarks": {
                         "description": "missing description",
                         "type": "string"
-                    },
-                    "transportEquipment": {
-                        "$ref": "#/components/schemas/TransportEquipment"
                     }
                 }
             },
@@ -314,6 +361,12 @@
                     "goodsItemDescription": {
                         "description": "missing description",
                         "type": "string"
+                    },
+                    "marksAndNumbers": {
+                        "items": {
+                            "$ref": "#/components/schemas/MarksAndNumbers"
+                        },
+                        "type": "array"
                     }
                 }
             },
@@ -359,6 +412,14 @@
                         "description": "missing description",
                         "type": "string"
                     },
+                    "partyRef": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
                     "address": {
                         "$ref": "#/components/schemas/Address"
                     },
@@ -380,28 +441,59 @@
                     }
                 }
             },
+            "Seal": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "missing description",
+                        "type": "string"
+                    }
+                }
+            },
             "TransportEquipment": {
                 "type": "object",
                 "properties": {
                     "equipmentNumber": {
                         "description": "missing description",
                         "type": "string"
+                    },
+                    "equipmentType": {
+                        "description": "ISO 6346 size and type code (for example \"45G1\")",
+                        "type": "string"
+                    },
+                    "printedEquipmentType": {
+                        "description": "The container size and type, as printed on the transport document (for example \"40 DRY 9''6\").",
+                        "type": "string"
+                    },
+                    "seals": {
+                        "items": {
+                            "$ref": "#/components/schemas/Seal"
+                        },
+                        "type": "array"
                     }
                 }
             },
-            "transportMeans": {
+            "TransportMeans": {
                 "type": "object",
                 "properties": {
                     "IMOCode": {
                         "description": "missing description",
                         "type": "string"
                     },
-                    "voyage": {
-                        "$ref": "#/components/schemas/transportMovement"
+                    "name": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "transportMovement": {
+                        "$ref": "#/components/schemas/TransportMovement"
                     }
                 }
             },
-            "transportMovement": {
+            "TransportMovement": {
                 "type": "object",
                 "properties": {
                     "voyageId": {

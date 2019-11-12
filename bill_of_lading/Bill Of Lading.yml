@@ -1,0 +1,273 @@
+openapi: 3.0.0
+info:
+  description: ''
+  title: Bill Of Lading
+  version: ''
+servers: []
+paths: {}
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        street:
+          description: missing description
+          type: string
+        city:
+          description: missing description
+          type: string
+        state:
+          description: missing description
+          type: string
+        country:
+          description: missing description
+          type: string
+    BillOfLading:
+      type: object
+      properties:
+        negotiable:
+          description: missing description
+          type: string
+        dateOfAcceptance:
+          description: missing description
+          type: string
+        dateOfIssuance:
+          description: missing description
+          type: string
+        freightedAtAd:
+          description: missing description
+          type: string
+        billOfLadingNumber:
+          description: missing description
+          type: string
+        certifiedMember:
+          description: missing description
+          type: string
+        declarationOfInterest:
+          description: Consignor''s declaration of interest in timely delivery of goods.
+          type: string
+        consignee:
+          $ref: '#/components/schemas/Consignee'
+        consignor:
+          $ref: '#/components/schemas/Consignor'
+        otherParties:
+          items:
+            $ref: '#/components/schemas/OtherParty'
+          type: array
+        notifyParties:
+          items:
+            $ref: '#/components/schemas/NotifyParty'
+          type: array
+        billOfLadingReferences:
+          items:
+            $ref: '#/components/schemas/Reference'
+          type: array
+        placeOfAcceptance:
+          $ref: '#/components/schemas/Location'
+        placeOfDelivery:
+          $ref: '#/components/schemas/Location'
+        consignmentItems:
+          items:
+            $ref: '#/components/schemas/ConsignmentItem'
+          type: array
+          minItems: 1
+        placeOfIssance:
+          $ref: '#/components/schemas/Location'
+        consignment:
+          items:
+            $ref: '#/components/schemas/Consignment'
+          type: array
+          minItems: 1
+        carrier:
+          $ref: '#/components/schemas/Carrier'
+        document:
+          $ref: '#/components/schemas/Document'
+    Carrier:
+      type: object
+      properties:
+        SCAC:
+          description: missing description
+          type: string
+        name:
+          description: missing description
+          type: string
+        placeOfBusiness:
+          items:
+            description: missing description
+            type: string
+          type: array
+      required:
+        - name
+    CommunicationDetails:
+      type: object
+      properties:
+        telephone:
+          description: missing description
+          type: string
+        fax:
+          description: missing description
+          type: string
+        email:
+          description: missing description
+          type: string
+    Consignee:
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Consignment:
+      type: object
+      properties:
+        billOfLadingNumber:
+          description: missing description
+          type: string
+        bookingNumber:
+          description: missing description
+          type: string
+    ConsignmentItem:
+      type: object
+      properties:
+        sequenceId:
+          description: missing description
+          type: string
+        marksAndNumbers:
+          $ref: '#/components/schemas/MarksAndNumbers'
+        numberAndKindOfPackages:
+          $ref: '#/components/schemas/NumberAndKindOfPackages'
+        weight:
+          $ref: '#/components/schemas/Weight'
+        measurements:
+          $ref: '#/components/schemas/Meassurement'
+    Consignor:
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Document:
+      type: object
+      properties:
+        originatorName:
+          description: missing description
+          type: string
+        originatorId:
+          description: missing description
+          type: string
+    Location:
+      type: object
+      properties:
+        name:
+          description: missing description
+          type: string
+        UNLocode:
+          description: missing description
+          type: string
+        printedLocation:
+          description: missing description
+          type: string
+        country:
+          description: missing description
+          type: string
+          enum:
+            - DK
+            - SE
+            - 'NO'
+    MarksAndNumbers:
+      type: object
+      properties:
+        shippingMarks:
+          description: missing description
+          type: string
+        transportEquipment:
+          $ref: '#/components/schemas/TransportEquipment'
+    Meassurement:
+      type: object
+      properties:
+        value:
+          description: missing description
+          type: string
+        unit:
+          description: missing description
+          type: string
+          enum:
+            - cm
+            - cf
+    NotifyParty:
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    NumberAndKindOfPackages:
+      type: object
+      properties:
+        numberOfPackages:
+          description: missing description
+          type: string
+        typeOfPackages:
+          description: missing description
+          type: string
+        goodsItemDescription:
+          description: missing description
+          type: string
+    OtherParty:
+      type: object
+      properties:
+        partyType:
+          description: missing description
+          type: string
+          enum:
+            - Exporter
+            - Importer
+            - Origin 3PL
+            - Destination 3PL
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Party:
+      type: object
+      properties:
+        name:
+          description: missing description
+          type: string
+        printedParty:
+          description: missing description
+          type: string
+        registeredForVAT:
+          description: missing description
+          type: string
+        taxReference:
+          description: missing description
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        communicationDetails:
+          $ref: '#/components/schemas/CommunicationDetails'
+    Reference:
+      type: object
+      properties:
+        type:
+          description: missing description
+          type: string
+        value:
+          description: missing description
+          type: string
+    TransportEquipment:
+      type: object
+      properties:
+        equipmentNumber:
+          description: missing description
+          type: string
+    Weight:
+      type: object
+      properties:
+        value:
+          description: missing description
+          type: string
+        unit:
+          description: missing description
+          type: string
+          enum:
+            - kgs
+            - lbs

@@ -178,6 +178,12 @@
                     "bookingNumber": {
                         "description": "missing description",
                         "type": "string"
+                    },
+                    "transportMeans": {
+                        "items": {
+                            "$ref": "#/components/schemas/transportMeans"
+                        },
+                        "type": "array"
                     }
                 }
             },
@@ -378,6 +384,27 @@
                 "type": "object",
                 "properties": {
                     "equipmentNumber": {
+                        "description": "missing description",
+                        "type": "string"
+                    }
+                }
+            },
+            "transportMeans": {
+                "type": "object",
+                "properties": {
+                    "IMOCode": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "voyage": {
+                        "$ref": "#/components/schemas/transportMovement"
+                    }
+                }
+            },
+            "transportMovement": {
+                "type": "object",
+                "properties": {
+                    "voyageId": {
                         "description": "missing description",
                         "type": "string"
                     }

@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  description: ''
+  title: Shipping Instructions
+  version: ''
+servers: []
+paths:
+  /ShippingInstructions: {}
+components:
+  schemas:
+    ShippingInstructions:
+      type: object
+      properties: {}

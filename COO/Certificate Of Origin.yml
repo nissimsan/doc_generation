@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  description: ''
+  title: Certificate Of Origin
+  version: ''
+servers: []
+paths:
+  /CertificateOfOrigin: {}
+components:
+  schemas:
+    CertificateOfOrigin:
+      type: object
+      properties:
+        originCountry:
+          description: missing description
+          type: string
+          enum:
+            - DK
+            - SE
+            - 'NO'
+            - US
+        destinationCountry:
+          description: missing description
+          type: string
+          enum:
+            - DK
+            - SE
+            - 'NO'
+            - US

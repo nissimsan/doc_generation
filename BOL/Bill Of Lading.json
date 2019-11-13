@@ -459,10 +459,6 @@
                     }
                 }
             },
-            "ShippingInstructions": {
-                "type": "object",
-                "properties": {}
-            },
             "TransportDocument": {
                 "type": "object",
                 "properties": {

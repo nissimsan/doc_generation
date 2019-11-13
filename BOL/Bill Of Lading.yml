@@ -306,9 +306,6 @@ components:
         value:
           description: missing description
           type: string
-    ShippingInstructions:
-      type: object
-      properties: {}
     TransportDocument:
       type: object
       properties:

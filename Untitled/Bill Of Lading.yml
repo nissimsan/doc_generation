@@ -1,15 +1,15 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: Sea Waybill
+  title: Bill Of Lading
   version: ''
 servers: []
 paths:
-  /SeaWaybill:
+  /BillOfLading:
     get:
       tags:
-        - SeaWaybill
-      description: Get a list of SeaWaybill
+        - BillOfLading
+      description: Get a list of BillOfLading
       parameters: []
       responses:
         '200':
@@ -18,13 +18,13 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/SeaWaybill'
+                  $ref: '#/components/schemas/BillOfLading'
                 type: array
-  '/SeaWaybill/{id}':
+  '/BillOfLading/{id}':
     get:
       tags:
-        - SeaWaybill
-      description: Get single SeaWaybill by id
+        - BillOfLading
+      description: Get single BillOfLading by id
       parameters:
         - name: id
           in: path
@@ -38,7 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SeaWaybill'
+                $ref: '#/components/schemas/BillOfLading'
 components:
   schemas:
     Address:
@@ -56,6 +56,20 @@ components:
         country:
           description: missing description
           type: string
+          enum:
+            - DK
+            - SE
+            - 'NO'
+            - US
+    BillOfLading:
+      type: object
+      properties:
+        negotiable:
+          description: missing description
+          type: string
+      allOf:
+        - $ref: '#/components/schemas/TransportDocument'
+        - type: object
     Carrier:
       type: object
       properties:
@@ -98,11 +112,14 @@ components:
             - collect
         amount:
           description: missing description
-          type: string
+          type: number
         freightPayableAt:
           description: missing description
           type: string
         invoiceParty:
+          description: missing description
+          type: string
+        rateReference:
           description: missing description
           type: string
     CommunicationDetails:
@@ -127,26 +144,22 @@ components:
       type: object
       properties:
         bookingNumber:
+          description: Booking Number.
+          type: string
+        departureDate:
+          description: missing description
+          type: string
+        carrier:
+          $ref: '#/components/schemas/Carrier'
+        charges:
           items:
-            description: Booking Number.
-            type: string
+            $ref: '#/components/schemas/Charges'
           type: array
-          minItems: 1
         consignmentItems:
           items:
             $ref: '#/components/schemas/ConsignmentItem'
           type: array
           minItems: 1
-        carrier:
-          $ref: '#/components/schemas/Carrier'
-        transportMeans:
-          items:
-            $ref: '#/components/schemas/TransportMeans'
-          type: array
-        charges:
-          items:
-            $ref: '#/components/schemas/Charges'
-          type: array
         transportEquipment:
           $ref: '#/components/schemas/TransportEquipment'
       required:
@@ -160,12 +173,19 @@ components:
         commodityName:
           description: missing description
           type: string
-        numberAndKindOfPackages:
-          $ref: '#/components/schemas/NumberAndKindOfPackages'
-        weight:
+        commodityCodeHS:
+          description: missing description
+          type: string
+        grossWeight:
           $ref: '#/components/schemas/Weight'
         measurements:
           $ref: '#/components/schemas/Meassurement'
+        numberAndKindOfPackages:
+          $ref: '#/components/schemas/NumberAndKindOfPackages'
+        transportEquipment:
+          items:
+            $ref: '#/components/schemas/TransportEquipment'
+          type: array
     Consignor:
       type: object
       properties: {}
@@ -184,7 +204,13 @@ components:
         dateOfIssuance:
           description: missing description
           type: string
-        references:
+        numberOfOriginals:
+          description: missing description
+          type: string
+        numberOfCopies:
+          description: missing description
+          type: string
+        Reference:
           items:
             $ref: '#/components/schemas/Reference'
           type: array
@@ -247,10 +273,10 @@ components:
           description: missing description
           type: string
           enum:
-            - Exporter
-            - Importer
-            - Origin 3PL
-            - Destination 3PL
+            - exporter
+            - importer
+            - origin 3PL
+            - destination 3PL
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
@@ -285,6 +311,12 @@ components:
         type:
           description: Type of reference.
           type: string
+          enum:
+            - bookingReferenceNumber
+            - billOfLadingNumber
+            - houseBillOfLadingNumber
+            - letterOfCreditNumber
+            - purchaseOrderNumber
         value:
           description: missing description
           type: string
@@ -297,12 +329,6 @@ components:
         value:
           description: missing description
           type: string
-    SeaWaybill:
-      type: object
-      properties: {}
-      allOf:
-        - $ref: '#/components/schemas/TransportDocument'
-        - type: object
     TransportDocument:
       type: object
       properties:
@@ -313,13 +339,13 @@ components:
           description: >-
             Consignor declares the goods under this MTD to be freighted at Ad
             valorem rates.
-          type: string
+          type: boolean
         certifiedMember:
           description: missing description
           type: string
         declarationOfInterest:
           description: Consignor''s declaration of interest in timely delivery of goods.
-          type: string
+          type: boolean
         shippedOnBoardDate:
           description: missing description
           type: string
@@ -328,33 +354,34 @@ components:
           type: string
         consignee:
           $ref: '#/components/schemas/Consignee'
-        consignor:
-          $ref: '#/components/schemas/Consignor'
-        otherParties:
-          items:
-            $ref: '#/components/schemas/OtherParty'
-          type: array
-        notifyParties:
-          items:
-            $ref: '#/components/schemas/NotifyParty'
-          type: array
-        placeOfReceipt:
-          $ref: '#/components/schemas/Location'
-        placeOfDelivery:
-          $ref: '#/components/schemas/Location'
-        placeOfIssance:
-          $ref: '#/components/schemas/Location'
         consignment:
           items:
             $ref: '#/components/schemas/Consignment'
           type: array
           minItems: 1
-        document:
-          $ref: '#/components/schemas/Document'
-        portOfLoading:
+        consignor:
+          $ref: '#/components/schemas/Consignor'
+        notifyParties:
+          items:
+            $ref: '#/components/schemas/NotifyParty'
+          type: array
+        otherParties:
+          items:
+            $ref: '#/components/schemas/OtherParty'
+          type: array
+        placeOfDelivery:
+          $ref: '#/components/schemas/Location'
+        placeOfIssance:
+          $ref: '#/components/schemas/Location'
+        placeOfReceipt:
           $ref: '#/components/schemas/Location'
         portOfDischarge:
           $ref: '#/components/schemas/Location'
+        portOfLoading:
+          $ref: '#/components/schemas/Location'
+      allOf:
+        - $ref: '#/components/schemas/Document'
+        - type: object
     TransportEquipment:
       type: object
       properties:
@@ -373,25 +400,6 @@ components:
           items:
             $ref: '#/components/schemas/Seal'
           type: array
-    TransportMeans:
-      type: object
-      properties:
-        IMOCode:
-          description: missing description
-          type: string
-        name:
-          description: Name of a specific means of transport such as the vessel name.
-          type: string
-        transportMovement:
-          $ref: '#/components/schemas/TransportMovement'
-    TransportMovement:
-      type: object
-      properties:
-        voyageId:
-          description: >-
-            To identify a journey of a means of transport, for example voyage
-            number, flight number, trip number.
-          type: string
     Weight:
       type: object
       properties:

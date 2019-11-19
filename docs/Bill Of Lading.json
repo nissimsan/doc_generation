@@ -7,61 +7,7 @@
     },
     "servers": [],
     "paths": {
-        "/BillOfLading": {
-            "get": {
-                "tags": [
-                    "BillOfLading"
-                ],
-                "description": "Get a list of BillOfLading",
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "items": {
-                                        "$ref": "#/components/schemas/BillOfLading"
-                                    },
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/BillOfLading/{id}": {
-            "get": {
-                "tags": [
-                    "BillOfLading"
-                ],
-                "description": "Get single BillOfLading by id",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "missing description",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BillOfLading"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        "/BillOfLading": {}
     },
     "components": {
         "schemas": {

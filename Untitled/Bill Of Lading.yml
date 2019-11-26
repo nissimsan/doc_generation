@@ -39,6 +39,21 @@ components:
         negotiable:
           description: missing description
           type: string
+        freightedAtAd:
+          description: missing description
+          type: boolean
+        certifiedMember:
+          description: missing description
+          type: string
+        acceptance:
+          description: missing description
+          type: string
+        declarationOfInterest:
+          description: missing description
+          type: boolean
+        eBL:
+          description: missing description
+          type: boolean
       allOf:
         - $ref: '#/components/schemas/TransportDocument'
         - type: object
@@ -119,8 +134,6 @@ components:
           description: >-
             The unique identifier assigned by the carrier to this consignment
             when cargo space is reserved prior to loading.
-
-            "EXAMPLE-DATA":"345353435"
           type: string
         departureDate:
           description: missing description
@@ -149,7 +162,9 @@ components:
             $ref: '#/components/schemas/OtherParty'
           type: array
         references:
-          $ref: '#/components/schemas/Reference'
+          items:
+            $ref: '#/components/schemas/Reference'
+          type: array
         utilizedTransportEquipment:
           items:
             $ref: '#/components/schemas/TransportEquipment'
@@ -168,29 +183,20 @@ components:
         commodityCodeHS:
           description: The harmonized system code specifying a type of consignment item.
           type: string
-        associatedTransportEquipment:
+        equipmentStuffing:
           items:
-            allOf:
-              - $ref: '#/components/schemas/TransportEquipmentIds'
-              - type: object
+            $ref: '#/components/schemas/Stuffing'
           type: array
-          minItems: 1
-        measurements:
-          $ref: '#/components/schemas/Meassurement'
-        netWeight:
-          $ref: '#/components/schemas/Weight'
-        numberAndKindOfPackages:
-          $ref: '#/components/schemas/NumberAndKindOfPackages'
-    TransportEquipmentIds:
-      type: object
-      properties:
-        equipmentNumber:
-          description: >-
-            Unique identifier for this piece of transport equipment, printed
-            physically on the equipment.
-          type: string
-      required:
-        - equipmentNumber
+        totalMeasurements:
+          items:
+            $ref: '#/components/schemas/Meassurement'
+          type: array
+        totalNetWeight:
+          items:
+            $ref: '#/components/schemas/Weight'
+          type: array
+        totalTransportPackages:
+          $ref: '#/components/schemas/TransportPackage'
     Consignor:
       type: object
       properties: {}
@@ -235,12 +241,6 @@ components:
         printedLocation:
           description: The location exactly as printed on the document.
           type: string
-    MarksAndNumbers:
-      type: object
-      properties:
-        shippingMarks:
-          description: missing description
-          type: string
     Meassurement:
       type: object
       properties:
@@ -259,22 +259,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
-    NumberAndKindOfPackages:
-      type: object
-      properties:
-        numberOfPackages:
-          description: missing description
-          type: string
-        typeOfPackages:
-          description: missing description
-          type: string
-        goodsItemDescription:
-          description: missing description
-          type: string
-        marksAndNumbers:
-          items:
-            $ref: '#/components/schemas/MarksAndNumbers'
-          type: array
     OtherParty:
       type: object
       properties:
@@ -338,25 +322,42 @@ components:
         identifier:
           description: A unique identifier for this logistics seal.
           type: string
+    ShippingMarks:
+      type: object
+      properties:
+        shippingMarks:
+          description: missing description
+          type: string
+    Stuffing:
+      type: object
+      properties:
+        measurements:
+          items:
+            $ref: '#/components/schemas/Meassurement'
+          type: array
+        netWeight:
+          items:
+            $ref: '#/components/schemas/Weight'
+          type: array
+        transportEquipmentStuffing:
+          allOf:
+            - $ref: '#/components/schemas/TransportEquipmentIds'
+            - type: object
+        transportPackages:
+          $ref: '#/components/schemas/TransportPackage'
+    TransportEquipmentIds:
+      type: object
+      properties:
+        equipmentNumber:
+          description: >-
+            Unique identifier for this piece of transport equipment, printed
+            physically on the equipment.
+          type: string
+      required:
+        - equipmentNumber
     TransportDocument:
       type: object
       properties:
-        acceptance:
-          description: >-
-            The date, time, date time or other date time value of the acceptance
-            of this document.
-          type: string
-        freightedAtAd:
-          description: >-
-            Consignor declares the goods under this MTD to be freighted at Ad
-            valorem rates.
-          type: boolean
-        certifiedMember:
-          description: missing description
-          type: string
-        declarationOfInterest:
-          description: Consignor''s declaration of interest in timely delivery of goods.
-          type: boolean
         shippedOnBoardDate:
           description: missing description
           type: string
@@ -371,6 +372,8 @@ components:
         placeOfDelivery:
           $ref: '#/components/schemas/Location'
         placeOfIssance:
+          $ref: '#/components/schemas/Location'
+        placeOfPrecarriage:
           $ref: '#/components/schemas/Location'
         placeOfReceipt:
           $ref: '#/components/schemas/Location'
@@ -407,6 +410,19 @@ components:
           type: array
       required:
         - equipmentNumber
+    TransportPackage:
+      type: object
+      properties:
+        quantity:
+          description: The number of logistics packages at this level.
+          type: string
+        type:
+          description: 'A type, expressed as text, of this logistics package.'
+          type: string
+        shippingMarks:
+          items:
+            $ref: '#/components/schemas/ShippingMarks'
+          type: array
     Weight:
       type: object
       properties:

@@ -48,6 +48,26 @@
                     "negotiable": {
                         "description": "missing description",
                         "type": "string"
+                    },
+                    "freightedAtAd": {
+                        "description": "missing description",
+                        "type": "boolean"
+                    },
+                    "certifiedMember": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "acceptance": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "declarationOfInterest": {
+                        "description": "missing description",
+                        "type": "boolean"
+                    },
+                    "eBL": {
+                        "description": "missing description",
+                        "type": "boolean"
                     }
                 },
                 "allOf": [
@@ -163,7 +183,7 @@
                 "type": "object",
                 "properties": {
                     "bookingNumber": {
-                        "description": "The unique identifier assigned by the carrier to this consignment when cargo space is reserved prior to loading.\n\"EXAMPLE-DATA\":\"345353435\"",
+                        "description": "The unique identifier assigned by the carrier to this consignment when cargo space is reserved prior to loading.",
                         "type": "string"
                     },
                     "departureDate": {
@@ -205,7 +225,10 @@
                         "type": "array"
                     },
                     "references": {
-                        "$ref": "#/components/schemas/Reference"
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        },
+                        "type": "array"
                     },
                     "utilizedTransportEquipment": {
                         "items": {
@@ -233,42 +256,28 @@
                         "description": "The harmonized system code specifying a type of consignment item.",
                         "type": "string"
                     },
-                    "associatedTransportEquipment": {
+                    "equipmentStuffing": {
                         "items": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/components/schemas/TransportEquipmentIds"
-                                },
-                                {
-                                    "type": "object"
-                                }
-                            ]
+                            "$ref": "#/components/schemas/Stuffing"
                         },
-                        "type": "array",
-                        "minItems": 1
+                        "type": "array"
                     },
-                    "measurements": {
-                        "$ref": "#/components/schemas/Meassurement"
+                    "totalMeasurements": {
+                        "items": {
+                            "$ref": "#/components/schemas/Meassurement"
+                        },
+                        "type": "array"
                     },
-                    "netWeight": {
-                        "$ref": "#/components/schemas/Weight"
+                    "totalNetWeight": {
+                        "items": {
+                            "$ref": "#/components/schemas/Weight"
+                        },
+                        "type": "array"
                     },
-                    "numberAndKindOfPackages": {
-                        "$ref": "#/components/schemas/NumberAndKindOfPackages"
+                    "totalTransportPackages": {
+                        "$ref": "#/components/schemas/TransportPackage"
                     }
                 }
-            },
-            "TransportEquipmentIds": {
-                "type": "object",
-                "properties": {
-                    "equipmentNumber": {
-                        "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "equipmentNumber"
-                ]
             },
             "Consignor": {
                 "type": "object",
@@ -330,15 +339,6 @@
                     }
                 }
             },
-            "MarksAndNumbers": {
-                "type": "object",
-                "properties": {
-                    "shippingMarks": {
-                        "description": "missing description",
-                        "type": "string"
-                    }
-                }
-            },
             "Meassurement": {
                 "type": "object",
                 "properties": {
@@ -367,29 +367,6 @@
                         "type": "object"
                     }
                 ]
-            },
-            "NumberAndKindOfPackages": {
-                "type": "object",
-                "properties": {
-                    "numberOfPackages": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
-                    "typeOfPackages": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
-                    "goodsItemDescription": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
-                    "marksAndNumbers": {
-                        "items": {
-                            "$ref": "#/components/schemas/MarksAndNumbers"
-                        },
-                        "type": "array"
-                    }
-                }
             },
             "OtherParty": {
                 "type": "object",
@@ -482,25 +459,60 @@
                     }
                 }
             },
+            "ShippingMarks": {
+                "type": "object",
+                "properties": {
+                    "shippingMarks": {
+                        "description": "missing description",
+                        "type": "string"
+                    }
+                }
+            },
+            "Stuffing": {
+                "type": "object",
+                "properties": {
+                    "measurements": {
+                        "items": {
+                            "$ref": "#/components/schemas/Meassurement"
+                        },
+                        "type": "array"
+                    },
+                    "netWeight": {
+                        "items": {
+                            "$ref": "#/components/schemas/Weight"
+                        },
+                        "type": "array"
+                    },
+                    "transportEquipmentStuffing": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/TransportEquipmentIds"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
+                    },
+                    "transportPackages": {
+                        "$ref": "#/components/schemas/TransportPackage"
+                    }
+                }
+            },
+            "TransportEquipmentIds": {
+                "type": "object",
+                "properties": {
+                    "equipmentNumber": {
+                        "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "equipmentNumber"
+                ]
+            },
             "TransportDocument": {
                 "type": "object",
                 "properties": {
-                    "acceptance": {
-                        "description": "The date, time, date time or other date time value of the acceptance of this document.",
-                        "type": "string"
-                    },
-                    "freightedAtAd": {
-                        "description": "Consignor declares the goods under this MTD to be freighted at Ad valorem rates.",
-                        "type": "boolean"
-                    },
-                    "certifiedMember": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
-                    "declarationOfInterest": {
-                        "description": "Consignor''s declaration of interest in timely delivery of goods.",
-                        "type": "boolean"
-                    },
                     "shippedOnBoardDate": {
                         "description": "missing description",
                         "type": "string"
@@ -520,6 +532,9 @@
                         "$ref": "#/components/schemas/Location"
                     },
                     "placeOfIssance": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "placeOfPrecarriage": {
                         "$ref": "#/components/schemas/Location"
                     },
                     "placeOfReceipt": {
@@ -572,6 +587,25 @@
                 "required": [
                     "equipmentNumber"
                 ]
+            },
+            "TransportPackage": {
+                "type": "object",
+                "properties": {
+                    "quantity": {
+                        "description": "The number of logistics packages at this level.",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "A type, expressed as text, of this logistics package.",
+                        "type": "string"
+                    },
+                    "shippingMarks": {
+                        "items": {
+                            "$ref": "#/components/schemas/ShippingMarks"
+                        },
+                        "type": "array"
+                    }
+                }
             },
             "Weight": {
                 "type": "object",

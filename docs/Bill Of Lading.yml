@@ -26,10 +26,262 @@ components:
           description: A unique country identifier for this party.
           type: string
           enum:
+            - AD
+            - AE
+            - AF
+            - AG
+            - AI
+            - AL
+            - AM
+            - AO
+            - AQ
+            - AR
+            - AS
+            - AT
+            - AU
+            - AW
+            - AX
+            - AZ
+            - BA
+            - BB
+            - BD
+            - BE
+            - BF
+            - BG
+            - BH
+            - BI
+            - BJ
+            - BL
+            - BM
+            - BN
+            - BO
+            - BQ
+            - BR
+            - BS
+            - BT
+            - BV
+            - BW
+            - BY
+            - BZ
+            - CA
+            - CC
+            - CD
+            - CF
+            - CG
+            - CH
+            - CI
+            - CK
+            - CL
+            - CM
+            - CN
+            - CO
+            - CR
+            - CU
+            - CV
+            - CW
+            - CX
+            - CY
+            - CZ
+            - DE
+            - DJ
             - DK
-            - SE
+            - DM
+            - DO
+            - DZ
+            - EC
+            - EE
+            - EG
+            - EH
+            - ER
+            - ES
+            - ET
+            - FI
+            - FJ
+            - FK
+            - FM
+            - FO
+            - FR
+            - GA
+            - GB
+            - GD
+            - GE
+            - GF
+            - GG
+            - GI
+            - GL
+            - GM
+            - GN
+            - GP
+            - GQ
+            - GR
+            - GS
+            - GT
+            - GU
+            - GW
+            - GY
+            - HK
+            - HM
+            - HN
+            - HR
+            - HT
+            - HU
+            - ID
+            - IE
+            - IL
+            - IM
+            - IN
+            - IO
+            - IQ
+            - IR
+            - IS
+            - IT
+            - JE
+            - JM
+            - JO
+            - JP
+            - KE
+            - KG
+            - KH
+            - KI
+            - KM
+            - KN
+            - KP
+            - KR
+            - KW
+            - KY
+            - KZ
+            - LA
+            - LB
+            - LC
+            - LI
+            - LK
+            - LR
+            - LS
+            - LT
+            - LU
+            - LV
+            - LY
+            - MA
+            - MC
+            - MD
+            - ME
+            - MF
+            - MG
+            - MH
+            - MK
+            - ML
+            - MM
+            - MN
+            - MO
+            - MP
+            - MQ
+            - MR
+            - MS
+            - MT
+            - MU
+            - MV
+            - MW
+            - MX
+            - MY
+            - MZ
+            - NA
+            - NC
+            - NE
+            - NF
+            - NG
+            - NI
+            - NL
             - 'NO'
+            - NP
+            - NR
+            - NU
+            - NZ
+            - OM
+            - PA
+            - PE
+            - PF
+            - PG
+            - PH
+            - PK
+            - PL
+            - PM
+            - PN
+            - PR
+            - PS
+            - PT
+            - PW
+            - PY
+            - QA
+            - RE
+            - RO
+            - RS
+            - RU
+            - RW
+            - SA
+            - SB
+            - SC
+            - SD
+            - SE
+            - SG
+            - SH
+            - SI
+            - SJ
+            - SK
+            - SL
+            - SM
+            - SN
+            - SO
+            - SR
+            - SS
+            - ST
+            - SV
+            - SX
+            - SY
+            - SZ
+            - TC
+            - TD
+            - TF
+            - TG
+            - TH
+            - TJ
+            - TK
+            - TL
+            - TM
+            - TN
+            - TO
+            - TR
+            - TT
+            - TV
+            - TW
+            - TZ
+            - UA
+            - UG
+            - UM
             - US
+            - UY
+            - UZ
+            - VA
+            - VC
+            - VE
+            - VG
+            - VI
+            - VN
+            - VU
+            - WF
+            - WS
+            - YE
+            - YT
+            - ZA
+            - ZM
+            - ZW
+            - OA
+            - OB
+            - OC
+            - OD
+            - OE
+            - OF
+            - OG
+            - OZ
         postcode:
           description: A code specifying the postcode of the address.
           type: string
@@ -60,6 +312,22 @@ components:
       allOf:
         - $ref: '#/components/schemas/TransportDocument'
         - type: object
+    CargoInformation:
+      type: object
+      properties:
+        text:
+          description: missing description
+          type: string
+        type:
+          description: missing description
+          type: string
+          enum:
+            - goodsDescription
+            - dangerousGoodsAdditionalInformation
+            - dangerousGoodsTechnicalName
+            - hazardInformation
+            - temperatureControlInstructions
+            - equipmentComments
     Carrier:
       type: object
       properties:
@@ -73,10 +341,262 @@ components:
           description: missing description
           type: string
           enum:
+            - AD
+            - AE
+            - AF
+            - AG
+            - AI
+            - AL
+            - AM
+            - AO
+            - AQ
+            - AR
+            - AS
+            - AT
+            - AU
+            - AW
+            - AX
+            - AZ
+            - BA
+            - BB
+            - BD
+            - BE
+            - BF
+            - BG
+            - BH
+            - BI
+            - BJ
+            - BL
+            - BM
+            - BN
+            - BO
+            - BQ
+            - BR
+            - BS
+            - BT
+            - BV
+            - BW
+            - BY
+            - BZ
+            - CA
+            - CC
+            - CD
+            - CF
+            - CG
+            - CH
+            - CI
+            - CK
+            - CL
+            - CM
+            - CN
+            - CO
+            - CR
+            - CU
+            - CV
+            - CW
+            - CX
+            - CY
+            - CZ
+            - DE
+            - DJ
             - DK
-            - SE
+            - DM
+            - DO
+            - DZ
+            - EC
+            - EE
+            - EG
+            - EH
+            - ER
+            - ES
+            - ET
+            - FI
+            - FJ
+            - FK
+            - FM
+            - FO
+            - FR
+            - GA
+            - GB
+            - GD
+            - GE
+            - GF
+            - GG
+            - GI
+            - GL
+            - GM
+            - GN
+            - GP
+            - GQ
+            - GR
+            - GS
+            - GT
+            - GU
+            - GW
+            - GY
+            - HK
+            - HM
+            - HN
+            - HR
+            - HT
+            - HU
+            - ID
+            - IE
+            - IL
+            - IM
+            - IN
+            - IO
+            - IQ
+            - IR
+            - IS
+            - IT
+            - JE
+            - JM
+            - JO
+            - JP
+            - KE
+            - KG
+            - KH
+            - KI
+            - KM
+            - KN
+            - KP
+            - KR
+            - KW
+            - KY
+            - KZ
+            - LA
+            - LB
+            - LC
+            - LI
+            - LK
+            - LR
+            - LS
+            - LT
+            - LU
+            - LV
+            - LY
+            - MA
+            - MC
+            - MD
+            - ME
+            - MF
+            - MG
+            - MH
+            - MK
+            - ML
+            - MM
+            - MN
+            - MO
+            - MP
+            - MQ
+            - MR
+            - MS
+            - MT
+            - MU
+            - MV
+            - MW
+            - MX
+            - MY
+            - MZ
+            - NA
+            - NC
+            - NE
+            - NF
+            - NG
+            - NI
+            - NL
             - 'NO'
+            - NP
+            - NR
+            - NU
+            - NZ
+            - OM
+            - PA
+            - PE
+            - PF
+            - PG
+            - PH
+            - PK
+            - PL
+            - PM
+            - PN
+            - PR
+            - PS
+            - PT
+            - PW
+            - PY
+            - QA
+            - RE
+            - RO
+            - RS
+            - RU
+            - RW
+            - SA
+            - SB
+            - SC
+            - SD
+            - SE
+            - SG
+            - SH
+            - SI
+            - SJ
+            - SK
+            - SL
+            - SM
+            - SN
+            - SO
+            - SR
+            - SS
+            - ST
+            - SV
+            - SX
+            - SY
+            - SZ
+            - TC
+            - TD
+            - TF
+            - TG
+            - TH
+            - TJ
+            - TK
+            - TL
+            - TM
+            - TN
+            - TO
+            - TR
+            - TT
+            - TV
+            - TW
+            - TZ
+            - UA
+            - UG
+            - UM
             - US
+            - UY
+            - UZ
+            - VA
+            - VC
+            - VE
+            - VG
+            - VI
+            - VN
+            - VU
+            - WF
+            - WS
+            - YE
+            - YT
+            - ZA
+            - ZM
+            - ZW
+            - OA
+            - OB
+            - OC
+            - OD
+            - OE
+            - OF
+            - OG
+            - OZ
         taxId:
           description: missing description
           type: string
@@ -123,12 +643,6 @@ components:
         chargeText:
           description: missing description
           type: string
-    Clause:
-      type: object
-      properties:
-        clause:
-          description: missing description
-          type: string
     CommunicationDetails:
       type: object
       properties:
@@ -164,6 +678,10 @@ components:
         serviceMode:
           description: missing description
           type: string
+        cargoInformation:
+          items:
+            $ref: '#/components/schemas/CargoInformation'
+          type: array
         carrier:
           $ref: '#/components/schemas/Carrier'
         charges:
@@ -177,6 +695,10 @@ components:
             $ref: '#/components/schemas/ConsignmentItem'
           type: array
           minItems: 1
+        consignmentReferences:
+          items:
+            $ref: '#/components/schemas/Reference'
+          type: array
         consignor:
           $ref: '#/components/schemas/Consignor'
         notifyParties:
@@ -187,13 +709,9 @@ components:
           items:
             $ref: '#/components/schemas/OtherParty'
           type: array
-        references:
+        transportMovement:
           items:
-            $ref: '#/components/schemas/Reference'
-          type: array
-        transportMeans:
-          items:
-            $ref: '#/components/schemas/TransportMeans'
+            $ref: '#/components/schemas/TransportMovement'
           type: array
         utilizedTransportEquipment:
           items:
@@ -253,7 +771,7 @@ components:
         copyIssued:
           description: The number of copies issued for this document.
           type: number
-        Reference:
+        documentReferences:
           items:
             $ref: '#/components/schemas/Reference'
           type: array
@@ -298,8 +816,30 @@ components:
           enum:
             - exporter
             - importer
-            - origin 3PL
-            - destination 3PL
+            - origin3PL
+            - destination3PL
+            - seller
+            - buyer
+            - exportCustomsBroker
+            - importCustomsBroker
+            - requestParty
+            - buyersBank
+            - sellersBank
+            - insuranceProvider
+            - oceanCarrier
+            - transportServiceBuyer
+            - transportServiceIntermediary
+            - railOperator
+            - truckOperator
+            - bargeOperator
+            - feederOperator
+            - originMaritimeTerminal
+            - destinationMarineTerminal
+            - transhipmentTerminal
+            - inlandTerminal
+            - portCommunitySystem
+            - exportAuthority
+            - importAuthority
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
@@ -335,11 +875,104 @@ components:
           description: 'Type of reference. '
           type: string
           enum:
-            - bookingReferenceNumber
-            - billOfLadingNumber
+            - proformaInvoiceNumber
+            - deliveryScheduleNumber
+            - consigneeShipmentReferenceNumber
+            - despatchNoteNumber
+            - customsTariffNumber
+            - customsDecisionRequestNumber
+            - subHouseBillOfLadingNumber
+            - customsGuaranteeNumber
+            - sellersCatalogueNumber
+            - declarantsCustomsIdentityNumber
+            - importerReferenceNumber
+            - customsDeclarationNumber
+            - stockKeepingUnitNumber
+            - adviceOfCollectionNumber
+            - railwayWagonNumber
+            - buyersItemNumber
+            - customsHouseBrokerReferenceNumber
+            - reportNumber
+            - traderAccountNumber
+            - governmentAgencyReferenceNumber
+            - regristrationNumberOfPreviousCustomsDeclaration
+            - productReservationNumber
+            - customsItemNumber
+            - tariffNumber
+            - replenishmentPurchaceOrderNumber
+            - contractPartyReferenceNumber
+            - agentsReferenceNumber
+            - deliveryVerificationCertificate
+            - customsReleaseCode
+            - complianceCodeNumber
+            - ministerialCertificateOfHomologation
+            - banksCommonTransactionReferenceNumber
+            - customsTranshipmentNumber
+            - vehicleIdentificationNumber
+            - replenishmentPurchaseOrderRangeStartNumber
+            - consigneesInvoiceNumber
+            - replenishmentPurchaseOrderRangeEndNumber
+            - buyersCatalogueNumber
+            - inlandTransportOrderNumber
+            - consigneesReference
+            - usCustomsServiceEntryCode
+            - transportEquipmentReleaseOrderReference
+            - importersLetterOfCreditReference
+            - customsBindingRulingNumber
+            - customsNonBindingRulingNumber
+            - uniqueGoodsShipmentIdentifier
+            - rateCodeNumber
+            - airWaybillNumber
+            - buyersContractNumber
             - houseBillOfLadingNumber
+            - billOfLadingNumber
+            - bookingReferenceNumber
+            - consigneesOrderNumber
+            - carriersReferenceNumber
+            - contractNumber
+            - buyersDebtorNumber
+            - exportDeclaration
+            - exportPermitNumber
+            - containerEquipmentReceiptNumber
+            - exportersReferenceNumber
+            - exportLicenceNumber
+            - freightForwardersReferenceNumber
+            - governmentReferenceNumber
+            - harmonizedSystemNumber
+            - houseWaybillNumber
+            - inBondNumber
+            - iataCargoAgentCodeNumber
+            - importLicenceNumber
+            - invoiceNumber
             - letterOfCreditNumber
+            - shipNoticeManifestNumber
+            - masterBillOfLadingNumber
+            - manufacturersPartNumber
+            - manufacturersOrderNumber
+            - masterAirWaybillNumber
+            - northAmericanHazardousGoodsClassificationNumber
             - purchaseOrderNumber
+            - generalReferenceNumber
+            - pickupReferenceNumber
+            - plantNumber
+            - packingListNumber
+            - purchaseOrderResponseNumber
+            - purchaseOrderChangeNumber
+            - paymentReference
+            - priceQuoteNumber
+            - shippersIdentifyingNumberForShipment
+            - sealNumber
+            - shipmentReferenceNumber
+            - sellersReferenceNumber
+            - truckersBillOfLading
+            - transactionReferenceNumber
+            - orderNumber
+            - warehouseEntryNumber
+            - warehouseReceiptNumber
+            - warehouseStorageLocationNumber
+            - cargoControlNumber
+            - previousCargoControlNumber
+            - mutuallyDefinedReferenceNumber
         value:
           description: 'Reference value. '
           type: string
@@ -402,15 +1035,15 @@ components:
         dateOfAcceptance:
           description: missing description
           type: string
-        clauses:
-          items:
-            $ref: '#/components/schemas/Clause'
-          type: array
         consignment:
           items:
             $ref: '#/components/schemas/Consignment'
           type: array
           minItems: 1
+        information:
+          items:
+            $ref: '#/components/schemas/TransportDocumentInformation'
+          type: array
         placeOfDelivery:
           $ref: '#/components/schemas/Location'
         placeOfIssue:
@@ -428,6 +1061,22 @@ components:
         - type: object
       required:
         - billOfLadingNumber
+    TransportDocumentInformation:
+      type: object
+      properties:
+        text:
+          description: missing description
+          type: string
+        type:
+          description: missing description
+          type: string
+          enum:
+            - generalInformation
+            - billOfLadingRemarks
+            - termsAndConditions
+            - billOfLadingClause
+            - transportDocumentRemarks
+            - specialRoutingInstructions
     TransportEquipment:
       type: object
       properties:
@@ -455,22 +1104,26 @@ components:
     TransportMeans:
       type: object
       properties:
-        IMOCode:
-          description: missing description
+        Identification:
+          description: >-
+            An identifier of this logistics means of transport, such as the
+            International Maritime Organization number of a vessel.
           type: string
         name:
-          description: Name of a specific means of transport such as the vessel name.
+          description: >-
+            The name, expressed as text, of this logistics means of transport
+            such as the vessel name.
           type: string
-        transportMovement:
-          $ref: '#/components/schemas/TransportMovement'
     TransportMovement:
       type: object
       properties:
-        voyageId:
+        Identification:
           description: >-
             To identify a journey of a means of transport, for example voyage
             number, flight number, trip number.
           type: string
+        usedTransportMeans:
+          $ref: '#/components/schemas/TransportMeans'
     TransportPackage:
       type: object
       properties:

@@ -1,16 +1,17 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "description": "",
-        "title": "Bill Of Lading",
-        "version": ""
-    },
-    "servers": [],
-    "paths": {
-        "/BillOfLading": {}
-    },
-    "components": {
-        "schemas": {
+      "name": "BILL_OF_LADING",
+      "docType": "BILL_OF_LADING",
+      "description": "Bill Of Lading",
+      "supportedContentTypes": [
+        "application/json"
+      ],
+      "jsonSupport": true,
+      "sampleModel": {
+        "changeme": "changeme"
+      },
+      "schema": {
+        "model": "BillOfLading",
+        "definitions": {
             "Address": {
                 "type": "object",
                 "properties": {
@@ -328,7 +329,7 @@
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/TransportDocument"
+                        "$ref": "#/definitions/TransportDocument"
                     },
                     {
                         "type": "object"
@@ -634,10 +635,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/components/schemas/Address"
+                        "$ref": "#/definitions/Address"
                     },
                     "contactDetails": {
-                        "$ref": "#/components/schemas/CommunicationDetails"
+                        "$ref": "#/definitions/CommunicationDetails"
                     }
                 },
                 "required": [
@@ -720,7 +721,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -744,59 +745,59 @@
                     },
                     "cargoInformation": {
                         "items": {
-                            "$ref": "#/components/schemas/CargoInformation"
+                            "$ref": "#/definitions/CargoInformation"
                         },
                         "type": "array"
                     },
                     "carrier": {
-                        "$ref": "#/components/schemas/Carrier"
+                        "$ref": "#/definitions/Carrier"
                     },
                     "charges": {
                         "items": {
-                            "$ref": "#/components/schemas/Charges"
+                            "$ref": "#/definitions/Charges"
                         },
                         "type": "array"
                     },
                     "consignee": {
-                        "$ref": "#/components/schemas/Consignee"
+                        "$ref": "#/definitions/Consignee"
                     },
                     "consignmentItems": {
                         "items": {
-                            "$ref": "#/components/schemas/ConsignmentItem"
+                            "$ref": "#/definitions/ConsignmentItem"
                         },
                         "type": "array",
                         "minItems": 1
                     },
                     "consignmentReferences": {
                         "items": {
-                            "$ref": "#/components/schemas/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     },
                     "consignor": {
-                        "$ref": "#/components/schemas/Consignor"
+                        "$ref": "#/definitions/Consignor"
                     },
                     "notifyParties": {
                         "items": {
-                            "$ref": "#/components/schemas/NotifyParty"
+                            "$ref": "#/definitions/NotifyParty"
                         },
                         "type": "array"
                     },
                     "otherParties": {
                         "items": {
-                            "$ref": "#/components/schemas/OtherParty"
+                            "$ref": "#/definitions/OtherParty"
                         },
                         "type": "array"
                     },
                     "transportMovement": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportMovement"
+                            "$ref": "#/definitions/TransportMovement"
                         },
                         "type": "array"
                     },
                     "utilizedTransportEquipment": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportEquipment"
+                            "$ref": "#/definitions/TransportEquipment"
                         },
                         "type": "array"
                     }
@@ -822,24 +823,24 @@
                     },
                     "equipmentStuffing": {
                         "items": {
-                            "$ref": "#/components/schemas/Stuffing"
+                            "$ref": "#/definitions/Stuffing"
                         },
                         "type": "array"
                     },
                     "totalGrossWeight": {
                         "items": {
-                            "$ref": "#/components/schemas/Weight"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
                     "totalMeasurements": {
                         "items": {
-                            "$ref": "#/components/schemas/Meassurement"
+                            "$ref": "#/definitions/Meassurement"
                         },
                         "type": "array"
                     },
                     "totalTransportPackages": {
-                        "$ref": "#/components/schemas/TransportPackage"
+                        "$ref": "#/definitions/TransportPackage"
                     }
                 }
             },
@@ -848,7 +849,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -880,7 +881,7 @@
                     },
                     "documentReferences": {
                         "items": {
-                            "$ref": "#/components/schemas/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     }
@@ -925,7 +926,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -970,7 +971,7 @@
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -1005,10 +1006,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/components/schemas/Address"
+                        "$ref": "#/definitions/Address"
                     },
                     "communicationDetails": {
-                        "$ref": "#/components/schemas/CommunicationDetails"
+                        "$ref": "#/definitions/CommunicationDetails"
                     }
                 }
             },
@@ -1153,7 +1154,7 @@
                     "equipmentNumber": {
                         "allOf": [
                             {
-                                "$ref": "#/components/schemas/TransportEquipmentIds"
+                                "$ref": "#/definitions/TransportEquipmentIds"
                             },
                             {
                                 "type": "object"
@@ -1162,18 +1163,18 @@
                     },
                     "grossWeight": {
                         "items": {
-                            "$ref": "#/components/schemas/Weight"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
                     "measurements": {
                         "items": {
-                            "$ref": "#/components/schemas/Meassurement"
+                            "$ref": "#/definitions/Meassurement"
                         },
                         "type": "array"
                     },
                     "transportPackages": {
-                        "$ref": "#/components/schemas/TransportPackage"
+                        "$ref": "#/definitions/TransportPackage"
                     }
                 }
             },
@@ -1210,39 +1211,39 @@
                     },
                     "consignment": {
                         "items": {
-                            "$ref": "#/components/schemas/Consignment"
+                            "$ref": "#/definitions/Consignment"
                         },
                         "type": "array",
                         "minItems": 1
                     },
                     "information": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportDocumentInformation"
+                            "$ref": "#/definitions/TransportDocumentInformation"
                         },
                         "type": "array"
                     },
                     "placeOfDelivery": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfIssue": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfPrecarriage": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfReceipt": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "portOfDischarge": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "portOfLoading": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/definitions/Location"
                     }
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Document"
+                        "$ref": "#/definitions/Document"
                     },
                     {
                         "type": "object"
@@ -1289,11 +1290,11 @@
                         "type": "string"
                     },
                     "grossWeight": {
-                        "$ref": "#/components/schemas/Weight"
+                        "$ref": "#/definitions/Weight"
                     },
                     "seals": {
                         "items": {
-                            "$ref": "#/components/schemas/Seal"
+                            "$ref": "#/definitions/Seal"
                         },
                         "type": "array"
                     }
@@ -1323,7 +1324,7 @@
                         "type": "string"
                     },
                     "usedTransportMeans": {
-                        "$ref": "#/components/schemas/TransportMeans"
+                        "$ref": "#/definitions/TransportMeans"
                     }
                 }
             },
@@ -1340,7 +1341,7 @@
                     },
                     "shippingMarks": {
                         "items": {
-                            "$ref": "#/components/schemas/ShippingMarks"
+                            "$ref": "#/definitions/ShippingMarks"
                         },
                         "type": "array"
                     }
@@ -1363,6 +1364,688 @@
                     }
                 }
             }
+        },
+        "type": "object",
+        "properties": {
+          "billOfLading": {
+            "$ref": "#/definitions/BillOfLading"
+          }
         }
+      },
+    "uiLayout": {
+      "layout": [
+        {
+          "widget": "message",
+          "message": "<h2>Bill Of Lading</h2>"
+        },
+        {
+          "type": "section",
+          "title": "Document Type",
+          "items": [
+            "billOfLading.negotiable"
+          ]
+        },
+        {
+          "key": "billOfLading.billOfLadingNumber",
+          "required": true
+        },
+        {
+          "key": "billOfLading.originatorName"
+        },
+        {
+          "key": "billOfLading.originatorId"
+        },
+        {
+          "title": "References",
+          "type": "array",
+          "items": [
+            "billOfLading.references[].type",
+            "billOfLading.references[].value"
+          ]
+        },
+        {
+          "key": "billOfLading.containersCount"
+        },
+        {
+          "key": "billOfLading.certifiedMember"
+        },
+        {
+          "type": "array",
+          "title": "Booking Number",
+          "items": [
+            {
+              "key": "billOfLading.bookingNumber[]",
+              "required": true
+            }
+
+          ]
+        },
+        {
+          "title": "Consignor",
+          "type": "section",
+          "items": [
+            {
+              "key": "billOfLading.consignor.name",
+              "required": true
+            },
+            {
+              "key": "billOfLading.consignor.partyAddRef"
+            },
+            {
+              "key": "billOfLading.consignor.organizationId"
+            },
+            {
+              "key": "billOfLading.consignor.address.street"
+            },
+            {
+              "key": "billOfLading.consignor.address.city"
+            },
+            {
+              "key": "billOfLading.consignor.address.state"
+            },
+            {
+              "key": "billOfLading.consignor.address.zipCode"
+            },
+            {
+              "key": "billOfLading.consignor.address.country"
+            },
+            {
+              "key": "billOfLading.consignor.printedParty"
+            },
+            {
+              "key": "billOfLading.consignor.registeredForVAT"
+            },
+            {
+              "key": "billOfLading.consignor.taxReference",
+              "condition": "billOfLading.consignor.registeredForVAT",
+              "required": true
+            },
+            {
+              "key": "billOfLading.consignor.communicationDetails.telephone"
+            },
+            {
+              "key": "billOfLading.consignor.communicationDetails.fax"
+            },
+            {
+              "key": "billOfLading.consignor.communicationDetails.email"
+            }
+          ]
+        },
+        {
+          "title": "Consignee",
+          "type": "section",
+          "items": [
+            {
+              "key": "billOfLading.consignee.name",
+              "required": true
+            },
+            {
+              "key": "billOfLading.consignee.partyAddRef"
+            },
+            {
+              "key": "billOfLading.consignee.organizationId"
+            },
+            {
+              "key": "billOfLading.consignee.address.street"
+            },
+            {
+              "key": "billOfLading.consignee.address.city"
+            },
+            {
+              "key": "billOfLading.consignee.address.state"
+            },
+            {
+              "key": "billOfLading.consignee.address.zipCode"
+            },
+            {
+              "key": "billOfLading.consignee.address.country"
+            },
+            {
+              "key": "billOfLading.consignee.printedParty"
+            },
+            {
+              "key": "billOfLading.consignee.registeredForVAT"
+            },
+            {
+              "key": "billOfLading.consignee.taxReference",
+              "condition": "billOfLading.consignee.registeredForVAT",
+              "required": true
+            },
+            {
+              "key": "billOfLading.consignee.communicationDetails.telephone"
+            },
+            {
+              "key": "billOfLading.consignee.communicationDetails.fax"
+            },
+            {
+              "key": "billOfLading.consignee.communicationDetails.email"
+            }
+          ]
+        },
+        {
+          "title": "OceanCarrier",
+                "type": "section",
+                "items": [
+                    {
+                        "type": "div",
+                        "display": "flex",
+                        "flex-direction": "row",
+                        "items": [
+                            {
+                                "key": "billOfLading.oceanCarrier.oceanCarrierName",
+                                "required": true
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.oceanCarrierAddress",
+                                "required": true
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.taxId"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.oceanCarrierCode",
+                                "required": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "display": "flex",
+                        "flex-direction": "row",
+                        "items": [
+                            {
+                                "key": "billOfLading.oceanCarrier.oceanCarrierCountry",
+                                "required": true,
+                                "flex": "0.25 0.25 100px"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.city",
+                                "flex": "0.25 0.25 100px"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.street",
+                                "flex": "0.25 0.25 100px"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.postalCode",
+                                "flex": "0.25 0.25 100px"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "display": "flex",
+                        "flex-direction": "row",
+                        "items": [
+                            {
+                                "key": "billOfLading.oceanCarrier.contactDetails.contactName"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.contactDetails.contactTelephone"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.contactDetails.contactFax"
+                            },
+                            {
+                                "key": "billOfLading.oceanCarrier.contactDetails.contactEmail"
+                            }
+                        ]
+                    }
+                ]
+            },
+        {
+          "title": "Notify Party",
+          "type": "array",
+          "items": [
+            {
+              "key": "billOfLading.notifyParties[].name",
+              "required": true
+            },
+            {
+              "key": "billOfLading.notifyParties[].partyAddRef"
+            },
+            {
+              "key": "billOfLading.notifyParties[].organizationId"
+            },
+            {
+              "key": "billOfLading.notifyParties[].address.street"
+            },
+            {
+              "key": "billOfLading.notifyParties[].address.city"
+            },
+            {
+              "key": "billOfLading.notifyParties[].address.state"
+            },
+            {
+              "key": "billOfLading.notifyParties[].address.zipCode"
+            },
+            {
+              "key": "billOfLading.notifyParties[].address.country"
+            },
+            {
+              "key": "billOfLading.notifyParties[].printedParty"
+            },
+            {
+              "key": "billOfLading.notifyParties[].registeredForVAT"
+            },
+            {
+              "key": "billOfLading.notifyParties[].taxReference",
+              "description": "if registered for VAT"
+            },
+            {
+              "key": "billOfLading.notifyParties[].communicationDetails.telephone"
+            },
+            {
+              "key": "billOfLading.notifyParties[].communicationDetails.fax"
+            },
+            {
+              "key": "billOfLading.notifyParties[].communicationDetails.email"
+            }
+          ]
+        },
+        {
+          "title": "Additional Party",
+          "type": "array",
+          "items": [
+            {
+              "key": "billOfLading.additionalParties[].partyType"
+            },
+            {
+              "key": "billOfLading.additionalParties[].name",
+              "required": true
+            },
+            {
+              "key": "billOfLading.additionalParties[].partyAddRef"
+            },
+            {
+              "key": "billOfLading.additionalParties[].organizationId"
+            },
+            {
+              "key": "billOfLading.additionalParties[].address.street"
+            },
+            {
+              "key": "billOfLading.additionalParties[].address.city"
+            },
+            {
+              "key": "billOfLading.additionalParties[].address.state"
+            },
+            {
+              "key": "billOfLading.additionalParties[].address.zipCode"
+            },
+            {
+              "key": "billOfLading.additionalParties[].address.country"
+            },
+            {
+              "key": "billOfLading.additionalParties[].printedParty"
+            },
+            {
+              "key": "billOfLading.additionalParties[].registeredForVAT"
+            },
+            {
+              "key": "billOfLading.additionalParties[].taxReference",
+              "description": "if registered for VAT"
+            },
+            {
+              "key": "billOfLading.additionalParties[].communicationDetails.telephone"
+            },
+            {
+              "key": "billOfLading.additionalParties[].communicationDetails.fax"
+            },
+            {
+              "key": "billOfLading.additionalParties[].communicationDetails.email"
+            }
+          ]
+        },
+        {
+          "type": "array",
+            "items": [
+                {
+                    "type": "div",
+                    "display": "flex",
+                    "flex-direction": "row",
+                    "items": [
+                        {
+                            "key": "billOfLading.vessels[].vesselName"
+                        },
+                        {
+                            "key": "billOfLading.vessels[].vesselIMONumber"
+                        },
+                        {
+                            "key": "billOfLading.vessels[].voyageNo"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+          "key": "billOfLading.numberOfRequestedOriginalBillofLadings"
+        },
+        {
+          "key": "billOfLading.declarationOfInterest"
+        },
+        {
+          "key": "billOfLading.witness"
+        },
+        {
+          "type": "div",
+          "display": "flex",
+          "flex-direction": "row",
+          "items": [
+            {
+              "key": "billOfLading.placeOfReceipt.name",
+              "title": "Place of Receipt"
+            },
+            {
+              "key": "billOfLading.placeOfReceipt.UNLocode",
+              "title": "UN/LOCODE"
+            },
+            {
+              "key": "billOfLading.placeOfReceipt.printedLocation",
+              "title": "Printed Location"
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "display": "flex",
+          "flex-direction": "row",
+          "items": [
+            {
+              "key": "billOfLading.portOfLoading.name",
+              "title": "Port Of Loading"
+            },
+            {
+              "key": "billOfLading.portOfLoading.UNLocode",
+              "title": "UN/LOCODE"
+            },
+            {
+              "key": "billOfLading.portOfLoading.printedLocation",
+              "title": "Printed Location"
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "display": "flex",
+          "flex-direction": "row",
+          "items": [
+            {
+              "key": "billOfLading.portOfDischarge.name",
+              "title": "Port Of Discharge"
+            },
+            {
+              "key": "billOfLading.portOfDischarge.UNLocode",
+              "title": "UN/LOCODE"
+            },
+            {
+              "key": "billOfLading.portOfDischarge.printedLocation",
+              "title": "Printed Location"
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "display": "flex",
+          "flex-direction": "row",
+          "items": [
+            {
+              "key": "billOfLading.placeOfDelivery.name",
+              "title": "To (Place of delivery)"
+            },
+            {
+              "key": "billOfLading.placeOfDelivery.UNLocode",
+              "title": "UN/LOCODE"
+            },
+            {
+              "key": "billOfLading.placeOfDelivery.printedLocation",
+              "title": "Printed Location"
+            }
+          ]
+        },
+        {
+          "key": "billOfLading.dateOfAcceptance"
+        },
+        {
+          "key": "billOfLading.shippedOnboardDate"
+        },
+        {
+          "title": "Particulars Furnished By Shipper",
+          "type": "array",
+          "items": [
+            {
+              "type": "flex",
+              "flex-flow": "row wrap",
+              "items": [
+                {
+                  "title": "Marks and Numbers",
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "column",
+                  "items": [
+                    {
+                      "key": "billOfLading.particulars[].marksAndNumbers.sequenceId"
+                    },
+                    {
+                      "key": "billOfLading.particulars[].marksAndNumbers.shippingMarks"
+                    },
+                    {
+                      "type": "array",
+                      "title": "Transport Equipment Details",
+                      "items": [
+                        {
+                          "key": "billOfLading.particulars[].marksAndNumbers.transportEquipment[].transportEquipmentNumber",
+                          "required": true
+                        },
+                        {
+                          "key": "billOfLading.particulars[].marksAndNumbers.transportEquipment[].sealNo"
+                        },
+                        {
+                          "key": "billOfLading.particulars[].marksAndNumbers.transportEquipment[].transportEquipmentType"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Number and Kind of Packages",
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "column",
+                  "items": [
+                    {
+                      "key": "billOfLading.particulars[].numberAndKindOfPackages.numberOfPackages"
+                    },
+                    {
+                      "key": "billOfLading.particulars[].numberAndKindOfPackages.typeOfPackages"
+                    },
+                    {
+                      "key": "billOfLading.particulars[].numberAndKindOfPackages.goodsItemDescription",
+                      "required": true
+                    }
+                  ]
+                },
+                {
+                  "title": "Gross Weight",
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.particulars[].grossWeight.value"
+                    },
+                    {
+                      "key": "billOfLading.particulars[].grossWeight.unit"
+                    }
+                  ]
+                },
+                {
+                  "title": "Measurement",
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.particulars[].measurement.value",
+                      "flex": "1 1 150px"
+                    },
+                    {
+                      "key": "billOfLading.particulars[].measurement.unit",
+                      "flex": "1 1 150px"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Freight And Charges",
+          "type": "array",
+          "items": [
+            {
+              "type": "flex",
+              "flex-flow": "column",
+              "items": [
+                {
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.freightAndCharges[].chargeCode"
+                    },
+                    {
+                      "key": "billOfLading.freightAndCharges[].chargeText"
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.freightAndCharges[].rate"
+                    },
+                    {
+                      "key": "billOfLading.freightAndCharges[].per"
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.freightAndCharges[].currency",
+                      "flex": "1 1 150px"
+                    },
+                    {
+                      "key": "billOfLading.freightAndCharges[].prepaidCollectIndicator",
+                      "flex": "1 1 150px"
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.freightAndCharges[].collectAmount"
+                    },
+                    {
+                      "key": "billOfLading.freightAndCharges[].prepaidAmount"
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "display": "flex",
+                  "flex-direction": "row",
+                  "items": [
+                    {
+                      "key": "billOfLading.freightAndCharges[].freightPayableAt.name",
+                      "title": "Freight payable at"
+                    },
+                    {
+                      "key": "billOfLading.freightAndCharges[].freightPayableAt.UNLocode",
+                      "title": "UN/LOCODE"
+                    },
+                    {
+                      "key": "billOfLading.freightAndCharges[].freightPayableAt.printedLocation",
+                      "title": "Printed Location"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional Goods Information",
+            "type": "array",
+            "items": [
+                {
+                    "key": "billOfLading.cargoInformation[].cargoInformationType"
+                },
+                {
+                    "key": "billOfLading.cargoInformation[].cargoInformationDetails"
+                }
+            ]
+        },
+        {
+          "title": "Place and Date of Issue",
+          "type": "section",
+          "items": [
+            {
+              "key": "billOfLading.placeOfIssue.name",
+              "title": "Place of Issue"
+            },
+            {
+              "key": "billOfLading.placeOfIssue.UNLocode",
+              "title": "UN/LOCODE"
+            },
+            {
+              "key": "billOfLading.placeOfIssue.printedLocation",
+              "title": "Printed Location"
+            },
+            {
+              "key": "billOfLading.dateOfIssue"
+            }
+          ]
+        },
+        {
+          "title": "Additional Information",
+            "type": "array",
+            "items": [
+                {
+                    "key": "billOfLading.information[].informationType"
+                },
+                {
+                    "key": "billOfLading.information[].informationDetails"
+                }
+            ]
+        },
+        {
+          "key": "billOfLading.freightedAtAd"
+        },
+        {
+          "type": "section",
+          "title": "Authentication (signed) for and on behalf of the MTO",
+          "items": [
+            {
+              "type": "div",
+              "display": "flex",
+              "flex-direction": "row",
+              "items": [
+                "billOfLading.authenticatingSignature.authenticationCode",
+                "billOfLading.authenticatingSignature.name"
+              ]
+            }
+          ]
+        }
+      ]
     }
 }

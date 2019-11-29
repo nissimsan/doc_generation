@@ -676,7 +676,7 @@ components:
         departureDate:
           description: missing description
           type: string
-          format: date-time
+          format: date
         serviceMode:
           description: 'The scope of the consignment, such as CY-CY or SD-SD.'
           type: string
@@ -743,7 +743,7 @@ components:
           type: array
         totalMeasurements:
           items:
-            $ref: '#/components/schemas/Meassurement'
+            $ref: '#/components/schemas/Measurement'
           type: array
         totalTransportPackages:
           $ref: '#/components/schemas/TransportPackage'
@@ -792,7 +792,7 @@ components:
         printedLocation:
           description: The location exactly as printed on the document.
           type: string
-    Meassurement:
+    Measurement:
       type: object
       properties:
         value:
@@ -988,14 +988,6 @@ components:
         identifier:
           description: A unique identifier for this logistics seal.
           type: string
-    ShippingMarks:
-      type: object
-      properties:
-        shippingMarks:
-          description: >-
-            Physical shipping marks and barcode information for this logistics
-            package.
-          type: string
     Stuffing:
       type: object
       properties:
@@ -1004,7 +996,7 @@ components:
           type: string
         measurements:
           items:
-            $ref: '#/components/schemas/Meassurement'
+            $ref: '#/components/schemas/Measurement'
           type: array
         stuffingGrossWeight:
           items:
@@ -1096,7 +1088,7 @@ components:
     TransportMeans:
       type: object
       properties:
-        Identification:
+        identification:
           description: >-
             An identifier of this logistics means of transport, such as the
             International Maritime Organization number of a vessel.
@@ -1109,7 +1101,7 @@ components:
     TransportMovement:
       type: object
       properties:
-        Identification:
+        identification:
           description: >-
             To identify a journey of a means of transport, for example voyage
             number, flight number, trip number.
@@ -1127,7 +1119,8 @@ components:
           type: string
         shippingMarks:
           items:
-            $ref: '#/components/schemas/ShippingMarks'
+            description: missing description
+            type: string
           type: array
     Weight:
       type: object

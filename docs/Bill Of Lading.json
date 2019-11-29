@@ -299,7 +299,7 @@
                 "properties": {
                     "negotiable": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "boolean"
                     },
                     "freightedAtAd": {
                         "description": "missing description",
@@ -309,9 +309,10 @@
                         "description": "missing description",
                         "type": "string"
                     },
-                    "acceptance": {
+                    "dateOfAcceptance": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                     },
                     "declarationOfInterest": {
                         "description": "missing description",
@@ -654,7 +655,7 @@
                     },
                     "rate": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "number"
                     },
                     "per": {
                         "description": "missing description",
@@ -680,7 +681,7 @@
                         "description": "missing description",
                         "type": "string"
                     },
-                    "invoiceParty": {
+                    "invoicePartyRef": {
                         "description": "missing description",
                         "type": "string"
                     },
@@ -736,10 +737,11 @@
                     },
                     "departureDate": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                     },
                     "serviceMode": {
-                        "description": "missing description",
+                        "description": "The scope of the consignment, such as CY-CY or SD-SD.",
                         "type": "string"
                     },
                     "cargoInformation": {
@@ -810,7 +812,7 @@
                 "properties": {
                     "sequence": {
                         "description": "The sequence number for this consignment item.",
-                        "type": "string"
+                        "type": "number"
                     },
                     "information": {
                         "description": "Information, expressed as text, for this consignment item.",
@@ -826,7 +828,7 @@
                         },
                         "type": "array"
                     },
-                    "totalGrossWeight": {
+                    "grossWeight": {
                         "items": {
                             "$ref": "#/components/schemas/Weight"
                         },
@@ -868,7 +870,8 @@
                     },
                     "issue": {
                         "description": "A date, time, date time or other date time value for an issuance of this document.",
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                     },
                     "originalIssued": {
                         "description": "The number of originals issued for this document.",
@@ -908,7 +911,7 @@
                 "properties": {
                     "value": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "number"
                     },
                     "unit": {
                         "description": "missing description",
@@ -990,7 +993,7 @@
                     },
                     "registeredForVAT": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "boolean"
                     },
                     "taxReference": {
                         "description": "missing description",
@@ -1151,24 +1154,18 @@
                 "type": "object",
                 "properties": {
                     "equipmentNumber": {
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/TransportEquipmentIds"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
-                    },
-                    "grossWeight": {
-                        "items": {
-                            "$ref": "#/components/schemas/Weight"
-                        },
-                        "type": "array"
+                        "description": "missing description",
+                        "type": "string"
                     },
                     "measurements": {
                         "items": {
                             "$ref": "#/components/schemas/Meassurement"
+                        },
+                        "type": "array"
+                    },
+                    "stuffingGrossWeight": {
+                        "items": {
+                            "$ref": "#/components/schemas/Weight"
                         },
                         "type": "array"
                     },
@@ -1177,24 +1174,13 @@
                     }
                 }
             },
-            "TransportEquipmentIds": {
-                "type": "object",
-                "properties": {
-                    "equipmentNumber": {
-                        "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "equipmentNumber"
-                ]
-            },
             "TransportDocument": {
                 "type": "object",
                 "properties": {
                     "shippedOnBoardDate": {
                         "description": "missing description",
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                     },
                     "billOfLadingNumber": {
                         "description": "missing description",
@@ -1203,10 +1189,6 @@
                     "containerCount": {
                         "description": "missing description",
                         "type": "number"
-                    },
-                    "dateOfAcceptance": {
-                        "description": "missing description",
-                        "type": "string"
                     },
                     "consignment": {
                         "items": {
@@ -1288,8 +1270,11 @@
                         "description": "The container size and type, as printed on the transport document (for example \"40 DRY 9''6\").",
                         "type": "string"
                     },
-                    "grossWeight": {
-                        "$ref": "#/components/schemas/Weight"
+                    "equipmentGrossWeight": {
+                        "items": {
+                            "$ref": "#/components/schemas/Weight"
+                        },
+                        "type": "array"
                     },
                     "seals": {
                         "items": {
@@ -1332,7 +1317,7 @@
                 "properties": {
                     "quantity": {
                         "description": "The number of logistics packages at this level.",
-                        "type": "string"
+                        "type": "number"
                     },
                     "type": {
                         "description": "A type, expressed as text, of this logistics package.",
@@ -1351,7 +1336,7 @@
                 "properties": {
                     "value": {
                         "description": "Numeric weight value. ",
-                        "type": "string"
+                        "type": "number"
                     },
                     "unit": {
                         "description": "Unit used for weight measurement.",

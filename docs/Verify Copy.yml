@@ -1,11 +1,10 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: Bill Of Lading
+  title: Verify Copy
   version: ''
 servers: []
-paths:
-  /BillOfLading: {}
+paths: {}
 components:
   schemas:
     Address:
@@ -881,6 +880,14 @@ components:
               units for shipping purposes.
             type: string
           type: array
+    VerifyCopy:
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/VerifyCopy'
+        - type: object
+        - $ref: '#/components/schemas/BillOfLading'
+        - type: object
     Weight:
       type: object
       properties:

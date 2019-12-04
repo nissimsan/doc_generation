@@ -1,0 +1,839 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "",
+        "title": "Shipping Instructions",
+        "version": ""
+    },
+    "servers": [],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "street": {
+                        "description": "A name, expressed as text, of a street or thoroughfare.",
+                        "type": "string"
+                    },
+                    "city": {
+                        "description": "The name, expressed as text, of the city, town or village of this address.",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "The name, expressed as text, of the state of this address.",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "A unique country identifier for this party.",
+                        "type": "string",
+                        "enum": [
+                            "AD",
+                            "AE",
+                            "AF",
+                            "AG",
+                            "AI",
+                            "AL",
+                            "AM",
+                            "AO",
+                            "AQ",
+                            "AR",
+                            "AS",
+                            "AT",
+                            "AU",
+                            "AW",
+                            "AX",
+                            "AZ",
+                            "BA",
+                            "BB",
+                            "BD",
+                            "BE",
+                            "BF",
+                            "BG",
+                            "BH",
+                            "BI",
+                            "BJ",
+                            "BL",
+                            "BM",
+                            "BN",
+                            "BO",
+                            "BQ",
+                            "BR",
+                            "BS",
+                            "BT",
+                            "BV",
+                            "BW",
+                            "BY",
+                            "BZ",
+                            "CA",
+                            "CC",
+                            "CD",
+                            "CF",
+                            "CG",
+                            "CH",
+                            "CI",
+                            "CK",
+                            "CL",
+                            "CM",
+                            "CN",
+                            "CO",
+                            "CR",
+                            "CU",
+                            "CV",
+                            "CW",
+                            "CX",
+                            "CY",
+                            "CZ",
+                            "DE",
+                            "DJ",
+                            "DK",
+                            "DM",
+                            "DO",
+                            "DZ",
+                            "EC",
+                            "EE",
+                            "EG",
+                            "EH",
+                            "ER",
+                            "ES",
+                            "ET",
+                            "FI",
+                            "FJ",
+                            "FK",
+                            "FM",
+                            "FO",
+                            "FR",
+                            "GA",
+                            "GB",
+                            "GD",
+                            "GE",
+                            "GF",
+                            "GG",
+                            "GI",
+                            "GL",
+                            "GM",
+                            "GN",
+                            "GP",
+                            "GQ",
+                            "GR",
+                            "GS",
+                            "GT",
+                            "GU",
+                            "GW",
+                            "GY",
+                            "HK",
+                            "HM",
+                            "HN",
+                            "HR",
+                            "HT",
+                            "HU",
+                            "ID",
+                            "IE",
+                            "IL",
+                            "IM",
+                            "IN",
+                            "IO",
+                            "IQ",
+                            "IR",
+                            "IS",
+                            "IT",
+                            "JE",
+                            "JM",
+                            "JO",
+                            "JP",
+                            "KE",
+                            "KG",
+                            "KH",
+                            "KI",
+                            "KM",
+                            "KN",
+                            "KP",
+                            "KR",
+                            "KW",
+                            "KY",
+                            "KZ",
+                            "LA",
+                            "LB",
+                            "LC",
+                            "LI",
+                            "LK",
+                            "LR",
+                            "LS",
+                            "LT",
+                            "LU",
+                            "LV",
+                            "LY",
+                            "MA",
+                            "MC",
+                            "MD",
+                            "ME",
+                            "MF",
+                            "MG",
+                            "MH",
+                            "MK",
+                            "ML",
+                            "MM",
+                            "MN",
+                            "MO",
+                            "MP",
+                            "MQ",
+                            "MR",
+                            "MS",
+                            "MT",
+                            "MU",
+                            "MV",
+                            "MW",
+                            "MX",
+                            "MY",
+                            "MZ",
+                            "NA",
+                            "NC",
+                            "NE",
+                            "NF",
+                            "NG",
+                            "NI",
+                            "NL",
+                            "NO",
+                            "NP",
+                            "NR",
+                            "NU",
+                            "NZ",
+                            "OM",
+                            "PA",
+                            "PE",
+                            "PF",
+                            "PG",
+                            "PH",
+                            "PK",
+                            "PL",
+                            "PM",
+                            "PN",
+                            "PR",
+                            "PS",
+                            "PT",
+                            "PW",
+                            "PY",
+                            "QA",
+                            "RE",
+                            "RO",
+                            "RS",
+                            "RU",
+                            "RW",
+                            "SA",
+                            "SB",
+                            "SC",
+                            "SD",
+                            "SE",
+                            "SG",
+                            "SH",
+                            "SI",
+                            "SJ",
+                            "SK",
+                            "SL",
+                            "SM",
+                            "SN",
+                            "SO",
+                            "SR",
+                            "SS",
+                            "ST",
+                            "SV",
+                            "SX",
+                            "SY",
+                            "SZ",
+                            "TC",
+                            "TD",
+                            "TF",
+                            "TG",
+                            "TH",
+                            "TJ",
+                            "TK",
+                            "TL",
+                            "TM",
+                            "TN",
+                            "TO",
+                            "TR",
+                            "TT",
+                            "TV",
+                            "TW",
+                            "TZ",
+                            "UA",
+                            "UG",
+                            "UM",
+                            "US",
+                            "UY",
+                            "UZ",
+                            "VA",
+                            "VC",
+                            "VE",
+                            "VG",
+                            "VI",
+                            "VN",
+                            "VU",
+                            "WF",
+                            "WS",
+                            "YE",
+                            "YT",
+                            "ZA",
+                            "ZM",
+                            "ZW",
+                            "OA",
+                            "OB",
+                            "OC",
+                            "OD",
+                            "OE",
+                            "OF",
+                            "OG",
+                            "OZ"
+                        ]
+                    },
+                    "postcode": {
+                        "description": "A code specifying the postcode of the address.",
+                        "type": "string"
+                    }
+                }
+            },
+            "Carrier": {
+                "type": "object",
+                "properties": {
+                    "carrierCode": {
+                        "description": "SCAC code.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Carrier name. ",
+                        "type": "string"
+                    },
+                    "taxId": {
+                        "description": "Carrier''s tax identification. ",
+                        "type": "string"
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/Address"
+                    },
+                    "contactDetails": {
+                        "$ref": "#/components/schemas/Communication"
+                    }
+                },
+                "required": [
+                    "carrierCode",
+                    "name"
+                ]
+            },
+            "Charges": {
+                "type": "object",
+                "properties": {
+                    "chargeCode": {
+                        "description": "The unique identifier for this logistics service charge.",
+                        "type": "string"
+                    },
+                    "rate": {
+                        "description": "Per unit rate. ",
+                        "type": "number"
+                    },
+                    "per": {
+                        "description": "Charge unit. ",
+                        "type": "string"
+                    },
+                    "currency": {
+                        "description": "Charge currency. ",
+                        "type": "string"
+                    },
+                    "paymentTerm": {
+                        "description": "Charge payment term.",
+                        "type": "string",
+                        "enum": [
+                            "prepaid",
+                            "collect"
+                        ]
+                    },
+                    "amount": {
+                        "description": "A monetary value applied to this logistics service charge.",
+                        "type": "number"
+                    },
+                    "freightPayableAt": {
+                        "description": "Charge receiver. ",
+                        "type": "string"
+                    },
+                    "invoicePartyRef": {
+                        "description": "Reference to the invoice party. ",
+                        "type": "string"
+                    },
+                    "rateReference": {
+                        "description": "Reference on the charge rate.",
+                        "type": "string"
+                    },
+                    "chargeText": {
+                        "description": "A textual description of this logistics service charge.",
+                        "type": "string"
+                    }
+                }
+            },
+            "Communication": {
+                "type": "object",
+                "properties": {
+                    "telephone": {
+                        "description": "Telephone number.",
+                        "type": "string"
+                    },
+                    "fax": {
+                        "description": "Fax number. ",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email address.",
+                        "type": "string"
+                    },
+                    "contactName": {
+                        "description": "Name of contact person. ",
+                        "type": "string"
+                    }
+                }
+            },
+            "Consignee": {
+                "type": "object",
+                "properties": {},
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Party"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "Consignment": {
+                "type": "object",
+                "properties": {
+                    "departureDate": {
+                        "description": "Date and time of departure. ",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "serviceMode": {
+                        "description": "The scope of the consignment, such as CY-CY or SD-SD.",
+                        "type": "string"
+                    },
+                    "transportEquipmentQuantity": {
+                        "description": "A number of pieces of transport equipment, such as containers or similar unit load devices, in this consignment.",
+                        "type": "number"
+                    },
+                    "carrier": {
+                        "$ref": "#/components/schemas/Carrier"
+                    },
+                    "charges": {
+                        "items": {
+                            "$ref": "#/components/schemas/Charges"
+                        },
+                        "type": "array"
+                    },
+                    "consignee": {
+                        "$ref": "#/components/schemas/Consignee"
+                    },
+                    "consignmentReferences": {
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        },
+                        "type": "array"
+                    },
+                    "consignor": {
+                        "$ref": "#/components/schemas/Consignor"
+                    },
+                    "notifyParties": {
+                        "items": {
+                            "$ref": "#/components/schemas/NotifyParty"
+                        },
+                        "type": "array"
+                    },
+                    "placeOfDelivery": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "placeOfPrecarriage": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "placeOfReceipt": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "portOfDischarge": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "portOfLoading": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "utilizedTransportEquipment": {
+                        "items": {
+                            "$ref": "#/components/schemas/TransportEquipment"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "carrier",
+                    "consignee",
+                    "consignor"
+                ]
+            },
+            "Consignor": {
+                "type": "object",
+                "properties": {},
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Party"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "Document": {
+                "type": "object",
+                "properties": {
+                    "originatorName": {
+                        "description": "The proper name (human readable) of the entity that published this event.",
+                        "type": "string"
+                    },
+                    "originatorId": {
+                        "description": "The party identification code (i.e. SCAC) of the organization publishing the event.",
+                        "type": "string"
+                    },
+                    "issue": {
+                        "description": "A date, time, date time or other date time value for an issuance of this document.",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "originalIssued": {
+                        "description": "The number of originals issued for this document.",
+                        "type": "number"
+                    },
+                    "copyIssued": {
+                        "description": "The number of copies issued for this document.",
+                        "type": "number"
+                    },
+                    "placeOfIssue": {
+                        "$ref": "#/components/schemas/Location"
+                    }
+                }
+            },
+            "Location": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "A name, expressed as text, of this logistics related location.",
+                        "type": "string"
+                    },
+                    "UNLocode": {
+                        "description": "United Nations Location Code (UNLOCODE) unique identifier for logistics related location. ",
+                        "type": "string"
+                    },
+                    "printedLocation": {
+                        "description": "The location exactly as printed on the document.",
+                        "type": "string"
+                    }
+                }
+            },
+            "Measurement": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "Numeric measurement value. ",
+                        "type": "number"
+                    },
+                    "unit": {
+                        "description": "Unit used for measurements. ",
+                        "type": "string",
+                        "enum": [
+                            "cbm",
+                            "cbf"
+                        ]
+                    }
+                }
+            },
+            "NotifyParty": {
+                "type": "object",
+                "properties": {},
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Party"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "Party": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "A name, expressed as text, for this party.",
+                        "type": "string"
+                    },
+                    "printedParty": {
+                        "description": "The party name and address exactly as printed on the document.",
+                        "type": "string"
+                    },
+                    "registeredForVAT": {
+                        "description": "VAT registration indicator. ",
+                        "type": "boolean"
+                    },
+                    "taxReference": {
+                        "description": "Tax identification of the party.",
+                        "type": "string"
+                    },
+                    "partyRef": {
+                        "description": "Reference which represents the party.",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "Unique identifier of the party. ",
+                        "type": "string"
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/Address"
+                    },
+                    "communicationDetails": {
+                        "$ref": "#/components/schemas/Communication"
+                    }
+                }
+            },
+            "Reference": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "Type of reference. ",
+                        "type": "string",
+                        "enum": [
+                            "proformaInvoiceNumber",
+                            "deliveryScheduleNumber",
+                            "consigneeShipmentReferenceNumber",
+                            "despatchNoteNumber",
+                            "customsTariffNumber",
+                            "customsDecisionRequestNumber",
+                            "subHouseBillOfLadingNumber",
+                            "customsGuaranteeNumber",
+                            "sellersCatalogueNumber",
+                            "declarantsCustomsIdentityNumber",
+                            "importerReferenceNumber",
+                            "customsDeclarationNumber",
+                            "stockKeepingUnitNumber",
+                            "adviceOfCollectionNumber",
+                            "railwayWagonNumber",
+                            "buyersItemNumber",
+                            "customsHouseBrokerReferenceNumber",
+                            "reportNumber",
+                            "traderAccountNumber",
+                            "governmentAgencyReferenceNumber",
+                            "regristrationNumberOfPreviousCustomsDeclaration",
+                            "productReservationNumber",
+                            "customsItemNumber",
+                            "tariffNumber",
+                            "replenishmentPurchaceOrderNumber",
+                            "contractPartyReferenceNumber",
+                            "agentsReferenceNumber",
+                            "deliveryVerificationCertificate",
+                            "customsReleaseCode",
+                            "complianceCodeNumber",
+                            "ministerialCertificateOfHomologation",
+                            "banksCommonTransactionReferenceNumber",
+                            "customsTranshipmentNumber",
+                            "vehicleIdentificationNumber",
+                            "replenishmentPurchaseOrderRangeStartNumber",
+                            "consigneesInvoiceNumber",
+                            "replenishmentPurchaseOrderRangeEndNumber",
+                            "buyersCatalogueNumber",
+                            "inlandTransportOrderNumber",
+                            "consigneesReference",
+                            "usCustomsServiceEntryCode",
+                            "transportEquipmentReleaseOrderReference",
+                            "importersLetterOfCreditReference",
+                            "customsBindingRulingNumber",
+                            "customsNonBindingRulingNumber",
+                            "uniqueGoodsShipmentIdentifier",
+                            "rateCodeNumber",
+                            "airWaybillNumber",
+                            "buyersContractNumber",
+                            "houseBillOfLadingNumber",
+                            "billOfLadingNumber",
+                            "bookingReferenceNumber",
+                            "consigneesOrderNumber",
+                            "carriersReferenceNumber",
+                            "contractNumber",
+                            "buyersDebtorNumber",
+                            "exportDeclaration",
+                            "exportPermitNumber",
+                            "containerEquipmentReceiptNumber",
+                            "exportersReferenceNumber",
+                            "exportLicenceNumber",
+                            "freightForwardersReferenceNumber",
+                            "governmentReferenceNumber",
+                            "harmonizedSystemNumber",
+                            "houseWaybillNumber",
+                            "inBondNumber",
+                            "iataCargoAgentCodeNumber",
+                            "importLicenceNumber",
+                            "invoiceNumber",
+                            "letterOfCreditNumber",
+                            "shipNoticeManifestNumber",
+                            "masterBillOfLadingNumber",
+                            "manufacturersPartNumber",
+                            "manufacturersOrderNumber",
+                            "masterAirWaybillNumber",
+                            "northAmericanHazardousGoodsClassificationNumber",
+                            "purchaseOrderNumber",
+                            "generalReferenceNumber",
+                            "pickupReferenceNumber",
+                            "plantNumber",
+                            "packingListNumber",
+                            "purchaseOrderResponseNumber",
+                            "purchaseOrderChangeNumber",
+                            "paymentReference",
+                            "priceQuoteNumber",
+                            "shippersIdentifyingNumberForShipment",
+                            "sealNumber",
+                            "shipmentReferenceNumber",
+                            "sellersReferenceNumber",
+                            "truckersBillOfLading",
+                            "transactionReferenceNumber",
+                            "orderNumber",
+                            "warehouseEntryNumber",
+                            "warehouseReceiptNumber",
+                            "warehouseStorageLocationNumber",
+                            "cargoControlNumber",
+                            "previousCargoControlNumber",
+                            "mutuallyDefinedReferenceNumber"
+                        ]
+                    },
+                    "value": {
+                        "description": "Reference value. ",
+                        "type": "string"
+                    }
+                }
+            },
+            "ShippingInstructions": {
+                "type": "object",
+                "properties": {
+                    "transportDocumentType": {
+                        "description": "missing description",
+                        "type": "string",
+                        "enum": [
+                            "billOfLading",
+                            "seaWaybill"
+                        ]
+                    },
+                    "cucc": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "consignment": {
+                        "$ref": "#/components/schemas/Consignment"
+                    },
+                    "freightForwarder": {
+                        "$ref": "#/components/schemas/Party"
+                    },
+                    "placeOfReceipt": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "portOfLoading": {
+                        "$ref": "#/components/schemas/Location"
+                    },
+                    "requestParty": {
+                        "$ref": "#/components/schemas/Party"
+                    }
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Document"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "required": [
+                    "consignment",
+                    "requestParty"
+                ]
+            },
+            "TransportEquipment": {
+                "type": "object",
+                "properties": {
+                    "equipmentNumber": {
+                        "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
+                        "type": "string"
+                    },
+                    "equipmentType": {
+                        "description": "ISO 6346 size and type code (for example \"45G1\")",
+                        "type": "string"
+                    },
+                    "printedEquipmentType": {
+                        "description": "The container size and type, as printed on the transport document (for example \"40 DRY 9''6\").",
+                        "type": "string"
+                    },
+                    "code": {
+                        "items": {
+                            "description": "The harmonized system code specifying a type of loaded consignment item(s).",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "equipmentGrossWeight": {
+                        "items": {
+                            "$ref": "#/components/schemas/Weight"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "equipmentNumber"
+                ]
+            },
+            "TransportMeans": {
+                "type": "object",
+                "properties": {
+                    "identification": {
+                        "description": "An identifier of this logistics means of transport, such as the International Maritime Organization number of a vessel.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name, expressed as text, of this logistics means of transport such as the vessel name.",
+                        "type": "string"
+                    }
+                }
+            },
+            "TransportPackage": {
+                "type": "object",
+                "properties": {
+                    "quantity": {
+                        "description": "The number of logistics packages at this level.",
+                        "type": "number"
+                    },
+                    "type": {
+                        "description": "A type, expressed as text, of this logistics package.",
+                        "type": "string"
+                    },
+                    "shippingMarks": {
+                        "items": {
+                            "description": "Physical markings or labels on individual packages or transport units for shipping purposes.",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                }
+            },
+            "Weight": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "Numeric weight value. ",
+                        "type": "number"
+                    },
+                    "unit": {
+                        "description": "Unit used for weight measurement.",
+                        "type": "string",
+                        "enum": [
+                            "kgs",
+                            "lbs"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

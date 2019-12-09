@@ -1,16 +1,8 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "description": "",
-        "title": "Sea Waybill",
-        "version": ""
-    },
-    "servers": [],
-    "paths": {
-        "/SeaWaybill": {}
-    },
-    "components": {
-        "schemas": {
+    "schema": {
+        "model": "Sea Waybill",
+        "type": "object",
+        "properties": {
             "Address": {
                 "type": "object",
                 "properties": {
@@ -331,10 +323,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/components/schemas/Address"
+                        "$ref": "#/properties/Address"
                     },
                     "contactDetails": {
-                        "$ref": "#/components/schemas/Communication"
+                        "$ref": "#/properties/Communication"
                     }
                 },
                 "required": [
@@ -349,12 +341,16 @@
                         "description": "The unique identifier for this logistics service charge.",
                         "type": "string"
                     },
+                    "chargeText": {
+                        "description": "A textual description of this logistics service charge.",
+                        "type": "string"
+                    },
                     "rate": {
                         "description": "Per unit rate. ",
                         "type": "number"
                     },
-                    "per": {
-                        "description": "Charge unit. ",
+                    "calculationBasis": {
+                        "description": "The code specifying a basis on which this service charge is to be calculated such as by volume or per unit.",
                         "type": "string"
                     },
                     "currency": {
@@ -383,10 +379,6 @@
                     },
                     "rateReference": {
                         "description": "Reference on the charge rate.",
-                        "type": "string"
-                    },
-                    "chargeText": {
-                        "description": "A textual description of this logistics service charge.",
                         "type": "string"
                     }
                 }
@@ -417,7 +409,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/properties/Party"
                     },
                     {
                         "type": "object"
@@ -442,74 +434,74 @@
                     },
                     "cargoInformation": {
                         "items": {
-                            "$ref": "#/components/schemas/CargoInformation"
+                            "$ref": "#/properties/CargoInformation"
                         },
                         "type": "array"
                     },
                     "carrier": {
-                        "$ref": "#/components/schemas/Carrier"
+                        "$ref": "#/properties/Carrier"
                     },
                     "charges": {
                         "items": {
-                            "$ref": "#/components/schemas/Charges"
+                            "$ref": "#/properties/Charges"
                         },
                         "type": "array"
                     },
                     "consignee": {
-                        "$ref": "#/components/schemas/Consignee"
+                        "$ref": "#/properties/Consignee"
                     },
                     "consignmentItems": {
                         "items": {
-                            "$ref": "#/components/schemas/ConsignmentItem"
+                            "$ref": "#/properties/ConsignmentItem"
                         },
                         "type": "array",
                         "minItems": 1
                     },
                     "consignmentReferences": {
                         "items": {
-                            "$ref": "#/components/schemas/Reference"
+                            "$ref": "#/properties/Reference"
                         },
                         "type": "array"
                     },
                     "consignor": {
-                        "$ref": "#/components/schemas/Consignor"
+                        "$ref": "#/properties/Consignor"
                     },
                     "notifyParties": {
                         "items": {
-                            "$ref": "#/components/schemas/NotifyParty"
+                            "$ref": "#/properties/NotifyParty"
                         },
                         "type": "array"
                     },
                     "otherParties": {
                         "items": {
-                            "$ref": "#/components/schemas/OtherParty"
+                            "$ref": "#/properties/OtherParty"
                         },
                         "type": "array"
                     },
                     "placeOfDelivery": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/properties/Location"
                     },
                     "placeOfPrecarriage": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/properties/Location"
                     },
                     "placeOfReceipt": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/properties/Location"
                     },
                     "portOfDischarge": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/properties/Location"
                     },
                     "portOfLoading": {
-                        "$ref": "#/components/schemas/Location"
+                        "$ref": "#/properties/Location"
                     },
                     "transportMovement": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportMovement"
+                            "$ref": "#/properties/TransportMovement"
                         },
                         "type": "array"
                     },
                     "utilizedTransportEquipment": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportEquipment"
+                            "$ref": "#/properties/TransportEquipment"
                         },
                         "type": "array"
                     }
@@ -538,36 +530,36 @@
                     },
                     "equipmentStuffing": {
                         "items": {
-                            "$ref": "#/components/schemas/Stuffing"
+                            "$ref": "#/properties/Stuffing"
+                        },
+                        "type": "array"
+                    },
+                    "grossVolume": {
+                        "items": {
+                            "$ref": "#/properties/Volume"
                         },
                         "type": "array"
                     },
                     "grossWeight": {
                         "items": {
-                            "$ref": "#/components/schemas/Weight"
+                            "$ref": "#/properties/Weight"
                         },
                         "type": "array"
                     },
-                    "totalMeasurements": {
+                    "transportPackages": {
                         "items": {
-                            "$ref": "#/components/schemas/Measurement"
+                            "$ref": "#/properties/TransportPackage"
                         },
                         "type": "array"
-                    },
-                    "totalTransportPackages": {
-                        "$ref": "#/components/schemas/TransportPackage"
                     }
-                },
-                "required": [
-                    "totalTransportPackages"
-                ]
+                }
             },
             "Consignor": {
                 "type": "object",
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/properties/Party"
                     },
                     {
                         "type": "object"
@@ -598,14 +590,14 @@
                         "description": "The number of copies issued for this document.",
                         "type": "number"
                     },
-                    "documentReferences": {
+                    "placeOfIssue": {
+                        "$ref": "#/properties/Location"
+                    },
+                    "references": {
                         "items": {
-                            "$ref": "#/components/schemas/Reference"
+                            "$ref": "#/properties/Reference"
                         },
                         "type": "array"
-                    },
-                    "placeOfIssue": {
-                        "$ref": "#/components/schemas/Location"
                     }
                 }
             },
@@ -626,29 +618,12 @@
                     }
                 }
             },
-            "Measurement": {
-                "type": "object",
-                "properties": {
-                    "value": {
-                        "description": "Numeric measurement value. ",
-                        "type": "number"
-                    },
-                    "unit": {
-                        "description": "Unit used for measurements. ",
-                        "type": "string",
-                        "enum": [
-                            "cbm",
-                            "cbf"
-                        ]
-                    }
-                }
-            },
             "NotifyParty": {
                 "type": "object",
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/properties/Party"
                     },
                     {
                         "type": "object"
@@ -693,7 +668,7 @@
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/properties/Party"
                     },
                     {
                         "type": "object"
@@ -728,10 +703,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/components/schemas/Address"
+                        "$ref": "#/properties/Address"
                     },
                     "communicationDetails": {
-                        "$ref": "#/components/schemas/Communication"
+                        "$ref": "#/properties/Communication"
                     }
                 }
             },
@@ -866,7 +841,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/TransportDocument"
+                        "$ref": "#/properties/TransportDocument"
                     },
                     {
                         "type": "object"
@@ -880,20 +855,23 @@
                         "description": "Unique identifier of the transport equipment in which cargo is stuffed. ",
                         "type": "string"
                     },
-                    "measurements": {
+                    "stuffedGrossVolume": {
                         "items": {
-                            "$ref": "#/components/schemas/Measurement"
+                            "$ref": "#/properties/Volume"
                         },
                         "type": "array"
                     },
-                    "stuffingGrossWeight": {
+                    "stuffedGrossWeight": {
                         "items": {
-                            "$ref": "#/components/schemas/Weight"
+                            "$ref": "#/properties/Weight"
                         },
                         "type": "array"
                     },
-                    "transportPackages": {
-                        "$ref": "#/components/schemas/TransportPackage"
+                    "stuffedTransportPackages": {
+                        "items": {
+                            "$ref": "#/properties/TransportPackage"
+                        },
+                        "type": "array"
                     }
                 }
             },
@@ -918,20 +896,20 @@
                     },
                     "information": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportDocumentInformation"
+                            "$ref": "#/properties/TransportDocumentInformation"
                         },
                         "type": "array"
                     }
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Document"
+                        "$ref": "#/properties/Document"
                     },
                     {
                         "type": "object"
                     },
                     {
-                        "$ref": "#/components/schemas/Consignment"
+                        "$ref": "#/properties/Consignment"
                     },
                     {
                         "type": "object"
@@ -986,13 +964,13 @@
                     },
                     "equipmentGrossWeight": {
                         "items": {
-                            "$ref": "#/components/schemas/Weight"
+                            "$ref": "#/properties/Weight"
                         },
                         "type": "array"
                     },
                     "seals": {
                         "items": {
-                            "$ref": "#/components/schemas/Seal"
+                            "$ref": "#/properties/Seal"
                         },
                         "type": "array"
                     }
@@ -1022,7 +1000,7 @@
                         "type": "string"
                     },
                     "usedTransportMeans": {
-                        "$ref": "#/components/schemas/TransportMeans"
+                        "$ref": "#/properties/TransportMeans"
                     }
                 }
             },
@@ -1043,6 +1021,23 @@
                             "type": "string"
                         },
                         "type": "array"
+                    }
+                }
+            },
+            "Volume": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "Numeric measurement value. ",
+                        "type": "number"
+                    },
+                    "unit": {
+                        "description": "Unit used for measurements. ",
+                        "type": "string",
+                        "enum": [
+                            "cbm",
+                            "cbf"
+                        ]
                     }
                 }
             },

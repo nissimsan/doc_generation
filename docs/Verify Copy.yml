@@ -353,11 +353,16 @@ components:
         chargeCode:
           description: The unique identifier for this logistics service charge.
           type: string
+        chargeText:
+          description: A textual description of this logistics service charge.
+          type: string
         rate:
           description: 'Per unit rate. '
           type: number
-        per:
-          description: 'Charge unit. '
+        calculationBasis:
+          description: >-
+            The code specifying a basis on which this service charge is to be
+            calculated such as by volume or per unit.
           type: string
         currency:
           description: 'Charge currency. '
@@ -379,9 +384,6 @@ components:
           type: string
         rateReference:
           description: Reference on the charge rate.
-          type: string
-        chargeText:
-          description: A textual description of this logistics service charge.
           type: string
     Communication:
       type: object
@@ -489,18 +491,18 @@ components:
           items:
             $ref: '#/components/schemas/Stuffing'
           type: array
+        grossVolume:
+          items:
+            $ref: '#/components/schemas/Volume'
+          type: array
         grossWeight:
           items:
             $ref: '#/components/schemas/Weight'
           type: array
-        totalMeasurements:
+        transportPackages:
           items:
-            $ref: '#/components/schemas/Measurement'
+            $ref: '#/components/schemas/TransportPackage'
           type: array
-        totalTransportPackages:
-          $ref: '#/components/schemas/TransportPackage'
-      required:
-        - totalTransportPackages
     Consignor:
       type: object
       properties: {}
@@ -532,12 +534,12 @@ components:
         copyIssued:
           description: The number of copies issued for this document.
           type: number
-        documentReferences:
+        placeOfIssue:
+          $ref: '#/components/schemas/Location'
+        references:
           items:
             $ref: '#/components/schemas/Reference'
           type: array
-        placeOfIssue:
-          $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -552,18 +554,6 @@ components:
         printedLocation:
           description: The location exactly as printed on the document.
           type: string
-    Measurement:
-      type: object
-      properties:
-        value:
-          description: 'Numeric measurement value. '
-          type: number
-        unit:
-          description: 'Unit used for measurements. '
-          type: string
-          enum:
-            - cbm
-            - cbf
     NotifyParty:
       type: object
       properties: {}
@@ -756,16 +746,18 @@ components:
             Unique identifier of the transport equipment in which cargo is
             stuffed. 
           type: string
-        measurements:
+        stuffedGrossVolume:
           items:
-            $ref: '#/components/schemas/Measurement'
+            $ref: '#/components/schemas/Volume'
           type: array
-        stuffingGrossWeight:
+        stuffedGrossWeight:
           items:
             $ref: '#/components/schemas/Weight'
           type: array
-        transportPackages:
-          $ref: '#/components/schemas/TransportPackage'
+        stuffedTransportPackages:
+          items:
+            $ref: '#/components/schemas/TransportPackage'
+          type: array
     TransportDocument:
       type: object
       properties:
@@ -888,6 +880,18 @@ components:
         - type: object
         - $ref: '#/components/schemas/BillOfLading'
         - type: object
+    Volume:
+      type: object
+      properties:
+        value:
+          description: 'Numeric measurement value. '
+          type: number
+        unit:
+          description: 'Unit used for measurements. '
+          type: string
+          enum:
+            - cbm
+            - cbf
     Weight:
       type: object
       properties:

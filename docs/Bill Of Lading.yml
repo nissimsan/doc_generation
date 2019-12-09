@@ -497,9 +497,9 @@ components:
             $ref: '#/components/schemas/Weight'
           type: array
         transportPackages:
-          $ref: '#/components/schemas/TransportPackage'
-      required:
-        - transportPackages
+          items:
+            $ref: '#/components/schemas/TransportPackage'
+          type: array
     Consignor:
       type: object
       properties: {}
@@ -752,7 +752,9 @@ components:
             $ref: '#/components/schemas/Weight'
           type: array
         stuffedTransportPackages:
-          $ref: '#/components/schemas/TransportPackage'
+          items:
+            $ref: '#/components/schemas/TransportPackage'
+          type: array
     TransportDocument:
       type: object
       properties:

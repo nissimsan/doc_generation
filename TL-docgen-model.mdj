@@ -298,7 +298,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuZPChvkIUNeU="
 					},
-					"name": "Shipping Instructions",
+					"name": "ShippingInstructions",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -28282,7 +28282,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuZPm81FooIo8="
 					},
-					"name": "Sea Waybill",
+					"name": "SeaWaybill",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -36267,16 +36267,16 @@
 										"$ref": "AAAAAAFusX6UtMss9j4="
 									},
 									"font": "Arial;13;0",
-									"left": 1145,
+									"left": 1144,
 									"top": 1080,
-									"width": 19.5126953125,
+									"width": 21.68359375,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAFux0XNt1Ok+LY="
 									},
-									"text": "0..*"
+									"text": "0..1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -44046,7 +44046,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuZPpT2WFeFYs="
 					},
-					"name": "Certificate Of Origin",
+					"name": "CertificateOfOrigin",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -53707,7 +53707,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuZPsJf2T9Cfc="
 					},
-					"name": "Commercial Invoice",
+					"name": "CommercialInvoice",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -58934,7 +58934,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuZPwylHB/KDE="
 					},
-					"name": "Bill Of Lading",
+					"name": "BillOfLading",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -117808,7 +117808,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFukyOPEy8XgR4="
 					},
-					"name": "BOL Simple Example",
+					"name": "BOLSimpleExample",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -122172,7 +122172,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuyJeygAf2dVk="
 					},
-					"name": "Booking Confirmation",
+					"name": "BookingConfirmation",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -125987,7 +125987,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuzQ0E1JZcFE0="
 					},
-					"name": "Verify Copy",
+					"name": "VerifyCopy",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",

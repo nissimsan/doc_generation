@@ -3,6 +3,11 @@
         "model": "ShippingInstructions",
         "type": "object",
         "properties": {
+          "shippingInstructions": {
+            "$ref": "#/definitions/ShippingInstructions"
+          }
+        },
+        "definitions": {
             "Address": {
                 "type": "object",
                 "properties": {
@@ -315,10 +320,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/properties/Address"
+                        "$ref": "#/definitions/Address"
                     },
                     "contactDetails": {
-                        "$ref": "#/properties/Communication"
+                        "$ref": "#/definitions/Communication"
                     }
                 },
                 "required": [
@@ -374,7 +379,7 @@
                         "type": "string"
                     },
                     "paymentPlaceLocation": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     }
                 }
             },
@@ -404,7 +409,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -428,90 +433,90 @@
                         "type": "number"
                     },
                     "carrier": {
-                        "$ref": "#/properties/Carrier"
+                        "$ref": "#/definitions/Carrier"
                     },
                     "charges": {
                         "items": {
-                            "$ref": "#/properties/Charges"
+                            "$ref": "#/definitions/Charges"
                         },
                         "type": "array"
                     },
                     "consignee": {
-                        "$ref": "#/properties/Consignee"
+                        "$ref": "#/definitions/Consignee"
                     },
                     "consignmentItems": {
                         "items": {
-                            "$ref": "#/properties/ConsignmentItem"
+                            "$ref": "#/definitions/ConsignmentItem"
                         },
                         "type": "array",
                         "minItems": 1
                     },
                     "consignmentReferences": {
                         "items": {
-                            "$ref": "#/properties/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     },
                     "consignor": {
-                        "$ref": "#/properties/Consignor"
+                        "$ref": "#/definitions/Consignor"
                     },
                     "customsBroker": {
-                        "$ref": "#/properties/CustomsBroker"
+                        "$ref": "#/definitions/CustomsBroker"
                     },
                     "declaredValueForCustoms": {
-                        "$ref": "#/properties/Amount"
+                        "$ref": "#/definitions/Amount"
                     },
                     "freightForwarder": {
-                        "$ref": "#/properties/FreightForwarder"
+                        "$ref": "#/definitions/FreightForwarder"
                     },
                     "freightPayer": {
-                        "$ref": "#/properties/FreightPayer"
+                        "$ref": "#/definitions/FreightPayer"
                     },
                     "grossVolume": {
-                        "$ref": "#/properties/Volume"
+                        "$ref": "#/definitions/Volume"
                     },
                     "grossWeight": {
-                        "$ref": "#/properties/Weight"
+                        "$ref": "#/definitions/Weight"
                     },
                     "notifyParties": {
                         "items": {
-                            "$ref": "#/properties/NotifyParty"
+                            "$ref": "#/definitions/NotifyParty"
                         },
                         "type": "array"
                     },
                     "placeOfDelivery": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfPrecarriage": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfReceipt": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "portOfDischarge": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "portOfLoading": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "shipFromParty": {
-                        "$ref": "#/properties/ShipFromParty"
+                        "$ref": "#/definitions/ShipFromParty"
                     },
                     "shipToParty": {
-                        "$ref": "#/properties/ShipToParty"
+                        "$ref": "#/definitions/ShipToParty"
                     },
                     "transportMovement": {
                         "items": {
-                            "$ref": "#/properties/TransportMovement"
+                            "$ref": "#/definitions/TransportMovement"
                         },
                         "type": "array"
                     },
                     "transportPackages": {
-                        "$ref": "#/properties/TransportPackage"
+                        "$ref": "#/definitions/TransportPackage"
                     },
                     "utilizedTransportEquipment": {
                         "items": {
-                            "$ref": "#/properties/TransportEquipment"
+                            "$ref": "#/definitions/TransportEquipment"
                         },
                         "type": "array"
                     }
@@ -539,36 +544,36 @@
                         "type": "string"
                     },
                     "applicapleDangerousGoods": {
-                        "$ref": "#/properties/DangerousGoods"
+                        "$ref": "#/definitions/DangerousGoods"
                     },
                     "equipmentStuffing": {
                         "items": {
-                            "$ref": "#/properties/Stuffing"
+                            "$ref": "#/definitions/Stuffing"
                         },
                         "type": "array"
                     },
                     "grossVolume": {
                         "items": {
-                            "$ref": "#/properties/Volume"
+                            "$ref": "#/definitions/Volume"
                         },
                         "type": "array"
                     },
                     "grossWeight": {
                         "items": {
-                            "$ref": "#/properties/Weight"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
                     "transportPackages": {
                         "items": {
-                            "$ref": "#/properties/TransportPackage"
+                            "$ref": "#/definitions/TransportPackage"
                         },
                         "type": "array"
                     }
                 },
                 "allOf": [
                     {
-                        "$ref": "#/properties/OutOfGauge"
+                        "$ref": "#/definitions/OutOfGauge"
                     },
                     {
                         "type": "object"
@@ -580,7 +585,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -592,7 +597,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -604,7 +609,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -635,10 +640,10 @@
                         "type": "string"
                     },
                     "emergencyContact": {
-                        "$ref": "#/properties/EmergencyContact"
+                        "$ref": "#/definitions/EmergencyContact"
                     },
                     "flashpointTemperatureMeasurement": {
-                        "$ref": "#/properties/FlashpointTemperature"
+                        "$ref": "#/definitions/FlashpointTemperature"
                     }
                 }
             },
@@ -692,11 +697,11 @@
                         "type": "number"
                     },
                     "placeOfIssue": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "references": {
                         "items": {
-                            "$ref": "#/properties/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     }
@@ -707,7 +712,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -736,7 +741,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -748,7 +753,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -777,7 +782,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -792,7 +797,7 @@
                         "type": "boolean"
                     },
                     "dimensions": {
-                        "$ref": "#/properties/Dimensions"
+                        "$ref": "#/definitions/Dimensions"
                     }
                 }
             },
@@ -824,10 +829,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/properties/Address"
+                        "$ref": "#/definitions/Address"
                     },
                     "communicationDetails": {
-                        "$ref": "#/properties/Communication"
+                        "$ref": "#/definitions/Communication"
                     }
                 }
             },
@@ -977,7 +982,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -996,7 +1001,7 @@
                         "type": "string"
                     },
                     "sealingParty": {
-                        "$ref": "#/properties/SealingParty"
+                        "$ref": "#/definitions/SealingParty"
                     }
                 }
             },
@@ -1005,7 +1010,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -1017,7 +1022,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -1029,7 +1034,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -1097,27 +1102,27 @@
                         "type": "string"
                     },
                     "RequestParty": {
-                        "$ref": "#/properties/RequestParty"
+                        "$ref": "#/definitions/RequestParty"
                     },
                     "contractor": {
-                        "$ref": "#/properties/Contractor"
+                        "$ref": "#/definitions/Contractor"
                     },
                     "documentSender": {
-                        "$ref": "#/properties/Sender"
+                        "$ref": "#/definitions/Sender"
                     },
                     "information": {
-                        "$ref": "#/properties/TransportDocumentInformation"
+                        "$ref": "#/definitions/TransportDocumentInformation"
                     }
                 },
                 "allOf": [
                     {
-                        "$ref": "#/properties/Document"
+                        "$ref": "#/definitions/Document"
                     },
                     {
                         "type": "object"
                     },
                     {
-                        "$ref": "#/properties/Consignment"
+                        "$ref": "#/definitions/Consignment"
                     },
                     {
                         "type": "object"
@@ -1133,7 +1138,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -1149,19 +1154,19 @@
                     },
                     "stuffedGrossVolume": {
                         "items": {
-                            "$ref": "#/properties/Volume"
+                            "$ref": "#/definitions/Volume"
                         },
                         "type": "array"
                     },
                     "stuffedGrossWeight": {
                         "items": {
-                            "$ref": "#/properties/Weight"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
                     "stuffedTransportPackages": {
                         "items": {
-                            "$ref": "#/properties/TransportPackage"
+                            "$ref": "#/definitions/TransportPackage"
                         },
                         "type": "array"
                     }
@@ -1211,20 +1216,20 @@
                         "type": "array"
                     },
                     "equipmentGrossWeight": {
-                        "$ref": "#/properties/Weight"
+                        "$ref": "#/definitions/Weight"
                     },
                     "equipmentReeferSetting": {
                         "items": {
-                            "$ref": "#/properties/ReeferSetting"
+                            "$ref": "#/definitions/ReeferSetting"
                         },
                         "type": "array"
                     },
                     "equipmentTareWeight": {
-                        "$ref": "#/properties/Weight"
+                        "$ref": "#/definitions/Weight"
                     },
                     "seals": {
                         "items": {
-                            "$ref": "#/properties/Seal"
+                            "$ref": "#/definitions/Seal"
                         },
                         "type": "array"
                     }
@@ -1254,7 +1259,7 @@
                         "type": "string"
                     },
                     "usedTransportMeans": {
-                        "$ref": "#/properties/TransportMeans"
+                        "$ref": "#/definitions/TransportMeans"
                     }
                 }
             },

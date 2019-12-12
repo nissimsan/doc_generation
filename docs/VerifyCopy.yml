@@ -1,10 +1,11 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: Verify Copy
+  title: VerifyCopy
   version: ''
 servers: []
-paths: {}
+paths:
+  /VerifyCopy: {}
 components:
   schemas:
     Address:
@@ -824,9 +825,7 @@ components:
             type: string
           type: array
         equipmentGrossWeight:
-          items:
-            $ref: '#/components/schemas/Weight'
-          type: array
+          $ref: '#/components/schemas/Weight'
         seals:
           items:
             $ref: '#/components/schemas/Seal'
@@ -876,8 +875,6 @@ components:
       type: object
       properties: {}
       allOf:
-        - $ref: '#/components/schemas/VerifyCopy'
-        - type: object
         - $ref: '#/components/schemas/BillOfLading'
         - type: object
     Volume:

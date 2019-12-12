@@ -1,6 +1,6 @@
 {
     "schema": {
-        "model": "Verify Copy",
+        "model": "VerifyCopy",
         "type": "object",
         "properties": {
             "Address": {
@@ -993,10 +993,7 @@
                         "type": "array"
                     },
                     "equipmentGrossWeight": {
-                        "items": {
-                            "$ref": "#/properties/Weight"
-                        },
-                        "type": "array"
+                        "$ref": "#/properties/Weight"
                     },
                     "seals": {
                         "items": {
@@ -1058,12 +1055,6 @@
                 "type": "object",
                 "properties": {},
                 "allOf": [
-                    {
-                        "$ref": "#/properties/VerifyCopy"
-                    },
-                    {
-                        "type": "object"
-                    },
                     {
                         "$ref": "#/properties/BillOfLading"
                     },

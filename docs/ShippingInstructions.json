@@ -2,11 +2,6 @@
     "schema": {
         "model": "ShippingInstructions",
         "type": "object",
-        "properties": {
-          "shippingInstructions": {
-            "$ref": "#/definitions/ShippingInstructions"
-          }
-        },
         "definitions": {
             "Address": {
                 "type": "object",
@@ -1111,7 +1106,10 @@
                         "$ref": "#/definitions/Sender"
                     },
                     "information": {
-                        "$ref": "#/definitions/TransportDocumentInformation"
+                        "items": {
+                            "$ref": "#/definitions/TransportDocumentInformation"
+                        },
+                        "type": "array"
                     }
                 },
                 "allOf": [
@@ -1314,8 +1312,33 @@
                             "kgs",
                             "lbs"
                         ]
+                    },
+                    "weightVerificationMethod": {
+                        "description": "missing description",
+                        "type": "string"
+                    },
+                    "weightVerifier": {
+                        "$ref": "#/definitions/WeightVerifier"
                     }
                 }
+            },
+            "WeightVerifier": {
+                "type": "object",
+                "properties": {},
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Party"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "properties": {
+            "shippingInstructions": {
+                "$ref": "#/definitions/ShippingInstructions"
             }
         }
     }

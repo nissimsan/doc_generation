@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: Shipping Instructions
+  title: ShippingInstructions
   version: ''
 servers: []
 paths: {}
@@ -889,7 +889,9 @@ components:
         documentSender:
           $ref: '#/components/schemas/Sender'
         information:
-          $ref: '#/components/schemas/TransportDocumentInformation'
+          items:
+            $ref: '#/components/schemas/TransportDocumentInformation'
+          type: array
       allOf:
         - $ref: '#/components/schemas/Document'
         - type: object
@@ -1040,3 +1042,14 @@ components:
           enum:
             - kgs
             - lbs
+        weightVerificationMethod:
+          description: missing description
+          type: string
+        weightVerifier:
+          $ref: '#/components/schemas/WeightVerifier'
+    WeightVerifier:
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object

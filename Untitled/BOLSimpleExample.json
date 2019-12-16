@@ -1,30 +1,16 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "description": "",
-        "title": "BOLSimpleExample",
-        "version": ""
-    },
-    "servers": [],
-    "paths": {
-        "/BOLSimpleExample": {}
-    },
-    "components": {
-        "schemas": {
+    "schema": {
+        "model": "BOLSimpleExample",
+        "type": "object",
+        "properties": {
+            "myBolSimpleExample": {
+                "$ref": "#/definitions/BOLSimpleExample"
+            }
+        },
+        "definitions": {
             "BOLSimpleExample": {
                 "type": "object",
                 "properties": {
-                    "Attribute1": {
-                        "description": "missing description",
-                        "type": "integer",
-                        "format": "int32",
-                        "default": "11223344"
-                    },
-                    "Attribute2": {
-                        "description": "missing description",
-                        "type": "integer",
-                        "format": "int64"
-                    },
                     "Attribute3": {
                         "description": "missing description",
                         "type": "number",
@@ -53,18 +39,18 @@
                     "Attribute8": {
                         "description": "missing description",
                         "type": "string",
-                        "default": "Example value"
+                        "example": "Example value"
                     }
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/TransportDocument"
+                        "$ref": "#/definitions/TransportDocument"
                     },
                     {
                         "type": "object"
                     },
                     {
-                        "$ref": "#/components/schemas/Consignment"
+                        "$ref": "#/definitions/Consignment"
                     },
                     {
                         "type": "object"
@@ -76,7 +62,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -100,24 +86,24 @@
                         "type": "number"
                     },
                     "consignee": {
-                        "$ref": "#/components/schemas/Consignee"
+                        "$ref": "#/definitions/Consignee"
                     },
                     "consignmentItems": {
                         "items": {
-                            "$ref": "#/components/schemas/ConsignmentItem"
+                            "$ref": "#/definitions/ConsignmentItem"
                         },
                         "type": "array",
                         "minItems": 1
                     },
                     "consignmentReferences": {
                         "items": {
-                            "$ref": "#/components/schemas/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     },
                     "utilizedTransportEquipment": {
                         "items": {
-                            "$ref": "#/components/schemas/TransportEquipment"
+                            "$ref": "#/definitions/TransportEquipment"
                         },
                         "type": "array"
                     }
@@ -170,7 +156,7 @@
                     },
                     "references": {
                         "items": {
-                            "$ref": "#/components/schemas/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     }
@@ -340,7 +326,7 @@
                 },
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Document"
+                        "$ref": "#/definitions/Document"
                     },
                     {
                         "type": "object"

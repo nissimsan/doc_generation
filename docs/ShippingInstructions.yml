@@ -284,6 +284,11 @@ components:
         postcode:
           description: A code specifying the postcode of the address.
           type: string
+      required:
+        - street
+        - city
+        - state
+        - country
     Amount:
       type: object
       properties:
@@ -418,12 +423,22 @@ components:
         freightPayer:
           $ref: '#/components/schemas/FreightPayer'
         grossVolume:
-          $ref: '#/components/schemas/Volume'
+          items:
+            $ref: '#/components/schemas/Volume'
+          type: array
         grossWeight:
           $ref: '#/components/schemas/Weight'
+        mainCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
         notifyParties:
           items:
             $ref: '#/components/schemas/NotifyParty'
+          type: array
+        onCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
           type: array
         placeOfDelivery:
           $ref: '#/components/schemas/Location'
@@ -435,14 +450,14 @@ components:
           $ref: '#/components/schemas/Location'
         portOfLoading:
           $ref: '#/components/schemas/Location'
+        preCarriageMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
         shipFromParty:
           $ref: '#/components/schemas/ShipFromParty'
         shipToParty:
           $ref: '#/components/schemas/ShipToParty'
-        transportMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
-          type: array
         transportPackages:
           $ref: '#/components/schemas/TransportPackage'
         utilizedTransportEquipment:
@@ -463,8 +478,19 @@ components:
         information:
           description: 'Information, expressed as text, for this consignment item.'
           type: string
-        code:
-          description: The harmonized system code specifying a type of consignment item.
+        codeType:
+          description: |-
+            The cargo code type of consignment item. 
+            https://service.unece.org/trade/untdid/d00a/tred/tred7143.htm
+          type: string
+          enum:
+            - harmonizedSystem
+            - stockKeepingUnit
+            - purchaseOrder
+            - cargoSpecificationNumber
+            - vehicleIdentificationNumber
+        codeValue:
+          description: missing description
           type: string
         applicapleDangerousGoods:
           $ref: '#/components/schemas/DangerousGoods'
@@ -481,9 +507,7 @@ components:
             $ref: '#/components/schemas/Weight'
           type: array
         transportPackages:
-          items:
-            $ref: '#/components/schemas/TransportPackage'
-          type: array
+          $ref: '#/components/schemas/TransportPackage'
       allOf:
         - $ref: '#/components/schemas/OutOfGauge'
         - type: object
@@ -526,15 +550,45 @@ components:
             The unique identifier of the version of a hazard class for the
             dangerous goods.
           type: string
+        hazardInformation:
+          description: 'Used to indicate Haz Mat Placard (explosive, flammable, etc.)'
+          type: string
         ems:
           description: >-
             The unique transport emergency procedure (EMS) identifier applicable
             for the dangerous goods.
           type: string
+        information:
+          description: Textual information for the dangerous goods.
+          type: string
+        technicalName:
+          description: 'A technical name, expressed as text, for the dangerous goods.'
+          type: string
+        marking:
+          description: 'Marking, expressed as text, for these dangerous goods.'
+          type: string
+        regulationName:
+          description: 'A name, expressed as text, for a regulation of the dangerous goods.'
+          type: string
+        packingInstructionType:
+          description: >-
+            A code specifying a type of packing instruction for the dangerous
+            goods.
+          type: string
         emergencyContact:
           $ref: '#/components/schemas/EmergencyContact'
         flashpointTemperatureMeasurement:
           $ref: '#/components/schemas/FlashpointTemperature'
+        grossVolume:
+          $ref: '#/components/schemas/Volume'
+        grossWeight:
+          $ref: '#/components/schemas/Weight'
+        handlingInstructions:
+          $ref: '#/components/schemas/HandlingInstructions'
+        netWeight:
+          $ref: '#/components/schemas/Weight'
+        radioactiveMaterial:
+          $ref: '#/components/schemas/RadioactiveMaterial'
     Dimensions:
       type: object
       properties:
@@ -578,6 +632,8 @@ components:
         copyIssued:
           description: The number of copies issued for this document.
           type: number
+        original:
+          $ref: '#/components/schemas/Location'
         placeOfIssue:
           $ref: '#/components/schemas/Location'
         references:
@@ -590,12 +646,18 @@ components:
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
+    EquipmentSupplier:
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
     FlashpointTemperature:
       type: object
       properties:
         actual:
           description: An actual measure for this measurement.
-          type: string
+          type: number
         code:
           description: A code specifying a type of measurement.
           type: string
@@ -614,6 +676,12 @@ components:
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
+    HandlingInstructions:
+      type: object
+      properties:
+        description:
+          description: A textual description of this set of instructions.
+          type: string
     Location:
       type: object
       properties:
@@ -667,6 +735,21 @@ components:
           $ref: '#/components/schemas/Address'
         communicationDetails:
           $ref: '#/components/schemas/Communication'
+    RadioactiveMaterial:
+      type: object
+      properties:
+        name:
+          description: missing description
+          type: string
+        compositionDescription:
+          description: A textual description of the composition of this material.
+          type: string
+        information:
+          description: 'Information, expressed as text, for this material.'
+          type: string
+        index:
+          description: missing description
+          type: number
     ReeferSetting:
       type: object
       properties:
@@ -795,6 +878,7 @@ components:
             - cargoControlNumber
             - previousCargoControlNumber
             - mutuallyDefinedReferenceNumber
+            - billOfLadingReference
         value:
           description: 'Reference value. '
           type: string
@@ -882,6 +966,12 @@ components:
         manifestFilingStatus:
           description: Manifest filing status.
           type: string
+        eBL:
+          description: Indication of this being a request for an electronic bill of lading.
+          type: boolean
+        messageFunctionCode:
+          description: Element to identify function of the message.
+          type: string
         RequestParty:
           $ref: '#/components/schemas/RequestParty'
         contractor:
@@ -965,12 +1055,39 @@ components:
               item(s).
             type: string
           type: array
+        usedCapacity:
+          description: >-
+            The code specifying the used capacity of this piece of transport
+            equipment, such as full or empty.
+          type: string
+          enum:
+            - full
+            - empty
+        movementType:
+          description: Code specifying a type of movement.
+          type: string
+          enum:
+            - fcl
+            - lcl
+        haulageArrangements:
+          description: Specification of the type of equipment haulage arrangements.
+          type: string
+        equipmentSupplierIndicator:
+          description: >-
+            This element indicates the party that is the supplier of the
+            equipment.
+          type: string
+          enum:
+            - carrierSupplied
+            - shipperSupplied
         equipmentGrossWeight:
           $ref: '#/components/schemas/Weight'
         equipmentReeferSetting:
           items:
             $ref: '#/components/schemas/ReeferSetting'
           type: array
+        equipmentSupplier:
+          $ref: '#/components/schemas/EquipmentSupplier'
         equipmentTareWeight:
           $ref: '#/components/schemas/Weight'
         seals:
@@ -1010,6 +1127,9 @@ components:
           type: number
         type:
           description: 'A type, expressed as text, of this logistics package.'
+          type: string
+        typeCode:
+          description: A code specifying the type of logistics package.
           type: string
         shippingMarks:
           items:

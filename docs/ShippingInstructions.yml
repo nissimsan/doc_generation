@@ -908,8 +908,6 @@ components:
         messageFunctionCode:
           description: Element to identify function of the message.
           type: string
-        RequestParty:
-          $ref: '#/components/schemas/RequestParty'
         contractor:
           $ref: '#/components/schemas/Contractor'
         documentSender:
@@ -918,6 +916,8 @@ components:
           items:
             $ref: '#/components/schemas/TransportDocumentInformation'
           type: array
+        requestParty:
+          $ref: '#/components/schemas/RequestParty'
       allOf:
         - $ref: '#/components/schemas/Document'
         - type: object
@@ -925,7 +925,7 @@ components:
         - type: object
       required:
         - bookingNumber
-        - RequestParty
+        - requestParty
     ShipToParty:
       type: object
       properties: {}

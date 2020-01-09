@@ -285,6 +285,11 @@ components:
         postcode:
           description: A code specifying the postcode of the address.
           type: string
+      required:
+        - street
+        - city
+        - state
+        - country
     BillOfLading:
       type: object
       properties:
@@ -439,12 +444,12 @@ components:
             $ref: '#/components/schemas/ConsignmentItem'
           type: array
           minItems: 1
-        consignmentReferences:
-          items:
-            $ref: '#/components/schemas/Reference'
-          type: array
         consignor:
           $ref: '#/components/schemas/Consignor'
+        mainCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
         notifyParties:
           items:
             $ref: '#/components/schemas/NotifyParty'
@@ -463,10 +468,6 @@ components:
           $ref: '#/components/schemas/Location'
         portOfLoading:
           $ref: '#/components/schemas/Location'
-        transportMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
-          type: array
         utilizedTransportEquipment:
           items:
             $ref: '#/components/schemas/TransportEquipment'
@@ -485,8 +486,19 @@ components:
         information:
           description: 'Information, expressed as text, for this consignment item.'
           type: string
-        code:
-          description: The harmonized system code specifying a type of consignment item.
+        codeType:
+          description: |-
+            The cargo code type of consignment item. 
+            https://service.unece.org/trade/untdid/d00a/tred/tred7143.htm
+          type: string
+          enum:
+            - harmonizedSystem
+            - stockKeepingUnit
+            - purchaseOrder
+            - cargoSpecificationNumber
+            - vehicleIdentificationNumber
+        codeValue:
+          description: missing description
           type: string
         equipmentStuffing:
           items:
@@ -501,9 +513,7 @@ components:
             $ref: '#/components/schemas/Weight'
           type: array
         transportPackages:
-          items:
-            $ref: '#/components/schemas/TransportPackage'
-          type: array
+          $ref: '#/components/schemas/TransportPackage'
     Consignor:
       type: object
       properties: {}
@@ -727,6 +737,7 @@ components:
             - cargoControlNumber
             - previousCargoControlNumber
             - mutuallyDefinedReferenceNumber
+            - billOfLadingReference
         value:
           description: 'Reference value. '
           type: string
@@ -863,6 +874,9 @@ components:
           type: number
         type:
           description: 'A type, expressed as text, of this logistics package.'
+          type: string
+        typeCode:
+          description: A code specifying the type of logistics package.
           type: string
         shippingMarks:
           items:

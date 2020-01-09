@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: Sea Waybill
+  title: BillOfLading
   version: ''
 servers: []
 paths:
-  /SeaWaybill: {}
+  /BillOfLading: {}
 components:
   schemas:
     Address:
@@ -285,6 +285,39 @@ components:
         postcode:
           description: A code specifying the postcode of the address.
           type: string
+      required:
+        - street
+        - city
+        - state
+        - country
+    BillOfLading:
+      type: object
+      properties:
+        negotiable:
+          description: 'Indicator, whether or not the bill of lading is negotiable. '
+          type: boolean
+        freightedAtAd:
+          description: 'Freighted at ad indicator. '
+          type: boolean
+        certifiedMember:
+          description: 'Certified member. '
+          type: string
+        dateOfAcceptance:
+          description: 'Acceptance date of the bill of lading. '
+          type: string
+          format: date-time
+        declarationOfInterest:
+          description: 'Declaration of interest indicator. '
+          type: boolean
+        eBL:
+          description: 'Indication of this being an electronic bill of lading. '
+          type: boolean
+        witness:
+          description: In witness whereof this MTD has been signed
+          type: string
+      allOf:
+        - $ref: '#/components/schemas/TransportDocument'
+        - type: object
     CargoInformation:
       type: object
       properties:
@@ -411,15 +444,19 @@ components:
             $ref: '#/components/schemas/ConsignmentItem'
           type: array
           minItems: 1
-        consignmentReferences:
-          items:
-            $ref: '#/components/schemas/Reference'
-          type: array
         consignor:
           $ref: '#/components/schemas/Consignor'
+        mainCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
         notifyParties:
           items:
             $ref: '#/components/schemas/NotifyParty'
+          type: array
+        onCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
           type: array
         otherParties:
           items:
@@ -435,7 +472,7 @@ components:
           $ref: '#/components/schemas/Location'
         portOfLoading:
           $ref: '#/components/schemas/Location'
-        transportMovement:
+        preCarriageMovement:
           items:
             $ref: '#/components/schemas/TransportMovement'
           type: array
@@ -457,8 +494,19 @@ components:
         information:
           description: 'Information, expressed as text, for this consignment item.'
           type: string
-        code:
-          description: The harmonized system code specifying a type of consignment item.
+        codeType:
+          description: |-
+            The cargo code type of consignment item. 
+            https://service.unece.org/trade/untdid/d00a/tred/tred7143.htm
+          type: string
+          enum:
+            - harmonizedSystem
+            - stockKeepingUnit
+            - purchaseOrder
+            - cargoSpecificationNumber
+            - vehicleIdentificationNumber
+        codeValue:
+          description: missing description
           type: string
         equipmentStuffing:
           items:
@@ -473,9 +521,7 @@ components:
             $ref: '#/components/schemas/Weight'
           type: array
         transportPackages:
-          items:
-            $ref: '#/components/schemas/TransportPackage'
-          type: array
+          $ref: '#/components/schemas/TransportPackage'
     Consignor:
       type: object
       properties: {}
@@ -699,6 +745,7 @@ components:
             - cargoControlNumber
             - previousCargoControlNumber
             - mutuallyDefinedReferenceNumber
+            - billOfLadingReference
         value:
           description: 'Reference value. '
           type: string
@@ -711,12 +758,6 @@ components:
         identifier:
           description: A unique identifier for this logistics seal.
           type: string
-    SeaWaybill:
-      type: object
-      properties: {}
-      allOf:
-        - $ref: '#/components/schemas/TransportDocument'
-        - type: object
     Stuffing:
       type: object
       properties:
@@ -803,9 +844,7 @@ components:
             type: string
           type: array
         equipmentGrossWeight:
-          items:
-            $ref: '#/components/schemas/Weight'
-          type: array
+          $ref: '#/components/schemas/Weight'
         seals:
           items:
             $ref: '#/components/schemas/Seal'
@@ -843,6 +882,9 @@ components:
           type: number
         type:
           description: 'A type, expressed as text, of this logistics package.'
+          type: string
+        typeCode:
+          description: A code specifying the type of logistics package.
           type: string
         shippingMarks:
           items:

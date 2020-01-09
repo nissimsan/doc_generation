@@ -3,6 +3,11 @@
         "model": "VerifyCopy",
         "type": "object",
         "properties": {
+            "verifyCopy": {
+                "$ref": "#/definitions/VerifyCopy"
+            }
+        },
+        "definitions": {
             "Address": {
                 "type": "object",
                 "properties": {
@@ -284,7 +289,13 @@
                         "description": "A code specifying the postcode of the address.",
                         "type": "string"
                     }
-                }
+                },
+                "required": [
+                    "street",
+                    "city",
+                    "state",
+                    "country"
+                ]
             },
             "BillOfLading": {
                 "type": "object",
@@ -321,7 +332,7 @@
                 },
                 "allOf": [
                     {
-                        "$ref": "#/properties/TransportDocument"
+                        "$ref": "#/definitions/TransportDocument"
                     },
                     {
                         "type": "object"
@@ -365,10 +376,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/properties/Address"
+                        "$ref": "#/definitions/Address"
                     },
                     "contactDetails": {
-                        "$ref": "#/properties/Communication"
+                        "$ref": "#/definitions/Communication"
                     }
                 },
                 "required": [
@@ -451,7 +462,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -476,74 +487,68 @@
                     },
                     "cargoInformation": {
                         "items": {
-                            "$ref": "#/properties/CargoInformation"
+                            "$ref": "#/definitions/CargoInformation"
                         },
                         "type": "array"
                     },
                     "carrier": {
-                        "$ref": "#/properties/Carrier"
+                        "$ref": "#/definitions/Carrier"
                     },
                     "charges": {
                         "items": {
-                            "$ref": "#/properties/Charges"
+                            "$ref": "#/definitions/Charges"
                         },
                         "type": "array"
                     },
                     "consignee": {
-                        "$ref": "#/properties/Consignee"
+                        "$ref": "#/definitions/Consignee"
                     },
                     "consignmentItems": {
                         "items": {
-                            "$ref": "#/properties/ConsignmentItem"
+                            "$ref": "#/definitions/ConsignmentItem"
                         },
                         "type": "array",
                         "minItems": 1
                     },
-                    "consignmentReferences": {
+                    "consignor": {
+                        "$ref": "#/definitions/Consignor"
+                    },
+                    "mainCarriageTransportMovement": {
                         "items": {
-                            "$ref": "#/properties/Reference"
+                            "$ref": "#/definitions/TransportMovement"
                         },
                         "type": "array"
                     },
-                    "consignor": {
-                        "$ref": "#/properties/Consignor"
-                    },
                     "notifyParties": {
                         "items": {
-                            "$ref": "#/properties/NotifyParty"
+                            "$ref": "#/definitions/NotifyParty"
                         },
                         "type": "array"
                     },
                     "otherParties": {
                         "items": {
-                            "$ref": "#/properties/OtherParty"
+                            "$ref": "#/definitions/OtherParty"
                         },
                         "type": "array"
                     },
                     "placeOfDelivery": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfPrecarriage": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "placeOfReceipt": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "portOfDischarge": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "portOfLoading": {
-                        "$ref": "#/properties/Location"
-                    },
-                    "transportMovement": {
-                        "items": {
-                            "$ref": "#/properties/TransportMovement"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/Location"
                     },
                     "utilizedTransportEquipment": {
                         "items": {
-                            "$ref": "#/properties/TransportEquipment"
+                            "$ref": "#/definitions/TransportEquipment"
                         },
                         "type": "array"
                     }
@@ -566,33 +571,41 @@
                         "description": "Information, expressed as text, for this consignment item.",
                         "type": "string"
                     },
-                    "code": {
-                        "description": "The harmonized system code specifying a type of consignment item.",
+                    "codeType": {
+                        "description": "The cargo code type of consignment item. \nhttps://service.unece.org/trade/untdid/d00a/tred/tred7143.htm",
+                        "type": "string",
+                        "enum": [
+                            "harmonizedSystem",
+                            "stockKeepingUnit",
+                            "purchaseOrder",
+                            "cargoSpecificationNumber",
+                            "vehicleIdentificationNumber"
+                        ]
+                    },
+                    "codeValue": {
+                        "description": "missing description",
                         "type": "string"
                     },
                     "equipmentStuffing": {
                         "items": {
-                            "$ref": "#/properties/Stuffing"
+                            "$ref": "#/definitions/Stuffing"
                         },
                         "type": "array"
                     },
                     "grossVolume": {
                         "items": {
-                            "$ref": "#/properties/Volume"
+                            "$ref": "#/definitions/Volume"
                         },
                         "type": "array"
                     },
                     "grossWeight": {
                         "items": {
-                            "$ref": "#/properties/Weight"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
                     "transportPackages": {
-                        "items": {
-                            "$ref": "#/properties/TransportPackage"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/TransportPackage"
                     }
                 }
             },
@@ -601,7 +614,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -633,11 +646,11 @@
                         "type": "number"
                     },
                     "placeOfIssue": {
-                        "$ref": "#/properties/Location"
+                        "$ref": "#/definitions/Location"
                     },
                     "references": {
                         "items": {
-                            "$ref": "#/properties/Reference"
+                            "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
                     }
@@ -665,7 +678,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -710,7 +723,7 @@
                 },
                 "allOf": [
                     {
-                        "$ref": "#/properties/Party"
+                        "$ref": "#/definitions/Party"
                     },
                     {
                         "type": "object"
@@ -745,10 +758,10 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/properties/Address"
+                        "$ref": "#/definitions/Address"
                     },
                     "communicationDetails": {
-                        "$ref": "#/properties/Communication"
+                        "$ref": "#/definitions/Communication"
                     }
                 }
             },
@@ -856,7 +869,8 @@
                             "warehouseStorageLocationNumber",
                             "cargoControlNumber",
                             "previousCargoControlNumber",
-                            "mutuallyDefinedReferenceNumber"
+                            "mutuallyDefinedReferenceNumber",
+                            "billOfLadingReference"
                         ]
                     },
                     "value": {
@@ -887,19 +901,19 @@
                     },
                     "stuffedGrossVolume": {
                         "items": {
-                            "$ref": "#/properties/Volume"
+                            "$ref": "#/definitions/Volume"
                         },
                         "type": "array"
                     },
                     "stuffedGrossWeight": {
                         "items": {
-                            "$ref": "#/properties/Weight"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
                     "stuffedTransportPackages": {
                         "items": {
-                            "$ref": "#/properties/TransportPackage"
+                            "$ref": "#/definitions/TransportPackage"
                         },
                         "type": "array"
                     }
@@ -926,20 +940,20 @@
                     },
                     "information": {
                         "items": {
-                            "$ref": "#/properties/TransportDocumentInformation"
+                            "$ref": "#/definitions/TransportDocumentInformation"
                         },
                         "type": "array"
                     }
                 },
                 "allOf": [
                     {
-                        "$ref": "#/properties/Document"
+                        "$ref": "#/definitions/Document"
                     },
                     {
                         "type": "object"
                     },
                     {
-                        "$ref": "#/properties/Consignment"
+                        "$ref": "#/definitions/Consignment"
                     },
                     {
                         "type": "object"
@@ -993,11 +1007,11 @@
                         "type": "array"
                     },
                     "equipmentGrossWeight": {
-                        "$ref": "#/properties/Weight"
+                        "$ref": "#/definitions/Weight"
                     },
                     "seals": {
                         "items": {
-                            "$ref": "#/properties/Seal"
+                            "$ref": "#/definitions/Seal"
                         },
                         "type": "array"
                     }
@@ -1027,7 +1041,7 @@
                         "type": "string"
                     },
                     "usedTransportMeans": {
-                        "$ref": "#/properties/TransportMeans"
+                        "$ref": "#/definitions/TransportMeans"
                     }
                 }
             },
@@ -1040,6 +1054,10 @@
                     },
                     "type": {
                         "description": "A type, expressed as text, of this logistics package.",
+                        "type": "string"
+                    },
+                    "typeCode": {
+                        "description": "A code specifying the type of logistics package.",
                         "type": "string"
                     },
                     "shippingMarks": {
@@ -1056,7 +1074,7 @@
                 "properties": {},
                 "allOf": [
                     {
-                        "$ref": "#/properties/BillOfLading"
+                        "$ref": "#/definitions/BillOfLading"
                     },
                     {
                         "type": "object"
@@ -1098,5 +1116,66 @@
                 }
             }
         }
-    }
+    },
+    "layout": [
+        {
+            "widget": "message",
+            "message": "<h1>verifyCopy</h1>"
+        },
+        {
+            "key": "negotiable"
+        },
+        {
+            "key": "freightedAtAd"
+        },
+        {
+            "key": "certifiedMember"
+        },
+        {
+            "key": "dateOfAcceptance"
+        },
+        {
+            "key": "declarationOfInterest"
+        },
+        {
+            "key": "eBL"
+        },
+        {
+            "key": "witness"
+        },
+        {
+            "key": "shippedOnBoardDate"
+        },
+        {
+            "key": "billOfLadingNumber",
+            "required": true
+        },
+        {
+            "key": "bookingNumber"
+        },
+        {
+            "key": "originatorName"
+        },
+        {
+            "key": "originatorId"
+        },
+        {
+            "key": "issue"
+        },
+        {
+            "key": "originalIssued"
+        },
+        {
+            "key": "copyIssued"
+        },
+        {
+            "key": "departureDate"
+        },
+        {
+            "key": "serviceMode"
+        },
+        {
+            "key": "transportEquipmentQuantity"
+        }
+    ]
 }

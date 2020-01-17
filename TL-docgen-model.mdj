@@ -89062,8 +89062,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuWd9EZzJ3pTs="
 							},
-							"name": "billOfLadingReference",
-							"documentation": "Customer provided reference to a bill of lading."
+							"name": "cocoaBatchReferenceNumber",
+							"documentation": "Cocoa batch reference number."
 						}
 					]
 				},
@@ -110714,7 +110714,7 @@
 											"top": 2673,
 											"width": 308.52783203125,
 											"height": 13,
-											"text": "billOfLadingReference",
+											"text": "cocoaBatchReferenceNumber",
 											"horizontalAlignment": 0
 										}
 									],

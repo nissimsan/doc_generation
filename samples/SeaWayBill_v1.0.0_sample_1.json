@@ -1,0 +1,133 @@
+{
+    "carrier": {
+      "carrierCode": "OCCA",
+      "name": "OCEAN CARRIER LINE"
+    },
+    "consignee": {
+      "name": "CELLPHONESTORE",
+      "registeredForVAT": false,
+      "partyRef": "CONSIGREF22444",
+      "address": {
+        "street": "STREET ADDRESS",
+        "city": "LONDON",
+        "state": "LONDON",
+        "country": "GB"
+      },
+      "communicationDetails": {
+        "telephone": "99 39393 99333",
+        "email": "consigneecocontact@consi.com"
+      }
+    },
+    "consignmentItems": [{
+      "sequence": 1,
+      "equipmentStuffing": [{
+        "equipmentNumber": "CONT1112221",
+        "stuffedTransportPackages": [{
+          "quantity": 26,
+          "type": "Pallets",
+          "shippingMarks": ["SHIPPER STOW AND LOAD"]
+        }]
+      }, {
+        "equipmentNumber": "CONT2223332",
+        "stuffedTransportPackages": [{
+          "shippingMarks": ["SHIPPER STOW AND LOAD"]
+        }]
+      }],
+      "grossVolume": [{
+        "value": 68000,
+        "unit": "cbm"
+      }],
+      "grossWeight": [{
+        "value": 63456.6,
+        "unit": "kgs"
+      }]
+    }],
+    "consignor": {
+      "name": "Phones r Us",
+      "registeredForVAT": false,
+      "partyRef": "BCOCODEABC",
+      "address": {
+        "street": "STREET ADDRESS",
+        "city": "Haiphong",
+        "state": "Haiphong",
+        "country": "VN"
+      },
+      "communicationDetails": {
+        "telephone": "3334 343 34343",
+        "email": "contactemail@bcoco.com"
+      }
+    },
+    "issue": "2019-10-25T00:00:00Z",
+    "originalIssued": 1,
+    "placeOfIssue": {
+      "name": "Felixstowe, GB",
+      "UNLocode": "GBFXT"
+    },
+    "references": [{
+      "type": "shippersIdentifyingNumberForShipment",
+      "value": "SHREF11122"
+    }],
+    "charges": [{
+      "chargeCode": "01",
+      "chargeText": "Basic Ocean Freight",
+      "currency": "USD",
+      "paymentTerm": "prepaid"
+    }],
+    "mainCarriageTransportMovement": [{
+      "identification": "924W",
+      "usedTransportMeans": {
+        "identification": "9321495",
+        "name": "ESTELLE VESSEL"
+      }
+    }],
+    "notifyParties": [{
+      "name": "Destination Customs House Broker",
+      "registeredForVAT": false,
+      "partyRef": "CHB22232",
+      "address": {
+        "street": "CHB Street",
+        "city": "Felixstowe",
+        "state": "Felixstowe",
+        "country": "GB"
+      }
+    }],
+    "otherParties": [{
+      "registeredForVAT": false
+    }],
+    "placeOfDelivery": {
+      "name": "London, GB",
+      "UNLocode": "GBLON"
+    },
+    "placeOfPrecarriage": {
+      "name": "Rail"
+    },
+    "placeOfReceipt": {
+      "name": "Haiphong, VN",
+      "UNLocode": "VNTNG"
+    },
+    "portOfDischarge": {
+      "name": "Felixstowe",
+      "UNLocode": "GBFXT"
+    },
+    "portOfLoading": {
+      "name": "Hai Phong",
+      "UNLocode": "VNHPH"
+    },
+    "utilizedTransportEquipment": [{
+      "equipmentNumber": "CONT2223332",
+      "seals": [{
+        "identifier": "CA223344"
+      }]
+    }, {
+      "equipmentNumber": "CONT1112221",
+      "seals": [{
+        "identifier": "CA223345"
+      }]
+    }],
+    "billOfLadingNumber": "587237707",
+    "bookingNumber": ["587237707"],
+    "information": [{
+      "text": "DANGEROUS GOODS, HANDLE WITH CARE",
+      "type": "billOfLadingRemarks"
+    }]
+}

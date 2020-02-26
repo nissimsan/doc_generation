@@ -1,0 +1,301 @@
+{
+  "carrier": {
+    "carrierCode": "CACO",
+    "name": "Carrier Co.",
+    "address": {
+      "street": "Kungsgaten 20",
+      "city": "Stockholm",
+      "state": "Sweden",
+      "country": "SE",
+      "postcode": "2150"
+    }
+  },
+  "consignee": {
+    "name": "Exotic Fruit Gross",
+    "printedParty": "EXOTIC FRUIT, LOUISES GATE 14, OLSO, NORWAY",
+    "registeredForVAT": false,
+    "partyRef": "CUST3456789",
+    "organizationId": "cd1fcc62-09a6-48f7-b150-4c3a974dd83f",
+    "address": {
+      "street": "Louises gate 14",
+      "city": "Oslo",
+      "state": "NO",
+      "country": "NO"
+    }
+  },
+  "consignmentItems": [
+    {
+      "sequence": 1,
+      "information": "Bananas",
+      "codeType": "harmonizedSystem",
+      "codeValue": "080310",
+      "equipmentStuffing": [
+        {
+          "equipmentNumber": "CACO10512",
+          "stuffedGrossVolume": [
+            {
+              "value": 50,
+              "unit": "cbm"
+            }
+          ],
+          "stuffedGrossWeight": [
+            {
+              "value": 12000,
+              "unit": "kgs"
+            }
+          ],
+          "stuffedTransportPackages": [
+            {
+              "quantity": 600,
+              "type": "Cartons",
+              "typeCode": "22",
+              "shippingMarks": [
+                "BA-334455"
+              ]
+            }
+          ]
+        },
+        {
+          "equipmentNumber": "CACO11024",
+          "stuffedGrossVolume": [
+            {
+              "value": 16,
+              "unit": "cbm"
+            }
+          ],
+          "stuffedGrossWeight": [
+            {
+              "value": 4000,
+              "unit": "kgs"
+            }
+          ],
+          "stuffedTransportPackages": [
+            {
+              "quantity": 200,
+              "type": "Cartons",
+              "typeCode": "22",
+              "shippingMarks": [
+                "BA-334455"
+              ]
+            }
+          ]
+        }
+      ],
+      "grossVolume": [
+        {
+          "value": 66,
+          "unit": "cbm"
+        }
+      ],
+      "grossWeight": [
+        {
+          "value": 16000,
+          "unit": "kgs"
+        }
+      ],
+      "transportPackages": {
+        "quantity": 800,
+        "type": "Cartons",
+        "typeCode": "22",
+        "shippingMarks": [
+          "BA-334455"
+        ]
+      }
+    },
+    {
+      "sequence": 2,
+      "information": "Mangos",
+      "codeType": "harmonizedSystem",
+      "codeValue": "080450",
+      "equipmentStuffing": [
+        {
+          "equipmentNumber": "CACO11024",
+          "stuffedGrossVolume": [
+            {
+              "value": 30,
+              "unit": "cbm"
+            }
+          ],
+          "stuffedGrossWeight": [
+            {
+              "value": 7000,
+              "unit": "kgs"
+            }
+          ],
+          "stuffedTransportPackages": [
+            {
+              "quantity": 500,
+              "type": "Cartons",
+              "typeCode": "22",
+              "shippingMarks": [
+                "MG-665587"
+              ]
+            }
+          ]
+        }
+      ],
+      "grossVolume": [
+        {
+          "value": 30,
+          "unit": "cbm"
+        }
+      ],
+      "grossWeight": [
+        {
+          "value": 7000,
+          "unit": "kgs"
+        }
+      ],
+      "transportPackages": {
+        "quantity": 500,
+        "type": "Cartons",
+        "typeCode": "22",
+        "shippingMarks": [
+          "MG-665587"
+        ]
+      }
+    }
+  ],
+  "consignor": {
+    "name": "Tropical Fruit Farms, Inc",
+    "printedParty": "TROPICAL FRUITS INC, HIGHWAY 41, LA VEGA PROVINCE, DOMINICAN REPUBLIC",
+    "registeredForVAT": false,
+    "partyRef": "CUST987654",
+    "address": {
+      "street": "Highway 41",
+      "city": "Constanza",
+      "state": "La Vega",
+      "country": "DO"
+    }
+  },
+  "originatorName": "Carrier Co.",
+  "originatorId": "CACO",
+  "issue": "2020-02-26T09:30:00Z",
+  "originalIssued": 2,
+  "copyIssued": 3,
+  "placeOfIssue": {
+    "name": "Stockholm",
+    "UNLocode": "SESTO",
+    "printedLocation": "Stockholm"
+  },
+  "departureDate": "2020-02-24T06:00:00Z",
+  "serviceMode": "CY-CY",
+  "transportEquipmentQuantity": 2,
+  "cargoInformation": [
+    {
+      "text": "Reefer +4 celcius",
+      "type": "temperatureControlInstructions"
+    }
+  ],
+  "charges": [
+    {
+      "chargeCode": "541",
+      "chargeText": "Basic Ocean freight",
+      "paymentTerm": "prepaid",
+      "freightPayableAt": "Carrier Co.",
+      "invoicePartyRef": "CUST2345678"
+    }
+  ],
+  "mainCarriageTransportMovement": [
+    {
+      "identification": "E-10056",
+      "usedTransportMeans": {
+        "identification": "8814275",
+        "name": "MS Megan"
+      }
+    }
+  ],
+  "notifyParties": [
+    {
+      "name": "Truckters Inc",
+      "printedParty": "TRUCKSTERS, HOVEDGATEN 120, 7890, TRONDHEIM, NORWAY",
+      "registeredForVAT": false,
+      "address": {
+        "street": "Hovedgaten 120",
+        "city": "Trondheim",
+        "state": "NO",
+        "country": "NO",
+        "postcode": "7890"
+      }
+    }
+  ],
+  "otherParties": [
+    {
+      "registeredForVAT": false
+    }
+  ],
+  "placeOfDelivery": {
+    "name": "Olso",
+    "UNLocode": "NOOSL",
+    "printedLocation": "Olso, Norway"
+  },
+  "placeOfReceipt": {
+    "name": "Santo Domingo",
+    "UNLocode": "DOSDQ",
+    "printedLocation": "Santo Domingo, Dominican Republic"
+  },
+  "portOfDischarge": {
+    "name": "Olso",
+    "UNLocode": "NOOSL",
+    "printedLocation": "Olso, Norway"
+  },
+  "portOfLoading": {
+    "name": "Santo Domingo",
+    "UNLocode": "DOSDQ",
+    "printedLocation": "Santo Domingo, Dominican Republic"
+  },
+  "utilizedTransportEquipment": [
+    {
+      "equipmentNumber": "CACO10512",
+      "equipmentType": "42R1",
+      "printedEquipmentType": "Reefer",
+      "code": [
+        "080310"
+      ],
+      "equipmentGrossWeight": {
+        "value": 13000,
+        "unit": "kgs"
+      },
+      "seals": [
+        {
+          "type": "Customs Seal",
+          "identifier": "SO005658888"
+        }
+      ]
+    },
+    {
+      "equipmentNumber": "CACO11024",
+      "equipmentType": "42R1",
+      "printedEquipmentType": "Reefer",
+      "code": [
+        "080310",
+        "080450"
+      ],
+      "equipmentGrossWeight": {
+        "value": 13000,
+        "unit": "kgs"
+      },
+      "seals": [
+        {
+          "type": "Customs Seal",
+          "identifier": "SO005658889"
+        }
+      ]
+    }
+  ],
+  "shippedOnBoardDate": "2020-01-31T10:00:00Z",
+  "billOfLadingNumber": "CACO123456",
+  "bookingNumber": [
+    "CACO123456"
+  ],
+  "information": [
+    {
+      "text": "The Carrier accepts a duty of reasonable care to check that any such document which the Merchant surrenders as a bill of lading is genuine and original.",
+      "type": "billOfLadingClause"
+    }
+  ],
+  "negotiable": true,
+  "freightedAtAd": false,
+  "declarationOfInterest": false,
+  "eBL": false
+}

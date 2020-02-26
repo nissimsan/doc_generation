@@ -1,0 +1,348 @@
+{
+  "carrier": {
+    "carrierCode": "scac123",
+    "name": "carrier Name",
+    "taxId": "12344",
+    "address": {
+      "street": "carrier street",
+      "city": "carrier city",
+      "state": "carrier state",
+      "country": "AG",
+      "postcode": "1234AB"
+    },
+    "contactDetails": {
+      "telephone": "34567890",
+      "fax": "1234567",
+      "email": "carrier@ibm.om",
+      "contactName": "carrier contact name"
+    }
+  },
+  "consignee": {
+    "name": "consignor name",
+    "printedParty": "Consignee printed address",
+    "registeredForVAT": true,
+    "taxReference": "65678",
+    "partyRef": "Consignee ref",
+    "organizationId": "consigneeOrg",
+    "address": {
+      "street": "Consignee street",
+      "city": "Consignee city",
+      "state": "Consignee state",
+      "country": "CO",
+      "postcode": "2331AB"
+    },
+    "communicationDetails": {
+      "telephone": "65432",
+      "fax": "12345",
+      "email": "consignee@ibm.com",
+      "contactName": "consignee contact name"
+    }
+  },
+  "consignmentItems": [
+    {
+      "sequence": 1,
+      "information": "consignment item information",
+      "codeType": "vehicleIdentificationNumber",
+      "codeValue": "123489 identification",
+      "equipmentStuffing": [
+        {
+          "equipmentNumber": "equip1234",
+          "stuffedGrossVolume": [
+            {
+              "value": 120,
+              "unit": "cbm"
+            }
+          ],
+          "stuffedGrossWeight": [
+            {
+              "value": 2000,
+              "unit": "kgs"
+            }
+          ],
+          "stuffedTransportPackages": [
+            {
+              "quantity": 2,
+              "type": "45G",
+              "typeCode": "code",
+              "shippingMarks": [
+                "shipping marks",
+                "shippingmarks1"
+              ]
+            }
+          ]
+        }
+      ],
+      "grossVolume": [
+        {
+          "value": 280,
+          "unit": "cbm"
+        }
+      ],
+      "grossWeight": [
+        {
+          "value": 4000,
+          "unit": "kgs"
+        }
+      ],
+      "transportPackages": {
+        "quantity": 12,
+        "type": "45G",
+        "typeCode": "code",
+        "shippingMarks": [
+          "shipping marks"
+        ]
+      }
+    }
+  ],
+  "consignor": {
+    "name": "consignor name",
+    "printedParty": "consignor printed",
+    "registeredForVAT": true,
+    "taxReference": "54532",
+    "partyRef": "consignor party ref",
+    "organizationId": "consignorOrg",
+    "address": {
+      "street": "consignor street",
+      "city": "consignor city",
+      "state": "consignor state",
+      "country": "BW",
+      "postcode": "1234AB"
+    },
+    "communicationDetails": {
+      "telephone": "2345678",
+      "fax": "12345",
+      "email": "consignor@ibm.com",
+      "contactName": "consignor contact name"
+    }
+  },
+  "originatorName": "origniator name",
+  "originatorId": "originator Id",
+  "issue": "2020-02-04T16:10:00Z",
+  "originalIssued": 1,
+  "copyIssued": 2,
+  "placeOfIssue": {
+    "name": "place of Issue name",
+    "UNLocode": "DEMRM",
+    "printedLocation": "place of issue printed location"
+  },
+  "references": [
+    {
+      "type": "deliveryScheduleNumber",
+      "value": "123456"
+    }
+  ],
+  "departureDate": "2020-02-04T16:11:00Z",
+  "serviceMode": "CY-CY",
+  "transportEquipmentQuantity": 20,
+  "cargoInformation": [
+    {
+      "text": "cargo Info",
+      "type": "equipmentComments"
+    }
+  ],
+  "charges": [
+    {
+      "chargeCode": "chargeCode1",
+      "chargeText": "chargetext1",
+      "rate": 1.5,
+      "calculationBasis": "calculation1",
+      "currency": "USD",
+      "paymentTerm": "collect",
+      "amount": 1200,
+      "freightPayableAt": "charge reciever",
+      "invoicePartyRef": "invoice ref",
+      "rateReference": "rate ref"
+    }
+  ],
+  "mainCarriageTransportMovement": [
+    {
+      "identification": "voyage1",
+      "usedTransportMeans": {
+        "identification": "vessel_IMO1",
+        "name": "vesselname"
+      }
+    }
+  ],
+  "notifyParties": [
+    {
+      "name": "Notify Party name",
+      "printedParty": "notify printed party",
+      "registeredForVAT": true,
+      "taxReference": "65678",
+      "partyRef": "notify party ref",
+      "organizationId": "notifyOrg1",
+      "address": {
+        "street": "notify street",
+        "city": "notify city",
+        "state": "notify state",
+        "country": "BG",
+        "postcode": "1234AB"
+      },
+      "communicationDetails": {
+        "telephone": "2345678",
+        "fax": "45678",
+        "email": "notifyParty1@ibm.com",
+        "contactName": "notify1 contact name"
+      }
+    },
+    {
+      "name": "Notify Party name2",
+      "printedParty": "notify printed party2",
+      "registeredForVAT": true,
+      "taxReference": "65678",
+      "partyRef": "notify party ref2",
+      "organizationId": "notifyOrg2",
+      "address": {
+        "street": "notify street2",
+        "city": "notify city2",
+        "state": "notify state2",
+        "country": "AS",
+        "postcode": "1234BN"
+      },
+      "communicationDetails": {
+        "telephone": "2345678",
+        "fax": "45678",
+        "email": "notifyParty2@ibm.com",
+        "contactName": "notify2 contact name"
+      }
+    }
+  ],
+  "onCarriageTransportMovement": [
+    {
+      "identification": "voyage3",
+      "usedTransportMeans": {
+        "identification": "vessel_IMO2",
+        "name": "vesselName2"
+      }
+    }
+  ],
+  "otherParties": [
+    {
+      "name": "other party name",
+      "printedParty": "other party printed address",
+      "registeredForVAT": true,
+      "taxReference": "54532",
+      "partyRef": "other party ref",
+      "organizationId": "otherPartyOrg",
+      "address": {
+        "street": "other party street",
+        "city": "other party city",
+        "state": "other party state",
+        "country": "AS",
+        "postcode": "1234rt"
+      },
+      "communicationDetails": {
+        "telephone": "876543456",
+        "fax": "765456789",
+        "email": "otherparty@ibm.com",
+        "contactName": "other party contact name"
+      },
+      "partyType": "importer"
+    }
+  ],
+  "placeOfDelivery": {
+    "name": "PlaceofDelivery name",
+    "UNLocode": "AUMIZ",
+    "printedLocation": "PlaceofDelivery printed location"
+  },
+  "placeOfPrecarriage": {
+    "name": "PlacOfPrecarriage name",
+    "UNLocode": "DETOR",
+    "printedLocation": "PlacOfPrecarriage printed location"
+  },
+  "placeOfReceipt": {
+    "name": "PlacOfPrecarriage name",
+    "UNLocode": "FRSBK",
+    "printedLocation": "PlacOfPrecarriage printed location"
+  },
+  "portOfDischarge": {
+    "name": "portOfDischarge name",
+    "UNLocode": "EGISM",
+    "printedLocation": "portOfDischarge printed location"
+  },
+  "portOfLoading": {
+    "name": "portOfLoading name",
+    "UNLocode": "DETOR",
+    "printedLocation": "portOfLoading printed location"
+  },
+  "preCarriageMovement": [
+    {
+      "identification": "voayage6",
+      "usedTransportMeans": {
+        "identification": "vessel_IMO6",
+        "name": "vessel_name6"
+      }
+    }
+  ],
+  "utilizedTransportEquipment": [
+    {
+      "equipmentNumber": "equip1234",
+      "equipmentType": "45G1",
+      "printedEquipmentType": "40 Dry",
+      "code": [
+        "hscode1",
+        "hscode2"
+      ],
+      "equipmentGrossWeight": {
+        "value": 300,
+        "unit": "kgs"
+      },
+      "seals": [
+        {
+          "type": "seal1",
+          "identifier": "seal_1"
+        },
+        {
+          "type": "seal2",
+          "identifier": "seal_2"
+        }
+      ]
+    },
+    {
+      "equipmentNumber": "equip2345",
+      "equipmentType": "45G1",
+      "printedEquipmentType": "40 Dry",
+      "code": [
+        "hscode2"
+      ],
+      "equipmentGrossWeight": {
+        "value": 200,
+        "unit": "kgs"
+      },
+      "seals": [
+        {
+          "type": "seal3",
+          "identifier": "seal_3"
+        },
+        {
+          "type": "seal4",
+          "identifier": "seal_4"
+        }
+      ]
+    }
+  ],
+  "shippedOnBoardDate": "2020-02-04T16:40:00Z",
+  "billOfLadingNumber": "BOL123",
+  "bookingNumber": [
+    "BN1234",
+    "BN0987",
+    "BN8787"
+  ],
+  "information": [
+    {
+      "text": "cargo Info",
+      "type": "generalInformation"
+    },
+    {
+      "text": "BOL clause",
+      "type": "billOfLadingClause"
+    }
+  ],
+  "negotiable": true,
+  "freightedAtAd": true,
+  "certifiedMember": "certified123",
+  "dateOfAcceptance": "2020-02-04T16:39:00Z",
+  "declarationOfInterest": true,
+  "eBL": true,
+  "witness": "witness signed"
+}

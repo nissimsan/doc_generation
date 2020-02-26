@@ -1,0 +1,85 @@
+{
+    "carrier": {
+      "carrierCode": "OCCA",
+      "name": "OCCA"
+    },
+    "consignee": {
+      "name": "CELLPHONESTORE",
+      "registeredForVAT": false,
+      "address": {
+        "street": "PSTREET ADDRESS",
+        "city": "LONDON",
+        "state": "LONDON",
+        "country": "GB"
+      }
+    },
+    "consignmentItems": [{
+      "sequence": 1,
+      "equipmentStuffing": [{
+        "equipmentNumber": "CONT1112221"
+      }],
+      "grossVolume": [{
+        "value": 68000,
+        "unit": "cbm"
+      }],
+      "grossWeight": [{
+        "value": 63456.6,
+        "unit": "kgs"
+      }],
+      "transportPackages": {
+        "quantity": 26
+      }
+    }],
+    "consignor": {
+      "name": "Phones r Us",
+      "registeredForVAT": false,
+      "address": {
+        "street": "STREET ADDRESS",
+        "city": "Haiphong",
+        "state": "Haiphong",
+        "country": "VN"
+      }
+    },
+    "originalIssued": 1,
+    "placeOfIssue": {
+      "name": "Manila"
+    },
+    "cargoInformation": [{
+      "text": "1 Container Said to Contain 2500 CASES",
+      "type": "goodsDescription"
+    }],
+    "charges": [{
+      "chargeText": "Basic Ocean Freight",
+      "paymentTerm": "prepaid"
+    }, {
+      "chargeText": "Equipment Management Exports",
+      "paymentTerm": "prepaid"
+    }, {
+      "chargeText": "Standard Bunker Adjustment Factor",
+      "paymentTerm": "prepaid"
+    }],
+    "mainCarriageTransportMovement": [{
+      "identification": "924W",
+      "usedTransportMeans": {
+        "name": "ESTELLE MAERSK"
+      }
+    }],
+    "notifyParties": [{
+      "registeredForVAT": false
+    }],
+    "otherParties": [{
+      "registeredForVAT": false
+    }],
+    "portOfDischarge": {
+      "name": "Felixstowe, GB"
+    },
+    "portOfLoading": {
+      "name": "Haiphong, VN"
+    },
+    "billOfLadingNumber": "587237707",
+    "bookingNumber": ["587237707"],
+    "negotiable": false,
+    "freightedAtAd": false,
+    "declarationOfInterest": false,
+    "eBL": false
+}

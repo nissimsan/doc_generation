@@ -359,6 +359,14 @@ components:
         chargeCode:
           description: The unique identifier for this logistics service charge.
           type: string
+          enum:
+            - allCharges
+            - additionalCharges
+            - basicFreight
+            - destinationHaulageCharges
+            - destinationPortCharges
+            - originPortCharges
+            - originHaulageCharges
         chargeText:
           description: A textual description of this logistics service charge.
           type: string
@@ -379,6 +387,7 @@ components:
           enum:
             - prepaid
             - collect
+            - prepaidElsewhere
         amount:
           description: A monetary value applied to this logistics service charge.
           type: number
@@ -390,6 +399,9 @@ components:
           type: string
         rateReference:
           description: Reference on the charge rate.
+          type: string
+        invoicePartyName:
+          description: missing description
           type: string
     Communication:
       type: object
@@ -420,71 +432,75 @@ components:
           type: string
           format: date-time
         serviceMode:
-          description: 'The scope of the consignment, such as CY-CY or SD-SD.'
-          type: string
+          allOf:
+            - description: 'The scope of the consignment, such as CY-CY or SD-SD.'
+            - $ref: '#/components/schemas/Text'
+            - type: object
         transportEquipmentQuantity:
           description: >-
             A number of pieces of transport equipment, such as containers or
             similar unit load devices, in this consignment.
           type: number
-        cargoInformation:
-          items:
-            $ref: '#/components/schemas/CargoInformation'
-          type: array
-        carrier:
-          $ref: '#/components/schemas/Carrier'
-        charges:
-          items:
-            $ref: '#/components/schemas/Charges'
-          type: array
-        consignee:
-          $ref: '#/components/schemas/Consignee'
-        consignmentItems:
-          items:
-            $ref: '#/components/schemas/ConsignmentItem'
-          type: array
-          minItems: 1
-        consignor:
-          $ref: '#/components/schemas/Consignor'
-        mainCarriageTransportMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
-          type: array
         notifyParties:
           items:
             $ref: '#/components/schemas/NotifyParty'
-          type: array
-        onCarriageTransportMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
           type: array
         otherParties:
           items:
             $ref: '#/components/schemas/OtherParty'
           type: array
-        placeOfDelivery:
-          $ref: '#/components/schemas/Location'
-        placeOfPrecarriage:
-          $ref: '#/components/schemas/Location'
         placeOfReceipt:
           $ref: '#/components/schemas/Location'
-        portOfDischarge:
+        placeOfDelivery:
           $ref: '#/components/schemas/Location'
         portOfLoading:
           $ref: '#/components/schemas/Location'
-        preCarriageMovement:
+        portOfDischarge:
+          $ref: '#/components/schemas/Location'
+        carrier:
+          $ref: '#/components/schemas/Carrier'
+        consignmentItems:
           items:
-            $ref: '#/components/schemas/TransportMovement'
+            $ref: '#/components/schemas/ConsignmentItem'
           type: array
+          minItems: 1
+        charges:
+          items:
+            $ref: '#/components/schemas/Charges'
+          type: array
+          minItems: 1
         utilizedTransportEquipment:
           items:
             $ref: '#/components/schemas/TransportEquipment'
           type: array
+        consignor:
+          $ref: '#/components/schemas/Consignor'
+        consignee:
+          $ref: '#/components/schemas/Consignee'
+        placeOfPrecarriage:
+          $ref: '#/components/schemas/Location'
+        mainCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
+        cargoInformation:
+          items:
+            $ref: '#/components/schemas/CargoInformation'
+          type: array
+        onCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
+        preCarriageMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
       required:
         - carrier
-        - consignee
         - consignmentItems
+        - charges
         - consignor
+        - consignee
     ConsignmentItem:
       type: object
       properties:
@@ -492,7 +508,9 @@ components:
           description: The sequence number for this consignment item.
           type: number
         information:
-          description: 'Information, expressed as text, for this consignment item.'
+          description: >-
+            Cargo description. Information, expressed as text, for this
+            consignment item.
           type: string
         codeType:
           description: |-
@@ -506,22 +524,22 @@ components:
             - cargoSpecificationNumber
             - vehicleIdentificationNumber
         codeValue:
-          description: missing description
+          description: A code specifying a type of consignment item.
           type: string
-        equipmentStuffing:
+        transportPackages:
+          $ref: '#/components/schemas/TransportPackage'
+        grossWeight:
           items:
-            $ref: '#/components/schemas/Stuffing'
+            $ref: '#/components/schemas/Weight'
           type: array
         grossVolume:
           items:
             $ref: '#/components/schemas/Volume'
           type: array
-        grossWeight:
+        equipmentStuffing:
           items:
-            $ref: '#/components/schemas/Weight'
+            $ref: '#/components/schemas/Stuffing'
           type: array
-        transportPackages:
-          $ref: '#/components/schemas/TransportPackage'
     Consignor:
       type: object
       properties: {}
@@ -563,7 +581,9 @@ components:
       type: object
       properties:
         name:
-          description: 'A name, expressed as text, of this logistics related location.'
+          description: |-
+            A name, expressed as text, of this logistics related location.
+            Corresponding EDIFACT element: 3225 - Location name code.
           type: string
         UNLocode:
           description: >-
@@ -582,7 +602,7 @@ components:
     OtherParty:
       type: object
       properties:
-        partyType:
+        partyRole:
           description: 'Type of party. '
           type: string
           enum:
@@ -605,7 +625,7 @@ components:
             - truckOperator
             - bargeOperator
             - feederOperator
-            - originMaritimeTerminal
+            - originMarineTerminal
             - destinationMarineTerminal
             - transhipmentTerminal
             - inlandTerminal
@@ -745,7 +765,7 @@ components:
             - cargoControlNumber
             - previousCargoControlNumber
             - mutuallyDefinedReferenceNumber
-            - billOfLadingReference
+            - cocoaBatchReferenceNumber
         value:
           description: 'Reference value. '
           type: string
@@ -824,10 +844,12 @@ components:
       type: object
       properties:
         equipmentNumber:
-          description: >-
-            Unique identifier for this piece of transport equipment, printed
-            physically on the equipment.
-          type: string
+          allOf:
+            - description: >-
+                Unique identifier for this piece of transport equipment, printed
+                physically on the equipment.
+            - $ref: '#/components/schemas/Identifier'
+            - type: object
         equipmentType:
           description: ISO 6346 size and type code (for example "45G1")
           type: string
@@ -843,12 +865,12 @@ components:
               item(s).
             type: string
           type: array
-        equipmentGrossWeight:
-          $ref: '#/components/schemas/Weight'
         seals:
           items:
             $ref: '#/components/schemas/Seal'
           type: array
+        equipmentGrossWeight:
+          $ref: '#/components/schemas/Weight'
       required:
         - equipmentNumber
     TransportMeans:
@@ -909,11 +931,28 @@ components:
       type: object
       properties:
         value:
-          description: 'Numeric weight value. '
-          type: number
+          allOf:
+            - description: 'Numeric weight value. '
+            - $ref: '#/components/schemas/Numeric'
+            - type: object
         unit:
           description: Unit used for weight measurement.
           type: string
           enum:
             - kgs
             - lbs
+    Text:
+      type: object
+      properties: {}
+    Indicator:
+      type: object
+      properties: {}
+    DateTime:
+      type: object
+      properties: {}
+    Numeric:
+      type: object
+      properties: {}
+    Identifier:
+      type: object
+      properties: {}

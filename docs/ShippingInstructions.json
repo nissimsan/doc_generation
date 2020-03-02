@@ -317,12 +317,29 @@
             "Charges": {
                 "type": "object",
                 "properties": {
+                    "chargeCode": {
+                        "description": "The unique identifier for this logistics service charge.",
+                        "type": "string",
+                        "enum": [
+                            "allCharges",
+                            "additionalCharges",
+                            "basicFreight",
+                            "destinationHaulageCharges",
+                            "destinationPortCharges",
+                            "originPortCharges",
+                            "originHaulageCharges"
+                        ]
+                    },
                     "chargeText": {
                         "description": "A textual description of this logistics service charge.",
                         "type": "string"
                     },
                     "invoicePartyRef": {
                         "description": "Reference to the invoice party. ",
+                        "type": "string"
+                    },
+                    "invoicePartyName": {
+                        "description": "missing description",
                         "type": "string"
                     }
                 }
@@ -369,24 +386,70 @@
                         "format": "date-time"
                     },
                     "serviceMode": {
-                        "description": "The scope of the consignment, such as CY-CY or SD-SD.",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "The scope of the consignment, such as CY-CY or SD-SD."
+                            },
+                            {
+                                "$ref": "#/definitions/Text"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "transportEquipmentQuantity": {
                         "description": "A number of pieces of transport equipment, such as containers or similar unit load devices, in this consignment.",
                         "type": "number"
                     },
+                    "utilizedTransportEquipment": {
+                        "items": {
+                            "$ref": "#/definitions/TransportEquipment"
+                        },
+                        "type": "array"
+                    },
                     "carrier": {
                         "$ref": "#/definitions/Carrier"
+                    },
+                    "consignee": {
+                        "$ref": "#/definitions/Consignee"
+                    },
+                    "consignor": {
+                        "$ref": "#/definitions/Consignor"
+                    },
+                    "notifyParties": {
+                        "items": {
+                            "$ref": "#/definitions/NotifyParty"
+                        },
+                        "type": "array"
+                    },
+                    "placeOfReceipt": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "placeOfDelivery": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "portOfLoading": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "portOfDischarge": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "placeOfPrecarriage": {
+                        "$ref": "#/definitions/Location"
+                    },
+                    "mainCarriageTransportMovement": {
+                        "items": {
+                            "$ref": "#/definitions/TransportMovement"
+                        },
+                        "type": "array"
                     },
                     "charges": {
                         "items": {
                             "$ref": "#/definitions/Charges"
                         },
-                        "type": "array"
-                    },
-                    "consignee": {
-                        "$ref": "#/definitions/Consignee"
+                        "type": "array",
+                        "minItems": 1
                     },
                     "consignmentItems": {
                         "items": {
@@ -395,8 +458,8 @@
                         "type": "array",
                         "minItems": 1
                     },
-                    "consignor": {
-                        "$ref": "#/definitions/Consignor"
+                    "grossVolume": {
+                        "$ref": "#/definitions/Volume"
                     },
                     "customsBroker": {
                         "$ref": "#/definitions/CustomsBroker"
@@ -407,54 +470,6 @@
                     "freightPayer": {
                         "$ref": "#/definitions/FreightPayer"
                     },
-                    "grossVolume": {
-                        "items": {
-                            "$ref": "#/definitions/Volume"
-                        },
-                        "type": "array"
-                    },
-                    "grossWeight": {
-                        "$ref": "#/definitions/Weight"
-                    },
-                    "mainCarriageTransportMovement": {
-                        "items": {
-                            "$ref": "#/definitions/TransportMovement"
-                        },
-                        "type": "array"
-                    },
-                    "notifyParties": {
-                        "items": {
-                            "$ref": "#/definitions/NotifyParty"
-                        },
-                        "type": "array"
-                    },
-                    "onCarriageTransportMovement": {
-                        "items": {
-                            "$ref": "#/definitions/TransportMovement"
-                        },
-                        "type": "array"
-                    },
-                    "placeOfDelivery": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "placeOfPrecarriage": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "placeOfReceipt": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "portOfDischarge": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "portOfLoading": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "preCarriageMovement": {
-                        "items": {
-                            "$ref": "#/definitions/TransportMovement"
-                        },
-                        "type": "array"
-                    },
                     "shipFromParty": {
                         "$ref": "#/definitions/ShipFromParty"
                     },
@@ -464,9 +479,18 @@
                     "transportPackages": {
                         "$ref": "#/definitions/TransportPackage"
                     },
-                    "utilizedTransportEquipment": {
+                    "grossWeight": {
+                        "$ref": "#/definitions/Weight"
+                    },
+                    "onCarriageTransportMovement": {
                         "items": {
-                            "$ref": "#/definitions/TransportEquipment"
+                            "$ref": "#/definitions/TransportMovement"
+                        },
+                        "type": "array"
+                    },
+                    "preCarriageMovement": {
+                        "items": {
+                            "$ref": "#/definitions/TransportMovement"
                         },
                         "type": "array"
                     }
@@ -474,8 +498,11 @@
                 "required": [
                     "carrier",
                     "consignee",
+                    "consignor",
+                    "charges",
                     "consignmentItems",
-                    "consignor"
+                    "grossVolume",
+                    "grossWeight"
                 ]
             },
             "ConsignmentItem": {
@@ -486,7 +513,7 @@
                         "type": "number"
                     },
                     "information": {
-                        "description": "Information, expressed as text, for this consignment item.",
+                        "description": "Cargo description. Information, expressed as text, for this consignment item.",
                         "type": "string"
                     },
                     "codeType": {
@@ -501,15 +528,15 @@
                         ]
                     },
                     "codeValue": {
-                        "description": "missing description",
+                        "description": "A code specifying a type of consignment item.",
                         "type": "string"
                     },
-                    "applicableDangerousGoods": {
-                        "$ref": "#/definitions/DangerousGoods"
+                    "transportPackages": {
+                        "$ref": "#/definitions/TransportPackage"
                     },
-                    "equipmentStuffing": {
+                    "grossWeight": {
                         "items": {
-                            "$ref": "#/definitions/Stuffing"
+                            "$ref": "#/definitions/Weight"
                         },
                         "type": "array"
                     },
@@ -519,14 +546,20 @@
                         },
                         "type": "array"
                     },
-                    "grossWeight": {
+                    "equipmentStuffing": {
                         "items": {
-                            "$ref": "#/definitions/Weight"
+                            "$ref": "#/definitions/Stuffing"
                         },
                         "type": "array"
                     },
-                    "transportPackages": {
-                        "$ref": "#/definitions/TransportPackage"
+                    "applicableDangerousGoods": {
+                        "$ref": "#/definitions/DangerousGoods"
+                    },
+                    "transportTemperature": {
+                        "items": {
+                            "$ref": "#/definitions/ReeferSetting"
+                        },
+                        "type": "array"
                     }
                 },
                 "allOf": [
@@ -578,24 +611,60 @@
                 "type": "object",
                 "properties": {
                     "UNDGIdentification": {
-                        "description": "The code specifying the unique United Nations Dangerous Goods (UNDG) number assigned to the dangerous goods.",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "The code specifying the unique United Nations Dangerous Goods (UNDG) number assigned to the dangerous goods."
+                            },
+                            {
+                                "$ref": "#/definitions/Text"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "hazardType": {
                         "description": "A code specifying the type of hazard for the dangerous goods.",
                         "type": "string"
                     },
                     "hazardClassification": {
-                        "description": "A unique identifier for this hazard classification for the dangerous goods.",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "A unique identifier for this hazard classification for the dangerous goods."
+                            },
+                            {
+                                "$ref": "#/definitions/Text"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "hazardClassVersion": {
-                        "description": "The unique identifier of the version of a hazard class for the dangerous goods.",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "The unique identifier of the version of a hazard class for the dangerous goods."
+                            },
+                            {
+                                "$ref": "#/definitions/Text"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "hazardInformation": {
-                        "description": "Used to indicate Haz Mat Placard (explosive, flammable, etc.)",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "Used to indicate Haz Mat Placard (explosive, flammable, etc.)"
+                            },
+                            {
+                                "$ref": "#/definitions/Text"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "ems": {
                         "description": "The unique transport emergency procedure (EMS) identifier applicable for the dangerous goods.",
@@ -621,11 +690,11 @@
                         "description": "A code specifying a type of packing instruction for the dangerous goods.",
                         "type": "string"
                     },
-                    "emergencyContact": {
-                        "$ref": "#/definitions/EmergencyContact"
-                    },
                     "flashpointTemperatureMeasurement": {
                         "$ref": "#/definitions/FlashpointTemperature"
+                    },
+                    "emergencyContact": {
+                        "$ref": "#/definitions/EmergencyContact"
                     },
                     "grossVolume": {
                         "$ref": "#/definitions/Volume"
@@ -633,14 +702,14 @@
                     "grossWeight": {
                         "$ref": "#/definitions/Weight"
                     },
-                    "handlingInstructions": {
-                        "$ref": "#/definitions/HandlingInstructions"
-                    },
                     "netWeight": {
                         "$ref": "#/definitions/Weight"
                     },
                     "radioactiveMaterial": {
                         "$ref": "#/definitions/RadioactiveMaterial"
+                    },
+                    "handlingInstructions": {
+                        "$ref": "#/definitions/HandlingInstructions"
                     }
                 }
             },
@@ -688,10 +757,10 @@
                         "description": "The number of copies issued for this document.",
                         "type": "number"
                     },
-                    "original": {
+                    "placeOfIssue": {
                         "$ref": "#/definitions/Location"
                     },
-                    "placeOfIssue": {
+                    "original": {
                         "$ref": "#/definitions/Location"
                     },
                     "references": {
@@ -704,7 +773,15 @@
             },
             "EmergencyContact": {
                 "type": "object",
-                "properties": {}
+                "properties": {},
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Party"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
             },
             "EquipmentSupplier": {
                 "type": "object",
@@ -772,7 +849,7 @@
                 "type": "object",
                 "properties": {
                     "name": {
-                        "description": "A name, expressed as text, of this logistics related location.",
+                        "description": "A name, expressed as text, of this logistics related location.\nCorresponding EDIFACT element: 3225 - Location name code.",
                         "type": "string"
                     },
                     "UNLocode": {
@@ -836,11 +913,11 @@
                         "description": "Unique identifier of the party. ",
                         "type": "string"
                     },
-                    "address": {
-                        "$ref": "#/definitions/Address"
-                    },
                     "communicationDetails": {
                         "$ref": "#/definitions/Communication"
+                    },
+                    "address": {
+                        "$ref": "#/definitions/Address"
                     }
                 }
             },
@@ -998,7 +1075,7 @@
                             "cargoControlNumber",
                             "previousCargoControlNumber",
                             "mutuallyDefinedReferenceNumber",
-                            "billOfLadingReference"
+                            "cocoaBatchReferenceNumber"
                         ]
                     },
                     "value": {
@@ -1139,20 +1216,20 @@
                         "description": "Element to identify function of the message.",
                         "type": "string"
                     },
-                    "RequestParty": {
-                        "$ref": "#/definitions/RequestParty"
-                    },
-                    "contractor": {
-                        "$ref": "#/definitions/Contractor"
-                    },
-                    "documentSender": {
-                        "$ref": "#/definitions/Sender"
-                    },
                     "information": {
                         "items": {
                             "$ref": "#/definitions/TransportDocumentInformation"
                         },
                         "type": "array"
+                    },
+                    "documentSender": {
+                        "$ref": "#/definitions/Sender"
+                    },
+                    "contractor": {
+                        "$ref": "#/definitions/Contractor"
+                    },
+                    "requestParty": {
+                        "$ref": "#/definitions/RequestParty"
                     }
                 },
                 "allOf": [
@@ -1171,7 +1248,7 @@
                 ],
                 "required": [
                     "bookingNumber",
-                    "RequestParty"
+                    "requestParty"
                 ]
             },
             "ShipToParty": {
@@ -1238,8 +1315,17 @@
                 "type": "object",
                 "properties": {
                     "equipmentNumber": {
-                        "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment."
+                            },
+                            {
+                                "$ref": "#/definitions/Identifier"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "equipmentType": {
                         "description": "ISO 6346 size and type code (for example \"45G1\")",
@@ -1284,26 +1370,29 @@
                             "shipperSupplied"
                         ]
                     },
-                    "equipmentReeferSetting": {
-                        "items": {
-                            "$ref": "#/definitions/ReeferSetting"
-                        },
-                        "type": "array"
-                    },
-                    "equipmentSupplier": {
-                        "$ref": "#/definitions/EquipmentSupplier"
-                    },
-                    "equipmentTareWeight": {
-                        "$ref": "#/definitions/Weight"
-                    },
                     "seals": {
                         "items": {
                             "$ref": "#/definitions/Seal"
                         },
                         "type": "array"
                     },
+                    "equipmentReeferSetting": {
+                        "items": {
+                            "$ref": "#/definitions/ReeferSetting"
+                        },
+                        "type": "array"
+                    },
+                    "equipmentTareWeight": {
+                        "$ref": "#/definitions/Weight"
+                    },
+                    "equipmentSupplier": {
+                        "$ref": "#/definitions/EquipmentSupplier"
+                    },
                     "verifiedEquipmentGrossWeight": {
                         "$ref": "#/definitions/VerifiedWeight"
+                    },
+                    "equipmentGrossWeight": {
+                        "$ref": "#/definitions/Weight"
                     }
                 },
                 "required": [
@@ -1363,8 +1452,17 @@
                 "type": "object",
                 "properties": {
                     "weightVerificationMethod": {
-                        "description": "Weight verification method. ",
-                        "type": "string"
+                        "allOf": [
+                            {
+                                "description": "Weight verification method. "
+                            },
+                            {
+                                "$ref": "#/definitions/Text"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "weightVerifier": {
                         "$ref": "#/definitions/WeightVerifier"
@@ -1400,8 +1498,17 @@
                 "type": "object",
                 "properties": {
                     "value": {
-                        "description": "Numeric weight value. ",
-                        "type": "number"
+                        "allOf": [
+                            {
+                                "description": "Numeric weight value. "
+                            },
+                            {
+                                "$ref": "#/definitions/Numeric"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
                     },
                     "unit": {
                         "description": "Unit used for weight measurement.",
@@ -1424,6 +1531,26 @@
                         "type": "object"
                     }
                 ]
+            },
+            "Text": {
+                "type": "object",
+                "properties": {}
+            },
+            "DateTime": {
+                "type": "object",
+                "properties": {}
+            },
+            "Numeric": {
+                "type": "object",
+                "properties": {}
+            },
+            "Indicator": {
+                "type": "object",
+                "properties": {}
+            },
+            "Identifier": {
+                "type": "object",
+                "properties": {}
             }
         }
     },
@@ -1435,14 +1562,7 @@
         {
             "key": "transportDocumentType",
             "type": "array",
-            "items": [
-                {
-                    "key": "billOfLading"
-                },
-                {
-                    "key": "seaWaybill"
-                }
-            ]
+            "items": []
         },
         {
             "key": "bookingNumber",
@@ -1491,6 +1611,9 @@
             "key": "originatorId"
         },
         {
+            "key": "issue"
+        },
+        {
             "key": "originalIssued"
         },
         {
@@ -1500,7 +1623,13 @@
             "key": "departureDate"
         },
         {
-            "key": "serviceMode"
+            "key": "serviceMode",
+            "type": "section",
+            "items": [
+                {
+                    "key": "Text"
+                }
+            ]
         },
         {
             "key": "transportEquipmentQuantity"

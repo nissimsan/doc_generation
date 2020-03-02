@@ -1,0 +1,280 @@
+{
+  "carrier": {
+    "carrierCode": "CACO",
+    "name": "Carrier Co."
+  },
+  "consignee": {
+    "registeredForVAT": false
+  },
+  "consignmentItems": [
+    {
+      "outOfGauge": false,
+      "sequence": 1,
+      "information": "Bananas",
+      "codeType": "harmonizedSystem",
+      "codeValue": "080310",
+      "equipmentStuffing": [
+        {
+          "equipmentNumber": "CACO10512",
+          "stuffedGrossVolume": [
+            {
+              "value": 50,
+              "unit": "cbm"
+            }
+          ],
+          "stuffedGrossWeight": [
+            {
+              "value": 12000,
+              "unit": "kgs"
+            }
+          ],
+          "stuffedTransportPackages": [
+            {
+              "quantity": 600,
+              "type": "Cartons",
+              "typeCode": "22",
+              "shippingMarks": [
+                "BA-334455"
+              ]
+            }
+          ]
+        },
+        {
+          "equipmentNumber": "CACO11024",
+          "stuffedGrossVolume": [
+            {
+              "value": 16,
+              "unit": "cbm"
+            }
+          ],
+          "stuffedGrossWeight": [
+            {
+              "value": 4000,
+              "unit": "kgs"
+            }
+          ],
+          "stuffedTransportPackages": [
+            {
+              "quantity": 200,
+              "type": "Cartons",
+              "typeCode": "22",
+              "shippingMarks": [
+                "BA-334455"
+              ]
+            }
+          ]
+        }
+      ],
+      "grossVolume": [
+        {
+          "value": 66,
+          "unit": "cbm"
+        }
+      ],
+      "grossWeight": [
+        {
+          "value": 16000,
+          "unit": "kgs"
+        }
+      ],
+      "transportPackages": {
+        "quantity": 800,
+        "type": "Cartons",
+        "typeCode": "22",
+        "shippingMarks": [
+          "BA-334455"
+        ]
+      }
+    }
+  ],
+  "consignor": {
+    "name": "Tropical Fruit Farms, Inc",
+    "printedParty": "TROPICAL FRUITS INC, HIGHWAY 41, LA VEGA PROVINCE, DOMINICAN REPUBLIC",
+    "registeredForVAT": false,
+    "partyRef": "CUST987654",
+    "address": {
+      "street": "Highway 41",
+      "city": "Constanza",
+      "state": "La Vega",
+      "country": "DO"
+    }
+  },
+  "bookingNumber": [
+    "CACO123456"
+  ],
+  "RequestParty": {
+    "registeredForVAT": false
+  },
+  "originatorName": "Tropical Fruit Farms, Inc",
+  "originatorId": "456123",
+  "originalIssued": 2,
+  "copyIssued": 3,
+  "placeOfIssue": {
+    "name": "Stockholm",
+    "UNLocode": "SESTO",
+    "printedLocation": "Stockholm"
+  },
+  "customsBroker": {
+    "registeredForVAT": false
+  },
+  "freightForwarder": {
+    "registeredForVAT": false
+  },
+  "freightPayer": {
+    "registeredForVAT": false
+  },
+  "grossVolume": [
+    {
+      "value": 96,
+      "unit": "cbm"
+    }
+  ],
+  "grossWeight": {
+    "value": 27000,
+    "unit": "kgs"
+  },
+  "mainCarriageTransportMovement": [
+    {
+      "identification": "E-10056",
+      "usedTransportMeans": {
+        "identification": "8814275",
+        "name": "MS Megan"
+      }
+    }
+  ],
+  "notifyParties": [
+    {
+      "name": "Truckters Inc",
+      "printedParty": "TRUCKSTERS, HOVEDGATEN 120, 7890, TRONDHEIM, NORWAY",
+      "registeredForVAT": false,
+      "address": {
+        "street": "Hovedgaten 120",
+        "city": "Trondheim",
+        "state": "NO",
+        "country": "NO",
+        "postcode": "7890"
+      }
+    }
+  ],
+  "placeOfDelivery": {
+    "name": "Olso",
+    "UNLocode": "NOOSL",
+    "printedLocation": "Olso, Norway"
+  },
+  "placeOfReceipt": {
+    "name": "Santo Domingo",
+    "UNLocode": "DOSDQ",
+    "printedLocation": "Santo Domingo, Dominican Republic"
+  },
+  "portOfDischarge": {
+    "name": "Oslo",
+    "UNLocode": "NOOSL",
+    "printedLocation": "Olso, Norway"
+  },
+  "portOfLoading": {
+    "name": "Santo Domingo",
+    "UNLocode": "DOSDQ",
+    "printedLocation": "Santo Domingo, Dominican Republic"
+  },
+  "shipFromParty": {
+    "registeredForVAT": false
+  },
+  "shipToParty": {
+    "registeredForVAT": false
+  },
+  "transportPackages": {
+    "quantity": 1300,
+    "type": "Cartons",
+    "typeCode": "22",
+    "shippingMarks": [
+      "BA-334455",
+      "MG-665587"
+    ]
+  },
+  "utilizedTransportEquipment": [
+    {
+      "equipmentNumber": "CACO10512",
+      "equipmentType": "42R1",
+      "printedEquipmentType": "Reefer",
+      "code": [
+        "080310"
+      ],
+      "usedCapacity": "full",
+      "movementType": "fcl",
+      "equipmentReeferSetting": [
+        {
+          "value": 4,
+          "type": "temperature",
+          "unit": "C"
+        }
+      ],
+      "equipmentSupplier": {
+        "registeredForVAT": false
+      },
+      "equipmentTareWeight": {
+        "value": 2000,
+        "unit": "kgs"
+      },
+      "seals": [
+        {
+          "type": "Customs Seal",
+          "identifier": "SO005658888",
+          "sealingParty": {
+            "registeredForVAT": false
+          }
+        }
+      ],
+      "verifiedEquipmentGrossWeight": {
+        "weightVerifier": {
+          "registeredForVAT": false
+        }
+      }
+    },
+    {
+      "equipmentNumber": "CACO11024",
+      "equipmentType": "42R1",
+      "printedEquipmentType": "Reefer",
+      "code": [
+        "080310",
+        "080450"
+      ],
+      "equipmentReeferSetting": [
+        {
+          "value": 4,
+          "type": "temperature",
+          "unit": "C"
+        }
+      ],
+      "equipmentSupplier": {
+        "registeredForVAT": false
+      },
+      "equipmentTareWeight": {
+        "value": 2000,
+        "unit": "kgs"
+      },
+      "seals": [
+        {
+          "type": "Customs Seal",
+          "identifier": "SO005658889",
+          "sealingParty": {
+            "registeredForVAT": false
+          }
+        }
+      ],
+      "verifiedEquipmentGrossWeight": {
+        "weightVerifier": {
+          "registeredForVAT": false
+        }
+      }
+    }
+  ],
+  "transportDocumentType": "billOfLading",
+  "requestDateIssuanceOfBL": "2020-02-26",
+  "eBL": false,
+  "contractor": {
+    "registeredForVAT": false
+  },
+  "documentSender": {
+    "registeredForVAT": false
+  }
+}

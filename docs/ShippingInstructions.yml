@@ -4,7 +4,8 @@ info:
   title: ShippingInstructions
   version: ''
 servers: []
-paths: {}
+paths:
+  /ShippingInstructions: {}
 components:
   schemas:
     Address:
@@ -304,11 +305,25 @@ components:
     Charges:
       type: object
       properties:
+        chargeCode:
+          description: The unique identifier for this logistics service charge.
+          type: string
+          enum:
+            - allCharges
+            - additionalCharges
+            - basicFreight
+            - destinationHaulageCharges
+            - destinationPortCharges
+            - originPortCharges
+            - originHaulageCharges
         chargeText:
           description: A textual description of this logistics service charge.
           type: string
         invoicePartyRef:
           description: 'Reference to the invoice party. '
+          type: string
+        invoicePartyName:
+          description: missing description
           type: string
     Communication:
       type: object
@@ -339,81 +354,85 @@ components:
           type: string
           format: date-time
         serviceMode:
-          description: 'The scope of the consignment, such as CY-CY or SD-SD.'
-          type: string
+          allOf:
+            - description: 'The scope of the consignment, such as CY-CY or SD-SD.'
+            - $ref: '#/components/schemas/Text'
+            - type: object
         transportEquipmentQuantity:
           description: >-
             A number of pieces of transport equipment, such as containers or
             similar unit load devices, in this consignment.
           type: number
+        utilizedTransportEquipment:
+          items:
+            $ref: '#/components/schemas/TransportEquipment'
+          type: array
         carrier:
           $ref: '#/components/schemas/Carrier'
+        consignee:
+          $ref: '#/components/schemas/Consignee'
+        consignor:
+          $ref: '#/components/schemas/Consignor'
+        notifyParties:
+          items:
+            $ref: '#/components/schemas/NotifyParty'
+          type: array
+        placeOfReceipt:
+          $ref: '#/components/schemas/Location'
+        placeOfDelivery:
+          $ref: '#/components/schemas/Location'
+        portOfLoading:
+          $ref: '#/components/schemas/Location'
+        portOfDischarge:
+          $ref: '#/components/schemas/Location'
+        placeOfPrecarriage:
+          $ref: '#/components/schemas/Location'
+        mainCarriageTransportMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
         charges:
           items:
             $ref: '#/components/schemas/Charges'
           type: array
-        consignee:
-          $ref: '#/components/schemas/Consignee'
+          minItems: 1
         consignmentItems:
           items:
             $ref: '#/components/schemas/ConsignmentItem'
           type: array
           minItems: 1
-        consignor:
-          $ref: '#/components/schemas/Consignor'
+        grossVolume:
+          $ref: '#/components/schemas/Volume'
         customsBroker:
           $ref: '#/components/schemas/CustomsBroker'
         freightForwarder:
           $ref: '#/components/schemas/FreightForwarder'
         freightPayer:
           $ref: '#/components/schemas/FreightPayer'
-        grossVolume:
-          items:
-            $ref: '#/components/schemas/Volume'
-          type: array
-        grossWeight:
-          $ref: '#/components/schemas/Weight'
-        mainCarriageTransportMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
-          type: array
-        notifyParties:
-          items:
-            $ref: '#/components/schemas/NotifyParty'
-          type: array
-        onCarriageTransportMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
-          type: array
-        placeOfDelivery:
-          $ref: '#/components/schemas/Location'
-        placeOfPrecarriage:
-          $ref: '#/components/schemas/Location'
-        placeOfReceipt:
-          $ref: '#/components/schemas/Location'
-        portOfDischarge:
-          $ref: '#/components/schemas/Location'
-        portOfLoading:
-          $ref: '#/components/schemas/Location'
-        preCarriageMovement:
-          items:
-            $ref: '#/components/schemas/TransportMovement'
-          type: array
         shipFromParty:
           $ref: '#/components/schemas/ShipFromParty'
         shipToParty:
           $ref: '#/components/schemas/ShipToParty'
         transportPackages:
           $ref: '#/components/schemas/TransportPackage'
-        utilizedTransportEquipment:
+        grossWeight:
+          $ref: '#/components/schemas/Weight'
+        onCarriageTransportMovement:
           items:
-            $ref: '#/components/schemas/TransportEquipment'
+            $ref: '#/components/schemas/TransportMovement'
+          type: array
+        preCarriageMovement:
+          items:
+            $ref: '#/components/schemas/TransportMovement'
           type: array
       required:
         - carrier
         - consignee
-        - consignmentItems
         - consignor
+        - charges
+        - consignmentItems
+        - grossVolume
+        - grossWeight
     ConsignmentItem:
       type: object
       properties:
@@ -421,7 +440,9 @@ components:
           description: The sequence number for this consignment item.
           type: number
         information:
-          description: 'Information, expressed as text, for this consignment item.'
+          description: >-
+            Cargo description. Information, expressed as text, for this
+            consignment item.
           type: string
         codeType:
           description: |-
@@ -435,24 +456,28 @@ components:
             - cargoSpecificationNumber
             - vehicleIdentificationNumber
         codeValue:
-          description: missing description
+          description: A code specifying a type of consignment item.
           type: string
-        applicableDangerousGoods:
-          $ref: '#/components/schemas/DangerousGoods'
-        equipmentStuffing:
+        transportPackages:
+          $ref: '#/components/schemas/TransportPackage'
+        grossWeight:
           items:
-            $ref: '#/components/schemas/Stuffing'
+            $ref: '#/components/schemas/Weight'
           type: array
         grossVolume:
           items:
             $ref: '#/components/schemas/Volume'
           type: array
-        grossWeight:
+        equipmentStuffing:
           items:
-            $ref: '#/components/schemas/Weight'
+            $ref: '#/components/schemas/Stuffing'
           type: array
-        transportPackages:
-          $ref: '#/components/schemas/TransportPackage'
+        applicableDangerousGoods:
+          $ref: '#/components/schemas/DangerousGoods'
+        transportTemperature:
+          items:
+            $ref: '#/components/schemas/ReeferSetting'
+          type: array
       allOf:
         - $ref: '#/components/schemas/OutOfGauge'
         - type: object
@@ -478,26 +503,34 @@ components:
       type: object
       properties:
         UNDGIdentification:
-          description: >-
-            The code specifying the unique United Nations Dangerous Goods (UNDG)
-            number assigned to the dangerous goods.
-          type: string
+          allOf:
+            - description: >-
+                The code specifying the unique United Nations Dangerous Goods
+                (UNDG) number assigned to the dangerous goods.
+            - $ref: '#/components/schemas/Text'
+            - type: object
         hazardType:
           description: A code specifying the type of hazard for the dangerous goods.
           type: string
         hazardClassification:
-          description: >-
-            A unique identifier for this hazard classification for the dangerous
-            goods.
-          type: string
+          allOf:
+            - description: >-
+                A unique identifier for this hazard classification for the
+                dangerous goods.
+            - $ref: '#/components/schemas/Text'
+            - type: object
         hazardClassVersion:
-          description: >-
-            The unique identifier of the version of a hazard class for the
-            dangerous goods.
-          type: string
+          allOf:
+            - description: >-
+                The unique identifier of the version of a hazard class for the
+                dangerous goods.
+            - $ref: '#/components/schemas/Text'
+            - type: object
         hazardInformation:
-          description: 'Used to indicate Haz Mat Placard (explosive, flammable, etc.)'
-          type: string
+          allOf:
+            - description: 'Used to indicate Haz Mat Placard (explosive, flammable, etc.)'
+            - $ref: '#/components/schemas/Text'
+            - type: object
         ems:
           description: >-
             The unique transport emergency procedure (EMS) identifier applicable
@@ -520,20 +553,20 @@ components:
             A code specifying a type of packing instruction for the dangerous
             goods.
           type: string
-        emergencyContact:
-          $ref: '#/components/schemas/EmergencyContact'
         flashpointTemperatureMeasurement:
           $ref: '#/components/schemas/FlashpointTemperature'
+        emergencyContact:
+          $ref: '#/components/schemas/EmergencyContact'
         grossVolume:
           $ref: '#/components/schemas/Volume'
         grossWeight:
           $ref: '#/components/schemas/Weight'
-        handlingInstructions:
-          $ref: '#/components/schemas/HandlingInstructions'
         netWeight:
           $ref: '#/components/schemas/Weight'
         radioactiveMaterial:
           $ref: '#/components/schemas/RadioactiveMaterial'
+        handlingInstructions:
+          $ref: '#/components/schemas/HandlingInstructions'
     Dimensions:
       type: object
       properties:
@@ -571,9 +604,9 @@ components:
         copyIssued:
           description: The number of copies issued for this document.
           type: number
-        original:
-          $ref: '#/components/schemas/Location'
         placeOfIssue:
+          $ref: '#/components/schemas/Location'
+        original:
           $ref: '#/components/schemas/Location'
         references:
           items:
@@ -582,6 +615,9 @@ components:
     EmergencyContact:
       type: object
       properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
     EquipmentSupplier:
       type: object
       properties: {}
@@ -622,7 +658,9 @@ components:
       type: object
       properties:
         name:
-          description: 'A name, expressed as text, of this logistics related location.'
+          description: |-
+            A name, expressed as text, of this logistics related location.
+            Corresponding EDIFACT element: 3225 - Location name code.
           type: string
         UNLocode:
           description: >-
@@ -667,10 +705,10 @@ components:
         organizationId:
           description: 'Unique identifier of the party. '
           type: string
-        address:
-          $ref: '#/components/schemas/Address'
         communicationDetails:
           $ref: '#/components/schemas/Communication'
+        address:
+          $ref: '#/components/schemas/Address'
     RadioactiveMaterial:
       type: object
       properties:
@@ -814,7 +852,7 @@ components:
             - cargoControlNumber
             - previousCargoControlNumber
             - mutuallyDefinedReferenceNumber
-            - billOfLadingReference
+            - cocoaBatchReferenceNumber
         value:
           description: 'Reference value. '
           type: string
@@ -908,14 +946,14 @@ components:
         messageFunctionCode:
           description: Element to identify function of the message.
           type: string
-        contractor:
-          $ref: '#/components/schemas/Contractor'
-        documentSender:
-          $ref: '#/components/schemas/Sender'
         information:
           items:
             $ref: '#/components/schemas/TransportDocumentInformation'
           type: array
+        documentSender:
+          $ref: '#/components/schemas/Sender'
+        contractor:
+          $ref: '#/components/schemas/Contractor'
         requestParty:
           $ref: '#/components/schemas/RequestParty'
       allOf:
@@ -972,10 +1010,12 @@ components:
       type: object
       properties:
         equipmentNumber:
-          description: >-
-            Unique identifier for this piece of transport equipment, printed
-            physically on the equipment.
-          type: string
+          allOf:
+            - description: >-
+                Unique identifier for this piece of transport equipment, printed
+                physically on the equipment.
+            - $ref: '#/components/schemas/Identifier'
+            - type: object
         equipmentType:
           description: ISO 6346 size and type code (for example "45G1")
           type: string
@@ -1016,20 +1056,22 @@ components:
           enum:
             - carrierSupplied
             - shipperSupplied
-        equipmentReeferSetting:
-          items:
-            $ref: '#/components/schemas/ReeferSetting'
-          type: array
-        equipmentSupplier:
-          $ref: '#/components/schemas/EquipmentSupplier'
-        equipmentTareWeight:
-          $ref: '#/components/schemas/Weight'
         seals:
           items:
             $ref: '#/components/schemas/Seal'
           type: array
+        equipmentReeferSetting:
+          items:
+            $ref: '#/components/schemas/ReeferSetting'
+          type: array
+        equipmentTareWeight:
+          $ref: '#/components/schemas/Weight'
+        equipmentSupplier:
+          $ref: '#/components/schemas/EquipmentSupplier'
         verifiedEquipmentGrossWeight:
           $ref: '#/components/schemas/VerifiedWeight'
+        equipmentGrossWeight:
+          $ref: '#/components/schemas/Weight'
       required:
         - equipmentNumber
     TransportMeans:
@@ -1078,8 +1120,10 @@ components:
       type: object
       properties:
         weightVerificationMethod:
-          description: 'Weight verification method. '
-          type: string
+          allOf:
+            - description: 'Weight verification method. '
+            - $ref: '#/components/schemas/Text'
+            - type: object
         weightVerifier:
           $ref: '#/components/schemas/WeightVerifier'
       allOf:
@@ -1101,8 +1145,10 @@ components:
       type: object
       properties:
         value:
-          description: 'Numeric weight value. '
-          type: number
+          allOf:
+            - description: 'Numeric weight value. '
+            - $ref: '#/components/schemas/Numeric'
+            - type: object
         unit:
           description: Unit used for weight measurement.
           type: string
@@ -1115,3 +1161,18 @@ components:
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
+    Text:
+      type: object
+      properties: {}
+    DateTime:
+      type: object
+      properties: {}
+    Numeric:
+      type: object
+      properties: {}
+    Indicator:
+      type: object
+      properties: {}
+    Identifier:
+      type: object
+      properties: {}

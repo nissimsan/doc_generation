@@ -9,6 +9,7 @@
         },
         "definitions": {
             "Address": {
+                "description": "The location at which a particular organization or person may be found or reached.",
                 "type": "object",
                 "properties": {
                     "street": {
@@ -26,51 +27,287 @@
                     "country": {
                         "description": "A unique country identifier for this party.",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "AD",
+                            "AE",
+                            "AF",
+                            "AG",
+                            "AI",
+                            "AL",
+                            "AM",
+                            "AO",
+                            "AQ",
+                            "AR",
+                            "AS",
+                            "AT",
+                            "AU",
+                            "AW",
+                            "AX",
+                            "AZ",
+                            "BA",
+                            "BB",
+                            "BD",
+                            "BE",
+                            "BF",
+                            "BG",
+                            "BH",
+                            "BI",
+                            "BJ",
+                            "BL",
+                            "BM",
+                            "BN",
+                            "BO",
+                            "BQ",
+                            "BR",
+                            "BS",
+                            "BT",
+                            "BV",
+                            "BW",
+                            "BY",
+                            "BZ",
+                            "CA",
+                            "CC",
+                            "CD",
+                            "CF",
+                            "CG",
+                            "CH",
+                            "CI",
+                            "CK",
+                            "CL",
+                            "CM",
+                            "CN",
+                            "CO",
+                            "CR",
+                            "CU",
+                            "CV",
+                            "CW",
+                            "CX",
+                            "CY",
+                            "CZ",
+                            "DE",
+                            "DJ",
+                            "DK",
+                            "DM",
+                            "DO",
+                            "DZ",
+                            "EC",
+                            "EE",
+                            "EG",
+                            "EH",
+                            "ER",
+                            "ES",
+                            "ET",
+                            "FI",
+                            "FJ",
+                            "FK",
+                            "FM",
+                            "FO",
+                            "FR",
+                            "GA",
+                            "GB",
+                            "GD",
+                            "GE",
+                            "GF",
+                            "GG",
+                            "GI",
+                            "GL",
+                            "GM",
+                            "GN",
+                            "GP",
+                            "GQ",
+                            "GR",
+                            "GS",
+                            "GT",
+                            "GU",
+                            "GW",
+                            "GY",
+                            "HK",
+                            "HM",
+                            "HN",
+                            "HR",
+                            "HT",
+                            "HU",
+                            "ID",
+                            "IE",
+                            "IL",
+                            "IM",
+                            "IN",
+                            "IO",
+                            "IQ",
+                            "IR",
+                            "IS",
+                            "IT",
+                            "JE",
+                            "JM",
+                            "JO",
+                            "JP",
+                            "KE",
+                            "KG",
+                            "KH",
+                            "KI",
+                            "KM",
+                            "KN",
+                            "KP",
+                            "KR",
+                            "KW",
+                            "KY",
+                            "KZ",
+                            "LA",
+                            "LB",
+                            "LC",
+                            "LI",
+                            "LK",
+                            "LR",
+                            "LS",
+                            "LT",
+                            "LU",
+                            "LV",
+                            "LY",
+                            "MA",
+                            "MC",
+                            "MD",
+                            "ME",
+                            "MF",
+                            "MG",
+                            "MH",
+                            "MK",
+                            "ML",
+                            "MM",
+                            "MN",
+                            "MO",
+                            "MP",
+                            "MQ",
+                            "MR",
+                            "MS",
+                            "MT",
+                            "MU",
+                            "MV",
+                            "MW",
+                            "MX",
+                            "MY",
+                            "MZ",
+                            "NA",
+                            "NC",
+                            "NE",
+                            "NF",
+                            "NG",
+                            "NI",
+                            "NL",
+                            "NO",
+                            "NP",
+                            "NR",
+                            "NU",
+                            "NZ",
+                            "OM",
+                            "PA",
+                            "PE",
+                            "PF",
+                            "PG",
+                            "PH",
+                            "PK",
+                            "PL",
+                            "PM",
+                            "PN",
+                            "PR",
+                            "PS",
+                            "PT",
+                            "PW",
+                            "PY",
+                            "QA",
+                            "RE",
+                            "RO",
+                            "RS",
+                            "RU",
+                            "RW",
+                            "SA",
+                            "SB",
+                            "SC",
+                            "SD",
+                            "SE",
+                            "SG",
+                            "SH",
+                            "SI",
+                            "SJ",
+                            "SK",
+                            "SL",
+                            "SM",
+                            "SN",
+                            "SO",
+                            "SR",
+                            "SS",
+                            "ST",
+                            "SV",
+                            "SX",
+                            "SY",
+                            "SZ",
+                            "TC",
+                            "TD",
+                            "TF",
+                            "TG",
+                            "TH",
+                            "TJ",
+                            "TK",
+                            "TL",
+                            "TM",
+                            "TN",
+                            "TO",
+                            "TR",
+                            "TT",
+                            "TV",
+                            "TW",
+                            "TZ",
+                            "UA",
+                            "UG",
+                            "UM",
+                            "US",
+                            "UY",
+                            "UZ",
+                            "VA",
+                            "VC",
+                            "VE",
+                            "VG",
+                            "VI",
+                            "VN",
+                            "VU",
+                            "WF",
+                            "WS",
+                            "YE",
+                            "YT",
+                            "ZA",
+                            "ZM",
+                            "ZW",
+                            "OA",
+                            "OB",
+                            "OC",
+                            "OD",
+                            "OE",
+                            "OF",
+                            "OG",
+                            "OZ"
+                        ]
                     },
                     "postcode": {
                         "description": "A code specifying the postcode of the address.",
                         "type": "string"
                     }
-                },
-                "required": [
-                    "street",
-                    "city",
-                    "state",
-                    "country"
-                ]
+                }
             },
             "BillOfLading": {
+                "description": "Bill of Lading document.",
                 "type": "object",
                 "properties": {
                     "negotiable": {
                         "description": "Indicator, whether or not the bill of lading is negotiable. ",
                         "type": "boolean"
                     },
-                    "freightedAtAd": {
-                        "description": "Freighted at ad indicator. ",
-                        "type": "boolean"
-                    },
-                    "certifiedMember": {
-                        "description": "Certified member. ",
-                        "type": "string"
-                    },
                     "dateOfAcceptance": {
                         "description": "Acceptance date of the bill of lading. ",
                         "type": "string",
                         "format": "date-time"
                     },
-                    "declarationOfInterest": {
-                        "description": "Declaration of interest indicator. ",
-                        "type": "boolean"
-                    },
                     "eBL": {
                         "description": "Indication of this being an electronic bill of lading. ",
                         "type": "boolean"
-                    },
-                    "witness": {
-                        "description": "In witness whereof this MTD has been signed",
-                        "type": "string"
                     }
                 },
                 "allOf": [
@@ -82,21 +319,8 @@
                     }
                 ]
             },
-            "CargoInformation": {
-                "type": "object",
-                "properties": {
-                    "text": {
-                        "description": "Textual cargo information.",
-                        "type": "string"
-                    },
-                    "type": {
-                        "description": "Type of cargo information. ",
-                        "type": "string",
-                        "enum": []
-                    }
-                }
-            },
             "Carrier": {
+                "description": "Carrier. ",
                 "type": "object",
                 "properties": {
                     "carrierCode": {
@@ -111,11 +335,13 @@
                         "description": "Carrier''s tax identification. ",
                         "type": "string"
                     },
-                    "contactDetails": {
-                        "$ref": "#/definitions/Communication"
-                    },
                     "address": {
-                        "$ref": "#/definitions/Address"
+                        "$ref": "#/definitions/Address",
+                        "description": "The location at which a particular organization or person may be found or reached."
+                    },
+                    "contactDetails": {
+                        "$ref": "#/definitions/Communication",
+                        "description": "The exchange of thoughts, messages, or information, as universally exchanged by speech, signals, writing, or behaviour between persons and/or organizations."
                     }
                 },
                 "required": [
@@ -124,12 +350,30 @@
                 ]
             },
             "Charges": {
+                "description": "A charge made for a logistics related service.\nCorresponding EDIFACT element: 4237 - Payment arrangement code.",
                 "type": "object",
                 "properties": {
                     "chargeCode": {
                         "description": "The unique identifier for this logistics service charge.",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "allCharges",
+                            "additionalCharges",
+                            "basicFreight",
+                            "destinationHaulageCharges",
+                            "destinationPortCharges",
+                            "originPortCharges",
+                            "originHaulageCharges"
+                        ]
+                    },
+                    "paymentTerm": {
+                        "description": "Charge payment term.",
+                        "type": "string",
+                        "enum": [
+                            "prepaid",
+                            "collect",
+                            "prepaidElsewhere"
+                        ]
                     },
                     "chargeText": {
                         "description": "A textual description of this logistics service charge.",
@@ -147,11 +391,6 @@
                         "description": "Charge currency. ",
                         "type": "string"
                     },
-                    "paymentTerm": {
-                        "description": "Charge payment term.",
-                        "type": "string",
-                        "enum": []
-                    },
                     "amount": {
                         "description": "A monetary value applied to this logistics service charge.",
                         "type": "number"
@@ -164,17 +403,18 @@
                         "description": "Reference to the invoice party. ",
                         "type": "string"
                     },
-                    "rateReference": {
-                        "description": "Reference on the charge rate.",
-                        "type": "string"
-                    },
                     "invoicePartyName": {
                         "description": "missing description",
                         "type": "string"
                     }
-                }
+                },
+                "required": [
+                    "chargeCode",
+                    "paymentTerm"
+                ]
             },
             "Communication": {
+                "description": "The exchange of thoughts, messages, or information, as universally exchanged by speech, signals, writing, or behaviour between persons and/or organizations.",
                 "type": "object",
                 "properties": {
                     "telephone": {
@@ -196,6 +436,7 @@
                 }
             },
             "Consignee": {
+                "description": "Consignee. ",
                 "type": "object",
                 "properties": {},
                 "allOf": [
@@ -208,6 +449,7 @@
                 ]
             },
             "Consignment": {
+                "description": "A separately identifiable collection of goods items to be transported or available to be transported from one consignor to one consignee via one or more modes of transport where each consignment is the subject of one single transport contract.",
                 "type": "object",
                 "properties": {
                     "departureDate": {
@@ -216,37 +458,64 @@
                         "format": "date-time"
                     },
                     "serviceMode": {
-                        "allOf": [
-                            {
-                                "description": "The scope of the consignment, such as CY-CY or SD-SD."
-                            },
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "description": "The scope of the consignment, such as CY-CY or SD-SD.",
+                        "type": "string"
                     },
                     "transportEquipmentQuantity": {
                         "description": "A number of pieces of transport equipment, such as containers or similar unit load devices, in this consignment.",
                         "type": "number"
                     },
-                    "mainCarriageTransportMovement": {
+                    "carrier": {
+                        "$ref": "#/definitions/Carrier",
+                        "description": "Carrier. "
+                    },
+                    "consignor": {
+                        "$ref": "#/definitions/Consignor",
+                        "description": "Consignor, also known as \"Shipper\".  "
+                    },
+                    "consignee": {
+                        "$ref": "#/definitions/Consignee",
+                        "description": "Consignee. "
+                    },
+                    "notifyParties": {
                         "items": {
-                            "$ref": "#/definitions/TransportMovement"
+                            "$ref": "#/definitions/NotifyParty"
                         },
                         "type": "array"
                     },
-                    "charges": {
+                    "otherParties": {
                         "items": {
-                            "$ref": "#/definitions/Charges"
+                            "$ref": "#/definitions/OtherParty"
                         },
-                        "type": "array",
-                        "minItems": 1
+                        "type": "array"
                     },
-                    "carrier": {
-                        "$ref": "#/definitions/Carrier"
+                    "placeOfReceipt": {
+                        "$ref": "#/definitions/Location",
+                        "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
+                    },
+                    "portOfLoading": {
+                        "$ref": "#/definitions/Location",
+                        "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
+                    },
+                    "portOfDischarge": {
+                        "$ref": "#/definitions/Location",
+                        "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
+                    },
+                    "placeOfDelivery": {
+                        "$ref": "#/definitions/Location",
+                        "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
+                    },
+                    "preCarriageMovement": {
+                        "$ref": "#/definitions/TransportMovement",
+                        "description": "The conveyance (physical carriage) of goods or other objects used for logistics transport purposes.\nCorresponding EDIFACT element: 8051 - Transport stage code qualifier."
+                    },
+                    "mainCarriageTransportMovement": {
+                        "$ref": "#/definitions/TransportMovement",
+                        "description": "The conveyance (physical carriage) of goods or other objects used for logistics transport purposes.\nCorresponding EDIFACT element: 8051 - Transport stage code qualifier."
+                    },
+                    "onCarriageTransportMovement": {
+                        "$ref": "#/definitions/TransportMovement",
+                        "description": "The conveyance (physical carriage) of goods or other objects used for logistics transport purposes.\nCorresponding EDIFACT element: 8051 - Transport stage code qualifier."
                     },
                     "consignmentItems": {
                         "items": {
@@ -255,61 +524,30 @@
                         "type": "array",
                         "minItems": 1
                     },
-                    "placeOfReceipt": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "placeOfDelivery": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "portOfLoading": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "portOfDischarge": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "placeOfPrecarriage": {
-                        "$ref": "#/definitions/Location"
-                    },
-                    "otherParties": {
-                        "items": {
-                            "$ref": "#/definitions/OtherParty"
-                        },
-                        "type": "array"
-                    },
-                    "notifyParties": {
-                        "items": {
-                            "$ref": "#/definitions/NotifyParty"
-                        },
-                        "type": "array"
-                    },
-                    "consignor": {
-                        "$ref": "#/definitions/Consignor"
-                    },
-                    "consignee": {
-                        "$ref": "#/definitions/Consignee"
-                    },
-                    "cargoInformation": {
-                        "items": {
-                            "$ref": "#/definitions/CargoInformation"
-                        },
-                        "type": "array"
-                    },
                     "utilizedTransportEquipment": {
                         "items": {
                             "$ref": "#/definitions/TransportEquipment"
                         },
                         "type": "array"
+                    },
+                    "charges": {
+                        "items": {
+                            "$ref": "#/definitions/Charges"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
-                    "charges",
                     "carrier",
-                    "consignmentItems",
                     "consignor",
-                    "consignee"
+                    "consignee",
+                    "portOfLoading",
+                    "portOfDischarge",
+                    "consignmentItems"
                 ]
             },
             "ConsignmentItem": {
+                "description": "Cargo items. An item within a consignment of goods separately identified for transport and customs purposes.",
                 "type": "object",
                 "properties": {
                     "sequence": {
@@ -323,36 +561,44 @@
                     "codeType": {
                         "description": "The cargo code type of consignment item. \nhttps://service.unece.org/trade/untdid/d00a/tred/tred7143.htm",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "harmonizedSystem",
+                            "stockKeepingUnit",
+                            "purchaseOrder",
+                            "cargoSpecificationNumber",
+                            "vehicleIdentificationNumber"
+                        ]
                     },
                     "codeValue": {
                         "description": "A code specifying a type of consignment item.",
                         "type": "string"
                     },
                     "transportPackages": {
-                        "$ref": "#/definitions/TransportPackage"
+                        "$ref": "#/definitions/TransportPackage",
+                        "description": "A self-contained wrapping or container within which goods can be contained for logistics purposes, such as a box or a barrel which can be filled, partially filled or empty."
                     },
                     "grossWeight": {
-                        "items": {
-                            "$ref": "#/definitions/Weight"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/Weight",
+                        "description": "The numeric value determined by weight measuring."
                     },
                     "grossVolume": {
-                        "items": {
-                            "$ref": "#/definitions/Volume"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/Volume",
+                        "description": "An amount, size, or extent as established by measuring."
                     },
                     "equipmentStuffing": {
                         "items": {
                             "$ref": "#/definitions/Stuffing"
                         },
                         "type": "array"
+                    },
+                    "applicableDangerousGoods": {
+                        "$ref": "#/definitions/DangerousGoods",
+                        "description": "A hazardous or non-hazardous substance which may pose risks to people and/or the environment for which the transportation is regulated by dangerous goods regulations."
                     }
                 }
             },
             "Consignor": {
+                "description": "Consignor, also known as \"Shipper\".  ",
                 "type": "object",
                 "properties": {},
                 "allOf": [
@@ -364,7 +610,71 @@
                     }
                 ]
             },
+            "DangerousGoods": {
+                "description": "A hazardous or non-hazardous substance which may pose risks to people and/or the environment for which the transportation is regulated by dangerous goods regulations.",
+                "type": "object",
+                "properties": {
+                    "UNDGIdentification": {
+                        "description": "The code specifying the unique United Nations Dangerous Goods (UNDG) number assigned to the dangerous goods. \nKept as an integer, so for example \"UN 0487\" is provided as 487. ",
+                        "type": "number"
+                    },
+                    "hazardType": {
+                        "description": "A code specifying the type of hazard for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "hazardClassification": {
+                        "description": "A unique identifier for this hazard classification for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "hazardClassVersion": {
+                        "description": "The unique identifier of the version of a hazard class for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "hazardInformation": {
+                        "description": "Used to indicate Haz Mat Placard (explosive, flammable, etc.)",
+                        "type": "string"
+                    },
+                    "ems": {
+                        "description": "The unique transport emergency procedure (EMS) identifier applicable for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "information": {
+                        "description": "Textual information for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "technicalName": {
+                        "description": "A technical name, expressed as text, for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "marking": {
+                        "description": "Marking, expressed as text, for these dangerous goods.",
+                        "type": "string"
+                    },
+                    "regulationName": {
+                        "description": "A name, expressed as text, for a regulation of the dangerous goods.",
+                        "type": "string"
+                    },
+                    "packingInstructionType": {
+                        "description": "A code specifying a type of packing instruction for the dangerous goods.",
+                        "type": "string"
+                    },
+                    "packingDangerLevel": {
+                        "description": "A code specifying the packaging danger level for the dangerous goods.",
+                        "type": "string",
+                        "enum": [
+                            "groupIGreatDanger",
+                            "groupIIMediumDanger",
+                            "groupIIIMinorDanger"
+                        ]
+                    },
+                    "handlingInstructions": {
+                        "$ref": "#/definitions/HandlingInstructions",
+                        "description": "Handling instructions for the dangerous goods."
+                    }
+                }
+            },
             "Document": {
+                "description": "A collection of data for a piece of written, printed or electronic matter that provides information or evidence.",
                 "type": "object",
                 "properties": {
                     "originatorName": {
@@ -388,18 +698,34 @@
                         "description": "The number of copies issued for this document.",
                         "type": "number"
                     },
-                    "placeOfIssue": {
-                        "$ref": "#/definitions/Location"
-                    },
                     "references": {
                         "items": {
                             "$ref": "#/definitions/Reference"
                         },
                         "type": "array"
+                    },
+                    "placeOfIssue": {
+                        "$ref": "#/definitions/Location",
+                        "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
+                    }
+                },
+                "required": [
+                    "originatorName",
+                    "issue"
+                ]
+            },
+            "HandlingInstructions": {
+                "description": "Handling instructions for the dangerous goods.",
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "A textual description of this set of instructions.",
+                        "type": "string"
                     }
                 }
             },
             "Location": {
+                "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier.",
                 "type": "object",
                 "properties": {
                     "name": {
@@ -417,6 +743,7 @@
                 }
             },
             "NotifyParty": {
+                "description": "Notify party. ",
                 "type": "object",
                 "properties": {},
                 "allOf": [
@@ -429,12 +756,40 @@
                 ]
             },
             "OtherParty": {
+                "description": "Other party related to a consignment. ",
                 "type": "object",
                 "properties": {
                     "partyRole": {
                         "description": "Type of party. ",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "exporter",
+                            "importer",
+                            "origin3PL",
+                            "destination3PL",
+                            "seller",
+                            "buyer",
+                            "exportCustomsBroker",
+                            "importCustomsBroker",
+                            "requestParty",
+                            "buyersBank",
+                            "sellersBank",
+                            "insuranceProvider",
+                            "oceanCarrier",
+                            "transportServiceBuyer",
+                            "transportServiceIntermediary",
+                            "railOperator",
+                            "truckOperator",
+                            "bargeOperator",
+                            "feederOperator",
+                            "originMarineTerminal",
+                            "destinationMarineTerminal",
+                            "transhipmentTerminal",
+                            "inlandTerminal",
+                            "portCommunitySystem",
+                            "exportAuthority",
+                            "importAuthority"
+                        ]
                     }
                 },
                 "allOf": [
@@ -447,6 +802,7 @@
                 ]
             },
             "Party": {
+                "description": "An individual, a group, or a body having a role in a business function.  Party has a legal connotation in a business transaction.\nCorresponding EDIFACT element: 3035 - Party function code qualifier.",
                 "type": "object",
                 "properties": {
                     "name": {
@@ -474,20 +830,158 @@
                         "type": "string"
                     },
                     "address": {
-                        "$ref": "#/definitions/Address"
+                        "$ref": "#/definitions/Address",
+                        "description": "The location at which a particular organization or person may be found or reached."
                     },
                     "communicationDetails": {
-                        "$ref": "#/definitions/Communication"
+                        "$ref": "#/definitions/Communication",
+                        "description": "The exchange of thoughts, messages, or information, as universally exchanged by speech, signals, writing, or behaviour between persons and/or organizations."
+                    }
+                }
+            },
+            "ReeferSetting": {
+                "description": "A temperature (or other reefer) setting, such as storage temperature or operational temperature, for this piece of transport equipment.",
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "A measure of the value of the reefer setting such as a minimum temperature value of ten degrees Celsius.",
+                        "type": "number"
+                    },
+                    "type": {
+                        "description": "The code specifying the type of reefer setting.",
+                        "type": "string",
+                        "enum": [
+                            "temperature",
+                            "carbon",
+                            "oxygen",
+                            "nitrogen",
+                            "airFlow"
+                        ]
+                    },
+                    "unit": {
+                        "description": "Unit used for measureing the reefer setting.",
+                        "type": "string",
+                        "enum": [
+                            "cel",
+                            "far",
+                            "mqh",
+                            "pct"
+                        ]
+                    },
+                    "instructions": {
+                        "description": "Specific instructions pertaining to the reefer setting.",
+                        "type": "string"
                     }
                 }
             },
             "Reference": {
+                "description": "Reference number(s) assigned to the document by the issuer such as bill of lading number or sea waybill number.",
                 "type": "object",
                 "properties": {
                     "type": {
                         "description": "Type of reference. ",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "proformaInvoiceNumber",
+                            "deliveryScheduleNumber",
+                            "consigneeShipmentReferenceNumber",
+                            "despatchNoteNumber",
+                            "customsTariffNumber",
+                            "customsDecisionRequestNumber",
+                            "subHouseBillOfLadingNumber",
+                            "customsGuaranteeNumber",
+                            "sellersCatalogueNumber",
+                            "declarantsCustomsIdentityNumber",
+                            "importerReferenceNumber",
+                            "customsDeclarationNumber",
+                            "stockKeepingUnitNumber",
+                            "adviceOfCollectionNumber",
+                            "railwayWagonNumber",
+                            "buyersItemNumber",
+                            "customsHouseBrokerReferenceNumber",
+                            "reportNumber",
+                            "traderAccountNumber",
+                            "governmentAgencyReferenceNumber",
+                            "regristrationNumberOfPreviousCustomsDeclaration",
+                            "productReservationNumber",
+                            "customsItemNumber",
+                            "tariffNumber",
+                            "replenishmentPurchaceOrderNumber",
+                            "contractPartyReferenceNumber",
+                            "agentsReferenceNumber",
+                            "deliveryVerificationCertificate",
+                            "customsReleaseCode",
+                            "complianceCodeNumber",
+                            "ministerialCertificateOfHomologation",
+                            "banksCommonTransactionReferenceNumber",
+                            "customsTranshipmentNumber",
+                            "vehicleIdentificationNumber",
+                            "replenishmentPurchaseOrderRangeStartNumber",
+                            "consigneesInvoiceNumber",
+                            "replenishmentPurchaseOrderRangeEndNumber",
+                            "buyersCatalogueNumber",
+                            "inlandTransportOrderNumber",
+                            "consigneesReference",
+                            "usCustomsServiceEntryCode",
+                            "transportEquipmentReleaseOrderReference",
+                            "importersLetterOfCreditReference",
+                            "customsBindingRulingNumber",
+                            "customsNonBindingRulingNumber",
+                            "uniqueGoodsShipmentIdentifier",
+                            "rateCodeNumber",
+                            "airWaybillNumber",
+                            "buyersContractNumber",
+                            "houseBillOfLadingNumber",
+                            "billOfLadingNumber",
+                            "bookingReferenceNumber",
+                            "consigneesOrderNumber",
+                            "carriersReferenceNumber",
+                            "contractNumber",
+                            "buyersDebtorNumber",
+                            "exportDeclaration",
+                            "exportPermitNumber",
+                            "containerEquipmentReceiptNumber",
+                            "exportersReferenceNumber",
+                            "exportLicenceNumber",
+                            "freightForwardersReferenceNumber",
+                            "governmentReferenceNumber",
+                            "harmonizedSystemNumber",
+                            "houseWaybillNumber",
+                            "inBondNumber",
+                            "iataCargoAgentCodeNumber",
+                            "importLicenceNumber",
+                            "invoiceNumber",
+                            "letterOfCreditNumber",
+                            "shipNoticeManifestNumber",
+                            "masterBillOfLadingNumber",
+                            "manufacturersPartNumber",
+                            "manufacturersOrderNumber",
+                            "masterAirWaybillNumber",
+                            "northAmericanHazardousGoodsClassificationNumber",
+                            "purchaseOrderNumber",
+                            "generalReferenceNumber",
+                            "pickupReferenceNumber",
+                            "plantNumber",
+                            "packingListNumber",
+                            "purchaseOrderResponseNumber",
+                            "purchaseOrderChangeNumber",
+                            "paymentReference",
+                            "priceQuoteNumber",
+                            "shippersIdentifyingNumberForShipment",
+                            "sealNumber",
+                            "shipmentReferenceNumber",
+                            "sellersReferenceNumber",
+                            "truckersBillOfLading",
+                            "transactionReferenceNumber",
+                            "orderNumber",
+                            "warehouseEntryNumber",
+                            "warehouseReceiptNumber",
+                            "warehouseStorageLocationNumber",
+                            "cargoControlNumber",
+                            "previousCargoControlNumber",
+                            "mutuallyDefinedReferenceNumber",
+                            "cocoaBatchReferenceNumber"
+                        ]
                     },
                     "value": {
                         "description": "Reference value. ",
@@ -496,19 +990,21 @@
                 }
             },
             "Seal": {
+                "description": "A device used to secure an object and protect it from unauthorized entry or tampering during transport or other logistics operations.",
                 "type": "object",
                 "properties": {
-                    "type": {
-                        "description": "Description specifying the type of logistics seal.",
+                    "identification": {
+                        "description": "A unique identifier for this logistics seal.",
                         "type": "string"
                     },
-                    "identifier": {
-                        "description": "A unique identifier for this logistics seal.",
+                    "type": {
+                        "description": "Description specifying the type of logistics seal.",
                         "type": "string"
                     }
                 }
             },
             "Stuffing": {
+                "description": "The equipment which (parts of) the consignment is stuffed into. ",
                 "type": "object",
                 "properties": {
                     "equipmentNumber": {
@@ -516,26 +1012,21 @@
                         "type": "string"
                     },
                     "stuffedGrossVolume": {
-                        "items": {
-                            "$ref": "#/definitions/Volume"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/Volume",
+                        "description": "An amount, size, or extent as established by measuring."
                     },
                     "stuffedGrossWeight": {
-                        "items": {
-                            "$ref": "#/definitions/Weight"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/Weight",
+                        "description": "The numeric value determined by weight measuring."
                     },
                     "stuffedTransportPackages": {
-                        "items": {
-                            "$ref": "#/definitions/TransportPackage"
-                        },
-                        "type": "array"
+                        "$ref": "#/definitions/TransportPackage",
+                        "description": "A self-contained wrapping or container within which goods can be contained for logistics purposes, such as a box or a barrel which can be filled, partially filled or empty."
                     }
                 }
             },
             "TransportDocument": {
+                "description": "Attributes common to transport documents. ",
                 "type": "object",
                 "properties": {
                     "shippedOnBoardDate": {
@@ -580,6 +1071,7 @@
                 ]
             },
             "TransportDocumentInformation": {
+                "description": "Specific information printed on the transport document. ",
                 "type": "object",
                 "properties": {
                     "text": {
@@ -589,25 +1081,24 @@
                     "type": {
                         "description": "Type of transport document information. ",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "generalInformation",
+                            "billOfLadingRemarks",
+                            "termsAndConditions",
+                            "billOfLadingClause",
+                            "transportDocumentRemarks",
+                            "specialRoutingInstructions"
+                        ]
                     }
                 }
             },
             "TransportEquipment": {
+                "description": "A piece of equipment used to hold, protect or secure cargo for transportation purposes.",
                 "type": "object",
                 "properties": {
                     "equipmentNumber": {
-                        "allOf": [
-                            {
-                                "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment."
-                            },
-                            {
-                                "$ref": "#/definitions/Identifier"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
+                        "type": "string"
                     },
                     "equipmentType": {
                         "description": "ISO 6346 size and type code (for example \"45G1\")",
@@ -631,7 +1122,14 @@
                         "type": "array"
                     },
                     "equipmentGrossWeight": {
-                        "$ref": "#/definitions/Weight"
+                        "$ref": "#/definitions/Weight",
+                        "description": "The numeric value determined by weight measuring."
+                    },
+                    "equipmentReeferSetting": {
+                        "items": {
+                            "$ref": "#/definitions/ReeferSetting"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
@@ -639,6 +1137,7 @@
                 ]
             },
             "TransportMeans": {
+                "description": "The device or method used to convey people, goods, animals or other objects from place to place.",
                 "type": "object",
                 "properties": {
                     "identification": {
@@ -652,6 +1151,7 @@
                 }
             },
             "TransportMovement": {
+                "description": "The conveyance (physical carriage) of goods or other objects used for logistics transport purposes.\nCorresponding EDIFACT element: 8051 - Transport stage code qualifier.",
                 "type": "object",
                 "properties": {
                     "identification": {
@@ -659,11 +1159,13 @@
                         "type": "string"
                     },
                     "usedTransportMeans": {
-                        "$ref": "#/definitions/TransportMeans"
+                        "$ref": "#/definitions/TransportMeans",
+                        "description": "The device or method used to convey people, goods, animals or other objects from place to place."
                     }
                 }
             },
             "TransportPackage": {
+                "description": "A self-contained wrapping or container within which goods can be contained for logistics purposes, such as a box or a barrel which can be filled, partially filled or empty.",
                 "type": "object",
                 "properties": {
                     "quantity": {
@@ -688,6 +1190,7 @@
                 }
             },
             "VerifyCopy": {
+                "description": "",
                 "type": "object",
                 "properties": {},
                 "allOf": [
@@ -700,6 +1203,7 @@
                 ]
             },
             "Volume": {
+                "description": "An amount, size, or extent as established by measuring.",
                 "type": "object",
                 "properties": {
                     "value": {
@@ -709,120 +1213,49 @@
                     "unit": {
                         "description": "Unit used for measurements. ",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "cbm",
+                            "cbf"
+                        ]
                     }
-                }
+                },
+                "required": [
+                    "value",
+                    "unit"
+                ]
             },
             "Weight": {
+                "description": "The numeric value determined by weight measuring.",
                 "type": "object",
                 "properties": {
                     "value": {
-                        "allOf": [
-                            {
-                                "description": "Numeric weight value. "
-                            },
-                            {
-                                "$ref": "#/definitions/Numeric"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "description": "Numeric weight value. ",
+                        "type": "number"
                     },
                     "unit": {
                         "description": "Unit used for weight measurement.",
                         "type": "string",
-                        "enum": []
+                        "enum": [
+                            "kgs",
+                            "lbs"
+                        ]
                     }
-                }
+                },
+                "required": [
+                    "value",
+                    "unit"
+                ]
             },
             "Text": {
-                "type": "object",
-                "properties": {}
-            },
-            "Indicator": {
-                "type": "object",
-                "properties": {}
-            },
-            "DateTime": {
+                "description": "",
                 "type": "object",
                 "properties": {}
             },
             "Numeric": {
-                "type": "object",
-                "properties": {}
-            },
-            "Identifier": {
+                "description": "",
                 "type": "object",
                 "properties": {}
             }
         }
-    },
-    "layout": [
-        {
-            "widget": "message",
-            "message": "<h1>verifyCopy</h1>"
-        },
-        {
-            "key": "negotiable"
-        },
-        {
-            "key": "freightedAtAd"
-        },
-        {
-            "key": "certifiedMember"
-        },
-        {
-            "key": "dateOfAcceptance"
-        },
-        {
-            "key": "declarationOfInterest"
-        },
-        {
-            "key": "eBL"
-        },
-        {
-            "key": "witness"
-        },
-        {
-            "key": "shippedOnBoardDate"
-        },
-        {
-            "key": "billOfLadingNumber",
-            "required": true
-        },
-        {
-            "key": "bookingNumber"
-        },
-        {
-            "key": "originatorName"
-        },
-        {
-            "key": "originatorId"
-        },
-        {
-            "key": "issue"
-        },
-        {
-            "key": "originalIssued"
-        },
-        {
-            "key": "copyIssued"
-        },
-        {
-            "key": "departureDate"
-        },
-        {
-            "key": "serviceMode",
-            "type": "section",
-            "items": [
-                {
-                    "key": "Text"
-                }
-            ]
-        },
-        {
-            "key": "transportEquipmentQuantity"
-        }
-    ]
+    }
 }

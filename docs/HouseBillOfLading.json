@@ -1,10 +1,10 @@
 {
     "schema": {
-        "model": "ShippingInstructions",
+        "model": "HouseBillOfLading",
         "type": "object",
         "properties": {
-            "shippingInstructions": {
-                "$ref": "#/definitions/ShippingInstructions"
+            "houseBillOfLading": {
+                "$ref": "#/definitions/HouseBillOfLading"
             }
         },
         "definitions": {
@@ -292,6 +292,35 @@
                     }
                 }
             },
+            "BillOfLading": {
+                "description": "Bill of Lading document.",
+                "type": "object",
+                "properties": {
+                    "negotiable": {
+                        "description": "Indicator, whether or not the bill of lading is negotiable. ",
+                        "type": "boolean"
+                    },
+                    "dateOfAcceptance": {
+                        "description": "Acceptance date of the bill of lading. ",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/TransportDocument"
+                    },
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/definitions/HouseBillOfLading"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
             "Carrier": {
                 "description": "Carrier. ",
                 "type": "object",
@@ -303,6 +332,18 @@
                     "name": {
                         "description": "Carrier name. ",
                         "type": "string"
+                    },
+                    "taxId": {
+                        "description": "Carrier''s tax identification. ",
+                        "type": "string"
+                    },
+                    "address": {
+                        "$ref": "#/definitions/Address",
+                        "description": "The location at which a particular organization or person may be found or reached."
+                    },
+                    "contactDetails": {
+                        "$ref": "#/definitions/Communication",
+                        "description": "The exchange of thoughts, messages, or information, as universally exchanged by speech, signals, writing, or behaviour between persons and/or organizations."
                     }
                 },
                 "required": [
@@ -338,6 +379,26 @@
                     },
                     "chargeText": {
                         "description": "A textual description of this logistics service charge.",
+                        "type": "string"
+                    },
+                    "rate": {
+                        "description": "Per unit rate. ",
+                        "type": "number"
+                    },
+                    "calculationBasis": {
+                        "description": "The code specifying a basis on which this service charge is to be calculated such as by volume or per unit.",
+                        "type": "string"
+                    },
+                    "currency": {
+                        "description": "Charge currency. ",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "description": "A monetary value applied to this logistics service charge.",
+                        "type": "number"
+                    },
+                    "freightPayableAt": {
+                        "description": "Charge receiver. ",
                         "type": "string"
                     },
                     "invoicePartyRef": {
@@ -424,26 +485,6 @@
                         },
                         "type": "array"
                     },
-                    "freightForwarder": {
-                        "$ref": "#/definitions/FreightForwarder",
-                        "description": ""
-                    },
-                    "freightPayer": {
-                        "$ref": "#/definitions/FreightPayer",
-                        "description": ""
-                    },
-                    "customsBroker": {
-                        "$ref": "#/definitions/CustomsBroker",
-                        "description": ""
-                    },
-                    "shipFromParty": {
-                        "$ref": "#/definitions/ShipFromParty",
-                        "description": ""
-                    },
-                    "shipToParty": {
-                        "$ref": "#/definitions/ShipToParty",
-                        "description": ""
-                    },
                     "otherParties": {
                         "items": {
                             "$ref": "#/definitions/OtherParty"
@@ -496,18 +537,6 @@
                             "$ref": "#/definitions/Charges"
                         },
                         "type": "array"
-                    },
-                    "transportPackages": {
-                        "$ref": "#/definitions/TransportPackage",
-                        "description": "A self-contained wrapping or container within which goods can be contained for logistics purposes, such as a box or a barrel which can be filled, partially filled or empty."
-                    },
-                    "grossWeight": {
-                        "$ref": "#/definitions/Weight",
-                        "description": "The numeric value determined by weight measuring."
-                    },
-                    "grossVolume": {
-                        "$ref": "#/definitions/Volume",
-                        "description": "An amount, size, or extent as established by measuring."
                     }
                 },
                 "required": [
@@ -516,9 +545,7 @@
                     "consignee",
                     "portOfLoading",
                     "portOfDischarge",
-                    "consignmentItems",
-                    "grossWeight",
-                    "grossVolume"
+                    "consignmentItems"
                 ]
             },
             "ConsignmentItem": {
@@ -569,51 +596,11 @@
                     "applicableDangerousGoods": {
                         "$ref": "#/definitions/DangerousGoods",
                         "description": "A hazardous or non-hazardous substance which may pose risks to people and/or the environment for which the transportation is regulated by dangerous goods regulations."
-                    },
-                    "transportTemperature": {
-                        "items": {
-                            "$ref": "#/definitions/ReeferSetting"
-                        },
-                        "type": "array"
                     }
-                },
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/OutOfGauge"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
+                }
             },
             "Consignor": {
                 "description": "Consignor, also known as \"Shipper\".  ",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "Contractor": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "CustomsBroker": {
-                "description": "",
                 "type": "object",
                 "properties": {},
                 "allOf": [
@@ -682,62 +669,9 @@
                             "groupIIIMinorDanger"
                         ]
                     },
-                    "flashpointTemperatureMeasurement": {
-                        "$ref": "#/definitions/FlashpointTemperature",
-                        "description": "A measurement of the flashpoint temperature of the dangerous goods."
-                    },
-                    "emergencyContact": {
-                        "$ref": "#/definitions/EmergencyContact",
-                        "description": ""
-                    },
-                    "grossVolume": {
-                        "$ref": "#/definitions/Volume",
-                        "description": "An amount, size, or extent as established by measuring."
-                    },
-                    "grossWeight": {
-                        "$ref": "#/definitions/Weight",
-                        "description": "The numeric value determined by weight measuring."
-                    },
-                    "netWeight": {
-                        "$ref": "#/definitions/Weight",
-                        "description": "The numeric value determined by weight measuring."
-                    },
-                    "radioactiveMaterial": {
-                        "$ref": "#/definitions/RadioactiveMaterial",
-                        "description": "A radioactive material in the dangerous goods."
-                    },
                     "handlingInstructions": {
                         "$ref": "#/definitions/HandlingInstructions",
                         "description": "Handling instructions for the dangerous goods."
-                    }
-                },
-                "required": [
-                    "emergencyContact"
-                ]
-            },
-            "Dimensions": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "width": {
-                        "description": "missing description",
-                        "type": "number"
-                    },
-                    "length": {
-                        "description": "missing description",
-                        "type": "number"
-                    },
-                    "height": {
-                        "description": "missing description",
-                        "type": "number"
-                    },
-                    "measurementUnit": {
-                        "description": "missing description",
-                        "type": "string",
-                        "enum": [
-                            "m",
-                            "f"
-                        ]
                     }
                 }
             },
@@ -752,6 +686,11 @@
                     "originatorId": {
                         "description": "The party identification code (i.e. SCAC) of the organization publishing the event.",
                         "type": "string"
+                    },
+                    "issue": {
+                        "description": "A date, time, date time or other date time value for an issuance of this document.",
+                        "type": "string",
+                        "format": "date-time"
                     },
                     "originalIssued": {
                         "description": "The number of originals issued for this document.",
@@ -770,84 +709,11 @@
                     "placeOfIssue": {
                         "$ref": "#/definitions/Location",
                         "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
-                    },
-                    "original": {
-                        "$ref": "#/definitions/Location",
-                        "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier."
                     }
                 },
                 "required": [
-                    "originatorName"
-                ]
-            },
-            "EmergencyContact": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "EquipmentSupplier": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "FlashpointTemperature": {
-                "description": "A measurement of the flashpoint temperature of the dangerous goods.",
-                "type": "object",
-                "properties": {
-                    "actual": {
-                        "description": "An actual measure for this measurement.",
-                        "type": "number"
-                    },
-                    "code": {
-                        "description": "A code specifying a type of measurement.",
-                        "type": "string",
-                        "enum": [
-                            "c",
-                            "f"
-                        ]
-                    }
-                }
-            },
-            "FreightForwarder": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "FreightPayer": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
+                    "originatorName",
+                    "issue"
                 ]
             },
             "HandlingInstructions": {
@@ -860,18 +726,10 @@
                     }
                 }
             },
-            "IssuingParty": {
-                "description": "The party issuing the seal.",
+            "HouseBillOfLading": {
+                "description": "",
                 "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
+                "properties": {}
             },
             "Location": {
                 "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier.",
@@ -950,20 +808,6 @@
                     }
                 ]
             },
-            "OutOfGauge": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "outOfGauge": {
-                        "description": "missing description",
-                        "type": "boolean"
-                    },
-                    "dimensions": {
-                        "$ref": "#/definitions/Dimensions",
-                        "description": ""
-                    }
-                }
-            },
             "Party": {
                 "description": "An individual, a group, or a body having a role in a business function.  Party has a legal connotation in a business transaction.\nCorresponding EDIFACT element: 3035 - Party function code qualifier.",
                 "type": "object",
@@ -984,14 +828,6 @@
                         "description": "Tax identification of the party.",
                         "type": "string"
                     },
-                    "partyRef": {
-                        "description": "Reference which represents the party.",
-                        "type": "string"
-                    },
-                    "organizationId": {
-                        "description": "Unique identifier of the party. ",
-                        "type": "string"
-                    },
                     "address": {
                         "$ref": "#/definitions/Address",
                         "description": "The location at which a particular organization or person may be found or reached."
@@ -999,28 +835,6 @@
                     "communicationDetails": {
                         "$ref": "#/definitions/Communication",
                         "description": "The exchange of thoughts, messages, or information, as universally exchanged by speech, signals, writing, or behaviour between persons and/or organizations."
-                    }
-                }
-            },
-            "RadioactiveMaterial": {
-                "description": "A radioactive material in the dangerous goods.",
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "description": "missing description",
-                        "type": "string"
-                    },
-                    "compositionDescription": {
-                        "description": "A textual description of the composition of this material.",
-                        "type": "string"
-                    },
-                    "information": {
-                        "description": "Information, expressed as text, for this material.",
-                        "type": "string"
-                    },
-                    "index": {
-                        "description": "missing description",
-                        "type": "number"
                     }
                 }
             },
@@ -1174,19 +988,6 @@
                     }
                 }
             },
-            "RequestParty": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
             "Seal": {
                 "description": "A device used to secure an object and protect it from unauthorized entry or tampering during transport or other logistics operations.",
                 "type": "object",
@@ -1198,177 +999,8 @@
                     "type": {
                         "description": "Description specifying the type of logistics seal.",
                         "type": "string"
-                    },
-                    "sealingPartyRole": {
-                        "description": "missing description",
-                        "type": "string",
-                        "enum": [
-                            "quarantineAgency",
-                            "carrier",
-                            "customs",
-                            "shipper",
-                            "terminalOperator"
-                        ]
-                    },
-                    "issuingParty": {
-                        "$ref": "#/definitions/IssuingParty",
-                        "description": "The party issuing the seal."
                     }
                 }
-            },
-            "Sender": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "ShipFromParty": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
-            "ShippingInstructions": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "transportDocumentType": {
-                        "description": "Requested type of transport document.",
-                        "type": "string",
-                        "enum": [
-                            "billOfLading",
-                            "seaWaybill"
-                        ]
-                    },
-                    "bookingNumber": {
-                        "items": {
-                            "description": "Booking number(s). ",
-                            "type": "string"
-                        },
-                        "type": "array",
-                        "minItems": 1
-                    },
-                    "revisionVersion": {
-                        "description": "Element to identify the revision number if the message is an amendment.",
-                        "type": "string"
-                    },
-                    "requestDateIssuanceOfBL": {
-                        "description": "Request date for Issuance of Bill of Lading.",
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "referenceTransaction": {
-                        "description": "Transaction reference number",
-                        "type": "string"
-                    },
-                    "letterOfCreditIssuanceDate": {
-                        "description": "Issuance date of Letter of Credit.",
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "letterOfCreditExpiryDate": {
-                        "description": "Expiration date of Letter of Credit.",
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "exportLicenseIssuanceDate": {
-                        "description": "Issuance date of Export License.",
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "exportLicenseExpiryDate": {
-                        "description": "Expiration date of Export License.",
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "customsReleaseInstruction": {
-                        "description": "Customs clearance instructions.",
-                        "type": "string"
-                    },
-                    "manifestFilingStatus": {
-                        "description": "Manifest filing status.",
-                        "type": "string"
-                    },
-                    "eBL": {
-                        "description": "Indication of this being a request for an electronic bill of lading.",
-                        "type": "boolean"
-                    },
-                    "messageFunctionCode": {
-                        "description": "Element to identify function of the message.",
-                        "type": "string"
-                    },
-                    "movementType": {
-                        "description": "A character string used to represent a transport movement type.",
-                        "type": "string",
-                        "enum": [
-                            "fcl",
-                            "lcl"
-                        ]
-                    },
-                    "information": {
-                        "items": {
-                            "$ref": "#/definitions/TransportDocumentInformation"
-                        },
-                        "type": "array"
-                    },
-                    "requestParty": {
-                        "$ref": "#/definitions/RequestParty",
-                        "description": ""
-                    },
-                    "contractor": {
-                        "$ref": "#/definitions/Contractor",
-                        "description": ""
-                    },
-                    "documentSender": {
-                        "$ref": "#/definitions/Sender",
-                        "description": ""
-                    }
-                },
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Document"
-                    },
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/definitions/Consignment"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ],
-                "required": [
-                    "bookingNumber",
-                    "requestParty"
-                ]
-            },
-            "ShipToParty": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
             },
             "Stuffing": {
                 "description": "The equipment which (parts of) the consignment is stuffed into. ",
@@ -1391,6 +1023,44 @@
                         "description": "A self-contained wrapping or container within which goods can be contained for logistics purposes, such as a box or a barrel which can be filled, partially filled or empty."
                     }
                 }
+            },
+            "TransportDocument": {
+                "description": "Attributes common to transport documents. ",
+                "type": "object",
+                "properties": {
+                    "shippedOnBoardDate": {
+                        "description": "Date when the cargo was shipped on board. ",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "billOfLadingNumber": {
+                        "description": "Bill of lading number of the transport document. ",
+                        "type": "string"
+                    },
+                    "information": {
+                        "items": {
+                            "$ref": "#/definitions/TransportDocumentInformation"
+                        },
+                        "type": "array"
+                    }
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Document"
+                    },
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/definitions/Consignment"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "required": [
+                    "billOfLadingNumber"
+                ]
             },
             "TransportDocumentInformation": {
                 "description": "Specific information printed on the transport document. ",
@@ -1437,26 +1107,6 @@
                         },
                         "type": "array"
                     },
-                    "usedCapacity": {
-                        "description": "The code specifying the used capacity of this piece of transport equipment, such as full or empty.",
-                        "type": "string",
-                        "enum": [
-                            "full",
-                            "empty"
-                        ]
-                    },
-                    "haulageArrangements": {
-                        "description": "Specification of the type of equipment haulage arrangements.",
-                        "type": "string"
-                    },
-                    "equipmentSupplierIndicator": {
-                        "description": "This element indicates the party that is the supplier of the equipment.",
-                        "type": "string",
-                        "enum": [
-                            "carrierSupplied",
-                            "shipperSupplied"
-                        ]
-                    },
                     "seals": {
                         "items": {
                             "$ref": "#/definitions/Seal"
@@ -1472,18 +1122,6 @@
                             "$ref": "#/definitions/ReeferSetting"
                         },
                         "type": "array"
-                    },
-                    "equipmentTareWeight": {
-                        "$ref": "#/definitions/Weight",
-                        "description": "The numeric value determined by weight measuring."
-                    },
-                    "equipmentSupplier": {
-                        "$ref": "#/definitions/EquipmentSupplier",
-                        "description": ""
-                    },
-                    "verifiedEquipmentGrossWeight": {
-                        "$ref": "#/definitions/VerifiedWeight",
-                        "description": ""
                     }
                 },
                 "required": [
@@ -1543,28 +1181,6 @@
                     }
                 }
             },
-            "VerifiedWeight": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "weightVerificationMethod": {
-                        "description": "Weight verification method. ",
-                        "type": "string"
-                    },
-                    "weightVerifier": {
-                        "$ref": "#/definitions/WeightVerifier",
-                        "description": ""
-                    }
-                },
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Weight"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
             "Volume": {
                 "description": "An amount, size, or extent as established by measuring.",
                 "type": "object",
@@ -1607,19 +1223,6 @@
                 "required": [
                     "value",
                     "unit"
-                ]
-            },
-            "WeightVerifier": {
-                "description": "",
-                "type": "object",
-                "properties": {},
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/Party"
-                    },
-                    {
-                        "type": "object"
-                    }
                 ]
             },
             "Text": {

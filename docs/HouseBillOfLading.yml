@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: SeaWaybill
+  title: HouseBillOfLading
   version: ''
 servers: []
 paths:
-  /SeaWaybill: {}
+  /HouseBillOfLading: {}
 components:
   schemas:
     Address:
@@ -288,6 +288,22 @@ components:
         postcode:
           description: A code specifying the postcode of the address.
           type: string
+    BillOfLading:
+      description: Bill of Lading document.
+      type: object
+      properties:
+        negotiable:
+          description: 'Indicator, whether or not the bill of lading is negotiable. '
+          type: boolean
+        dateOfAcceptance:
+          description: 'Acceptance date of the bill of lading. '
+          type: string
+          format: date-time
+      allOf:
+        - $ref: '#/components/schemas/TransportDocument'
+        - type: object
+        - $ref: '#/components/schemas/HouseBillOfLading'
+        - type: object
     Carrier:
       description: 'Carrier. '
       type: object
@@ -663,6 +679,10 @@ components:
         description:
           description: A textual description of this set of instructions.
           type: string
+    HouseBillOfLading:
+      description: ''
+      type: object
+      properties: {}
     Location:
       description: 'Corresponding EDIFACT element: 3227 - Location function code qualifier.'
       type: object
@@ -743,12 +763,6 @@ components:
           type: boolean
         taxReference:
           description: Tax identification of the party.
-          type: string
-        partyRef:
-          description: Reference which represents the party.
-          type: string
-        organizationId:
-          description: 'Unique identifier of the party. '
           type: string
         address:
           $ref: '#/components/schemas/Address'
@@ -916,13 +930,6 @@ components:
         type:
           description: Description specifying the type of logistics seal.
           type: string
-    SeaWaybill:
-      description: ''
-      type: object
-      properties: {}
-      allOf:
-        - $ref: '#/components/schemas/TransportDocument'
-        - type: object
     Stuffing:
       description: 'The equipment which (parts of) the consignment is stuffed into. '
       type: object
@@ -955,11 +962,6 @@ components:
         billOfLadingNumber:
           description: 'Bill of lading number of the transport document. '
           type: string
-        bookingNumber:
-          items:
-            description: 'Booking number(s). '
-            type: string
-          type: array
         information:
           items:
             $ref: '#/components/schemas/TransportDocumentInformation'

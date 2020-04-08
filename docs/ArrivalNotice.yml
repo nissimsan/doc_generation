@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   description: ''
-  title: SeaWaybill
+  title: ArrivalNotice
   version: ''
 servers: []
 paths:
-  /SeaWaybill: {}
+  /ArrivalNotice: {}
 components:
   schemas:
     Address:
@@ -288,6 +288,26 @@ components:
         postcode:
           description: A code specifying the postcode of the address.
           type: string
+    ArrivalNotice:
+      description: ''
+      type: object
+      properties:
+        arrivalDate:
+          description: Date and time of arrival.
+          type: string
+          format: date-time
+        notifyParty:
+          $ref: '#/components/schemas/NotifyParty'
+          description: 'Notify party. '
+        otherNumberingIdentification:
+          $ref: '#/components/schemas/OtherNumberingIdentification'
+          description: ''
+      allOf:
+        - $ref: '#/components/schemas/TransportDocument'
+        - type: object
+      required:
+        - arrivalDate
+        - notifyParty
     Carrier:
       description: 'Carrier. '
       type: object
@@ -423,14 +443,6 @@ components:
         consignee:
           $ref: '#/components/schemas/Consignee'
           description: 'Consignee. '
-        notifyParties:
-          items:
-            $ref: '#/components/schemas/NotifyParty'
-          type: array
-        otherParties:
-          items:
-            $ref: '#/components/schemas/OtherParty'
-          type: array
         placeOfReceipt:
           $ref: '#/components/schemas/Location'
           description: >-
@@ -648,11 +660,6 @@ components:
           items:
             $ref: '#/components/schemas/Reference'
           type: array
-        placeOfIssue:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
       required:
         - originatorName
         - issue
@@ -687,43 +694,19 @@ components:
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
-    OtherParty:
-      description: 'Other party related to a consignment. '
+    OtherNumberingIdentification:
+      description: ''
       type: object
       properties:
-        partyRole:
-          description: 'Type of party. '
+        type:
+          description: missing description
           type: string
           enum:
-            - exporter
-            - importer
-            - origin3PL
-            - destination3PL
-            - seller
-            - buyer
-            - exportCustomsBroker
-            - importCustomsBroker
-            - requestParty
-            - buyersBank
-            - sellersBank
-            - insuranceProvider
-            - oceanCarrier
-            - transportServiceBuyer
-            - transportServiceIntermediary
-            - railOperator
-            - truckOperator
-            - bargeOperator
-            - feederOperator
-            - originMarineTerminal
-            - destinationMarineTerminal
-            - transhipmentTerminal
-            - inlandTerminal
-            - portCommunitySystem
-            - exportAuthority
-            - importAuthority
-      allOf:
-        - $ref: '#/components/schemas/Party'
-        - type: object
+            - customsClearanceLoc
+            - customsFirmsCode
+        value:
+          description: missing description
+          type: string
     Party:
       description: >-
         An individual, a group, or a body having a role in a business function. 
@@ -916,13 +899,6 @@ components:
         type:
           description: Description specifying the type of logistics seal.
           type: string
-    SeaWaybill:
-      description: ''
-      type: object
-      properties: {}
-      allOf:
-        - $ref: '#/components/schemas/TransportDocument'
-        - type: object
     Stuffing:
       description: 'The equipment which (parts of) the consignment is stuffed into. '
       type: object
@@ -1116,6 +1092,10 @@ components:
       required:
         - value
         - unit
+    DateTime:
+      description: ''
+      type: object
+      properties: {}
     Text:
       description: ''
       type: object

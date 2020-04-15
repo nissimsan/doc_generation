@@ -716,17 +716,13 @@ components:
             - importer
             - origin3PL
             - destination3PL
-            - seller
-            - buyer
             - exportCustomsBroker
             - importCustomsBroker
             - requestParty
             - buyersBank
             - sellersBank
             - insuranceProvider
-            - oceanCarrier
             - transportServiceBuyer
-            - transportServiceIntermediary
             - railOperator
             - truckOperator
             - bargeOperator
@@ -738,6 +734,8 @@ components:
             - portCommunitySystem
             - exportAuthority
             - importAuthority
+            - goodsOwner
+            - freightChargesPayer
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object

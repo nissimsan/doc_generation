@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  description: ''
+  title: CopenhagenDemoDoc
+  version: ''
+servers: []
+paths:
+  /CopenhagenDemoDoc: {}
+components:
+  schemas:
+    Carrier:
+      description: 'Carrier. '
+      type: object
+      properties:
+        carrierCode:
+          description: SCAC code.
+          type: string
+        name:
+          description: 'Carrier name. '
+          type: string
+        taxId:
+          description: 'Carrier''''s tax identification. '
+          type: string
+      required:
+        - carrierCode
+        - name
+    Consignee:
+      description: 'Consignee. '
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Consignment:
+      description: >-
+        A separately identifiable collection of goods items to be transported or
+        available to be transported from one consignor to one consignee via one
+        or more modes of transport where each consignment is the subject of one
+        single transport contract.
+      type: object
+      properties:
+        departureDate:
+          description: 'Date and time of departure. '
+          type: string
+          format: date-time
+        serviceMode:
+          description: 'The scope of the consignment, such as CY-CY or SD-SD.'
+          type: string
+        transportEquipmentQuantity:
+          description: >-
+            A number of pieces of transport equipment, such as containers or
+            similar unit load devices, in this consignment.
+          type: number
+        carrier:
+          $ref: '#/components/schemas/Carrier'
+          description: 'Carrier. '
+        consignor:
+          $ref: '#/components/schemas/Consignor'
+          description: 'Consignor, also known as "Shipper".  '
+        consignee:
+          $ref: '#/components/schemas/Consignee'
+          description: 'Consignee. '
+        placeOfReceipt:
+          $ref: '#/components/schemas/Location'
+          description: >-
+            Corresponding EDIFACT element: 3227 - Location function code
+            qualifier.
+        portOfLoading:
+          $ref: '#/components/schemas/Location'
+          description: >-
+            Corresponding EDIFACT element: 3227 - Location function code
+            qualifier.
+        portOfDischarge:
+          $ref: '#/components/schemas/Location'
+          description: >-
+            Corresponding EDIFACT element: 3227 - Location function code
+            qualifier.
+        placeOfDelivery:
+          $ref: '#/components/schemas/Location'
+          description: >-
+            Corresponding EDIFACT element: 3227 - Location function code
+            qualifier.
+      allOf:
+        - $ref: '#/components/schemas/CopenhagenDemoDoc'
+        - type: object
+      required:
+        - carrier
+        - consignor
+        - consignee
+        - portOfLoading
+        - portOfDischarge
+    Consignor:
+      description: 'Consignor, also known as "Shipper".  '
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    CopenhagenDemoDoc:
+      description: ''
+      type: object
+      properties: {}
+    Location:
+      description: 'Corresponding EDIFACT element: 3227 - Location function code qualifier.'
+      type: object
+      properties:
+        name:
+          description: |-
+            A name, expressed as text, of this logistics related location.
+            Corresponding EDIFACT element: 3225 - Location name code.
+          type: string
+        UNLocode:
+          description: >-
+            United Nations Location Code (UNLOCODE) unique identifier for
+            logistics related location. 
+          type: string
+        printedLocation:
+          description: The location exactly as printed on the document.
+          type: string
+    Party:
+      description: >-
+        An individual, a group, or a body having a role in a business function. 
+        Party has a legal connotation in a business transaction.
+
+        Corresponding EDIFACT element: 3035 - Party function code qualifier.
+      type: object
+      properties:
+        name:
+          description: 'A name, expressed as text, for this party.'
+          type: string
+        printedParty:
+          description: The party name and address exactly as printed on the document.
+          type: string
+        registeredForVAT:
+          description: 'VAT registration indicator. '
+          type: boolean
+        taxReference:
+          description: Tax identification of the party.
+          type: string
+        partyRef:
+          description: Reference which represents the party.
+          type: string
+        organizationId:
+          description: 'Unique identifier of the party. '
+          type: string
+    Text:
+      description: ''
+      type: object
+      properties: {}

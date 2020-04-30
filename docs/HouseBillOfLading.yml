@@ -288,22 +288,6 @@ components:
         postcode:
           description: A code specifying the postcode of the address.
           type: string
-    BillOfLading:
-      description: Bill of Lading document.
-      type: object
-      properties:
-        negotiable:
-          description: 'Indicator, whether or not the bill of lading is negotiable. '
-          type: boolean
-        dateOfAcceptance:
-          description: 'Acceptance date of the bill of lading. '
-          type: string
-          format: date-time
-      allOf:
-        - $ref: '#/components/schemas/TransportDocument'
-        - type: object
-        - $ref: '#/components/schemas/HouseBillOfLading'
-        - type: object
     Carrier:
       description: 'Carrier. '
       type: object
@@ -348,6 +332,7 @@ components:
             - destinationPortCharges
             - originPortCharges
             - originHaulageCharges
+            - otherCharges
         paymentTerm:
           description: Charge payment term.
           type: string
@@ -375,10 +360,10 @@ components:
         freightPayableAt:
           description: 'Charge receiver. '
           type: string
-        invoicePartyRef:
+        chargePayerPartyRef:
           description: 'Reference to the invoice party. '
           type: string
-        invoicePartyName:
+        chargePayerPartyName:
           description: missing description
           type: string
       required:
@@ -536,6 +521,7 @@ components:
             - purchaseOrder
             - cargoSpecificationNumber
             - vehicleIdentificationNumber
+            - commodityGrouping
         codeValue:
           description: A code specifying a type of consignment item.
           type: string
@@ -682,7 +668,20 @@ components:
     HouseBillOfLading:
       description: ''
       type: object
-      properties: {}
+      properties:
+        negotiable:
+          description: 'Indicator, whether or not the bill of lading is negotiable. '
+          type: boolean
+        dateOfAcceptance:
+          description: 'Acceptance date of the bill of lading. '
+          type: string
+          format: date-time
+        eBL:
+          description: 'Indication of this being an electronic bill of lading. '
+          type: boolean
+      allOf:
+        - $ref: '#/components/schemas/TransportDocument'
+        - type: object
     Location:
       description: 'Corresponding EDIFACT element: 3227 - Location function code qualifier.'
       type: object
@@ -719,17 +718,13 @@ components:
             - importer
             - origin3PL
             - destination3PL
-            - seller
-            - buyer
             - exportCustomsBroker
             - importCustomsBroker
             - requestParty
             - buyersBank
             - sellersBank
             - insuranceProvider
-            - oceanCarrier
             - transportServiceBuyer
-            - transportServiceIntermediary
             - railOperator
             - truckOperator
             - bargeOperator
@@ -741,6 +736,9 @@ components:
             - portCommunitySystem
             - exportAuthority
             - importAuthority
+            - goodsOwner
+            - freightChargesPayer
+            - toOrderShipper
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
@@ -763,6 +761,12 @@ components:
           type: boolean
         taxReference:
           description: Tax identification of the party.
+          type: string
+        partyRef:
+          description: Reference which represents the party.
+          type: string
+        organizationId:
+          description: 'Unique identifier of the party. '
           type: string
         address:
           $ref: '#/components/schemas/Address'
@@ -962,6 +966,21 @@ components:
         billOfLadingNumber:
           description: 'Bill of lading number of the transport document. '
           type: string
+        bookingNumber:
+          items:
+            description: 'Booking number(s). '
+            type: string
+          type: array
+        partBillIndicator:
+          description: 'Indication of whether or not this is a part bill. '
+          type: boolean
+        partBillsOfLadingNumbers:
+          items:
+            description: >-
+              For part bills, list of the bill of lading numbers to be
+              surrendered along with this document. 
+            type: string
+          type: array
         information:
           items:
             $ref: '#/components/schemas/TransportDocumentInformation'
@@ -1123,6 +1142,10 @@ components:
       type: object
       properties: {}
     Numeric:
+      description: ''
+      type: object
+      properties: {}
+    Indicator:
       description: ''
       type: object
       properties: {}

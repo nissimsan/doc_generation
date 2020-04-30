@@ -318,6 +318,7 @@ components:
             - destinationPortCharges
             - originPortCharges
             - originHaulageCharges
+            - otherCharges
         paymentTerm:
           description: Charge payment term.
           type: string
@@ -328,10 +329,10 @@ components:
         chargeText:
           description: A textual description of this logistics service charge.
           type: string
-        invoicePartyRef:
+        chargePayerPartyRef:
           description: 'Reference to the invoice party. '
           type: string
-        invoicePartyName:
+        chargePayerPartyName:
           description: missing description
           type: string
       required:
@@ -518,6 +519,7 @@ components:
             - purchaseOrder
             - cargoSpecificationNumber
             - vehicleIdentificationNumber
+            - commodityGrouping
         codeValue:
           description: A code specifying a type of consignment item.
           type: string
@@ -825,6 +827,9 @@ components:
             - portCommunitySystem
             - exportAuthority
             - importAuthority
+            - goodsOwner
+            - freightChargesPayer
+            - toOrderShipper
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object

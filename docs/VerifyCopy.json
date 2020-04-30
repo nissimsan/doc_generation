@@ -363,7 +363,8 @@
                             "destinationHaulageCharges",
                             "destinationPortCharges",
                             "originPortCharges",
-                            "originHaulageCharges"
+                            "originHaulageCharges",
+                            "otherCharges"
                         ]
                     },
                     "paymentTerm": {
@@ -399,11 +400,11 @@
                         "description": "Charge receiver. ",
                         "type": "string"
                     },
-                    "invoicePartyRef": {
+                    "chargePayerPartyRef": {
                         "description": "Reference to the invoice party. ",
                         "type": "string"
                     },
-                    "invoicePartyName": {
+                    "chargePayerPartyName": {
                         "description": "missing description",
                         "type": "string"
                     }
@@ -566,7 +567,8 @@
                             "stockKeepingUnit",
                             "purchaseOrder",
                             "cargoSpecificationNumber",
-                            "vehicleIdentificationNumber"
+                            "vehicleIdentificationNumber",
+                            "commodityGrouping"
                         ]
                     },
                     "codeValue": {
@@ -788,7 +790,10 @@
                             "inlandTerminal",
                             "portCommunitySystem",
                             "exportAuthority",
-                            "importAuthority"
+                            "importAuthority",
+                            "goodsOwner",
+                            "freightChargesPayer",
+                            "toOrderShipper"
                         ]
                     }
                 },
@@ -1045,6 +1050,17 @@
                         },
                         "type": "array"
                     },
+                    "partBillIndicator": {
+                        "description": "Indication of whether or not this is a part bill. ",
+                        "type": "boolean"
+                    },
+                    "partBillsOfLadingNumbers": {
+                        "items": {
+                            "description": "For part bills, list of the bill of lading numbers to be surrendered along with this document. ",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
                     "information": {
                         "items": {
                             "$ref": "#/definitions/TransportDocumentInformation"
@@ -1252,6 +1268,11 @@
                 "properties": {}
             },
             "Numeric": {
+                "description": "",
+                "type": "object",
+                "properties": {}
+            },
+            "Indicator": {
                 "description": "",
                 "type": "object",
                 "properties": {}

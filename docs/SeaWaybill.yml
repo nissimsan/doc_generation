@@ -332,6 +332,7 @@ components:
             - destinationPortCharges
             - originPortCharges
             - originHaulageCharges
+            - otherCharges
         paymentTerm:
           description: Charge payment term.
           type: string
@@ -359,10 +360,10 @@ components:
         freightPayableAt:
           description: 'Charge receiver. '
           type: string
-        invoicePartyRef:
+        chargePayerPartyRef:
           description: 'Reference to the invoice party. '
           type: string
-        invoicePartyName:
+        chargePayerPartyName:
           description: missing description
           type: string
       required:
@@ -520,6 +521,7 @@ components:
             - purchaseOrder
             - cargoSpecificationNumber
             - vehicleIdentificationNumber
+            - commodityGrouping
         codeValue:
           description: A code specifying a type of consignment item.
           type: string
@@ -721,6 +723,9 @@ components:
             - portCommunitySystem
             - exportAuthority
             - importAuthority
+            - goodsOwner
+            - freightChargesPayer
+            - toOrderShipper
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
@@ -960,6 +965,16 @@ components:
             description: 'Booking number(s). '
             type: string
           type: array
+        partBillIndicator:
+          description: 'Indication of whether or not this is a part bill. '
+          type: boolean
+        partBillsOfLadingNumbers:
+          items:
+            description: >-
+              For part bills, list of the bill of lading numbers to be
+              surrendered along with this document. 
+            type: string
+          type: array
         information:
           items:
             $ref: '#/components/schemas/TransportDocumentInformation'
@@ -1121,6 +1136,10 @@ components:
       type: object
       properties: {}
     Numeric:
+      description: ''
+      type: object
+      properties: {}
+    Indicator:
       description: ''
       type: object
       properties: {}

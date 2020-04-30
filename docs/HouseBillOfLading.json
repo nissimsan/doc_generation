@@ -1,4 +1,14 @@
 {
+    "name": "HOUSE_BILL_OF_LADING",
+    "docType": "HOUSE_BILL_OF_LADING",
+    "description": "House Bill Of Lading",
+    "supportedContentTypes": [
+        "application/json"
+    ],
+    "jsonSupport": true,
+    "sampleModel": {
+        "changeme": "changeme"
+    },
     "schema": {
         "model": "HouseBillOfLading",
         "type": "object",
@@ -292,35 +302,6 @@
                     }
                 }
             },
-            "BillOfLading": {
-                "description": "Bill of Lading document.",
-                "type": "object",
-                "properties": {
-                    "negotiable": {
-                        "description": "Indicator, whether or not the bill of lading is negotiable. ",
-                        "type": "boolean"
-                    },
-                    "dateOfAcceptance": {
-                        "description": "Acceptance date of the bill of lading. ",
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                },
-                "allOf": [
-                    {
-                        "$ref": "#/definitions/TransportDocument"
-                    },
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/definitions/HouseBillOfLading"
-                    },
-                    {
-                        "type": "object"
-                    }
-                ]
-            },
             "Carrier": {
                 "description": "Carrier. ",
                 "type": "object",
@@ -365,7 +346,8 @@
                             "destinationHaulageCharges",
                             "destinationPortCharges",
                             "originPortCharges",
-                            "originHaulageCharges"
+                            "originHaulageCharges",
+                            "otherCharges"
                         ]
                     },
                     "paymentTerm": {
@@ -401,11 +383,11 @@
                         "description": "Charge receiver. ",
                         "type": "string"
                     },
-                    "invoicePartyRef": {
+                    "chargePayerPartyRef": {
                         "description": "Reference to the invoice party. ",
                         "type": "string"
                     },
-                    "invoicePartyName": {
+                    "chargePayerPartyName": {
                         "description": "missing description",
                         "type": "string"
                     }
@@ -568,7 +550,8 @@
                             "stockKeepingUnit",
                             "purchaseOrder",
                             "cargoSpecificationNumber",
-                            "vehicleIdentificationNumber"
+                            "vehicleIdentificationNumber",
+                            "commodityGrouping"
                         ]
                     },
                     "codeValue": {
@@ -729,7 +712,29 @@
             "HouseBillOfLading": {
                 "description": "",
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "negotiable": {
+                        "description": "Indicator, whether or not the bill of lading is negotiable. ",
+                        "type": "boolean"
+                    },
+                    "dateOfAcceptance": {
+                        "description": "Acceptance date of the bill of lading. ",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "eBL": {
+                        "description": "Indication of this being an electronic bill of lading. ",
+                        "type": "boolean"
+                    }
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/TransportDocument"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
             },
             "Location": {
                 "description": "Corresponding EDIFACT element: 3227 - Location function code qualifier.",
@@ -774,17 +779,13 @@
                             "importer",
                             "origin3PL",
                             "destination3PL",
-                            "seller",
-                            "buyer",
                             "exportCustomsBroker",
                             "importCustomsBroker",
                             "requestParty",
                             "buyersBank",
                             "sellersBank",
                             "insuranceProvider",
-                            "oceanCarrier",
                             "transportServiceBuyer",
-                            "transportServiceIntermediary",
                             "railOperator",
                             "truckOperator",
                             "bargeOperator",
@@ -795,7 +796,10 @@
                             "inlandTerminal",
                             "portCommunitySystem",
                             "exportAuthority",
-                            "importAuthority"
+                            "importAuthority",
+                            "goodsOwner",
+                            "freightChargesPayer",
+                            "toOrderShipper"
                         ]
                     }
                 },
@@ -826,6 +830,14 @@
                     },
                     "taxReference": {
                         "description": "Tax identification of the party.",
+                        "type": "string"
+                    },
+                    "partyRef": {
+                        "description": "Reference which represents the party.",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "Unique identifier of the party. ",
                         "type": "string"
                     },
                     "address": {
@@ -1037,6 +1049,24 @@
                         "description": "Bill of lading number of the transport document. ",
                         "type": "string"
                     },
+                    "bookingNumber": {
+                        "items": {
+                            "description": "Booking number(s). ",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "partBillIndicator": {
+                        "description": "Indication of whether or not this is a part bill. ",
+                        "type": "boolean"
+                    },
+                    "partBillsOfLadingNumbers": {
+                        "items": {
+                            "description": "For part bills, list of the bill of lading numbers to be surrendered along with this document. ",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
                     "information": {
                         "items": {
                             "$ref": "#/definitions/TransportDocumentInformation"
@@ -1231,6 +1261,11 @@
                 "properties": {}
             },
             "Numeric": {
+                "description": "",
+                "type": "object",
+                "properties": {}
+            },
+            "Indicator": {
                 "description": "",
                 "type": "object",
                 "properties": {}

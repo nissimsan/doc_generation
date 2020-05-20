@@ -1142,6 +1142,7 @@ components:
       enum:
         - billOfLading
         - seaWaybill
+        - houseBillOfLading
       description: missing description
       type: string
     MovementTypeCode:

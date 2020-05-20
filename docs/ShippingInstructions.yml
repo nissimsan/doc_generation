@@ -26,268 +26,272 @@ components:
           description: 'The name, expressed as text, of the state of this address.'
           type: string
         country:
-          description: A unique country identifier for this party.
-          type: string
-          enum:
-            - AD
-            - AE
-            - AF
-            - AG
-            - AI
-            - AL
-            - AM
-            - AO
-            - AQ
-            - AR
-            - AS
-            - AT
-            - AU
-            - AW
-            - AX
-            - AZ
-            - BA
-            - BB
-            - BD
-            - BE
-            - BF
-            - BG
-            - BH
-            - BI
-            - BJ
-            - BL
-            - BM
-            - BN
-            - BO
-            - BQ
-            - BR
-            - BS
-            - BT
-            - BV
-            - BW
-            - BY
-            - BZ
-            - CA
-            - CC
-            - CD
-            - CF
-            - CG
-            - CH
-            - CI
-            - CK
-            - CL
-            - CM
-            - CN
-            - CO
-            - CR
-            - CU
-            - CV
-            - CW
-            - CX
-            - CY
-            - CZ
-            - DE
-            - DJ
-            - DK
-            - DM
-            - DO
-            - DZ
-            - EC
-            - EE
-            - EG
-            - EH
-            - ER
-            - ES
-            - ET
-            - FI
-            - FJ
-            - FK
-            - FM
-            - FO
-            - FR
-            - GA
-            - GB
-            - GD
-            - GE
-            - GF
-            - GG
-            - GI
-            - GL
-            - GM
-            - GN
-            - GP
-            - GQ
-            - GR
-            - GS
-            - GT
-            - GU
-            - GW
-            - GY
-            - HK
-            - HM
-            - HN
-            - HR
-            - HT
-            - HU
-            - ID
-            - IE
-            - IL
-            - IM
-            - IN
-            - IO
-            - IQ
-            - IR
-            - IS
-            - IT
-            - JE
-            - JM
-            - JO
-            - JP
-            - KE
-            - KG
-            - KH
-            - KI
-            - KM
-            - KN
-            - KP
-            - KR
-            - KW
-            - KY
-            - KZ
-            - LA
-            - LB
-            - LC
-            - LI
-            - LK
-            - LR
-            - LS
-            - LT
-            - LU
-            - LV
-            - LY
-            - MA
-            - MC
-            - MD
-            - ME
-            - MF
-            - MG
-            - MH
-            - MK
-            - ML
-            - MM
-            - MN
-            - MO
-            - MP
-            - MQ
-            - MR
-            - MS
-            - MT
-            - MU
-            - MV
-            - MW
-            - MX
-            - MY
-            - MZ
-            - NA
-            - NC
-            - NE
-            - NF
-            - NG
-            - NI
-            - NL
-            - 'NO'
-            - NP
-            - NR
-            - NU
-            - NZ
-            - OM
-            - PA
-            - PE
-            - PF
-            - PG
-            - PH
-            - PK
-            - PL
-            - PM
-            - PN
-            - PR
-            - PS
-            - PT
-            - PW
-            - PY
-            - QA
-            - RE
-            - RO
-            - RS
-            - RU
-            - RW
-            - SA
-            - SB
-            - SC
-            - SD
-            - SE
-            - SG
-            - SH
-            - SI
-            - SJ
-            - SK
-            - SL
-            - SM
-            - SN
-            - SO
-            - SR
-            - SS
-            - ST
-            - SV
-            - SX
-            - SY
-            - SZ
-            - TC
-            - TD
-            - TF
-            - TG
-            - TH
-            - TJ
-            - TK
-            - TL
-            - TM
-            - TN
-            - TO
-            - TR
-            - TT
-            - TV
-            - TW
-            - TZ
-            - UA
-            - UG
-            - UM
-            - US
-            - UY
-            - UZ
-            - VA
-            - VC
-            - VE
-            - VG
-            - VI
-            - VN
-            - VU
-            - WF
-            - WS
-            - YE
-            - YT
-            - ZA
-            - ZM
-            - ZW
-            - OA
-            - OB
-            - OC
-            - OD
-            - OE
-            - OF
-            - OG
-            - OZ
+          allOf:
+            - description: A unique country identifier for this party.
+            - $ref: '#/components/schemas/Country'
         postcode:
           description: A code specifying the postcode of the address.
           type: string
+    Country:
+      enum:
+        - AD
+        - AE
+        - AF
+        - AG
+        - AI
+        - AL
+        - AM
+        - AO
+        - AQ
+        - AR
+        - AS
+        - AT
+        - AU
+        - AW
+        - AX
+        - AZ
+        - BA
+        - BB
+        - BD
+        - BE
+        - BF
+        - BG
+        - BH
+        - BI
+        - BJ
+        - BL
+        - BM
+        - BN
+        - BO
+        - BQ
+        - BR
+        - BS
+        - BT
+        - BV
+        - BW
+        - BY
+        - BZ
+        - CA
+        - CC
+        - CD
+        - CF
+        - CG
+        - CH
+        - CI
+        - CK
+        - CL
+        - CM
+        - CN
+        - CO
+        - CR
+        - CU
+        - CV
+        - CW
+        - CX
+        - CY
+        - CZ
+        - DE
+        - DJ
+        - DK
+        - DM
+        - DO
+        - DZ
+        - EC
+        - EE
+        - EG
+        - EH
+        - ER
+        - ES
+        - ET
+        - FI
+        - FJ
+        - FK
+        - FM
+        - FO
+        - FR
+        - GA
+        - GB
+        - GD
+        - GE
+        - GF
+        - GG
+        - GI
+        - GL
+        - GM
+        - GN
+        - GP
+        - GQ
+        - GR
+        - GS
+        - GT
+        - GU
+        - GW
+        - GY
+        - HK
+        - HM
+        - HN
+        - HR
+        - HT
+        - HU
+        - ID
+        - IE
+        - IL
+        - IM
+        - IN
+        - IO
+        - IQ
+        - IR
+        - IS
+        - IT
+        - JE
+        - JM
+        - JO
+        - JP
+        - KE
+        - KG
+        - KH
+        - KI
+        - KM
+        - KN
+        - KP
+        - KR
+        - KW
+        - KY
+        - KZ
+        - LA
+        - LB
+        - LC
+        - LI
+        - LK
+        - LR
+        - LS
+        - LT
+        - LU
+        - LV
+        - LY
+        - MA
+        - MC
+        - MD
+        - ME
+        - MF
+        - MG
+        - MH
+        - MK
+        - ML
+        - MM
+        - MN
+        - MO
+        - MP
+        - MQ
+        - MR
+        - MS
+        - MT
+        - MU
+        - MV
+        - MW
+        - MX
+        - MY
+        - MZ
+        - NA
+        - NC
+        - NE
+        - NF
+        - NG
+        - NI
+        - NL
+        - 'NO'
+        - NP
+        - NR
+        - NU
+        - NZ
+        - OM
+        - PA
+        - PE
+        - PF
+        - PG
+        - PH
+        - PK
+        - PL
+        - PM
+        - PN
+        - PR
+        - PS
+        - PT
+        - PW
+        - PY
+        - QA
+        - RE
+        - RO
+        - RS
+        - RU
+        - RW
+        - SA
+        - SB
+        - SC
+        - SD
+        - SE
+        - SG
+        - SH
+        - SI
+        - SJ
+        - SK
+        - SL
+        - SM
+        - SN
+        - SO
+        - SR
+        - SS
+        - ST
+        - SV
+        - SX
+        - SY
+        - SZ
+        - TC
+        - TD
+        - TF
+        - TG
+        - TH
+        - TJ
+        - TK
+        - TL
+        - TM
+        - TN
+        - TO
+        - TR
+        - TT
+        - TV
+        - TW
+        - TZ
+        - UA
+        - UG
+        - UM
+        - US
+        - UY
+        - UZ
+        - VA
+        - VC
+        - VE
+        - VG
+        - VI
+        - VN
+        - VU
+        - WF
+        - WS
+        - YE
+        - YT
+        - ZA
+        - ZM
+        - ZW
+        - OA
+        - OB
+        - OC
+        - OD
+        - OE
+        - OF
+        - OG
+        - OZ
+      description: missing description
+      type: string
     Carrier:
       description: 'Carrier. '
       type: object
@@ -308,24 +312,13 @@ components:
       type: object
       properties:
         chargeCode:
-          description: The unique identifier for this logistics service charge.
-          type: string
-          enum:
-            - allCharges
-            - additionalCharges
-            - basicFreight
-            - destinationHaulageCharges
-            - destinationPortCharges
-            - originPortCharges
-            - originHaulageCharges
-            - otherCharges
+          allOf:
+            - description: The unique identifier for this logistics service charge.
+            - $ref: '#/components/schemas/ChargeCategories'
         paymentTerm:
-          description: Charge payment term.
-          type: string
-          enum:
-            - prepaid
-            - collect
-            - prepaidElsewhere
+          allOf:
+            - description: Charge payment term.
+            - $ref: '#/components/schemas/PaymentTerm'
         chargeText:
           description: A textual description of this logistics service charge.
           type: string
@@ -338,6 +331,25 @@ components:
       required:
         - chargeCode
         - paymentTerm
+    ChargeCategories:
+      enum:
+        - allCharges
+        - additionalCharges
+        - basicFreight
+        - destinationHaulageCharges
+        - destinationPortCharges
+        - originPortCharges
+        - originHaulageCharges
+        - otherCharges
+      description: missing description
+      type: string
+    PaymentTerm:
+      enum:
+        - prepaid
+        - collect
+        - prepaidElsewhere
+      description: missing description
+      type: string
     Communication:
       description: >-
         The exchange of thoughts, messages, or information, as universally
@@ -378,113 +390,114 @@ components:
           format: date-time
         serviceMode:
           description: 'The scope of the consignment, such as CY-CY or SD-SD.'
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         transportEquipmentQuantity:
           description: >-
             A number of pieces of transport equipment, such as containers or
             similar unit load devices, in this consignment.
           type: number
         carrier:
-          $ref: '#/components/schemas/Carrier'
-          description: 'Carrier. '
+          allOf:
+            - description: 'Carrier acting as transport service provider of a consignment. '
+            - $ref: '#/components/schemas/Carrier'
         consignor:
-          $ref: '#/components/schemas/Consignor'
-          description: 'Consignor, also known as "Shipper".  '
+          allOf:
+            - description: The consignor of this consignment.
+            - $ref: '#/components/schemas/Consignor'
         consignee:
-          $ref: '#/components/schemas/Consignee'
-          description: 'Consignee. '
+          allOf:
+            - description: The consignee of this consignment.
+            - $ref: '#/components/schemas/Consignee'
         notifyParties:
           items:
             $ref: '#/components/schemas/NotifyParty'
           type: array
+          description: ''
         freightForwarder:
-          $ref: '#/components/schemas/FreightForwarder'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/FreightForwarder'
         freightPayer:
-          $ref: '#/components/schemas/FreightPayer'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/FreightPayer'
         customsBroker:
-          $ref: '#/components/schemas/CustomsBroker'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/CustomsBroker'
         shipFromParty:
-          $ref: '#/components/schemas/ShipFromParty'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/ShipFromParty'
         shipToParty:
-          $ref: '#/components/schemas/ShipToParty'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/ShipToParty'
         otherParties:
           items:
             $ref: '#/components/schemas/OtherParty'
           type: array
+          description: ''
         placeOfReceipt:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
+          allOf:
+            - description: 'The place of receipt. '
+            - $ref: '#/components/schemas/Location'
         portOfLoading:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
+          allOf:
+            - description: 'The port of loading. '
+            - $ref: '#/components/schemas/Location'
         portOfDischarge:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
+          allOf:
+            - description: 'The port of discharge. '
+            - $ref: '#/components/schemas/Location'
         placeOfDelivery:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
+          allOf:
+            - description: 'The place of delivery. '
+            - $ref: '#/components/schemas/Location'
         preCarriageMovement:
-          $ref: '#/components/schemas/TransportMovement'
-          description: >-
-            The conveyance (physical carriage) of goods or other objects used
-            for logistics transport purposes.
-
-            Corresponding EDIFACT element: 8051 - Transport stage code
-            qualifier.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/TransportMovement'
         mainCarriageTransportMovement:
-          $ref: '#/components/schemas/TransportMovement'
-          description: >-
-            The conveyance (physical carriage) of goods or other objects used
-            for logistics transport purposes.
-
-            Corresponding EDIFACT element: 8051 - Transport stage code
-            qualifier.
+          allOf:
+            - description: >-
+                The journey by which the consignment is (planned to be) moved.
+                In a multi-leg plan, this should be the first journey only. 
+            - $ref: '#/components/schemas/TransportMovement'
         onCarriageTransportMovement:
-          $ref: '#/components/schemas/TransportMovement'
-          description: >-
-            The conveyance (physical carriage) of goods or other objects used
-            for logistics transport purposes.
-
-            Corresponding EDIFACT element: 8051 - Transport stage code
-            qualifier.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/TransportMovement'
         consignmentItems:
           items:
             $ref: '#/components/schemas/ConsignmentItem'
           type: array
+          description: ''
           minItems: 1
         utilizedTransportEquipment:
           items:
             $ref: '#/components/schemas/TransportEquipment'
           type: array
+          description: ''
         charges:
           items:
             $ref: '#/components/schemas/Charges'
           type: array
+          description: 'Consignment''s charge lines. '
         transportPackages:
-          $ref: '#/components/schemas/TransportPackage'
-          description: >-
-            A self-contained wrapping or container within which goods can be
-            contained for logistics purposes, such as a box or a barrel which
-            can be filled, partially filled or empty.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/TransportPackage'
         grossWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Weight'
         grossVolume:
-          $ref: '#/components/schemas/Volume'
-          description: 'An amount, size, or extent as established by measuring.'
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Volume'
       required:
         - carrier
         - consignor
@@ -492,8 +505,6 @@ components:
         - portOfLoading
         - portOfDischarge
         - consignmentItems
-        - grossWeight
-        - grossVolume
     ConsignmentItem:
       description: >-
         Cargo items. An item within a consignment of goods separately identified
@@ -509,49 +520,56 @@ components:
             consignment item.
           type: string
         codeType:
-          description: |-
-            The cargo code type of consignment item. 
-            https://service.unece.org/trade/untdid/d00a/tred/tred7143.htm
-          type: string
-          enum:
-            - harmonizedSystem
-            - stockKeepingUnit
-            - purchaseOrder
-            - cargoSpecificationNumber
-            - vehicleIdentificationNumber
-            - commodityGrouping
+          allOf:
+            - description: |-
+                The cargo code type of consignment item. 
+                https://service.unece.org/trade/untdid/d00a/tred/tred7143.htm
+            - $ref: '#/components/schemas/CommodityCodeType'
         codeValue:
           description: A code specifying a type of consignment item.
           type: string
         transportPackages:
-          $ref: '#/components/schemas/TransportPackage'
-          description: >-
-            A self-contained wrapping or container within which goods can be
-            contained for logistics purposes, such as a box or a barrel which
-            can be filled, partially filled or empty.
+          allOf:
+            - description: Transport packages for this supply chain consignment item.
+            - $ref: '#/components/schemas/TransportPackage'
         grossWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: Gross weight of the cargo line.
+            - $ref: '#/components/schemas/Weight'
         grossVolume:
-          $ref: '#/components/schemas/Volume'
-          description: 'An amount, size, or extent as established by measuring.'
+          allOf:
+            - description: >-
+                A measure of the gross volume, normally calculated by
+                multiplying the maximum length, width and height of this
+                consignment item.
+            - $ref: '#/components/schemas/Volume'
         equipmentStuffing:
           items:
             $ref: '#/components/schemas/Stuffing'
           type: array
+          description: 'The equipment which (parts of) the consignment is stuffed into. '
         applicableDangerousGoods:
-          $ref: '#/components/schemas/DangerousGoods'
-          description: >-
-            A hazardous or non-hazardous substance which may pose risks to
-            people and/or the environment for which the transportation is
-            regulated by dangerous goods regulations.
+          allOf:
+            - description: Dangerous goods details applicable to this consignment item.
+            - $ref: '#/components/schemas/DangerousGoods'
         transportTemperature:
           items:
             $ref: '#/components/schemas/ReeferSetting'
           type: array
+          description: Transport Temperature.
       allOf:
         - $ref: '#/components/schemas/OutOfGauge'
         - type: object
+    CommodityCodeType:
+      enum:
+        - harmonizedSystem
+        - stockKeepingUnit
+        - purchaseOrder
+        - cargoSpecificationNumber
+        - vehicleIdentificationNumber
+        - commodityGrouping
+      description: missing description
+      type: string
     Consignor:
       description: 'Consignor, also known as "Shipper".  '
       type: object
@@ -586,23 +604,28 @@ components:
             number assigned to the dangerous goods. 
 
             Kept as an integer, so for example "UN 0487" is provided as 487. 
-          type: number
-        hazardType:
-          description: A code specifying the type of hazard for the dangerous goods.
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Numeric'
+            - type: object
         hazardClassification:
           description: >-
             A unique identifier for this hazard classification for the dangerous
             goods.
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         hazardClassVersion:
           description: >-
             The unique identifier of the version of a hazard class for the
             dangerous goods.
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         hazardInformation:
           description: 'Used to indicate Haz Mat Placard (explosive, flammable, etc.)'
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         ems:
           description: >-
             The unique transport emergency procedure (EMS) identifier applicable
@@ -626,37 +649,55 @@ components:
             goods.
           type: string
         packingDangerLevel:
+          allOf:
+            - description: >-
+                A code specifying the packaging danger level for the dangerous
+                goods.
+            - $ref: '#/components/schemas/PackingDangerLevel'
+        IMDGSegregationGroup:
           description: >-
-            A code specifying the packaging danger level for the dangerous
-            goods.
-          type: string
-          enum:
-            - groupIGreatDanger
-            - groupIIMediumDanger
-            - groupIIIMinorDanger
+            The code specifying the IMDG (International Maritime Dangerous Goods
+            regulation) segregation group for the dangerous goods.
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         flashpointTemperatureMeasurement:
-          $ref: '#/components/schemas/FlashpointTemperature'
-          description: A measurement of the flashpoint temperature of the dangerous goods.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/FlashpointTemperature'
         emergencyContact:
-          $ref: '#/components/schemas/EmergencyContact'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/EmergencyContact'
         grossVolume:
-          $ref: '#/components/schemas/Volume'
-          description: 'An amount, size, or extent as established by measuring.'
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Volume'
         grossWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Weight'
         netWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Weight'
         radioactiveMaterial:
-          $ref: '#/components/schemas/RadioactiveMaterial'
-          description: A radioactive material in the dangerous goods.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/RadioactiveMaterial'
         handlingInstructions:
-          $ref: '#/components/schemas/HandlingInstructions'
-          description: Handling instructions for the dangerous goods.
+          allOf:
+            - description: Handling instructions for the dangerous goods.
+            - $ref: '#/components/schemas/HandlingInstructions'
       required:
         - emergencyContact
+    PackingDangerLevel:
+      enum:
+        - groupIGreatDanger
+        - groupIIMediumDanger
+        - groupIIIMinorDanger
+      description: missing description
+      type: string
     Dimensions:
       description: ''
       type: object
@@ -671,11 +712,15 @@ components:
           description: missing description
           type: number
         measurementUnit:
-          description: missing description
-          type: string
-          enum:
-            - m
-            - f
+          allOf:
+            - description: missing description
+            - $ref: '#/components/schemas/MeasurementUnit'
+    MeasurementUnit:
+      enum:
+        - m
+        - f
+      description: missing description
+      type: string
     Document:
       description: >-
         A collection of data for a piece of written, printed or electronic
@@ -702,16 +747,15 @@ components:
           items:
             $ref: '#/components/schemas/Reference'
           type: array
+          description: ''
         placeOfIssue:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
+          allOf:
+            - description: 'The place of issuance. '
+            - $ref: '#/components/schemas/Location'
         original:
-          $ref: '#/components/schemas/Location'
-          description: >-
-            Corresponding EDIFACT element: 3227 - Location function code
-            qualifier.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Location'
       required:
         - originatorName
     EmergencyContact:
@@ -736,11 +780,15 @@ components:
           description: An actual measure for this measurement.
           type: number
         code:
-          description: A code specifying a type of measurement.
-          type: string
-          enum:
-            - c
-            - f
+          allOf:
+            - description: A code specifying a type of measurement.
+            - $ref: '#/components/schemas/TemperatureUnit'
+    TemperatureUnit:
+      enum:
+        - c
+        - f
+      description: missing description
+      type: string
     FreightForwarder:
       description: ''
       type: object
@@ -798,41 +846,45 @@ components:
       type: object
       properties:
         partyRole:
-          description: 'Type of party. '
-          type: string
-          enum:
-            - exporter
-            - importer
-            - origin3PL
-            - destination3PL
-            - seller
-            - buyer
-            - exportCustomsBroker
-            - importCustomsBroker
-            - requestParty
-            - buyersBank
-            - sellersBank
-            - insuranceProvider
-            - oceanCarrier
-            - transportServiceBuyer
-            - transportServiceIntermediary
-            - railOperator
-            - truckOperator
-            - bargeOperator
-            - feederOperator
-            - originMarineTerminal
-            - destinationMarineTerminal
-            - transhipmentTerminal
-            - inlandTerminal
-            - portCommunitySystem
-            - exportAuthority
-            - importAuthority
-            - goodsOwner
-            - freightChargesPayer
-            - toOrderShipper
+          allOf:
+            - description: 'Type of party. '
+            - $ref: '#/components/schemas/PartyRole'
       allOf:
         - $ref: '#/components/schemas/Party'
         - type: object
+    PartyRole:
+      enum:
+        - exporter
+        - importer
+        - origin3PL
+        - destination3PL
+        - seller
+        - buyer
+        - exportCustomsBroker
+        - importCustomsBroker
+        - requestParty
+        - buyersBank
+        - sellersBank
+        - insuranceProvider
+        - oceanCarrier
+        - transportServiceBuyer
+        - transportServiceIntermediary
+        - railOperator
+        - truckOperator
+        - bargeOperator
+        - feederOperator
+        - originMarineTerminal
+        - destinationMarineTerminal
+        - transhipmentTerminal
+        - inlandTerminal
+        - portCommunitySystem
+        - exportAuthority
+        - importAuthority
+        - goodsOwner
+        - freightChargesPayer
+        - toOrderShipper
+      description: missing description
+      type: string
     OutOfGauge:
       description: ''
       type: object
@@ -841,8 +893,9 @@ components:
           description: missing description
           type: boolean
         dimensions:
-          $ref: '#/components/schemas/Dimensions'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Dimensions'
     Party:
       description: >-
         An individual, a group, or a body having a role in a business function. 
@@ -870,16 +923,13 @@ components:
           description: 'Unique identifier of the party. '
           type: string
         address:
-          $ref: '#/components/schemas/Address'
-          description: >-
-            The location at which a particular organization or person may be
-            found or reached.
+          allOf:
+            - description: 'The party''s address. '
+            - $ref: '#/components/schemas/Address'
         communicationDetails:
-          $ref: '#/components/schemas/Communication'
-          description: >-
-            The exchange of thoughts, messages, or information, as universally
-            exchanged by speech, signals, writing, or behaviour between persons
-            and/or organizations.
+          allOf:
+            - description: 'Party''s means of communication. '
+            - $ref: '#/components/schemas/Communication'
     RadioactiveMaterial:
       description: A radioactive material in the dangerous goods.
       type: object
@@ -908,25 +958,34 @@ components:
             temperature value of ten degrees Celsius.
           type: number
         type:
-          description: The code specifying the type of reefer setting.
-          type: string
-          enum:
-            - temperature
-            - carbon
-            - oxygen
-            - nitrogen
-            - airFlow
+          allOf:
+            - description: The code specifying the type of reefer setting.
+            - $ref: '#/components/schemas/ReeferSettingType'
         unit:
-          description: Unit used for measureing the reefer setting.
-          type: string
-          enum:
-            - cel
-            - far
-            - mqh
-            - pct
+          allOf:
+            - description: Unit used for measureing the reefer setting.
+            - $ref: '#/components/schemas/ReeferSettingUnit'
         instructions:
           description: Specific instructions pertaining to the reefer setting.
           type: string
+    ReeferSettingType:
+      enum:
+        - temperature
+        - carbon
+        - oxygen
+        - nitrogen
+        - airFlow
+        - humidity
+      description: missing description
+      type: string
+    ReeferSettingUnit:
+      enum:
+        - cel
+        - far
+        - mqh
+        - pct
+      description: missing description
+      type: string
     Reference:
       description: >-
         Reference number(s) assigned to the document by the issuer such as bill
@@ -934,108 +993,9 @@ components:
       type: object
       properties:
         type:
-          description: 'Type of reference. '
-          type: string
-          enum:
-            - proformaInvoiceNumber
-            - deliveryScheduleNumber
-            - consigneeShipmentReferenceNumber
-            - despatchNoteNumber
-            - customsTariffNumber
-            - customsDecisionRequestNumber
-            - subHouseBillOfLadingNumber
-            - customsGuaranteeNumber
-            - sellersCatalogueNumber
-            - declarantsCustomsIdentityNumber
-            - importerReferenceNumber
-            - customsDeclarationNumber
-            - stockKeepingUnitNumber
-            - adviceOfCollectionNumber
-            - railwayWagonNumber
-            - buyersItemNumber
-            - customsHouseBrokerReferenceNumber
-            - reportNumber
-            - traderAccountNumber
-            - governmentAgencyReferenceNumber
-            - regristrationNumberOfPreviousCustomsDeclaration
-            - productReservationNumber
-            - customsItemNumber
-            - tariffNumber
-            - replenishmentPurchaceOrderNumber
-            - contractPartyReferenceNumber
-            - agentsReferenceNumber
-            - deliveryVerificationCertificate
-            - customsReleaseCode
-            - complianceCodeNumber
-            - ministerialCertificateOfHomologation
-            - banksCommonTransactionReferenceNumber
-            - customsTranshipmentNumber
-            - vehicleIdentificationNumber
-            - replenishmentPurchaseOrderRangeStartNumber
-            - consigneesInvoiceNumber
-            - replenishmentPurchaseOrderRangeEndNumber
-            - buyersCatalogueNumber
-            - inlandTransportOrderNumber
-            - consigneesReference
-            - usCustomsServiceEntryCode
-            - transportEquipmentReleaseOrderReference
-            - importersLetterOfCreditReference
-            - customsBindingRulingNumber
-            - customsNonBindingRulingNumber
-            - uniqueGoodsShipmentIdentifier
-            - rateCodeNumber
-            - airWaybillNumber
-            - buyersContractNumber
-            - houseBillOfLadingNumber
-            - billOfLadingNumber
-            - bookingReferenceNumber
-            - consigneesOrderNumber
-            - carriersReferenceNumber
-            - contractNumber
-            - buyersDebtorNumber
-            - exportDeclaration
-            - exportPermitNumber
-            - containerEquipmentReceiptNumber
-            - exportersReferenceNumber
-            - exportLicenceNumber
-            - freightForwardersReferenceNumber
-            - governmentReferenceNumber
-            - harmonizedSystemNumber
-            - houseWaybillNumber
-            - inBondNumber
-            - iataCargoAgentCodeNumber
-            - importLicenceNumber
-            - invoiceNumber
-            - letterOfCreditNumber
-            - shipNoticeManifestNumber
-            - masterBillOfLadingNumber
-            - manufacturersPartNumber
-            - manufacturersOrderNumber
-            - masterAirWaybillNumber
-            - northAmericanHazardousGoodsClassificationNumber
-            - purchaseOrderNumber
-            - generalReferenceNumber
-            - pickupReferenceNumber
-            - plantNumber
-            - packingListNumber
-            - purchaseOrderResponseNumber
-            - purchaseOrderChangeNumber
-            - paymentReference
-            - priceQuoteNumber
-            - shippersIdentifyingNumberForShipment
-            - sealNumber
-            - shipmentReferenceNumber
-            - sellersReferenceNumber
-            - truckersBillOfLading
-            - transactionReferenceNumber
-            - orderNumber
-            - warehouseEntryNumber
-            - warehouseReceiptNumber
-            - warehouseStorageLocationNumber
-            - cargoControlNumber
-            - previousCargoControlNumber
-            - mutuallyDefinedReferenceNumber
-            - cocoaBatchReferenceNumber
+          allOf:
+            - description: 'Type of reference. '
+            - $ref: '#/components/schemas/Reference'
         value:
           description: 'Reference value. '
           type: string
@@ -1054,22 +1014,29 @@ components:
       properties:
         identification:
           description: A unique identifier for this logistics seal.
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         type:
           description: Description specifying the type of logistics seal.
           type: string
         sealingPartyRole:
-          description: missing description
-          type: string
-          enum:
-            - quarantineAgency
-            - carrier
-            - customs
-            - shipper
-            - terminalOperator
+          allOf:
+            - description: missing description
+            - $ref: '#/components/schemas/SealingPartyRole'
         issuingParty:
-          $ref: '#/components/schemas/IssuingParty'
-          description: The party issuing the seal.
+          allOf:
+            - description: The party issuing the seal.
+            - $ref: '#/components/schemas/IssuingParty'
+    SealingPartyRole:
+      enum:
+        - quarantineAgency
+        - carrier
+        - customs
+        - shipper
+        - terminalOperator
+      description: missing description
+      type: string
     Sender:
       description: ''
       type: object
@@ -1089,11 +1056,9 @@ components:
       type: object
       properties:
         transportDocumentType:
-          description: Requested type of transport document.
-          type: string
-          enum:
-            - billOfLading
-            - seaWaybill
+          allOf:
+            - description: Requested type of transport document.
+            - $ref: '#/components/schemas/TransportDocumentType'
         bookingNumber:
           items:
             description: 'Booking number(s). '
@@ -1141,24 +1106,30 @@ components:
           description: Element to identify function of the message.
           type: string
         movementType:
-          description: A character string used to represent a transport movement type.
-          type: string
-          enum:
-            - fcl
-            - lcl
+          allOf:
+            - description: A character string used to represent a transport movement type.
+            - $ref: '#/components/schemas/MovementTypeCode'
+        paymentArrangement:
+          allOf:
+            - description: missing description
+            - $ref: '#/components/schemas/PaymentTerm'
         information:
           items:
             $ref: '#/components/schemas/TransportDocumentInformation'
           type: array
+          description: ''
         requestParty:
-          $ref: '#/components/schemas/RequestParty'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/RequestParty'
         contractor:
-          $ref: '#/components/schemas/Contractor'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Contractor'
         documentSender:
-          $ref: '#/components/schemas/Sender'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Sender'
       allOf:
         - $ref: '#/components/schemas/Document'
         - type: object
@@ -1167,6 +1138,18 @@ components:
       required:
         - bookingNumber
         - requestParty
+    TransportDocumentType:
+      enum:
+        - billOfLading
+        - seaWaybill
+      description: missing description
+      type: string
+    MovementTypeCode:
+      enum:
+        - fcl
+        - lcl
+      description: missing description
+      type: string
     ShipToParty:
       description: ''
       type: object
@@ -1184,17 +1167,19 @@ components:
             stuffed. 
           type: string
         stuffedGrossVolume:
-          $ref: '#/components/schemas/Volume'
-          description: 'An amount, size, or extent as established by measuring.'
+          allOf:
+            - description: 'Measurements of the cargo stuffed into a transport equipment. '
+            - $ref: '#/components/schemas/Volume'
         stuffedGrossWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: 'Gross weight of the cargo stuffed into a transport equipment. '
+            - $ref: '#/components/schemas/Weight'
         stuffedTransportPackages:
-          $ref: '#/components/schemas/TransportPackage'
-          description: >-
-            A self-contained wrapping or container within which goods can be
-            contained for logistics purposes, such as a box or a barrel which
-            can be filled, partially filled or empty.
+          allOf:
+            - description: >-
+                Package information of the cargo stuffed into a transport
+                equipment. 
+            - $ref: '#/components/schemas/TransportPackage'
     TransportDocumentInformation:
       description: 'Specific information printed on the transport document. '
       type: object
@@ -1203,15 +1188,19 @@ components:
           description: 'Textual transport document information. '
           type: string
         type:
-          description: 'Type of transport document information. '
-          type: string
-          enum:
-            - generalInformation
-            - billOfLadingRemarks
-            - termsAndConditions
-            - billOfLadingClause
-            - transportDocumentRemarks
-            - specialRoutingInstructions
+          allOf:
+            - description: 'Type of transport document information. '
+            - $ref: '#/components/schemas/TransportDocumentInformationType'
+    TransportDocumentInformationType:
+      enum:
+        - generalInformation
+        - billOfLadingRemarks
+        - termsAndConditions
+        - billOfLadingClause
+        - transportDocumentRemarks
+        - specialRoutingInstructions
+      description: missing description
+      type: string
     TransportEquipment:
       description: >-
         A piece of equipment used to hold, protect or secure cargo for
@@ -1222,7 +1211,9 @@ components:
           description: >-
             Unique identifier for this piece of transport equipment, printed
             physically on the equipment.
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         equipmentType:
           description: ISO 6346 size and type code (for example "45G1")
           type: string
@@ -1239,46 +1230,60 @@ components:
             type: string
           type: array
         usedCapacity:
-          description: >-
-            The code specifying the used capacity of this piece of transport
-            equipment, such as full or empty.
-          type: string
-          enum:
-            - full
-            - empty
+          allOf:
+            - description: >-
+                The code specifying the used capacity of this piece of transport
+                equipment, such as full or empty.
+            - $ref: '#/components/schemas/UsedCapacityCode'
         haulageArrangements:
           description: Specification of the type of equipment haulage arrangements.
           type: string
         equipmentSupplierIndicator:
-          description: >-
-            This element indicates the party that is the supplier of the
-            equipment.
-          type: string
-          enum:
-            - carrierSupplied
-            - shipperSupplied
+          allOf:
+            - description: >-
+                This element indicates the party that is the supplier of the
+                equipment.
+            - $ref: '#/components/schemas/EquipmentSupplierIndicator'
         seals:
           items:
             $ref: '#/components/schemas/Seal'
           type: array
+          description: 'Seal(s) attached to the Transport Equipment. '
         equipmentGrossWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: Gross weight of the transport equipment.
+            - $ref: '#/components/schemas/Weight'
         equipmentReeferSetting:
           items:
             $ref: '#/components/schemas/ReeferSetting'
           type: array
+          description: ''
         equipmentTareWeight:
-          $ref: '#/components/schemas/Weight'
-          description: The numeric value determined by weight measuring.
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Weight'
         equipmentSupplier:
-          $ref: '#/components/schemas/EquipmentSupplier'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/EquipmentSupplier'
         verifiedEquipmentGrossWeight:
-          $ref: '#/components/schemas/VerifiedWeight'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/VerifiedWeight'
       required:
         - equipmentNumber
+    UsedCapacityCode:
+      enum:
+        - full
+        - empty
+      description: missing description
+      type: string
+    EquipmentSupplierIndicator:
+      enum:
+        - carrierSupplied
+        - shipperSupplied
+      description: missing description
+      type: string
     TransportMeans:
       description: >-
         The device or method used to convey people, goods, animals or other
@@ -1309,10 +1314,11 @@ components:
             number, flight number, trip number.
           type: string
         usedTransportMeans:
-          $ref: '#/components/schemas/TransportMeans'
-          description: >-
-            The device or method used to convey people, goods, animals or other
-            objects from place to place.
+          allOf:
+            - description: >-
+                The physical means used for the transport movement, for example
+                a vessel.  
+            - $ref: '#/components/schemas/TransportMeans'
     TransportPackage:
       description: >-
         A self-contained wrapping or container within which goods can be
@@ -1342,10 +1348,13 @@ components:
       properties:
         weightVerificationMethod:
           description: 'Weight verification method. '
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Text'
+            - type: object
         weightVerifier:
-          $ref: '#/components/schemas/WeightVerifier'
-          description: ''
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/WeightVerifier'
       allOf:
         - $ref: '#/components/schemas/Weight'
         - type: object
@@ -1357,30 +1366,40 @@ components:
           description: 'Numeric measurement value. '
           type: number
         unit:
-          description: 'Unit used for measurements. '
-          type: string
-          enum:
-            - cbm
-            - cbf
+          allOf:
+            - description: 'Unit used for measurements. '
+            - $ref: '#/components/schemas/VolumeUnit'
       required:
         - value
         - unit
+    VolumeUnit:
+      enum:
+        - cbm
+        - cbf
+      description: missing description
+      type: string
     Weight:
       description: The numeric value determined by weight measuring.
       type: object
       properties:
         value:
           description: 'Numeric weight value. '
-          type: number
+          allOf:
+            - $ref: '#/components/schemas/Numeric'
+            - type: object
         unit:
-          description: Unit used for weight measurement.
-          type: string
-          enum:
-            - kgs
-            - lbs
+          allOf:
+            - description: Unit used for weight measurement.
+            - $ref: '#/components/schemas/WeightUnit'
       required:
         - value
         - unit
+    WeightUnit:
+      enum:
+        - kgs
+        - lbs
+      description: missing description
+      type: string
     WeightVerifier:
       description: ''
       type: object

@@ -1,0 +1,553 @@
+openapi: 3.0.0
+info:
+  description: ''
+  title: ExportOrder
+  version: ''
+servers: []
+paths:
+  /ExportOrder: {}
+components:
+  schemas:
+    Carrier:
+      description: 'Carrier. '
+      type: object
+      properties:
+        carrierCode:
+          description: SCAC code.
+          type: string
+        name:
+          description: 'Carrier name. '
+          type: string
+        taxId:
+          description: 'Carrier''''s tax identification. '
+          type: string
+      required:
+        - carrierCode
+        - name
+    Consignee:
+      description: 'Consignee. '
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Consignment:
+      description: >-
+        A separately identifiable collection of goods items to be transported or
+        available to be transported from one consignor to one consignee via one
+        or more modes of transport where each consignment is the subject of one
+        single transport contract.
+      type: object
+      properties:
+        carrier:
+          $ref: '#/components/schemas/Carrier'
+          description: 'Carrier. '
+        consignor:
+          $ref: '#/components/schemas/Consignor'
+          description: 'Consignor, also known as "Shipper".  '
+        consignee:
+          $ref: '#/components/schemas/Consignee'
+          description: 'Consignee. '
+        notifyParties:
+          items:
+            $ref: '#/components/schemas/NotifyParty'
+          type: array
+        portOfLoading:
+          $ref: '#/components/schemas/Location'
+          description: >-
+            Corresponding EDIFACT element: 3227 - Location function code
+            qualifier.
+        portOfDischarge:
+          $ref: '#/components/schemas/Location'
+          description: >-
+            Corresponding EDIFACT element: 3227 - Location function code
+            qualifier.
+        mainCarriageTransportMovement:
+          $ref: '#/components/schemas/TransportMovement'
+          description: >-
+            The conveyance (physical carriage) of goods or other objects used
+            for logistics transport purposes.
+
+            Corresponding EDIFACT element: 8051 - Transport stage code
+            qualifier.
+        consignmentItems:
+          items:
+            $ref: '#/components/schemas/ConsignmentItem'
+          type: array
+          minItems: 1
+        utilizedTransportEquipment:
+          items:
+            $ref: '#/components/schemas/TransportEquipment'
+          type: array
+      required:
+        - carrier
+        - consignor
+        - consignee
+        - portOfLoading
+        - portOfDischarge
+        - consignmentItems
+    ConsignmentItem:
+      description: >-
+        Cargo items. An item within a consignment of goods separately identified
+        for transport and customs purposes.
+      type: object
+      properties:
+        sequence:
+          description: The sequence number for this consignment item.
+          type: number
+        information:
+          description: >-
+            Cargo description. Information, expressed as text, for this
+            consignment item.
+          type: string
+        codeType:
+          description: |-
+            The cargo code type of consignment item. 
+            https://service.unece.org/trade/untdid/d00a/tred/tred7143.htm
+          type: string
+          enum:
+            - harmonizedSystem
+            - stockKeepingUnit
+            - purchaseOrder
+            - cargoSpecificationNumber
+            - vehicleIdentificationNumber
+            - commodityGrouping
+        codeValue:
+          description: A code specifying a type of consignment item.
+          type: string
+        equipmentStuffing:
+          items:
+            $ref: '#/components/schemas/Stuffing'
+          type: array
+    Consignor:
+      description: 'Consignor, also known as "Shipper".  '
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Document:
+      description: >-
+        A collection of data for a piece of written, printed or electronic
+        matter that provides information or evidence.
+      type: object
+      properties:
+        originatorName:
+          description: >-
+            The proper name (human readable) of the entity that published this
+            event.
+          type: string
+        originatorId:
+          description: >-
+            The party identification code (i.e. SCAC) of the organization
+            publishing the event.
+          type: string
+        issue:
+          description: >-
+            A date, time, date time or other date time value for an issuance of
+            this document.
+          type: string
+          format: date-time
+        originalIssued:
+          description: The number of originals issued for this document.
+          type: number
+        copyIssued:
+          description: The number of copies issued for this document.
+          type: number
+      required:
+        - originatorName
+        - issue
+    ExportOrder:
+      description: ''
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Document'
+        - type: object
+        - $ref: '#/components/schemas/Consignment'
+        - type: object
+    Location:
+      description: 'Corresponding EDIFACT element: 3227 - Location function code qualifier.'
+      type: object
+      properties:
+        name:
+          description: |-
+            A name, expressed as text, of this logistics related location.
+            Corresponding EDIFACT element: 3225 - Location name code.
+          type: string
+        UNLocode:
+          description: >-
+            United Nations Location Code (UNLOCODE) unique identifier for
+            logistics related location. 
+          type: string
+    NotifyParty:
+      description: 'Notify party. '
+      type: object
+      properties: {}
+      allOf:
+        - $ref: '#/components/schemas/Party'
+        - type: object
+    Party:
+      description: >-
+        An individual, a group, or a body having a role in a business function. 
+        Party has a legal connotation in a business transaction.
+
+        Corresponding EDIFACT element: 3035 - Party function code qualifier.
+      type: object
+      properties:
+        name:
+          description: 'A name, expressed as text, for this party.'
+          type: string
+        printedParty:
+          description: The party name and address exactly as printed on the document.
+          type: string
+        registeredForVAT:
+          description: 'VAT registration indicator. '
+          type: boolean
+        taxReference:
+          description: Tax identification of the party.
+          type: string
+        partyRef:
+          description: Reference which represents the party.
+          type: string
+        organizationId:
+          description: 'Unique identifier of the party. '
+          type: string
+    RegistrationCountry:
+      description: ''
+      type: object
+      properties:
+        country:
+          description: missing description
+          type: string
+          enum:
+            - AD
+            - AE
+            - AF
+            - AG
+            - AI
+            - AL
+            - AM
+            - AO
+            - AQ
+            - AR
+            - AS
+            - AT
+            - AU
+            - AW
+            - AX
+            - AZ
+            - BA
+            - BB
+            - BD
+            - BE
+            - BF
+            - BG
+            - BH
+            - BI
+            - BJ
+            - BL
+            - BM
+            - BN
+            - BO
+            - BQ
+            - BR
+            - BS
+            - BT
+            - BV
+            - BW
+            - BY
+            - BZ
+            - CA
+            - CC
+            - CD
+            - CF
+            - CG
+            - CH
+            - CI
+            - CK
+            - CL
+            - CM
+            - CN
+            - CO
+            - CR
+            - CU
+            - CV
+            - CW
+            - CX
+            - CY
+            - CZ
+            - DE
+            - DJ
+            - DK
+            - DM
+            - DO
+            - DZ
+            - EC
+            - EE
+            - EG
+            - EH
+            - ER
+            - ES
+            - ET
+            - FI
+            - FJ
+            - FK
+            - FM
+            - FO
+            - FR
+            - GA
+            - GB
+            - GD
+            - GE
+            - GF
+            - GG
+            - GI
+            - GL
+            - GM
+            - GN
+            - GP
+            - GQ
+            - GR
+            - GS
+            - GT
+            - GU
+            - GW
+            - GY
+            - HK
+            - HM
+            - HN
+            - HR
+            - HT
+            - HU
+            - ID
+            - IE
+            - IL
+            - IM
+            - IN
+            - IO
+            - IQ
+            - IR
+            - IS
+            - IT
+            - JE
+            - JM
+            - JO
+            - JP
+            - KE
+            - KG
+            - KH
+            - KI
+            - KM
+            - KN
+            - KP
+            - KR
+            - KW
+            - KY
+            - KZ
+            - LA
+            - LB
+            - LC
+            - LI
+            - LK
+            - LR
+            - LS
+            - LT
+            - LU
+            - LV
+            - LY
+            - MA
+            - MC
+            - MD
+            - ME
+            - MF
+            - MG
+            - MH
+            - MK
+            - ML
+            - MM
+            - MN
+            - MO
+            - MP
+            - MQ
+            - MR
+            - MS
+            - MT
+            - MU
+            - MV
+            - MW
+            - MX
+            - MY
+            - MZ
+            - NA
+            - NC
+            - NE
+            - NF
+            - NG
+            - NI
+            - NL
+            - 'NO'
+            - NP
+            - NR
+            - NU
+            - NZ
+            - OM
+            - PA
+            - PE
+            - PF
+            - PG
+            - PH
+            - PK
+            - PL
+            - PM
+            - PN
+            - PR
+            - PS
+            - PT
+            - PW
+            - PY
+            - QA
+            - RE
+            - RO
+            - RS
+            - RU
+            - RW
+            - SA
+            - SB
+            - SC
+            - SD
+            - SE
+            - SG
+            - SH
+            - SI
+            - SJ
+            - SK
+            - SL
+            - SM
+            - SN
+            - SO
+            - SR
+            - SS
+            - ST
+            - SV
+            - SX
+            - SY
+            - SZ
+            - TC
+            - TD
+            - TF
+            - TG
+            - TH
+            - TJ
+            - TK
+            - TL
+            - TM
+            - TN
+            - TO
+            - TR
+            - TT
+            - TV
+            - TW
+            - TZ
+            - UA
+            - UG
+            - UM
+            - US
+            - UY
+            - UZ
+            - VA
+            - VC
+            - VE
+            - VG
+            - VI
+            - VN
+            - VU
+            - WF
+            - WS
+            - YE
+            - YT
+            - ZA
+            - ZM
+            - ZW
+            - OA
+            - OB
+            - OC
+            - OD
+            - OE
+            - OF
+            - OG
+            - OZ
+    Stuffing:
+      description: 'The equipment which (parts of) the consignment is stuffed into. '
+      type: object
+      properties:
+        equipmentNumber:
+          description: >-
+            Unique identifier of the transport equipment in which cargo is
+            stuffed. 
+          type: string
+    TransportEquipment:
+      description: >-
+        A piece of equipment used to hold, protect or secure cargo for
+        transportation purposes.
+      type: object
+      properties:
+        equipmentNumber:
+          description: >-
+            Unique identifier for this piece of transport equipment, printed
+            physically on the equipment.
+          type: string
+        equipmentType:
+          description: ISO 6346 size and type code (for example "45G1")
+          type: string
+        usedCapacity:
+          description: >-
+            The code specifying the used capacity of this piece of transport
+            equipment, such as full or empty.
+          type: string
+          enum:
+            - full
+            - empty
+      required:
+        - equipmentNumber
+    TransportMeans:
+      description: >-
+        The device or method used to convey people, goods, animals or other
+        objects from place to place.
+      type: object
+      properties:
+        identification:
+          description: >-
+            An identifier of this logistics means of transport, such as the
+            International Maritime Organization number of a vessel.
+          type: string
+        name:
+          description: >-
+            The name, expressed as text, of this logistics means of transport
+            such as the vessel name.
+          type: string
+        registrationCountry:
+          $ref: '#/components/schemas/RegistrationCountry'
+          description: ''
+    TransportMovement:
+      description: >-
+        The conveyance (physical carriage) of goods or other objects used for
+        logistics transport purposes.
+
+        Corresponding EDIFACT element: 8051 - Transport stage code qualifier.
+      type: object
+      properties:
+        identification:
+          description: >-
+            To identify a journey of a means of transport, for example voyage
+            number, flight number, trip number.
+          type: string
+        usedTransportMeans:
+          $ref: '#/components/schemas/TransportMeans'
+          description: >-
+            The device or method used to convey people, goods, animals or other
+            objects from place to place.
+    Text:
+      description: ''
+      type: object
+      properties: {}

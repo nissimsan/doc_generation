@@ -40,7 +40,7 @@
                                 "description": "A unique country identifier for this party."
                             },
                             {
-                                "$ref": "#/components/schemas/Country"
+                                "$ref": "#/definitions/Country"
                             }
                         ]
                     },
@@ -309,7 +309,7 @@
                     "OG",
                     "OZ"
                 ],
-                "description": "missing description",
+                "description": "Country.",
                 "type": "string"
             },
             "Carrier": {
@@ -340,7 +340,7 @@
                                 "description": "The unique identifier for this logistics service charge."
                             },
                             {
-                                "$ref": "#/components/schemas/ChargeCategories"
+                                "$ref": "#/definitions/ChargeCategories"
                             }
                         ]
                     },
@@ -350,7 +350,7 @@
                                 "description": "Charge payment term."
                             },
                             {
-                                "$ref": "#/components/schemas/PaymentTerm"
+                                "$ref": "#/definitions/PaymentTerm"
                             }
                         ]
                     },
@@ -441,14 +441,7 @@
                     },
                     "serviceMode": {
                         "description": "The scope of the consignment, such as CY-CY or SD-SD.",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "transportEquipmentQuantity": {
                         "description": "A number of pieces of transport equipment, such as containers or similar unit load devices, in this consignment.",
@@ -698,7 +691,7 @@
                                 "description": "The cargo code type of consignment item. \nhttps://service.unece.org/trade/untdid/d00a/tred/tred7143.htm"
                             },
                             {
-                                "$ref": "#/components/schemas/CommodityCodeType"
+                                "$ref": "#/definitions/CommodityCodeType"
                             }
                         ]
                     },
@@ -827,47 +820,19 @@
                 "properties": {
                     "UNDGIdentification": {
                         "description": "The code specifying the unique United Nations Dangerous Goods (UNDG) number assigned to the dangerous goods. \nKept as an integer, so for example \"UN 0487\" is provided as 487. ",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Numeric"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "number"
                     },
                     "hazardClassification": {
                         "description": "A unique identifier for this hazard classification for the dangerous goods.",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "hazardClassVersion": {
                         "description": "The unique identifier of the version of a hazard class for the dangerous goods.",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "hazardInformation": {
                         "description": "Used to indicate Haz Mat Placard (explosive, flammable, etc.)",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "ems": {
                         "description": "The unique transport emergency procedure (EMS) identifier applicable for the dangerous goods.",
@@ -899,20 +864,13 @@
                                 "description": "A code specifying the packaging danger level for the dangerous goods."
                             },
                             {
-                                "$ref": "#/components/schemas/PackingDangerLevel"
+                                "$ref": "#/definitions/PackingDangerLevel"
                             }
                         ]
                     },
                     "IMDGSegregationGroup": {
                         "description": "The code specifying the IMDG (International Maritime Dangerous Goods regulation) segregation group for the dangerous goods.",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "flashpointTemperatureMeasurement": {
                         "allOf": [
@@ -1020,7 +978,7 @@
                                 "description": "missing description"
                             },
                             {
-                                "$ref": "#/components/schemas/MeasurementUnit"
+                                "$ref": "#/definitions/MeasurementUnit"
                             }
                         ]
                     }
@@ -1126,7 +1084,7 @@
                                 "description": "A code specifying a type of measurement."
                             },
                             {
-                                "$ref": "#/components/schemas/TemperatureUnit"
+                                "$ref": "#/definitions/TemperatureUnit"
                             }
                         ]
                     }
@@ -1230,7 +1188,7 @@
                                 "description": "Type of party. "
                             },
                             {
-                                "$ref": "#/components/schemas/PartyRole"
+                                "$ref": "#/definitions/PartyRole"
                             }
                         ]
                     }
@@ -1385,7 +1343,7 @@
                                 "description": "The code specifying the type of reefer setting."
                             },
                             {
-                                "$ref": "#/components/schemas/ReeferSettingType"
+                                "$ref": "#/definitions/ReeferSettingType"
                             }
                         ]
                     },
@@ -1395,7 +1353,7 @@
                                 "description": "Unit used for measureing the reefer setting."
                             },
                             {
-                                "$ref": "#/components/schemas/ReeferSettingUnit"
+                                "$ref": "#/definitions/ReeferSettingUnit"
                             }
                         ]
                     },
@@ -1437,7 +1395,7 @@
                                 "description": "Type of reference. "
                             },
                             {
-                                "$ref": "#/components/schemas/Reference"
+                                "$ref": "#/components/schemas/ReferenceTypes"
                             }
                         ]
                     },
@@ -1446,6 +1404,111 @@
                         "type": "string"
                     }
                 }
+            },
+            "ReferenceTypes": {
+                "enum": [
+                    "proformaInvoiceNumber",
+                    "deliveryScheduleNumber",
+                    "consigneeShipmentReferenceNumber",
+                    "despatchNoteNumber",
+                    "customsTariffNumber",
+                    "customsDecisionRequestNumber",
+                    "subHouseBillOfLadingNumber",
+                    "customsGuaranteeNumber",
+                    "sellersCatalogueNumber",
+                    "declarantsCustomsIdentityNumber",
+                    "importerReferenceNumber",
+                    "customsDeclarationNumber",
+                    "stockKeepingUnitNumber",
+                    "adviceOfCollectionNumber",
+                    "railwayWagonNumber",
+                    "buyersItemNumber",
+                    "customsHouseBrokerReferenceNumber",
+                    "reportNumber",
+                    "traderAccountNumber",
+                    "governmentAgencyReferenceNumber",
+                    "regristrationNumberOfPreviousCustomsDeclaration",
+                    "productReservationNumber",
+                    "customsItemNumber",
+                    "tariffNumber",
+                    "replenishmentPurchaceOrderNumber",
+                    "contractPartyReferenceNumber",
+                    "agentsReferenceNumber",
+                    "deliveryVerificationCertificate",
+                    "customsReleaseCode",
+                    "complianceCodeNumber",
+                    "ministerialCertificateOfHomologation",
+                    "banksCommonTransactionReferenceNumber",
+                    "customsTranshipmentNumber",
+                    "vehicleIdentificationNumber",
+                    "replenishmentPurchaseOrderRangeStartNumber",
+                    "consigneesInvoiceNumber",
+                    "replenishmentPurchaseOrderRangeEndNumber",
+                    "buyersCatalogueNumber",
+                    "inlandTransportOrderNumber",
+                    "consigneesReference",
+                    "usCustomsServiceEntryCode",
+                    "transportEquipmentReleaseOrderReference",
+                    "importersLetterOfCreditReference",
+                    "customsBindingRulingNumber",
+                    "customsNonBindingRulingNumber",
+                    "uniqueGoodsShipmentIdentifier",
+                    "rateCodeNumber",
+                    "airWaybillNumber",
+                    "buyersContractNumber",
+                    "houseBillOfLadingNumber",
+                    "billOfLadingNumber",
+                    "bookingReferenceNumber",
+                    "consigneesOrderNumber",
+                    "carriersReferenceNumber",
+                    "contractNumber",
+                    "buyersDebtorNumber",
+                    "exportDeclaration",
+                    "exportPermitNumber",
+                    "containerEquipmentReceiptNumber",
+                    "exportersReferenceNumber",
+                    "exportLicenceNumber",
+                    "freightForwardersReferenceNumber",
+                    "governmentReferenceNumber",
+                    "harmonizedSystemNumber",
+                    "houseWaybillNumber",
+                    "inBondNumber",
+                    "iataCargoAgentCodeNumber",
+                    "importLicenceNumber",
+                    "invoiceNumber",
+                    "letterOfCreditNumber",
+                    "shipNoticeManifestNumber",
+                    "masterBillOfLadingNumber",
+                    "manufacturersPartNumber",
+                    "manufacturersOrderNumber",
+                    "masterAirWaybillNumber",
+                    "northAmericanHazardousGoodsClassificationNumber",
+                    "purchaseOrderNumber",
+                    "generalReferenceNumber",
+                    "pickupReferenceNumber",
+                    "plantNumber",
+                    "packingListNumber",
+                    "purchaseOrderResponseNumber",
+                    "purchaseOrderChangeNumber",
+                    "paymentReference",
+                    "priceQuoteNumber",
+                    "shippersIdentifyingNumberForShipment",
+                    "sealNumber",
+                    "shipmentReferenceNumber",
+                    "sellersReferenceNumber",
+                    "truckersBillOfLading",
+                    "transactionReferenceNumber",
+                    "orderNumber",
+                    "warehouseEntryNumber",
+                    "warehouseReceiptNumber",
+                    "warehouseStorageLocationNumber",
+                    "cargoControlNumber",
+                    "previousCargoControlNumber",
+                    "mutuallyDefinedReferenceNumber",
+                    "cocoaBatchReferenceNumber"
+                ],
+                "description": "missing description",
+                "type": "string"
             },
             "RequestParty": {
                 "description": "",
@@ -1466,14 +1529,7 @@
                 "properties": {
                     "identification": {
                         "description": "A unique identifier for this logistics seal.",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "type": {
                         "description": "Description specifying the type of logistics seal.",
@@ -1485,7 +1541,7 @@
                                 "description": "missing description"
                             },
                             {
-                                "$ref": "#/components/schemas/SealingPartyRole"
+                                "$ref": "#/definitions/SealingPartyRole"
                             }
                         ]
                     },
@@ -1548,7 +1604,7 @@
                                 "description": "Requested type of transport document."
                             },
                             {
-                                "$ref": "#/components/schemas/TransportDocumentType"
+                                "$ref": "#/definitions/TransportDocumentType"
                             }
                         ]
                     },
@@ -1615,17 +1671,17 @@
                                 "description": "A character string used to represent a transport movement type."
                             },
                             {
-                                "$ref": "#/components/schemas/MovementTypeCode"
+                                "$ref": "#/definitions/MovementTypeCode"
                             }
                         ]
                     },
                     "paymentArrangement": {
                         "allOf": [
                             {
-                                "description": "missing description"
+                                "description": "The code specifying the payment arrangements for this consignment."
                             },
                             {
-                                "$ref": "#/components/schemas/PaymentTerm"
+                                "$ref": "#/definitions/PaymentTerm"
                             }
                         ]
                     },
@@ -1770,7 +1826,7 @@
                                 "description": "Type of transport document information. "
                             },
                             {
-                                "$ref": "#/components/schemas/TransportDocumentInformationType"
+                                "$ref": "#/definitions/TransportDocumentInformationType"
                             }
                         ]
                     }
@@ -1794,14 +1850,7 @@
                 "properties": {
                     "equipmentNumber": {
                         "description": "Unique identifier for this piece of transport equipment, printed physically on the equipment.",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "equipmentType": {
                         "description": "ISO 6346 size and type code (for example \"45G1\")",
@@ -1824,7 +1873,7 @@
                                 "description": "The code specifying the used capacity of this piece of transport equipment, such as full or empty."
                             },
                             {
-                                "$ref": "#/components/schemas/UsedCapacityCode"
+                                "$ref": "#/definitions/UsedCapacityCode"
                             }
                         ]
                     },
@@ -1838,7 +1887,7 @@
                                 "description": "This element indicates the party that is the supplier of the equipment."
                             },
                             {
-                                "$ref": "#/components/schemas/EquipmentSupplierIndicator"
+                                "$ref": "#/definitions/EquipmentSupplierIndicator"
                             }
                         ]
                     },
@@ -1982,14 +2031,7 @@
                 "properties": {
                     "weightVerificationMethod": {
                         "description": "Weight verification method. ",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Text"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "weightVerifier": {
                         "allOf": [
@@ -2025,7 +2067,7 @@
                                 "description": "Unit used for measurements. "
                             },
                             {
-                                "$ref": "#/components/schemas/VolumeUnit"
+                                "$ref": "#/definitions/VolumeUnit"
                             }
                         ]
                     }
@@ -2049,14 +2091,7 @@
                 "properties": {
                     "value": {
                         "description": "Numeric weight value. ",
-                        "allOf": [
-                            {
-                                "$ref": "#/definitions/Numeric"
-                            },
-                            {
-                                "type": "object"
-                            }
-                        ]
+                        "type": "number"
                     },
                     "unit": {
                         "allOf": [
@@ -2064,7 +2099,7 @@
                                 "description": "Unit used for weight measurement."
                             },
                             {
-                                "$ref": "#/components/schemas/WeightUnit"
+                                "$ref": "#/definitions/WeightUnit"
                             }
                         ]
                     }
@@ -2097,12 +2132,12 @@
             },
             "Text": {
                 "description": "",
-                "type": "object",
+                "type": "string",
                 "properties": {}
             },
             "Numeric": {
                 "description": "",
-                "type": "object",
+                "type": "number",
                 "properties": {}
             }
         }

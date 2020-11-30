@@ -7,7 +7,7 @@ This project is for generating document schemas from a common class data model i
 The benefits of this model-driven approach is:
 
 * **Consistency** of structure and naming across document schemas. The same attribute or relationship is called the same, positioned under the same class and has the same type between all generated schemas (unless deviations are explicitly defined).
-* **Efficiency** of generating new schemas, literally by dragging in the classes needed for a particular new schemas' requirements.
+* **Efficiency** of generating new schemas, literally by dragging in the classes needed for a particular new schema's requirements.
 * **Manageability** of updates and changes, if a change is made on one schema, it is automatically reflected in all other schemas based on the same data elements (subject of course to human approval, exporting the updated schema).
 * **Semantic** alignment to [CEFACT](https://service.unece.org/trade/uncefact/publication/Transport%20and%20Logistics/MMT%20RDM/HTML/041.htm).
 

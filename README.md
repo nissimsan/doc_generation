@@ -25,7 +25,7 @@ Please note that the OpenAPI extension is still under development and updates oc
 
 ## Model Structure
 
-The `tl-docgen-model.mdj` file defines both the common class model and the individual "profiles" for each document schema. You will find the model structured accordingly around a common "Model" package and a range of schema-specific packages (Bill Of Lading, Shipping Instructions, etc). All classes, enums, attributes, etc must be defined within the common Model. The schema packages only define thw following:
+The `tl-docgen-model.mdj` file defines both the common class model and the individual "profiles" for each document schema. A profile is a particular subset of the full model's classes, relationships and attributes required for a particular document schema. You will find the model structured accordingly around a common "Model" package and a range of schema-specific packages (Bill Of Lading, Shipping Instructions, etc). All classes, enums, attributes, etc must be defined within the common Model. The schema packages only define thw following:
 
 * A _Class_ representing the document schema.  
 * An _interface_ which tells the OpenAPI extension which class to export. It must have an Interface Realization relationship to its corresponding schema class.

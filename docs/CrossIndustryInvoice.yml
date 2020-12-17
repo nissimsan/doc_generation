@@ -1,0 +1,3353 @@
+openapi: 3.0.0
+info:
+  description: ''
+  title: Cross Industry Invoice
+  version: ''
+servers: []
+paths:
+  /crossIndustryInvoice: {}
+components:
+  schemas:
+    Address:
+      description: >
+        * The place of birth.
+
+        * The location at which a particular trade related organization or
+        person may be found or reached.
+
+        * The location at which a financial institution may be found or reached.
+      type: object
+      properties:
+        cityName:
+          description: >
+            * The name, expressed as text, of the city, town or village of this
+            birth address.
+
+            * The name, expressed as text, of the city, town or village of this
+            financial institution address.
+
+            * The name, expressed as text, of the city, town or village of this
+            trade address.
+          type: string
+        countryId:
+          description: >
+            * A unique country identifier for this location party.
+
+            * An identifier of the country in which this legal registration is
+            valid.
+
+            * The identifier of the country for this government registration.
+
+            * The unique identifier of a country for this financial institution
+            address (Reference ISO 3166 and UN/ECE Rec 3).
+          type: string
+          format: uri
+        countryName:
+          description: >
+            * A name, expressed as text, of the country for this trade address.
+
+            * The country name, expressed as text, of this logistics location.
+
+            * The name, expressed as text, of a country location used or
+            referenced in trade.
+
+            * The name, expressed as text, of the country within this financial
+            institution address.
+          type: string
+        countrySubDivisionName:
+          description: >
+            * A name, expressed as text, of the sub-division of a country for
+            this trade address.
+
+            * The name, expressed as text, of a country sub-division within this
+            financial institution address.
+
+            * The name, expressed as text, of the sub-division of a country for
+            this birth address.
+          type: string
+        postcodeCode:
+          description: >
+            * A code specifying the postcode of this trade address.
+
+            * The code specifying the postcode for this financial institution
+            address.
+          type: string
+        streetName:
+          description: >
+            * A name, expressed as text, of a street or thoroughfare for this
+            trade address.
+
+            * The name, expressed as text, of the street or thoroughfare for
+            this financial institution address.
+          type: string
+    Cargo:
+      description: >-
+        Information about goods being transported identifying their nature for
+        customs, statistical or transport purposes.
+      type: object
+      properties:
+        identification:
+          description: >-
+            Identification, expressed as text, of this transport cargo that is
+            sufficient to identify it for customs, statistical or transport
+            purposes.
+          type: string
+    Classification:
+      description: >-
+        A systematic arrangement of products in classes or categories according
+        to established criteria.
+      type: object
+      properties:
+        classCode:
+          description: The code specifying the class for this product classification.
+          type: string
+    Communication:
+      description: >
+        * The exchange of thoughts, messages, or information, as universally
+        exchanged by speech, signals, writing, or behaviour between persons
+        and/or organizations.
+
+        * An address for the delivery of electronic mail.
+
+        * Information necessary to establish an electronic telecommunication
+        connection for the purpose of a telephone or facsimile exchange.
+      type: object
+      properties:
+        uRIId:
+          description: >
+            * The Uniform Resource Identifier (URI) for this email
+            communication.
+
+            * The Uniform Resource Identifier (URI) for this referenced
+            standard.
+
+            * The Uniform Resource Identifier (URI), such as a web or an email
+            address, for this universal communication.
+
+            * The unique Uniform Resource Identifier (URI) for this specified
+            binary file.
+          type: string
+          format: uri
+    Consignment:
+      description: >
+        * A separately identifiable collection of goods items to be transported
+        or available to be transported from one consignor to one consignee in a
+        supply chain via one or more modes of transport where each consignment
+        is the subject of one single transport contract.
+
+        * A referenced, separately identifiable collection of goods items to be
+        transported or available to be transported from one consignor to one
+        consignee via one or more modes of transport where each consignment is
+        the subject of one single transport contract.
+      type: object
+      properties:
+        grossWeightWeightUnitMeasure:
+          description: >
+            * A measure of the gross weight (mass) of this referenced supply
+            chain consignment which includes the weight of packaging but which
+            excludes the weight of any transport equipment.
+
+            * A measure of the gross weight (mass) of this supply chain
+            consignment item which includes packaging but excludes any transport
+            equipment.
+
+            * A measure of the gross weight (mass) of this supply chain
+            consignment which includes the weight of packaging but which
+            excludes the weight of any transport equipment.
+
+            * The measure of the gross weight (mass) of this logistics means of
+            transport including cargo, such as the measure of the overall size
+            of a vessel determined in accordance with the provisions of the
+            International Convention on Tonnage Measurement of Ships, 1969.
+
+            * The measure of the gross weight (mass) of this piece of logistics
+            transport equipment which is the weight (mass) including loaded
+            goods, packing and transport equipment.
+
+            * The measure of the gross weight (mass) of this piece of referenced
+            logistics transport equipment which is the weight (mass) including
+            loaded goods, packing and transport equipment.
+
+            * The measure of the gross weight (mass) of this referenced
+            logistics package and its contents.
+
+            * The measure of the weight (mass) of these transported dangerous
+            goods including packaging but excluding the transport equipment.
+
+            * The measure, at line level, of the gross weight (mass) of this
+            line trade delivery.
+          type: string
+        netWeightWeightUnitMeasure:
+          description: >
+            * A measure of the net weight (mass) of this consignment which
+            excludes the weight of packaging of this supply chain consignment
+            and that of any transport equipment.
+
+            * A measure of the net weight (mass) of this referenced consignment
+            which excludes the weight of packaging and the weight of any
+            transport equipment.
+
+            * A measure of the net weight (mass) of this supply chain
+            consignment item which excludes all packaging.
+
+            * The measure of the net weight (mass) of the contents of this
+            referenced logistics package.
+
+            * The measure of the net weight (mass) of these transported
+            dangerous goods.
+
+            * The measure of the net weight (mass) of this logistics means of
+            transport, such as the net tonnage of a vessel determined in
+            accordance with the provisions of the International Convention on
+            Tonnage Measurement of Ships, 1969.
+
+            * The measure of the net weight (mass) of this piece of logistics
+            transport equipment.
+
+            * The measure of the net weight (mass) of this piece of referenced
+            logistics transport equipment.
+
+            * The measure, at line level, of the net weight (mass) of this trade
+            delivery.
+          type: string
+        packageQuantity:
+          description: |
+            * The number of packages in this logistics transport movement.
+            * The number of packages in this subordinate line trade delivery.
+            * The number of packages within this supply chain consignment.
+            * The number of packages, at line level, in this trade delivery.
+            * The package quantity for this supply chain consignment item.
+          type: integer
+        includedConsignmentItem:
+          allOf:
+            - description: >
+                * A consignment item included in this supply chain consignment.
+
+                * A referenced consignment item included in this referenced
+                supply chain consignment.
+            - $ref: '#/components/schemas/ConsignmentItem'
+        specifiedTransportMovement:
+          allOf:
+            - description: >-
+                A logistics transport movement specified for this supply chain
+                consignment.
+            - $ref: '#/components/schemas/TransportMovement'
+        utilizedTransportEquipment:
+          allOf:
+            - description: >
+                * A piece of logistics transport equipment, at line level,
+                utilized for this trade delivery.
+
+                * Logistics transport equipment utilized for this referenced
+                supply chain consignment.
+
+                * Logistics transport equipment utilized for this supply chain
+                consignment.
+            - $ref: '#/components/schemas/TransportEquipment'
+    ConsignmentItem:
+      description: >
+        * A reference to an item within a supply chain consignment of goods
+        separately identified for transport and customs purposes.
+
+        * An item within a supply chain consignment of goods separately
+        identified for transport and customs purposes.
+      type: object
+      properties:
+        natureIdentificationCargo:
+          allOf:
+            - description: >
+                * Transport cargo details of this referenced supply chain
+                consignment item sufficient to identify its nature for customs,
+                statistical or transport purposes.
+
+                * Transport cargo details of this supply chain consignment item
+                sufficient to identify its nature for customs, statistical or
+                transport purposes.
+
+                * Transport cargo details of this supply chain consignment
+                sufficient to identify its nature for customs, statistical or
+                transport purposes.
+            - $ref: '#/components/schemas/Cargo'
+    Contact:
+      description: >-
+        A person or a department that acts as a point of contact with another
+        person or department in a trading relationship.
+      type: object
+      properties:
+        personName:
+          description: 'The name, expressed as text, of this trade contact person.'
+          type: string
+        emailURICommunication:
+          allOf:
+            - description: >
+                * The email URI (Uniform Resource Identifier) communication for
+                this transport person.
+
+                * The email URI communication information for this trade
+                contact.
+
+                * The email Uniform Resource Identifier (URI) communication for
+                this contact person.
+            - $ref: '#/components/schemas/Communication'
+        mobileTelephoneCommunication:
+          allOf:
+            - description: >
+                * Mobile telephone communication information for this transport
+                person.
+
+                * The mobile telephone communication information for this trade
+                contact.
+            - $ref: '#/components/schemas/Communication'
+    Context:
+      description: >-
+        The scenario or setting of an exchanged document, such as its business
+        process application context.
+      type: object
+      properties: {}
+    Country:
+      description: >-
+        The area of land that belongs to a nation together with its properties,
+        such as population, political organization, etc., used or referenced for
+        trade purposes.
+      type: object
+      properties:
+        identificationCountryId:
+          description: A unique identifier for this trade country.
+          type: string
+          format: uri
+        name:
+          allOf:
+            - description: >
+                * A name, expressed as text, for this keyword.
+
+                * A name, expressed as text, for this location party.
+
+                * A name, expressed as text, for this product characteristic
+                condition.
+
+                * A name, expressed as text, for this referenced document.
+
+                * A name, expressed as text, for this referenced product.
+
+                * A name, expressed as text, for this trade product feature.
+
+                * A name, expressed as text, for this trade product.
+
+                * A name, expressed as text, of this academic qualification.
+
+                * A name, expressed as text, of this applied chemical treatment.
+
+                * A name, expressed as text, of this exchanged document.
+
+                * A name, expressed as text, of this legally set up
+                organization.
+
+                * A name, expressed as text, of this logistics related location.
+
+                * A name, expressed as text, of this specified period.
+
+                * A name, expressed as text, of this trade country sub-division.
+
+                * A name, expressed as text, of this trade country.
+
+                * A name, expressed as text, of this transport service location.
+
+                * The name or set of names, expressed as text, by which this
+                transport person is known.
+
+                * The name, expressed as text, for this acknowledgement
+                document.
+
+                * The name, expressed as text, for this branch of a financial
+                institution.
+
+                * The name, expressed as text, for this creditor financial
+                institution.
+
+                * The name, expressed as text, for this debtor financial
+                institution.
+
+                * The name, expressed as text, for this geographical object
+                characteristic.
+
+                * The name, expressed as text, for this logistics transport
+                movement.
+
+                * The name, expressed as text, for this requesting party.
+
+                * The name, expressed as text, for this specified marketplace.
+
+                * The name, expressed as text, for this trade party.
+
+                * The name, expressed as text, for this trade product group.
+
+                * The name, expressed as text, for this valuation breakdown
+                statement.
+
+                * The name, expressed as text, of the reference for this
+                specified direct position.
+
+                * The name, expressed as text, of this authoritative signatory
+                person.
+
+                * The name, expressed as text, of this control setting
+                parameter.
+
+                * The name, expressed as text, of this document version.
+
+                * The name, expressed as text, of this location used or
+                referenced in trade.
+
+                * The name, expressed as text, of this logistics means of
+                transport.
+
+                * The name, expressed as text, of this operational parameter.
+
+                * The name, expressed as text, of this procuring project.
+
+                * The name, expressed as text, of this referenced transport
+                means, such as the vessel name.
+
+                * The name, expressed as text, of this specified direct position
+                list.
+
+                * The name, expressed as text, of this specified geographical
+                feature.
+
+                * The name, expressed as text, of this subordinate location.
+
+                * The name, expressed as text, of this subordinate of a
+                subordinate location.
+
+                * The name, expressed as text, of this trade accounting account.
+
+                * The name, expressed as text, of this trade geopolitical
+                region.
+
+                * The name, expressed as text, of this transport service.
+            - $ref: '#/components/schemas/UNECECL3403Code'
+    UNECECL3403Code:
+      enum:
+        - Maiden_name
+        - Marital_name
+        - Used_name
+        - Call_name
+        - Official_name
+        - Franchise_name
+        - Pseudonym
+        - Alias
+        - Company_name
+        - Organisation_name
+        - Party_acronym
+        - Doing_business_as
+        - Brand_name
+        - Primary_name
+      description: missing description
+      type: string
+    CrossIndustryInvoice:
+      description: ''
+      type: object
+      properties:
+        exchangedDocumentContext:
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Context'
+        document:
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/Document'
+        supplyChainTradeTransaction:
+          allOf:
+            - description: ''
+            - $ref: '#/components/schemas/TradeTransaction'
+    DeliveryTerms:
+      description: >-
+        Conditions agreed upon between the parties with regard to the delivery
+        of goods and or services for trade purposes.
+      type: object
+      properties:
+        deliveryTypeDeliveryTermsCode:
+          allOf:
+            - description: >-
+                The code specifying the type of delivery for these trade
+                delivery terms.
+            - $ref: '#/components/schemas/UNECECL4053Code'
+        relevantLocation:
+          allOf:
+            - description: The trade location relevant for these trade delivery terms.
+            - $ref: '#/components/schemas/Location'
+    UNECECL4053Code:
+      enum:
+        - Delivery_arranged_by_the_supplier
+        - Delivery_arranged_by_logistic_service_provider
+      description: missing description
+      type: string
+    Document:
+      description: >
+        * A collection of financing related data that provides an overview of
+        key points.
+
+        * A collection of data for a piece of written, printed or electronic
+        matter that is exchanged between two or more parties.
+
+        * A collection of data for a line on a piece of written, printed or
+        electronic matter that provides information or evidence.
+
+        * A collection of data that reports the result of a financing request.
+
+        * Written, printed or electronic matter that is referenced.
+
+        * The set of characteristics shared by all individual transactions
+        grouped for this financing request document.
+
+        * A document exchanged between parties for a business application level
+        acknowledgement of the receipt of information.
+      type: object
+      properties:
+        issuerAssignedIdentificationId:
+          description: The unique issuer assigned identifier for this referenced document.
+          type: string
+          format: uri
+    UNECECL4461Code:
+      enum:
+        - Instrument_not_defined
+        - Automated_clearing_house_credit
+        - Automated_clearing_house_debit
+        - ACH_demand_debit_reversal
+        - ACH_demand_credit_reversal
+        - ACH_demand_credit
+        - ACH_demand_debit
+        - Hold
+        - National_or_regional_clearing
+        - In_cash
+        - ACH_savings_credit_reversal
+        - ACH_savings_debit_reversal
+        - ACH_savings_credit
+        - ACH_savings_debit
+        - Bookentry_credit
+        - Bookentry_debit
+        - ACH_demand_cash_concentration/disbursement_(CCD)_credit
+        - ACH_demand_cash_concentration/disbursement_(CCD)_debit
+        - ACH_demand_corporate_trade_payment_(CTP)_credit
+        - Cheque
+        - Banker's_draft
+        - Certified_banker's_draft
+        - Bank_cheque_(issued_by_a_banking_or_similar_establishment)
+        - Bill_of_exchange_awaiting_acceptance
+        - Certified_cheque
+        - Local_cheque
+        - ACH_demand_corporate_trade_payment_(CTP)_debit
+        - ACH_demand_corporate_trade_exchange_(CTX)_credit
+        - ACH_demand_corporate_trade_exchange_(CTX)_debit
+        - Credit_transfer
+        - Debit_transfer
+        - ACH_demand_cash_concentration/disbursement_plus_(CCD+)_credit
+        - ACH_demand_cash_concentration/disbursement_plus_(CCD+)_debit
+        - ACH_prearranged_payment_and_deposit_(PPD)
+        - ACH_savings_cash_concentration/disbursement_(CCD)_credit
+        - ACH_savings_cash_concentration/disbursement_(CCD)_debit
+        - ACH_savings_corporate_trade_payment_(CTP)_credit
+        - ACH_savings_corporate_trade_payment_(CTP)_debit
+        - ACH_savings_corporate_trade_exchange_(CTX)_credit
+        - ACH_savings_corporate_trade_exchange_(CTX)_debit
+        - ACH_savings_cash_concentration/disbursement_plus_(CCD+)_credit
+        - Payment_to_bank_account
+        - ACH_savings_cash_concentration/disbursement_plus_(CCD+)_debit
+        - Accepted_bill_of_exchange
+        - Referenced_home-banking_credit_transfer
+        - Interbank_debit_transfer
+        - Home-banking_debit_transfer
+        - Bank_card
+        - Direct_debit
+        - Payment_by_postgiro
+        - >-
+          FR_norme_6_97-Telereglement_CFONB_(French_Organisation_for_Banking_Standards)__-_Option_A
+        - Urgent_commercial_payment
+        - Urgent_Treasury_Payment
+        - Credit_card
+        - Debit_card
+        - Bankgiro
+        - Standing_agreement
+        - SEPA_credit_transfer
+        - SEPA_direct_debit
+        - Promissory_note
+        - Promissory_note_signed_by_the_debtor
+        - Promissory_note_signed_by_the_debtor_and_endorsed_by_a_bank
+        - Promissory_note_signed_by_the_debtor_and_endorsed_by_a_third_party
+        - Promissory_note_signed_by_a_bank
+        - Promissory_note_signed_by_a_bank_and_endorsed_by_another_bank
+        - Promissory_note_signed_by_a_third_party
+        - Promissory_note_signed_by_a_third_party_and_endorsed_by_a_bank
+        - Online_payment_service
+        - Transfer_Advice
+        - Bill_drawn_by_the_creditor_on_the_debtor
+        - Bill_drawn_by_the_creditor_on_a_bank
+        - Bill_drawn_by_the_creditor_endorsed_by_another_bank
+        - Bill_drawn_by_the_creditor_on_a_bank_and_endorsed_by_a_third_party
+        - Bill_drawn_by_the_creditor_on_a_third_party
+        - Bill_drawn_by_creditor_on_third_party_accepted_and_endorsed_by_bank
+        - Not_transferable_banker's_draft
+        - Not_transferable_local_cheque
+        - Reference_giro
+        - Urgent_giro
+        - Free_format_giro
+        - Requested_method_for_payment_was_not_used
+        - Clearing_between_partners
+        - Mutually_defined
+      description: missing description
+      type: string
+    Event:
+      description: >
+        * A significant occurrence or happening communicated by means of sending
+        or receiving information, such as transmitting digital data by using the
+        internet.
+
+        * A significant occurrence or happening during transport.
+
+        * A referenced significant occurrence or happening during transport.
+
+        * A significant occurrence or happening in a supply chain.
+      type: object
+      properties:
+        occurrenceDateTime:
+          description: >
+            * A date, time, date time, or other date time of an occurrence in
+            this supply chain schedule.
+
+            * A date, time, date time, or other date time value of an occurrence
+            of this supply chain event.
+
+            * The date time of the occurrence of this applied chemical
+            treatment.
+
+            * The date, time, date time, or other date time value of an
+            occurrence of this communication event.
+
+            * The date, time, date time, or other date time value of an
+            occurrence of this header balance out.
+
+            * The date, time, date time, or other date time value of an
+            occurrence of this payment balance out.
+          type: string
+          format: date-time
+        occurrenceLocation:
+          allOf:
+            - description: >
+                * A logistics location where this supply chain event occurs.
+
+                * The logistics location where this communication event will
+                occur or has occurred.
+
+                * The logistics location where this transport event occurs.
+            - $ref: '#/components/schemas/Location'
+    FinancialAccount:
+      description: >
+        * A specific business arrangement whereby debits arising from
+        transactions are recorded.
+
+        * A specific business arrangement whereby credits arising from
+        transactions are recorded.
+
+        * A financial account used internally by a bank to manage the line of
+        credit granted to financing requesting party.
+      type: object
+      properties:
+        accountName:
+          description: >
+            * The account name, expressed as text, of this creditor financial
+            account.
+
+            * The account name, expressed as text, of this debtor financial
+            account.
+
+            * The account name, expressed as text, of this financing financial
+            account.
+          type: string
+        iBANIdentificationId:
+          description: >
+            * The unique International Bank Account Number (IBAN) identifier for
+            this creditor financial account.
+
+            * The unique International Bank Account Number (IBAN) identifier for
+            this debtor financial account.
+
+            * The unique International Bank Account Number (IBAN) identifier for
+            this financing financial account.
+          type: string
+          format: uri
+    GoodsCharacteristic:
+      description: A distinctive feature of a material contained within physical goods.
+      type: object
+      properties:
+        absolutePresenceVolumeMeasure:
+          description: >-
+            The volume measure of the absolute presence of this material goods
+            characteristic.
+          type: string
+        absolutePresenceWeightMeasure:
+          description: >-
+            The weight measure of the absolute presence of this material goods
+            characteristic.
+          type: string
+        description:
+          description: >
+            * A textual description for this referenced product.
+
+            * A textual description for this trade product.
+
+            * A textual description for this transport waste material component.
+
+            * A textual description of these delivery instructions.
+
+            * A textual description of these disposal instructions.
+
+            * A textual description of these handling instructions.
+
+            * A textual description of these specified personal effects.
+
+            * A textual description of these temperature setting instructions.
+
+            * A textual description of these trade delivery terms.
+
+            * A textual description of these trade payment terms.
+
+            * A textual description of these transport instructions.
+
+            * A textual description of this communication event.
+
+            * A textual description of this control setting parameter.
+
+            * A textual description of this exchanged document.
+
+            * A textual description of this header balance out.
+
+            * A textual description of this header trade settlement.
+
+            * A textual description of this identified fault.
+
+            * A textual description of this logistics package.
+
+            * A textual description of this logistics related location.
+
+            * A textual description of this logistics service charge.
+
+            * A textual description of this material goods characteristic.
+
+            * A textual description of this measurement.
+
+            * A textual description of this operational parameter.
+
+            * A textual description of this payment balance out.
+
+            * A textual description of this product certificate.
+
+            * A textual description of this product characteristic.
+
+            * A textual description of this referenced logistics package.
+
+            * A textual description of this registered tax.
+
+            * A textual description of this spatial dimension.
+
+            * A textual description of this specified binary file.
+
+            * A textual description of this specified period of time.
+
+            * A textual description of this stores inventory item.
+
+            * A textual description of this supply chain event.
+
+            * A textual description of this supply chain packaging.
+
+            * A textual description of this supply chain schedule.
+
+            * A textual description of this trade party.
+
+            * A textual description of this trade product feature.
+
+            * A textual description of this valuation breakdown statement.
+
+            * The textual description for this geographical object
+            characteristic.
+
+            * The textual description for this specified observation.
+
+            * The textual description of the applied allowance charge.
+
+            * The textual description of these haulage instructions.
+
+            * The textual description of these quarantine instructions.
+
+            * The textual description of this available period.
+
+            * The textual description of this certified accreditation.
+
+            * The textual description of this document status.
+
+            * The textual description of this logistics risk analysis result.
+
+            * The textual description of this logistics status.
+
+            * The textual description of this procuring project.
+
+            * The textual description of this requesting party.
+
+            * The textual description of this specified geographical feature.
+
+            * The textual description of this trade settlement financial card.
+
+            * The textual description of this transport event.
+
+            * The textual description of this transport route.
+
+            * The textual description of this transport service.
+
+            * The textual description of this work item dimension.
+
+            * The textual description of this work item quantity analysis.
+          type: string
+        proportionalConstituentPercent:
+          description: >-
+            The percentage presence of the material within the goods for this
+            material goods characteristic.
+          type: string
+        typeCode:
+          allOf:
+            - description: >
+                * A code specifying a type of OEM equipment.
+
+                * A code specifying a type of country sub-division for trade
+                purposes.
+
+                * A code specifying a type of cross-border regulatory procedure.
+
+                * A code specifying a type of government registration.
+
+                * A code specifying a type of legally set up organization.
+
+                * A code specifying a type of measurement.
+
+                * A code specifying a type of product characteristic.
+
+                * A code specifying a type of specified personal effects.
+
+                * A code specifying a type of transport waste material
+                component.
+
+                * A code specifying the type of basic work item.
+
+                * A code specifying the type of calculated price.
+
+                * A code specifying the type of product certificate.
+
+                * A code specifying the type of stores inventory item.
+
+                * A code specifying the type of supply chain event.
+
+                * A code specifying the type of supply chain schedule.
+
+                * A code specifying the type of this legal registration.
+
+                * A code specifying the type of this work item group.
+
+                * A code specifying the type of trade party that is independent
+                of its role.
+
+                * A code specifying the type of trade product.
+
+                * A code specifying the type of valuation breakdown statement.
+
+                * The code specifying a type of monitoring sensor.
+
+                * The code specifying a type of parameter for this control
+                setting parameter.
+
+                * The code specifying a type of this specified range.
+
+                * The code specifying the applied tax type such as VAT.
+
+                * The code specifying the type of communication event.
+
+                * The code specifying the type of creditor financial account.
+
+                * The code specifying the type of cross-border customs
+                valuation.
+
+                * The code specifying the type of debtor financial account.
+
+                * The code specifying the type of distinct chemical.
+
+                * The code specifying the type of financial institution address.
+
+                * The code specifying the type of material goods characteristic.
+
+                * The code specifying the type of monitoring IOT device.
+
+                * The code specifying the type of procuring project, such as
+                goods, works and service.
+
+                * The code specifying the type of product characteristic
+                condition.
+
+                * The code specifying the type of registered tax.
+
+                * The code specifying the type of requesting party.
+
+                * The code specifying the type of section segment.
+
+                * The code specifying the type of specification query.
+
+                * The code specifying the type of supply chain trade line item.
+
+                * The code specifying the type of supply chain trade
+                transaction.
+
+                * The code specifying the type of this calculated emission.
+
+                * The code specifying the type of this certified accreditation,
+                such as a type of driving license.
+
+                * The code specifying the type of this operational parameter.
+
+                * The code specifying the type of this product security tag.
+
+                * The code specifying the type of this radioactive material.
+
+                * The code specifying the type of this specification response.
+
+                * The code specifying the type of this trade settlement
+                financial card, such as debit or credit.
+
+                * The code specifying the type of this work item dimension.
+
+                * The code specifying the type of trade geopolitical region.
+
+                * The code specifying the type of trade product feature.
+
+                * The code specifying the type of transport event.
+
+                * The code specifying the type of work item quantity analysis.
+            - $ref: '#/components/schemas/UNECECL3131Code'
+    UNECECL3131Code:
+      enum:
+        - Postal_address
+        - Fiscal_address
+        - Physical_address
+        - Business_address
+        - Delivery_To_Address
+        - Residential_Address
+        - Mail_To_Address
+        - Postbox_Address
+      description: missing description
+      type: string
+    Location:
+      description: >
+        * A location where a transport service takes place.
+
+        * A physical location or place used or referenced for trade purposes.
+
+        * A physical location or place which is a subordinate location of a
+        location.
+
+        * A physical location or place which is a subordinate location of a
+        subordinate location.
+
+        * A logistics related physical location or place.
+      type: object
+      properties:
+        identificationId:
+          allOf:
+            - description: >
+                * A proprietary identifier.
+
+                * A unique identifier for this document authentication.
+
+                * A unique identifier for this legal registration.
+
+                * A unique identifier for this legally set up organization.
+
+                * A unique identifier for this logistics related location, such
+                as a United Nations Location Code (UNLOCODE) or GS1 Global
+                Location Number (GLN).
+
+                * A unique identifier for this logistics seal.
+
+                * A unique identifier for this note.
+
+                * A unique identifier for this product characteristic.
+
+                * A unique identifier for this referenced document.
+
+                * A unique identifier for this referenced product.
+
+                * A unique identifier for this referenced supply chain
+                consignment.
+
+                * A unique identifier for this specified binary file.
+
+                * A unique identifier for this subordinate trade line item.
+
+                * A unique identifier for this supply chain consignment item.
+
+                * A unique identifier for this supply chain consignment.
+
+                * A unique identifier for this supply chain trade transaction.
+
+                * A unique identifier for this trade address.
+
+                * A unique identifier for this trade product.
+
+                * A unique identifier of this location party.
+
+                * A unique identifier of this piece of attached transport
+                equipment.
+
+                * A unique identifier of this trade party.
+
+                * A unique number, mark or name which identifies this associated
+                piece of transport equipment.
+
+                * An identifier for this certified accreditation.
+
+                * An identifier for this exchanged declaration.
+
+                * An identifier for this geographical grid.
+
+                * An identifier for this government registration.
+
+                * An identifier for this header trade agreement.
+
+                * An identifier for this line trade agreement.
+
+                * An identifier for this monitoring IOT device.
+
+                * An identifier for this trade product group.
+
+                * An identifier for this trade settlement payment means.
+
+                * An identifier for this transport service location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * An identifier of this OEM equipment.
+
+                * An identifier of this logistics means of transport, such as
+                the International Maritime Organization number of a vessel.
+
+                * An identifier of this monitoring sensor.
+
+                * An identifier of this referenced transport means, such as the
+                International Maritime Organization number for a vessel.
+
+                * An identifier of this referenced transport service.
+
+                * An identifier of this supply chain schedule.
+
+                * An identifier, at line level, for this trade delivery.
+
+                * The identifier for this calibrated measurement.
+
+                * The identifier for this communication event.
+
+                * The identifier for this geographical coordinate source system.
+
+                * The identifier for this geographical object characteristic.
+
+                * The identifier for this header balance out.
+
+                * The identifier for this payment balance out.
+
+                * The identifier for this product certificate.
+
+                * The identifier for this production of goods.
+
+                * The identifier for this referenced logistics package.
+
+                * The identifier for this specified geographical feature.
+
+                * The identifier for this specified marketplace.
+
+                * The identifier for this specified observation.
+
+                * The identifier of this control setting parameter.
+
+                * The identifier of this document line document.
+
+                * The identifier of this handling instructions.
+
+                * The identifier of this label section.
+
+                * The identifier of this operational parameter.
+
+                * The identifier of this referenced standard.
+
+                * The identifier of this section segment.
+
+                * The identifier of this trade workflow object.
+
+                * The identifier, at header level, for this trade delivery.
+
+                * The unique identifier for this basic work item.
+
+                * The unique identifier for this branch of a financial
+                institution.
+
+                * The unique identifier for this document version.
+
+                * The unique identifier for this employer identity.
+
+                * The unique identifier for this geographical coordinate.
+
+                * The unique identifier for this location used or referenced in
+                trade.
+
+                * The unique identifier for this logistics package.
+
+                * The unique identifier for this logistics transport movement,
+                such as a voyage number, flight number, or trip number.
+
+                * The unique identifier for this referenced piece of logistics
+                transport equipment, such as a number, mark or name.
+
+                * The unique identifier for this requesting party.
+
+                * The unique identifier for this specification query.
+
+                * The unique identifier for this specification response.
+
+                * The unique identifier for this subordinate location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * The unique identifier for this subordinate of a subordinate
+                location, such as a United Nations Location Code (UNLOCODE) or
+                GS1 Global Location Number (GLN).
+
+                * The unique identifier for this supply chain event.
+
+                * The unique identifier for this supply chain trade line item.
+
+                * The unique identifier for this tax registration.
+
+                * The unique identifier for this trade accounting account.
+
+                * The unique identifier for this trade allowance charge.
+
+                * The unique identifier for this trade contact.
+
+                * The unique identifier for this trade country sub-division.
+
+                * The unique identifier for this trade geopolitical region.
+
+                * The unique identifier for this trade product feature.
+
+                * The unique identifier for this transport event.
+
+                * The unique identifier for this transport person.
+
+                * The unique identifier for this valuation breakdown statement.
+
+                * The unique identifier for this work item dimension.
+
+                * The unique identifier for this work item group.
+
+                * The unique identifier for this work item quantity analysis.
+
+                * The unique identifier of this acknowledgement document.
+
+                * The unique identifier of this document clause.
+
+                * The unique identifier of this document context parameter.
+
+                * The unique identifier of this exchanged document.
+
+                * The unique identifier of this logistics label.
+
+                * The unique identifier of this piece of logistics transport
+                equipment.
+
+                * The unique identifier of this procuring project.
+
+                * The unique identifier of this spatial dimension.
+
+                * The unique identifier of this specified period.
+
+                * The unique identifier of this transport route.
+
+                * The unique identifier of this transport service.
+
+                * The unique identifier, commonly known as the card number, of
+                this trade settlement financial card.
+            - $ref: '#/components/schemas/UNECECL4461Code'
+        name:
+          allOf:
+            - description: >
+                * A name, expressed as text, for this keyword.
+
+                * A name, expressed as text, for this location party.
+
+                * A name, expressed as text, for this product characteristic
+                condition.
+
+                * A name, expressed as text, for this referenced document.
+
+                * A name, expressed as text, for this referenced product.
+
+                * A name, expressed as text, for this trade product feature.
+
+                * A name, expressed as text, for this trade product.
+
+                * A name, expressed as text, of this academic qualification.
+
+                * A name, expressed as text, of this applied chemical treatment.
+
+                * A name, expressed as text, of this exchanged document.
+
+                * A name, expressed as text, of this legally set up
+                organization.
+
+                * A name, expressed as text, of this logistics related location.
+
+                * A name, expressed as text, of this specified period.
+
+                * A name, expressed as text, of this trade country sub-division.
+
+                * A name, expressed as text, of this trade country.
+
+                * A name, expressed as text, of this transport service location.
+
+                * The name or set of names, expressed as text, by which this
+                transport person is known.
+
+                * The name, expressed as text, for this acknowledgement
+                document.
+
+                * The name, expressed as text, for this branch of a financial
+                institution.
+
+                * The name, expressed as text, for this creditor financial
+                institution.
+
+                * The name, expressed as text, for this debtor financial
+                institution.
+
+                * The name, expressed as text, for this geographical object
+                characteristic.
+
+                * The name, expressed as text, for this logistics transport
+                movement.
+
+                * The name, expressed as text, for this requesting party.
+
+                * The name, expressed as text, for this specified marketplace.
+
+                * The name, expressed as text, for this trade party.
+
+                * The name, expressed as text, for this trade product group.
+
+                * The name, expressed as text, for this valuation breakdown
+                statement.
+
+                * The name, expressed as text, of the reference for this
+                specified direct position.
+
+                * The name, expressed as text, of this authoritative signatory
+                person.
+
+                * The name, expressed as text, of this control setting
+                parameter.
+
+                * The name, expressed as text, of this document version.
+
+                * The name, expressed as text, of this location used or
+                referenced in trade.
+
+                * The name, expressed as text, of this logistics means of
+                transport.
+
+                * The name, expressed as text, of this operational parameter.
+
+                * The name, expressed as text, of this procuring project.
+
+                * The name, expressed as text, of this referenced transport
+                means, such as the vessel name.
+
+                * The name, expressed as text, of this specified direct position
+                list.
+
+                * The name, expressed as text, of this specified geographical
+                feature.
+
+                * The name, expressed as text, of this subordinate location.
+
+                * The name, expressed as text, of this subordinate of a
+                subordinate location.
+
+                * The name, expressed as text, of this trade accounting account.
+
+                * The name, expressed as text, of this trade geopolitical
+                region.
+
+                * The name, expressed as text, of this transport service.
+            - $ref: '#/components/schemas/UNECECL3403Code'
+    Party:
+      description: >
+        * An individual, a group, or a body having a role related to a location.
+
+        * An individual, a group, or a body having a role as a requestor.
+
+        * An individual, a group, or a body having a role in a trade business
+        function.
+      type: object
+      properties:
+        identificationId:
+          allOf:
+            - description: >
+                * A proprietary identifier.
+
+                * A unique identifier for this document authentication.
+
+                * A unique identifier for this legal registration.
+
+                * A unique identifier for this legally set up organization.
+
+                * A unique identifier for this logistics related location, such
+                as a United Nations Location Code (UNLOCODE) or GS1 Global
+                Location Number (GLN).
+
+                * A unique identifier for this logistics seal.
+
+                * A unique identifier for this note.
+
+                * A unique identifier for this product characteristic.
+
+                * A unique identifier for this referenced document.
+
+                * A unique identifier for this referenced product.
+
+                * A unique identifier for this referenced supply chain
+                consignment.
+
+                * A unique identifier for this specified binary file.
+
+                * A unique identifier for this subordinate trade line item.
+
+                * A unique identifier for this supply chain consignment item.
+
+                * A unique identifier for this supply chain consignment.
+
+                * A unique identifier for this supply chain trade transaction.
+
+                * A unique identifier for this trade address.
+
+                * A unique identifier for this trade product.
+
+                * A unique identifier of this location party.
+
+                * A unique identifier of this piece of attached transport
+                equipment.
+
+                * A unique identifier of this trade party.
+
+                * A unique number, mark or name which identifies this associated
+                piece of transport equipment.
+
+                * An identifier for this certified accreditation.
+
+                * An identifier for this exchanged declaration.
+
+                * An identifier for this geographical grid.
+
+                * An identifier for this government registration.
+
+                * An identifier for this header trade agreement.
+
+                * An identifier for this line trade agreement.
+
+                * An identifier for this monitoring IOT device.
+
+                * An identifier for this trade product group.
+
+                * An identifier for this trade settlement payment means.
+
+                * An identifier for this transport service location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * An identifier of this OEM equipment.
+
+                * An identifier of this logistics means of transport, such as
+                the International Maritime Organization number of a vessel.
+
+                * An identifier of this monitoring sensor.
+
+                * An identifier of this referenced transport means, such as the
+                International Maritime Organization number for a vessel.
+
+                * An identifier of this referenced transport service.
+
+                * An identifier of this supply chain schedule.
+
+                * An identifier, at line level, for this trade delivery.
+
+                * The identifier for this calibrated measurement.
+
+                * The identifier for this communication event.
+
+                * The identifier for this geographical coordinate source system.
+
+                * The identifier for this geographical object characteristic.
+
+                * The identifier for this header balance out.
+
+                * The identifier for this payment balance out.
+
+                * The identifier for this product certificate.
+
+                * The identifier for this production of goods.
+
+                * The identifier for this referenced logistics package.
+
+                * The identifier for this specified geographical feature.
+
+                * The identifier for this specified marketplace.
+
+                * The identifier for this specified observation.
+
+                * The identifier of this control setting parameter.
+
+                * The identifier of this document line document.
+
+                * The identifier of this handling instructions.
+
+                * The identifier of this label section.
+
+                * The identifier of this operational parameter.
+
+                * The identifier of this referenced standard.
+
+                * The identifier of this section segment.
+
+                * The identifier of this trade workflow object.
+
+                * The identifier, at header level, for this trade delivery.
+
+                * The unique identifier for this basic work item.
+
+                * The unique identifier for this branch of a financial
+                institution.
+
+                * The unique identifier for this document version.
+
+                * The unique identifier for this employer identity.
+
+                * The unique identifier for this geographical coordinate.
+
+                * The unique identifier for this location used or referenced in
+                trade.
+
+                * The unique identifier for this logistics package.
+
+                * The unique identifier for this logistics transport movement,
+                such as a voyage number, flight number, or trip number.
+
+                * The unique identifier for this referenced piece of logistics
+                transport equipment, such as a number, mark or name.
+
+                * The unique identifier for this requesting party.
+
+                * The unique identifier for this specification query.
+
+                * The unique identifier for this specification response.
+
+                * The unique identifier for this subordinate location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * The unique identifier for this subordinate of a subordinate
+                location, such as a United Nations Location Code (UNLOCODE) or
+                GS1 Global Location Number (GLN).
+
+                * The unique identifier for this supply chain event.
+
+                * The unique identifier for this supply chain trade line item.
+
+                * The unique identifier for this tax registration.
+
+                * The unique identifier for this trade accounting account.
+
+                * The unique identifier for this trade allowance charge.
+
+                * The unique identifier for this trade contact.
+
+                * The unique identifier for this trade country sub-division.
+
+                * The unique identifier for this trade geopolitical region.
+
+                * The unique identifier for this trade product feature.
+
+                * The unique identifier for this transport event.
+
+                * The unique identifier for this transport person.
+
+                * The unique identifier for this valuation breakdown statement.
+
+                * The unique identifier for this work item dimension.
+
+                * The unique identifier for this work item group.
+
+                * The unique identifier for this work item quantity analysis.
+
+                * The unique identifier of this acknowledgement document.
+
+                * The unique identifier of this document clause.
+
+                * The unique identifier of this document context parameter.
+
+                * The unique identifier of this exchanged document.
+
+                * The unique identifier of this logistics label.
+
+                * The unique identifier of this piece of logistics transport
+                equipment.
+
+                * The unique identifier of this procuring project.
+
+                * The unique identifier of this spatial dimension.
+
+                * The unique identifier of this specified period.
+
+                * The unique identifier of this transport route.
+
+                * The unique identifier of this transport service.
+
+                * The unique identifier, commonly known as the card number, of
+                this trade settlement financial card.
+            - $ref: '#/components/schemas/UNECECL4461Code'
+        name:
+          allOf:
+            - description: >
+                * A name, expressed as text, for this keyword.
+
+                * A name, expressed as text, for this location party.
+
+                * A name, expressed as text, for this product characteristic
+                condition.
+
+                * A name, expressed as text, for this referenced document.
+
+                * A name, expressed as text, for this referenced product.
+
+                * A name, expressed as text, for this trade product feature.
+
+                * A name, expressed as text, for this trade product.
+
+                * A name, expressed as text, of this academic qualification.
+
+                * A name, expressed as text, of this applied chemical treatment.
+
+                * A name, expressed as text, of this exchanged document.
+
+                * A name, expressed as text, of this legally set up
+                organization.
+
+                * A name, expressed as text, of this logistics related location.
+
+                * A name, expressed as text, of this specified period.
+
+                * A name, expressed as text, of this trade country sub-division.
+
+                * A name, expressed as text, of this trade country.
+
+                * A name, expressed as text, of this transport service location.
+
+                * The name or set of names, expressed as text, by which this
+                transport person is known.
+
+                * The name, expressed as text, for this acknowledgement
+                document.
+
+                * The name, expressed as text, for this branch of a financial
+                institution.
+
+                * The name, expressed as text, for this creditor financial
+                institution.
+
+                * The name, expressed as text, for this debtor financial
+                institution.
+
+                * The name, expressed as text, for this geographical object
+                characteristic.
+
+                * The name, expressed as text, for this logistics transport
+                movement.
+
+                * The name, expressed as text, for this requesting party.
+
+                * The name, expressed as text, for this specified marketplace.
+
+                * The name, expressed as text, for this trade party.
+
+                * The name, expressed as text, for this trade product group.
+
+                * The name, expressed as text, for this valuation breakdown
+                statement.
+
+                * The name, expressed as text, of the reference for this
+                specified direct position.
+
+                * The name, expressed as text, of this authoritative signatory
+                person.
+
+                * The name, expressed as text, of this control setting
+                parameter.
+
+                * The name, expressed as text, of this document version.
+
+                * The name, expressed as text, of this location used or
+                referenced in trade.
+
+                * The name, expressed as text, of this logistics means of
+                transport.
+
+                * The name, expressed as text, of this operational parameter.
+
+                * The name, expressed as text, of this procuring project.
+
+                * The name, expressed as text, of this referenced transport
+                means, such as the vessel name.
+
+                * The name, expressed as text, of this specified direct position
+                list.
+
+                * The name, expressed as text, of this specified geographical
+                feature.
+
+                * The name, expressed as text, of this subordinate location.
+
+                * The name, expressed as text, of this subordinate of a
+                subordinate location.
+
+                * The name, expressed as text, of this trade accounting account.
+
+                * The name, expressed as text, of this trade geopolitical
+                region.
+
+                * The name, expressed as text, of this transport service.
+            - $ref: '#/components/schemas/UNECECL3403Code'
+        definedContact:
+          allOf:
+            - description: |
+                * A trade contact defined for this location party.
+                * A trade contact defined for this trade party.
+            - $ref: '#/components/schemas/Contact'
+        postalAddress:
+          allOf:
+            - description: >
+                * A postal address for this legally set up organization.
+
+                * A postal address for this location party.
+
+                * The postal address for this trade party.
+
+                * The postal trade address information for this logistics
+                related location.
+            - $ref: '#/components/schemas/Address'
+        specifiedRegistration:
+          allOf:
+            - description: |
+                * A governmental registration specified for this trade party.
+                * A tax registration specified for this contact person.
+                * A tax registration specified for this trade party.
+            - $ref: '#/components/schemas/Registration'
+    PaymentMeans:
+      description: >-
+        The means by which a payment will be or has been made for trade
+        settlement purposes.
+      type: object
+      properties:
+        payeePartyFinancialAccount:
+          allOf:
+            - description: >-
+                A creditor financial account of the payee party for this trade
+                settlement payment means.
+            - $ref: '#/components/schemas/FinancialAccount'
+    PaymentTerms:
+      description: >-
+        Terms and conditions by which payment has been or will be made for trade
+        purposes.
+      type: object
+      properties:
+        description:
+          description: >
+            * A textual description for this referenced product.
+
+            * A textual description for this trade product.
+
+            * A textual description for this transport waste material component.
+
+            * A textual description of these delivery instructions.
+
+            * A textual description of these disposal instructions.
+
+            * A textual description of these handling instructions.
+
+            * A textual description of these specified personal effects.
+
+            * A textual description of these temperature setting instructions.
+
+            * A textual description of these trade delivery terms.
+
+            * A textual description of these trade payment terms.
+
+            * A textual description of these transport instructions.
+
+            * A textual description of this communication event.
+
+            * A textual description of this control setting parameter.
+
+            * A textual description of this exchanged document.
+
+            * A textual description of this header balance out.
+
+            * A textual description of this header trade settlement.
+
+            * A textual description of this identified fault.
+
+            * A textual description of this logistics package.
+
+            * A textual description of this logistics related location.
+
+            * A textual description of this logistics service charge.
+
+            * A textual description of this material goods characteristic.
+
+            * A textual description of this measurement.
+
+            * A textual description of this operational parameter.
+
+            * A textual description of this payment balance out.
+
+            * A textual description of this product certificate.
+
+            * A textual description of this product characteristic.
+
+            * A textual description of this referenced logistics package.
+
+            * A textual description of this registered tax.
+
+            * A textual description of this spatial dimension.
+
+            * A textual description of this specified binary file.
+
+            * A textual description of this specified period of time.
+
+            * A textual description of this stores inventory item.
+
+            * A textual description of this supply chain event.
+
+            * A textual description of this supply chain packaging.
+
+            * A textual description of this supply chain schedule.
+
+            * A textual description of this trade party.
+
+            * A textual description of this trade product feature.
+
+            * A textual description of this valuation breakdown statement.
+
+            * The textual description for this geographical object
+            characteristic.
+
+            * The textual description for this specified observation.
+
+            * The textual description of the applied allowance charge.
+
+            * The textual description of these haulage instructions.
+
+            * The textual description of these quarantine instructions.
+
+            * The textual description of this available period.
+
+            * The textual description of this certified accreditation.
+
+            * The textual description of this document status.
+
+            * The textual description of this logistics risk analysis result.
+
+            * The textual description of this logistics status.
+
+            * The textual description of this procuring project.
+
+            * The textual description of this requesting party.
+
+            * The textual description of this specified geographical feature.
+
+            * The textual description of this trade settlement financial card.
+
+            * The textual description of this transport event.
+
+            * The textual description of this transport route.
+
+            * The textual description of this transport service.
+
+            * The textual description of this work item dimension.
+
+            * The textual description of this work item quantity analysis.
+          type: string
+    Price:
+      description: >
+        * A sum of money for which something is or may be bought or sold for
+        trade purposes.
+
+        * A reference to a sum of money for which something is or may be bought
+        or sold.
+
+        * Information related to a calculated price.
+      type: object
+      properties:
+        basisQuantity:
+          description: >
+            * A quantity on which the reference price is based.
+
+            * The quantity on which the trade price is based.
+
+            * The quantity on which this trade allowance charge is based.
+
+            * The quantity used as the basis for calculating the amount of this
+            trade related tax, levy or duty.
+          type: integer
+        chargeAmount:
+          description: |
+            * A monetary value of the calculated price to be charged.
+            * A monetary value of the trade price charge.
+            * The monetary value of a charged reference price.
+            * The monetary value of the charge for this transport service.
+          type: string
+    Product:
+      description: >
+        * A reference to a product or service produced by human or mechanical
+        effort or by a natural process for trading purposes.
+
+        * Any tangible output or service produced by human or mechanical effort
+        or by a natural process for trade purposes.
+      type: object
+      properties:
+        description:
+          description: >
+            * A textual description for this referenced product.
+
+            * A textual description for this trade product.
+
+            * A textual description for this transport waste material component.
+
+            * A textual description of these delivery instructions.
+
+            * A textual description of these disposal instructions.
+
+            * A textual description of these handling instructions.
+
+            * A textual description of these specified personal effects.
+
+            * A textual description of these temperature setting instructions.
+
+            * A textual description of these trade delivery terms.
+
+            * A textual description of these trade payment terms.
+
+            * A textual description of these transport instructions.
+
+            * A textual description of this communication event.
+
+            * A textual description of this control setting parameter.
+
+            * A textual description of this exchanged document.
+
+            * A textual description of this header balance out.
+
+            * A textual description of this header trade settlement.
+
+            * A textual description of this identified fault.
+
+            * A textual description of this logistics package.
+
+            * A textual description of this logistics related location.
+
+            * A textual description of this logistics service charge.
+
+            * A textual description of this material goods characteristic.
+
+            * A textual description of this measurement.
+
+            * A textual description of this operational parameter.
+
+            * A textual description of this payment balance out.
+
+            * A textual description of this product certificate.
+
+            * A textual description of this product characteristic.
+
+            * A textual description of this referenced logistics package.
+
+            * A textual description of this registered tax.
+
+            * A textual description of this spatial dimension.
+
+            * A textual description of this specified binary file.
+
+            * A textual description of this specified period of time.
+
+            * A textual description of this stores inventory item.
+
+            * A textual description of this supply chain event.
+
+            * A textual description of this supply chain packaging.
+
+            * A textual description of this supply chain schedule.
+
+            * A textual description of this trade party.
+
+            * A textual description of this trade product feature.
+
+            * A textual description of this valuation breakdown statement.
+
+            * The textual description for this geographical object
+            characteristic.
+
+            * The textual description for this specified observation.
+
+            * The textual description of the applied allowance charge.
+
+            * The textual description of these haulage instructions.
+
+            * The textual description of these quarantine instructions.
+
+            * The textual description of this available period.
+
+            * The textual description of this certified accreditation.
+
+            * The textual description of this document status.
+
+            * The textual description of this logistics risk analysis result.
+
+            * The textual description of this logistics status.
+
+            * The textual description of this procuring project.
+
+            * The textual description of this requesting party.
+
+            * The textual description of this specified geographical feature.
+
+            * The textual description of this trade settlement financial card.
+
+            * The textual description of this transport event.
+
+            * The textual description of this transport route.
+
+            * The textual description of this transport service.
+
+            * The textual description of this work item dimension.
+
+            * The textual description of this work item quantity analysis.
+          type: string
+        grossWeightMeasure:
+          description: >
+            * A measure of the gross weight (mass) of this trade product.
+
+            * The measure of the gross weight (mass) of this logistics package
+            and its contents.
+          type: string
+        name:
+          allOf:
+            - description: >
+                * A name, expressed as text, for this keyword.
+
+                * A name, expressed as text, for this location party.
+
+                * A name, expressed as text, for this product characteristic
+                condition.
+
+                * A name, expressed as text, for this referenced document.
+
+                * A name, expressed as text, for this referenced product.
+
+                * A name, expressed as text, for this trade product feature.
+
+                * A name, expressed as text, for this trade product.
+
+                * A name, expressed as text, of this academic qualification.
+
+                * A name, expressed as text, of this applied chemical treatment.
+
+                * A name, expressed as text, of this exchanged document.
+
+                * A name, expressed as text, of this legally set up
+                organization.
+
+                * A name, expressed as text, of this logistics related location.
+
+                * A name, expressed as text, of this specified period.
+
+                * A name, expressed as text, of this trade country sub-division.
+
+                * A name, expressed as text, of this trade country.
+
+                * A name, expressed as text, of this transport service location.
+
+                * The name or set of names, expressed as text, by which this
+                transport person is known.
+
+                * The name, expressed as text, for this acknowledgement
+                document.
+
+                * The name, expressed as text, for this branch of a financial
+                institution.
+
+                * The name, expressed as text, for this creditor financial
+                institution.
+
+                * The name, expressed as text, for this debtor financial
+                institution.
+
+                * The name, expressed as text, for this geographical object
+                characteristic.
+
+                * The name, expressed as text, for this logistics transport
+                movement.
+
+                * The name, expressed as text, for this requesting party.
+
+                * The name, expressed as text, for this specified marketplace.
+
+                * The name, expressed as text, for this trade party.
+
+                * The name, expressed as text, for this trade product group.
+
+                * The name, expressed as text, for this valuation breakdown
+                statement.
+
+                * The name, expressed as text, of the reference for this
+                specified direct position.
+
+                * The name, expressed as text, of this authoritative signatory
+                person.
+
+                * The name, expressed as text, of this control setting
+                parameter.
+
+                * The name, expressed as text, of this document version.
+
+                * The name, expressed as text, of this location used or
+                referenced in trade.
+
+                * The name, expressed as text, of this logistics means of
+                transport.
+
+                * The name, expressed as text, of this operational parameter.
+
+                * The name, expressed as text, of this procuring project.
+
+                * The name, expressed as text, of this referenced transport
+                means, such as the vessel name.
+
+                * The name, expressed as text, of this specified direct position
+                list.
+
+                * The name, expressed as text, of this specified geographical
+                feature.
+
+                * The name, expressed as text, of this subordinate location.
+
+                * The name, expressed as text, of this subordinate of a
+                subordinate location.
+
+                * The name, expressed as text, of this trade accounting account.
+
+                * The name, expressed as text, of this trade geopolitical
+                region.
+
+                * The name, expressed as text, of this transport service.
+            - $ref: '#/components/schemas/UNECECL3403Code'
+        netWeightMeasure:
+          description: >
+            * A measure of the net weight (mass) of this trade product.
+
+            * The measure of the net weight of this logistics package, i.e. the
+            weight (mass) of the contents.
+          type: string
+        sellerAssignedIdentificationId:
+          description: |
+            * The unique seller assigned identifier for this referenced product.
+            * The unique seller assigned identifier for this trade product.
+          type: string
+          format: uri
+        applicableGoodsCharacteristic:
+          allOf:
+            - description: >
+                * A distinguishing material feature applicable to this trade
+                product instance.
+
+                * A material goods characteristic applicable to this trade
+                product.
+
+                * Material goods characteristic applicable to this supply chain
+                packaging.
+            - $ref: '#/components/schemas/GoodsCharacteristic'
+        designatedClassification:
+          allOf:
+            - description: A product classification designated for this trade product.
+            - $ref: '#/components/schemas/Classification'
+        originCountry:
+          allOf:
+            - description: >
+                * A country of origin for this supply chain consignment.
+
+                * A country of origin for this trade product.
+
+                * The country of origin where this supply chain consignment item
+                has been produced.
+            - $ref: '#/components/schemas/Country'
+    Registration:
+      description: |
+        * The recording of items or details for a specific legal purpose.
+        * The recording of items or details for a governmental purpose.
+        * Registration with a specific tax authority.
+      type: object
+      properties:
+        identificationId:
+          allOf:
+            - description: >
+                * A proprietary identifier.
+
+                * A unique identifier for this document authentication.
+
+                * A unique identifier for this legal registration.
+
+                * A unique identifier for this legally set up organization.
+
+                * A unique identifier for this logistics related location, such
+                as a United Nations Location Code (UNLOCODE) or GS1 Global
+                Location Number (GLN).
+
+                * A unique identifier for this logistics seal.
+
+                * A unique identifier for this note.
+
+                * A unique identifier for this product characteristic.
+
+                * A unique identifier for this referenced document.
+
+                * A unique identifier for this referenced product.
+
+                * A unique identifier for this referenced supply chain
+                consignment.
+
+                * A unique identifier for this specified binary file.
+
+                * A unique identifier for this subordinate trade line item.
+
+                * A unique identifier for this supply chain consignment item.
+
+                * A unique identifier for this supply chain consignment.
+
+                * A unique identifier for this supply chain trade transaction.
+
+                * A unique identifier for this trade address.
+
+                * A unique identifier for this trade product.
+
+                * A unique identifier of this location party.
+
+                * A unique identifier of this piece of attached transport
+                equipment.
+
+                * A unique identifier of this trade party.
+
+                * A unique number, mark or name which identifies this associated
+                piece of transport equipment.
+
+                * An identifier for this certified accreditation.
+
+                * An identifier for this exchanged declaration.
+
+                * An identifier for this geographical grid.
+
+                * An identifier for this government registration.
+
+                * An identifier for this header trade agreement.
+
+                * An identifier for this line trade agreement.
+
+                * An identifier for this monitoring IOT device.
+
+                * An identifier for this trade product group.
+
+                * An identifier for this trade settlement payment means.
+
+                * An identifier for this transport service location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * An identifier of this OEM equipment.
+
+                * An identifier of this logistics means of transport, such as
+                the International Maritime Organization number of a vessel.
+
+                * An identifier of this monitoring sensor.
+
+                * An identifier of this referenced transport means, such as the
+                International Maritime Organization number for a vessel.
+
+                * An identifier of this referenced transport service.
+
+                * An identifier of this supply chain schedule.
+
+                * An identifier, at line level, for this trade delivery.
+
+                * The identifier for this calibrated measurement.
+
+                * The identifier for this communication event.
+
+                * The identifier for this geographical coordinate source system.
+
+                * The identifier for this geographical object characteristic.
+
+                * The identifier for this header balance out.
+
+                * The identifier for this payment balance out.
+
+                * The identifier for this product certificate.
+
+                * The identifier for this production of goods.
+
+                * The identifier for this referenced logistics package.
+
+                * The identifier for this specified geographical feature.
+
+                * The identifier for this specified marketplace.
+
+                * The identifier for this specified observation.
+
+                * The identifier of this control setting parameter.
+
+                * The identifier of this document line document.
+
+                * The identifier of this handling instructions.
+
+                * The identifier of this label section.
+
+                * The identifier of this operational parameter.
+
+                * The identifier of this referenced standard.
+
+                * The identifier of this section segment.
+
+                * The identifier of this trade workflow object.
+
+                * The identifier, at header level, for this trade delivery.
+
+                * The unique identifier for this basic work item.
+
+                * The unique identifier for this branch of a financial
+                institution.
+
+                * The unique identifier for this document version.
+
+                * The unique identifier for this employer identity.
+
+                * The unique identifier for this geographical coordinate.
+
+                * The unique identifier for this location used or referenced in
+                trade.
+
+                * The unique identifier for this logistics package.
+
+                * The unique identifier for this logistics transport movement,
+                such as a voyage number, flight number, or trip number.
+
+                * The unique identifier for this referenced piece of logistics
+                transport equipment, such as a number, mark or name.
+
+                * The unique identifier for this requesting party.
+
+                * The unique identifier for this specification query.
+
+                * The unique identifier for this specification response.
+
+                * The unique identifier for this subordinate location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * The unique identifier for this subordinate of a subordinate
+                location, such as a United Nations Location Code (UNLOCODE) or
+                GS1 Global Location Number (GLN).
+
+                * The unique identifier for this supply chain event.
+
+                * The unique identifier for this supply chain trade line item.
+
+                * The unique identifier for this tax registration.
+
+                * The unique identifier for this trade accounting account.
+
+                * The unique identifier for this trade allowance charge.
+
+                * The unique identifier for this trade contact.
+
+                * The unique identifier for this trade country sub-division.
+
+                * The unique identifier for this trade geopolitical region.
+
+                * The unique identifier for this trade product feature.
+
+                * The unique identifier for this transport event.
+
+                * The unique identifier for this transport person.
+
+                * The unique identifier for this valuation breakdown statement.
+
+                * The unique identifier for this work item dimension.
+
+                * The unique identifier for this work item group.
+
+                * The unique identifier for this work item quantity analysis.
+
+                * The unique identifier of this acknowledgement document.
+
+                * The unique identifier of this document clause.
+
+                * The unique identifier of this document context parameter.
+
+                * The unique identifier of this exchanged document.
+
+                * The unique identifier of this logistics label.
+
+                * The unique identifier of this piece of logistics transport
+                equipment.
+
+                * The unique identifier of this procuring project.
+
+                * The unique identifier of this spatial dimension.
+
+                * The unique identifier of this specified period.
+
+                * The unique identifier of this transport route.
+
+                * The unique identifier of this transport service.
+
+                * The unique identifier, commonly known as the card number, of
+                this trade settlement financial card.
+            - $ref: '#/components/schemas/UNECECL4461Code'
+        associatedTax:
+          allOf:
+            - description: The registered tax associated with this tax registration.
+            - $ref: '#/components/schemas/Tax'
+    Seal:
+      description: >-
+        A device used to secure an object and protect it from unauthorized entry
+        or tampering during transport or other logistics operations.
+      type: object
+      properties:
+        identificationId:
+          allOf:
+            - description: >
+                * A proprietary identifier.
+
+                * A unique identifier for this document authentication.
+
+                * A unique identifier for this legal registration.
+
+                * A unique identifier for this legally set up organization.
+
+                * A unique identifier for this logistics related location, such
+                as a United Nations Location Code (UNLOCODE) or GS1 Global
+                Location Number (GLN).
+
+                * A unique identifier for this logistics seal.
+
+                * A unique identifier for this note.
+
+                * A unique identifier for this product characteristic.
+
+                * A unique identifier for this referenced document.
+
+                * A unique identifier for this referenced product.
+
+                * A unique identifier for this referenced supply chain
+                consignment.
+
+                * A unique identifier for this specified binary file.
+
+                * A unique identifier for this subordinate trade line item.
+
+                * A unique identifier for this supply chain consignment item.
+
+                * A unique identifier for this supply chain consignment.
+
+                * A unique identifier for this supply chain trade transaction.
+
+                * A unique identifier for this trade address.
+
+                * A unique identifier for this trade product.
+
+                * A unique identifier of this location party.
+
+                * A unique identifier of this piece of attached transport
+                equipment.
+
+                * A unique identifier of this trade party.
+
+                * A unique number, mark or name which identifies this associated
+                piece of transport equipment.
+
+                * An identifier for this certified accreditation.
+
+                * An identifier for this exchanged declaration.
+
+                * An identifier for this geographical grid.
+
+                * An identifier for this government registration.
+
+                * An identifier for this header trade agreement.
+
+                * An identifier for this line trade agreement.
+
+                * An identifier for this monitoring IOT device.
+
+                * An identifier for this trade product group.
+
+                * An identifier for this trade settlement payment means.
+
+                * An identifier for this transport service location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * An identifier of this OEM equipment.
+
+                * An identifier of this logistics means of transport, such as
+                the International Maritime Organization number of a vessel.
+
+                * An identifier of this monitoring sensor.
+
+                * An identifier of this referenced transport means, such as the
+                International Maritime Organization number for a vessel.
+
+                * An identifier of this referenced transport service.
+
+                * An identifier of this supply chain schedule.
+
+                * An identifier, at line level, for this trade delivery.
+
+                * The identifier for this calibrated measurement.
+
+                * The identifier for this communication event.
+
+                * The identifier for this geographical coordinate source system.
+
+                * The identifier for this geographical object characteristic.
+
+                * The identifier for this header balance out.
+
+                * The identifier for this payment balance out.
+
+                * The identifier for this product certificate.
+
+                * The identifier for this production of goods.
+
+                * The identifier for this referenced logistics package.
+
+                * The identifier for this specified geographical feature.
+
+                * The identifier for this specified marketplace.
+
+                * The identifier for this specified observation.
+
+                * The identifier of this control setting parameter.
+
+                * The identifier of this document line document.
+
+                * The identifier of this handling instructions.
+
+                * The identifier of this label section.
+
+                * The identifier of this operational parameter.
+
+                * The identifier of this referenced standard.
+
+                * The identifier of this section segment.
+
+                * The identifier of this trade workflow object.
+
+                * The identifier, at header level, for this trade delivery.
+
+                * The unique identifier for this basic work item.
+
+                * The unique identifier for this branch of a financial
+                institution.
+
+                * The unique identifier for this document version.
+
+                * The unique identifier for this employer identity.
+
+                * The unique identifier for this geographical coordinate.
+
+                * The unique identifier for this location used or referenced in
+                trade.
+
+                * The unique identifier for this logistics package.
+
+                * The unique identifier for this logistics transport movement,
+                such as a voyage number, flight number, or trip number.
+
+                * The unique identifier for this referenced piece of logistics
+                transport equipment, such as a number, mark or name.
+
+                * The unique identifier for this requesting party.
+
+                * The unique identifier for this specification query.
+
+                * The unique identifier for this specification response.
+
+                * The unique identifier for this subordinate location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * The unique identifier for this subordinate of a subordinate
+                location, such as a United Nations Location Code (UNLOCODE) or
+                GS1 Global Location Number (GLN).
+
+                * The unique identifier for this supply chain event.
+
+                * The unique identifier for this supply chain trade line item.
+
+                * The unique identifier for this tax registration.
+
+                * The unique identifier for this trade accounting account.
+
+                * The unique identifier for this trade allowance charge.
+
+                * The unique identifier for this trade contact.
+
+                * The unique identifier for this trade country sub-division.
+
+                * The unique identifier for this trade geopolitical region.
+
+                * The unique identifier for this trade product feature.
+
+                * The unique identifier for this transport event.
+
+                * The unique identifier for this transport person.
+
+                * The unique identifier for this valuation breakdown statement.
+
+                * The unique identifier for this work item dimension.
+
+                * The unique identifier for this work item group.
+
+                * The unique identifier for this work item quantity analysis.
+
+                * The unique identifier of this acknowledgement document.
+
+                * The unique identifier of this document clause.
+
+                * The unique identifier of this document context parameter.
+
+                * The unique identifier of this exchanged document.
+
+                * The unique identifier of this logistics label.
+
+                * The unique identifier of this piece of logistics transport
+                equipment.
+
+                * The unique identifier of this procuring project.
+
+                * The unique identifier of this spatial dimension.
+
+                * The unique identifier of this specified period.
+
+                * The unique identifier of this transport route.
+
+                * The unique identifier of this transport service.
+
+                * The unique identifier, commonly known as the card number, of
+                this trade settlement financial card.
+            - $ref: '#/components/schemas/UNECECL4461Code'
+    Tax:
+      description: >
+        * A total levy or payment for the support of a government that is
+        required of persons, groups, or businesses within the domain of that
+        government.
+
+        * A trade related fiscal levy or duty.
+
+        * A registered tax or duty system pertaining to an authority.
+      type: object
+      properties:
+        exemptionReasonCode:
+          description: >
+            * A code specifying a reason for exemption from this trade related
+            tax, levy or duty.
+
+            * The code specifying the exemption reason for this registered tax.
+          type: string
+    TradeAgreement:
+      description: |
+        * The contractual terms of a line trade agreement.
+        * The contractual terms of a subordinate line trade agreement.
+        * The contractual terms of a header trade agreement.
+      type: object
+      properties:
+        applicableDeliveryTerms:
+          allOf:
+            - description: >
+                * The terms of delivery applicable to this header trade
+                agreement.
+
+                * The terms of delivery applicable to this line trade agreement.
+            - $ref: '#/components/schemas/DeliveryTerms'
+        buyerOrderDocument:
+          allOf:
+            - description: >
+                * A buyer generated order document referenced in this line trade
+                agreement.
+
+                * A buyer generated order document referenced in this
+                subordinate line trade agreement.
+
+                * The buyer generated order document referenced in this header
+                trade agreement.
+            - $ref: '#/components/schemas/Document'
+        buyerParty:
+          allOf:
+            - description: |
+                * The buyer party for this header trade agreement.
+                * The buyer party for this line trade agreement.
+            - $ref: '#/components/schemas/Party'
+        grossPriceProductPrice:
+          allOf:
+            - description: >
+                * A gross product price in this line trade agreement.
+
+                * A gross product price in this subordinate line trade
+                agreement.
+            - $ref: '#/components/schemas/Price'
+        sellerParty:
+          allOf:
+            - description: |
+                * The seller party for this header trade agreement.
+                * The seller party for this line trade agreement.
+            - $ref: '#/components/schemas/Party'
+    TradeDelivery:
+      description: >
+        * Shipping arrangements and movement of products and or services
+        including despatch and delivery at a line level.
+
+        * Shipping arrangements and movement of products and or services
+        including despatch and delivery at a header level.
+
+        * Supply chain shipping arrangements and movement of products and or
+        services including despatch and delivery.
+      type: object
+      properties:
+        actualDespatchEvent:
+          allOf:
+            - description: >
+                * An actual despatch event, at header level, for this trade
+                delivery.
+
+                * An actual despatch event, at line level, for this trade
+                delivery.
+            - $ref: '#/components/schemas/Event'
+        actualReceiptEvent:
+          allOf:
+            - description: >
+                * The actual receipt event, at header level, for this trade
+                delivery.
+
+                * The actual receipt event, at line level, for this trade
+                delivery.
+            - $ref: '#/components/schemas/Event'
+        relatedConsignment:
+          allOf:
+            - description: >
+                * A consignment, at header level, related to this trade
+                delivery.
+
+                * A consignment, at line level, related to this line trade
+                delivery.
+            - $ref: '#/components/schemas/Consignment'
+        shipFromParty:
+          allOf:
+            - description: |
+                * The ship from party for this supply chain consignment.
+                * The ship from party, at header level, for this trade delivery.
+                * The ship from party, at line level, for this trade delivery.
+            - $ref: '#/components/schemas/Party'
+        shipToParty:
+          allOf:
+            - description: |
+                * The ship to party for this supply chain consignment.
+                * The ship to party, at header level, for this trade delivery.
+                * The ship to party, at line level, for this trade delivery.
+                * The ship to trade party for this supply chain supply plan.
+            - $ref: '#/components/schemas/Party'
+    TradeLineItem:
+      description: >
+        * A collection of information specific to a subordinate item being used
+        or reported on for trade purposes.
+
+        * A collection of information specific to an item being used or reported
+        on for supply chain trade purposes.
+      type: object
+      properties:
+        specifiedProduct:
+          allOf:
+            - description: >
+                * A product specified for this supply chain trade line item.
+
+                * The referenced product specified for this subordinate trade
+                line item.
+            - $ref: '#/components/schemas/Product'
+        specifiedTradeAgreement:
+          allOf:
+            - description: >
+                * The line trade agreement specified for this supply chain trade
+                line item.
+
+                * The trade agreement specified for this subordinate trade line
+                item.
+            - $ref: '#/components/schemas/TradeAgreement'
+        specifiedTradeDelivery:
+          allOf:
+            - description: >
+                * The delivery specified for this subordinate trade line item.
+
+                * The line trade delivery specified for this supply chain trade
+                line item.
+            - $ref: '#/components/schemas/TradeDelivery'
+        specifiedTradeSettlement:
+          allOf:
+            - description: >
+                * A line trade settlement specified for this supply chain trade
+                line item.
+
+                * A trade settlement payment specified for this trade settlement
+                payment.
+
+                * A trade settlement specified for this subordinate trade line
+                item.
+            - $ref: '#/components/schemas/TradeSettlement'
+    TradeSettlement:
+      description: >
+        * The information, at a line level, that enables the reconciliation of a
+        financial transaction with the item(s) that the financial transaction is
+        intended to settle, for example a commercial invoice.
+
+        * The information, at a subordinate line level, that enables the
+        reconciliation of a financial transaction with the item(s) that the
+        financial transaction is intended to settle, for example a commercial
+        invoice.
+
+        * The information that enables the reconciliation of a payment with the
+        item(s) that the payment is intended to settle, for example a commercial
+        invoice.
+
+        * The information, at a header level, that enables the reconciliation of
+        a financial transaction, with the item(s) that the financial transaction
+        is intended to settle, such as a commercial invoice.
+      type: object
+      properties:
+        duePayableAmount:
+          description: >
+            * A monetary value that is an amount due and payable for this trade
+            settlement header monetary summation, such as the amount due to the
+            creditor.
+
+            * A monetary value that is an amount due and payable for this trade
+            settlement line monetary summation, such as the amount due to the
+            creditor.
+
+            * A monetary value that is an exact amount due and payable for this
+            header trade settlement, such as the amount due to the creditor.
+          type: string
+        invoiceCurrencyCurrencyCode:
+          description: >-
+            The code specifying the invoice currency for this header trade
+            settlement.
+          type: string
+        applicableTax:
+          allOf:
+            - description: >
+                * A tax applicable to this header trade settlement.
+
+                * A tax applicable to this line trade settlement.
+
+                * A tax applicable to this subordinate line trade settlement.
+
+                * A tax, levy or duty applicable to this cross-border regulatory
+                procedure.
+
+                * The tax applicable to this payment trade settlement.
+            - $ref: '#/components/schemas/Tax'
+        specifiedPaymentMeans:
+          allOf:
+            - description: >
+                * A payment means specified for this header trade settlement.
+
+                * The payment means specified for this payment trade settlement.
+
+                * The trade settlement payment means specified for this
+                logistics service charge.
+            - $ref: '#/components/schemas/PaymentMeans'
+        specifiedPaymentTerms:
+          allOf:
+            - description: |
+                * Payment terms specified for this header trade settlement.
+                * Payment terms specified for this line trade settlement.
+            - $ref: '#/components/schemas/PaymentTerms'
+    TradeTransaction:
+      description: >
+        * A group of supply chain trade line items, trade agreement, trade
+        delivery and trade settlement details.
+
+        * A group of trade line items, trade line agreement, trade line delivery
+        and trade line settlement details.
+      type: object
+      properties:
+        applicableTradeAgreement:
+          allOf:
+            - description: >
+                * A trade agreement applicable to this line trade transaction,
+                such as payment or delivery terms.
+
+                * A trade agreement header applicable to this supply chain trade
+                transaction, such as payment or delivery terms.
+            - $ref: '#/components/schemas/TradeAgreement'
+        applicableTradeDelivery:
+          allOf:
+            - description: >
+                * A trade delivery applicable to this line trade transaction.
+
+                * A trade delivery header applicable to this supply chain trade
+                transaction.
+            - $ref: '#/components/schemas/TradeDelivery'
+        applicableTradeSettlement:
+          allOf:
+            - description: >-
+                The trade settlement header applicable to this supply chain
+                trade transaction.
+            - $ref: '#/components/schemas/TradeSettlement'
+        includedTradeLineItem:
+          allOf:
+            - description: >
+                * A subordinate trade line item included in this supply chain
+                trade line item.
+
+                * A supply chain trade line item included in this logistics
+                package.
+
+                * A supply chain trade line item which is included in this trade
+                product group.
+
+                * A trade line item included in this referenced supply chain
+                consignment item.
+
+                * A trade line item included in this supply chain consignment
+                item.
+
+                * A trade line item included in this supply chain trade
+                transaction.
+            - $ref: '#/components/schemas/TradeLineItem'
+    TransportEquipment:
+      description: >
+        * A piece of equipment used to hold, protect or secure cargo for
+        logistics purposes.
+
+        * A referenced piece of equipment used to hold, protect or secure cargo
+        for logistics purposes.
+
+        * A piece of transport equipment that is associated with another piece
+        of transport equipment, such as a maritime container placed on a rail
+        wagon for transportation.
+
+        * A piece of attached transport equipment, such as a chain or a
+        tarpaulin.
+      type: object
+      properties:
+        identificationId:
+          allOf:
+            - description: >
+                * A proprietary identifier.
+
+                * A unique identifier for this document authentication.
+
+                * A unique identifier for this legal registration.
+
+                * A unique identifier for this legally set up organization.
+
+                * A unique identifier for this logistics related location, such
+                as a United Nations Location Code (UNLOCODE) or GS1 Global
+                Location Number (GLN).
+
+                * A unique identifier for this logistics seal.
+
+                * A unique identifier for this note.
+
+                * A unique identifier for this product characteristic.
+
+                * A unique identifier for this referenced document.
+
+                * A unique identifier for this referenced product.
+
+                * A unique identifier for this referenced supply chain
+                consignment.
+
+                * A unique identifier for this specified binary file.
+
+                * A unique identifier for this subordinate trade line item.
+
+                * A unique identifier for this supply chain consignment item.
+
+                * A unique identifier for this supply chain consignment.
+
+                * A unique identifier for this supply chain trade transaction.
+
+                * A unique identifier for this trade address.
+
+                * A unique identifier for this trade product.
+
+                * A unique identifier of this location party.
+
+                * A unique identifier of this piece of attached transport
+                equipment.
+
+                * A unique identifier of this trade party.
+
+                * A unique number, mark or name which identifies this associated
+                piece of transport equipment.
+
+                * An identifier for this certified accreditation.
+
+                * An identifier for this exchanged declaration.
+
+                * An identifier for this geographical grid.
+
+                * An identifier for this government registration.
+
+                * An identifier for this header trade agreement.
+
+                * An identifier for this line trade agreement.
+
+                * An identifier for this monitoring IOT device.
+
+                * An identifier for this trade product group.
+
+                * An identifier for this trade settlement payment means.
+
+                * An identifier for this transport service location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * An identifier of this OEM equipment.
+
+                * An identifier of this logistics means of transport, such as
+                the International Maritime Organization number of a vessel.
+
+                * An identifier of this monitoring sensor.
+
+                * An identifier of this referenced transport means, such as the
+                International Maritime Organization number for a vessel.
+
+                * An identifier of this referenced transport service.
+
+                * An identifier of this supply chain schedule.
+
+                * An identifier, at line level, for this trade delivery.
+
+                * The identifier for this calibrated measurement.
+
+                * The identifier for this communication event.
+
+                * The identifier for this geographical coordinate source system.
+
+                * The identifier for this geographical object characteristic.
+
+                * The identifier for this header balance out.
+
+                * The identifier for this payment balance out.
+
+                * The identifier for this product certificate.
+
+                * The identifier for this production of goods.
+
+                * The identifier for this referenced logistics package.
+
+                * The identifier for this specified geographical feature.
+
+                * The identifier for this specified marketplace.
+
+                * The identifier for this specified observation.
+
+                * The identifier of this control setting parameter.
+
+                * The identifier of this document line document.
+
+                * The identifier of this handling instructions.
+
+                * The identifier of this label section.
+
+                * The identifier of this operational parameter.
+
+                * The identifier of this referenced standard.
+
+                * The identifier of this section segment.
+
+                * The identifier of this trade workflow object.
+
+                * The identifier, at header level, for this trade delivery.
+
+                * The unique identifier for this basic work item.
+
+                * The unique identifier for this branch of a financial
+                institution.
+
+                * The unique identifier for this document version.
+
+                * The unique identifier for this employer identity.
+
+                * The unique identifier for this geographical coordinate.
+
+                * The unique identifier for this location used or referenced in
+                trade.
+
+                * The unique identifier for this logistics package.
+
+                * The unique identifier for this logistics transport movement,
+                such as a voyage number, flight number, or trip number.
+
+                * The unique identifier for this referenced piece of logistics
+                transport equipment, such as a number, mark or name.
+
+                * The unique identifier for this requesting party.
+
+                * The unique identifier for this specification query.
+
+                * The unique identifier for this specification response.
+
+                * The unique identifier for this subordinate location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * The unique identifier for this subordinate of a subordinate
+                location, such as a United Nations Location Code (UNLOCODE) or
+                GS1 Global Location Number (GLN).
+
+                * The unique identifier for this supply chain event.
+
+                * The unique identifier for this supply chain trade line item.
+
+                * The unique identifier for this tax registration.
+
+                * The unique identifier for this trade accounting account.
+
+                * The unique identifier for this trade allowance charge.
+
+                * The unique identifier for this trade contact.
+
+                * The unique identifier for this trade country sub-division.
+
+                * The unique identifier for this trade geopolitical region.
+
+                * The unique identifier for this trade product feature.
+
+                * The unique identifier for this transport event.
+
+                * The unique identifier for this transport person.
+
+                * The unique identifier for this valuation breakdown statement.
+
+                * The unique identifier for this work item dimension.
+
+                * The unique identifier for this work item group.
+
+                * The unique identifier for this work item quantity analysis.
+
+                * The unique identifier of this acknowledgement document.
+
+                * The unique identifier of this document clause.
+
+                * The unique identifier of this document context parameter.
+
+                * The unique identifier of this exchanged document.
+
+                * The unique identifier of this logistics label.
+
+                * The unique identifier of this piece of logistics transport
+                equipment.
+
+                * The unique identifier of this procuring project.
+
+                * The unique identifier of this spatial dimension.
+
+                * The unique identifier of this specified period.
+
+                * The unique identifier of this transport route.
+
+                * The unique identifier of this transport service.
+
+                * The unique identifier, commonly known as the card number, of
+                this trade settlement financial card.
+            - $ref: '#/components/schemas/UNECECL4461Code'
+        affixedSeal:
+          allOf:
+            - description: >
+                * A seal affixed to this piece of logistics transport equipment.
+
+                * A seal affixed to this piece of referenced logistics transport
+                equipment.
+            - $ref: '#/components/schemas/Seal'
+    TransportMeans:
+      description: >
+        * The devices used to convey goods or other objects from place to place
+        during logistics cargo movements.
+
+        * Reference to a device or method used to convey people, goods, or other
+        objects from place to place.
+      type: object
+      properties:
+        identificationId:
+          allOf:
+            - description: >
+                * A proprietary identifier.
+
+                * A unique identifier for this document authentication.
+
+                * A unique identifier for this legal registration.
+
+                * A unique identifier for this legally set up organization.
+
+                * A unique identifier for this logistics related location, such
+                as a United Nations Location Code (UNLOCODE) or GS1 Global
+                Location Number (GLN).
+
+                * A unique identifier for this logistics seal.
+
+                * A unique identifier for this note.
+
+                * A unique identifier for this product characteristic.
+
+                * A unique identifier for this referenced document.
+
+                * A unique identifier for this referenced product.
+
+                * A unique identifier for this referenced supply chain
+                consignment.
+
+                * A unique identifier for this specified binary file.
+
+                * A unique identifier for this subordinate trade line item.
+
+                * A unique identifier for this supply chain consignment item.
+
+                * A unique identifier for this supply chain consignment.
+
+                * A unique identifier for this supply chain trade transaction.
+
+                * A unique identifier for this trade address.
+
+                * A unique identifier for this trade product.
+
+                * A unique identifier of this location party.
+
+                * A unique identifier of this piece of attached transport
+                equipment.
+
+                * A unique identifier of this trade party.
+
+                * A unique number, mark or name which identifies this associated
+                piece of transport equipment.
+
+                * An identifier for this certified accreditation.
+
+                * An identifier for this exchanged declaration.
+
+                * An identifier for this geographical grid.
+
+                * An identifier for this government registration.
+
+                * An identifier for this header trade agreement.
+
+                * An identifier for this line trade agreement.
+
+                * An identifier for this monitoring IOT device.
+
+                * An identifier for this trade product group.
+
+                * An identifier for this trade settlement payment means.
+
+                * An identifier for this transport service location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * An identifier of this OEM equipment.
+
+                * An identifier of this logistics means of transport, such as
+                the International Maritime Organization number of a vessel.
+
+                * An identifier of this monitoring sensor.
+
+                * An identifier of this referenced transport means, such as the
+                International Maritime Organization number for a vessel.
+
+                * An identifier of this referenced transport service.
+
+                * An identifier of this supply chain schedule.
+
+                * An identifier, at line level, for this trade delivery.
+
+                * The identifier for this calibrated measurement.
+
+                * The identifier for this communication event.
+
+                * The identifier for this geographical coordinate source system.
+
+                * The identifier for this geographical object characteristic.
+
+                * The identifier for this header balance out.
+
+                * The identifier for this payment balance out.
+
+                * The identifier for this product certificate.
+
+                * The identifier for this production of goods.
+
+                * The identifier for this referenced logistics package.
+
+                * The identifier for this specified geographical feature.
+
+                * The identifier for this specified marketplace.
+
+                * The identifier for this specified observation.
+
+                * The identifier of this control setting parameter.
+
+                * The identifier of this document line document.
+
+                * The identifier of this handling instructions.
+
+                * The identifier of this label section.
+
+                * The identifier of this operational parameter.
+
+                * The identifier of this referenced standard.
+
+                * The identifier of this section segment.
+
+                * The identifier of this trade workflow object.
+
+                * The identifier, at header level, for this trade delivery.
+
+                * The unique identifier for this basic work item.
+
+                * The unique identifier for this branch of a financial
+                institution.
+
+                * The unique identifier for this document version.
+
+                * The unique identifier for this employer identity.
+
+                * The unique identifier for this geographical coordinate.
+
+                * The unique identifier for this location used or referenced in
+                trade.
+
+                * The unique identifier for this logistics package.
+
+                * The unique identifier for this logistics transport movement,
+                such as a voyage number, flight number, or trip number.
+
+                * The unique identifier for this referenced piece of logistics
+                transport equipment, such as a number, mark or name.
+
+                * The unique identifier for this requesting party.
+
+                * The unique identifier for this specification query.
+
+                * The unique identifier for this specification response.
+
+                * The unique identifier for this subordinate location, such as a
+                United Nations Location Code (UNLOCODE) or GS1 Global Location
+                Number (GLN).
+
+                * The unique identifier for this subordinate of a subordinate
+                location, such as a United Nations Location Code (UNLOCODE) or
+                GS1 Global Location Number (GLN).
+
+                * The unique identifier for this supply chain event.
+
+                * The unique identifier for this supply chain trade line item.
+
+                * The unique identifier for this tax registration.
+
+                * The unique identifier for this trade accounting account.
+
+                * The unique identifier for this trade allowance charge.
+
+                * The unique identifier for this trade contact.
+
+                * The unique identifier for this trade country sub-division.
+
+                * The unique identifier for this trade geopolitical region.
+
+                * The unique identifier for this trade product feature.
+
+                * The unique identifier for this transport event.
+
+                * The unique identifier for this transport person.
+
+                * The unique identifier for this valuation breakdown statement.
+
+                * The unique identifier for this work item dimension.
+
+                * The unique identifier for this work item group.
+
+                * The unique identifier for this work item quantity analysis.
+
+                * The unique identifier of this acknowledgement document.
+
+                * The unique identifier of this document clause.
+
+                * The unique identifier of this document context parameter.
+
+                * The unique identifier of this exchanged document.
+
+                * The unique identifier of this logistics label.
+
+                * The unique identifier of this piece of logistics transport
+                equipment.
+
+                * The unique identifier of this procuring project.
+
+                * The unique identifier of this spatial dimension.
+
+                * The unique identifier of this specified period.
+
+                * The unique identifier of this transport route.
+
+                * The unique identifier of this transport service.
+
+                * The unique identifier, commonly known as the card number, of
+                this trade settlement financial card.
+            - $ref: '#/components/schemas/UNECECL4461Code'
+    TransportMovement:
+      description: >-
+        The conveyance (physical carriage) of goods or other objects used for
+        logistics transport purposes.
+      type: object
+      properties:
+        usedTransportMeans:
+          allOf:
+            - description: >-
+                The means of transport used for this logistics transport
+                movement.
+            - $ref: '#/components/schemas/TransportMeans'

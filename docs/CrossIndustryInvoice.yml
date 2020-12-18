@@ -472,6 +472,123 @@ components:
                 The code specifying the type of delivery for these trade
                 delivery terms.
             - $ref: '#/components/schemas/UNECECL4053Code'
+        description:
+          description: >
+            * A textual description for this referenced product.
+
+            * A textual description for this trade product.
+
+            * A textual description for this transport waste material component.
+
+            * A textual description of these delivery instructions.
+
+            * A textual description of these disposal instructions.
+
+            * A textual description of these handling instructions.
+
+            * A textual description of these specified personal effects.
+
+            * A textual description of these temperature setting instructions.
+
+            * A textual description of these trade delivery terms.
+
+            * A textual description of these trade payment terms.
+
+            * A textual description of these transport instructions.
+
+            * A textual description of this communication event.
+
+            * A textual description of this control setting parameter.
+
+            * A textual description of this exchanged document.
+
+            * A textual description of this header balance out.
+
+            * A textual description of this header trade settlement.
+
+            * A textual description of this identified fault.
+
+            * A textual description of this logistics package.
+
+            * A textual description of this logistics related location.
+
+            * A textual description of this logistics service charge.
+
+            * A textual description of this material goods characteristic.
+
+            * A textual description of this measurement.
+
+            * A textual description of this operational parameter.
+
+            * A textual description of this payment balance out.
+
+            * A textual description of this product certificate.
+
+            * A textual description of this product characteristic.
+
+            * A textual description of this referenced logistics package.
+
+            * A textual description of this registered tax.
+
+            * A textual description of this spatial dimension.
+
+            * A textual description of this specified binary file.
+
+            * A textual description of this specified period of time.
+
+            * A textual description of this stores inventory item.
+
+            * A textual description of this supply chain event.
+
+            * A textual description of this supply chain packaging.
+
+            * A textual description of this supply chain schedule.
+
+            * A textual description of this trade party.
+
+            * A textual description of this trade product feature.
+
+            * A textual description of this valuation breakdown statement.
+
+            * The textual description for this geographical object
+            characteristic.
+
+            * The textual description for this specified observation.
+
+            * The textual description of the applied allowance charge.
+
+            * The textual description of these haulage instructions.
+
+            * The textual description of these quarantine instructions.
+
+            * The textual description of this available period.
+
+            * The textual description of this certified accreditation.
+
+            * The textual description of this document status.
+
+            * The textual description of this logistics risk analysis result.
+
+            * The textual description of this logistics status.
+
+            * The textual description of this procuring project.
+
+            * The textual description of this requesting party.
+
+            * The textual description of this specified geographical feature.
+
+            * The textual description of this trade settlement financial card.
+
+            * The textual description of this transport event.
+
+            * The textual description of this transport route.
+
+            * The textual description of this transport service.
+
+            * The textual description of this work item dimension.
+
+            * The textual description of this work item quantity analysis.
+          type: string
         relevantLocation:
           allOf:
             - description: The trade location relevant for these trade delivery terms.
@@ -480,6 +597,17 @@ components:
       enum:
         - Delivery_arranged_by_the_supplier
         - Delivery_arranged_by_logistic_service_provider
+        - EXW
+        - FCA
+        - CPT
+        - CIP
+        - DAT
+        - DAP
+        - DDP
+        - FAS
+        - FOB
+        - CFR
+        - CIF
       description: missing description
       type: string
     Document:

@@ -264,6 +264,10 @@
                         }
                     ]
                 },
+                "description": {
+                    "description": "* A textual description for this referenced product.\n* A textual description for this trade product.\n* A textual description for this transport waste material component.\n* A textual description of these delivery instructions.\n* A textual description of these disposal instructions.\n* A textual description of these handling instructions.\n* A textual description of these specified personal effects.\n* A textual description of these temperature setting instructions.\n* A textual description of these trade delivery terms.\n* A textual description of these trade payment terms.\n* A textual description of these transport instructions.\n* A textual description of this communication event.\n* A textual description of this control setting parameter.\n* A textual description of this exchanged document.\n* A textual description of this header balance out.\n* A textual description of this header trade settlement.\n* A textual description of this identified fault.\n* A textual description of this logistics package.\n* A textual description of this logistics related location.\n* A textual description of this logistics service charge.\n* A textual description of this material goods characteristic.\n* A textual description of this measurement.\n* A textual description of this operational parameter.\n* A textual description of this payment balance out.\n* A textual description of this product certificate.\n* A textual description of this product characteristic.\n* A textual description of this referenced logistics package.\n* A textual description of this registered tax.\n* A textual description of this spatial dimension.\n* A textual description of this specified binary file.\n* A textual description of this specified period of time.\n* A textual description of this stores inventory item.\n* A textual description of this supply chain event.\n* A textual description of this supply chain packaging.\n* A textual description of this supply chain schedule.\n* A textual description of this trade party.\n* A textual description of this trade product feature.\n* A textual description of this valuation breakdown statement.\n* The textual description for this geographical object characteristic.\n* The textual description for this specified observation.\n* The textual description of the applied allowance charge.\n* The textual description of these haulage instructions.\n* The textual description of these quarantine instructions.\n* The textual description of this available period.\n* The textual description of this certified accreditation.\n* The textual description of this document status.\n* The textual description of this logistics risk analysis result.\n* The textual description of this logistics status.\n* The textual description of this procuring project.\n* The textual description of this requesting party.\n* The textual description of this specified geographical feature.\n* The textual description of this trade settlement financial card.\n* The textual description of this transport event.\n* The textual description of this transport route.\n* The textual description of this transport service.\n* The textual description of this work item dimension.\n* The textual description of this work item quantity analysis.\n",
+                    "type": "string"
+                },
                 "relevantLocation": {
                     "allOf": [
                         {
@@ -279,7 +283,18 @@
         "UNECECL4053Code": {
             "enum": [
                 "Delivery_arranged_by_the_supplier",
-                "Delivery_arranged_by_logistic_service_provider"
+                "Delivery_arranged_by_logistic_service_provider",
+                "EXW",
+                "FCA",
+                "CPT",
+                "CIP",
+                "DAT",
+                "DAP",
+                "DDP",
+                "FAS",
+                "FOB",
+                "CFR",
+                "CIF"
             ],
             "description": "missing description",
             "type": "string"

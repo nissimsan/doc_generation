@@ -1,4 +1,4 @@
-# Generation of shipping documents from common schema
+# Generation of shipping schemas from a common model
 
 This project is for generating document schemas from a common class data model in accordance to [edi3.org](https://edi3.org) method and tooling.
 
